@@ -1,6 +1,15 @@
 {
-    "presets": [
-      "next/babel",
-      "@zeit/next-typescript/babel"
+  "presets": [
+    "next/babel",
+    "@zeit/next-typescript/babel",
+    [
+      "@babel/preset-react",
+      {
+        "throwIfNamespace": false
+      }
     ]
-  }
+  ],
+  "plugins": [
+    "react-html-attrs"
+  ]
+}
