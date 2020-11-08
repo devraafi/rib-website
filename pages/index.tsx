@@ -1,7 +1,7 @@
 import moment from 'moment';
 import Head from 'next/head';
 import React from 'react';
-import Main from '../src/component/layouts/Main';
+import MainComponent from '../src/component/layouts/main-layout.component';
 
 
 export default class Index extends React.Component {
@@ -19,8 +19,8 @@ export default class Index extends React.Component {
                         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
                         <link rel="canonical" href="https://uhuy.com/" />
                     </Head>
-                    <Main>
-                    </Main>
+                    <MainComponent>
+                    </MainComponent>
                 </div>
             </>
         )

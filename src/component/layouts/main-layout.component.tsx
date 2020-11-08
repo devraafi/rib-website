@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import router from 'next/router';
-import Footer from './Footer';
-import Header from './Header';
-import Navbar from './Nav';
+import Footer from './footer-layout.component';
+import Header from './header-layout.component';
+import Navbar from './navbar-layout.component';
 
-const Main = (props: any) => (
+const MainComponent = (props: any) => (
 
 <React.Fragment>
     <div>
@@ -23,4 +23,4 @@ const Main = (props: any) => (
 </React.Fragment>
 )
 
-export default Main;
+export default MainComponent;
