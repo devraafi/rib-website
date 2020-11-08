@@ -1,12 +1,12 @@
 {
   "presets": [
-    "next/babel"
-    // [
-    //   "@babel/preset-react",
-    //   {
-    //     "throwIfNamespace": false
-    //   }
-    // ]
+    "next/babel",
+    [
+      "@babel/preset-react",
+      {
+        "throwIfNamespace": false
+      }
+    ]
   ],
   "plugins": [
     "react-html-attrs"
