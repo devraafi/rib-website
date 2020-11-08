@@ -1,8 +1,8 @@
 // const withCss = require('@zeit/next-css')
-const withSass = require('@zeit/next-sass')
+const withSass = require('@zeit/next-sass');
 const optimizedImages = require('next-optimized-images');
-const withBabelMinify = require('next-babel-minify')()
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const withBabelMinify = require('next-babel-minify')();
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const withTypescript = require('@zeit/next-typescript');
 
 module.exports =
@@ -21,7 +21,7 @@ module.exports =
                     name: '[name].[ext]'
                   }
                 }
-              })
+              });
               config.optimization.minimizer.push(
                 new OptimizeCSSAssetsPlugin({})
               )
