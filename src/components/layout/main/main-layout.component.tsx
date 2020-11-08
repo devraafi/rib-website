@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import router from 'next/router';
+import React, {  } from 'react';
 import HeaderComponent from '../header/header-layout.component';
 import NavbarComponent from '../navbar/navbar-layout.component';
 import FooterComponent from '../footer/footer-layout.component';

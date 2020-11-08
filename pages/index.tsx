@@ -1,4 +1,3 @@
-import moment from 'moment';
 import Head from 'next/head';
 import React from 'react';
 import MainComponent from '../src/components/layout/main/main-layout.component';
