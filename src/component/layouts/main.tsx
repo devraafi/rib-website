@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Footer from './footer';
-import Header from './header';
-import Navbar from './nav';
 import router from 'next/router';
+import Footer from './Footer';
+import Header from './Header';
+import Navbar from './Nav';
 
 const MainLayout = (props: any) => (
 
