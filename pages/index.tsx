@@ -1,7 +1,7 @@
 import moment from 'moment';
 import Head from 'next/head';
 import React from 'react';
-import MainComponent from '../src/component/layouts/main-layout.component';
+import MainComponent from '../src/components/layout/main/main-layout.component';
 
 
 export default class Index extends React.Component {
