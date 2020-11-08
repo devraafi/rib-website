@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Navbar from './Nav';
 
-const MainLayout = (props: any) => (
+const Main = (props: any) => (
 
 <React.Fragment>
     <div>
@@ -23,4 +23,4 @@ const MainLayout = (props: any) => (
 </React.Fragment>
 )
 
-export default MainLayout;
+export default Main;
