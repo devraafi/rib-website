@@ -1,5 +1,7 @@
+const path = require('path');
+
 module.exports = {
-  env: {
-    customKey: 'my-value',
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
   },
 }

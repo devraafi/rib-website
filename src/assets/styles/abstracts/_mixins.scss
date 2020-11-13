@@ -1,0 +1,18 @@
+@mixin btn-theme($type) {
+    @if $type == "primary" {
+        &:hover {
+        }
+        &:active {
+        }
+    } @else if $type == "secondary" {
+        &:hover {
+        }
+        &:active {
+        }
+    } @else if $type == "primary" {
+        &:hover {
+        }
+        &:active {
+        }
+    }
+}

@@ -4,7 +4,6 @@ import NavbarComponent from '../navbar/navbar-layout.component';
 import FooterComponent from '../footer/footer-layout.component';
 
 const MainComponent = (props: any) => (
-
 <React.Fragment>
     <div>
         <HeaderComponent />

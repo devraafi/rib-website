@@ -1,0 +1,10 @@
+@import "./abstracts/global";
+@import "./base/global";
+@import "./vendor/global";
+
+body {
+    margin: 0;
+    font-family: "TT Norms";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

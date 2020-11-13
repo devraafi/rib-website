@@ -19,6 +19,7 @@ export default class Index extends React.Component {
                         <link rel="canonical" href="https://uhuy.com/" />
                     </Head>
                     <MainComponent>
+                        <Button label="primary" type="primary" onClick={() => console.log('wawan')} />
                     </MainComponent>
                 </div>
             </>

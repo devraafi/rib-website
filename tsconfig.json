@@ -20,6 +20,15 @@
     "jsx": "preserve",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@Components": [
+        "src/components"
+      ],
+      "@Styles": [
+        "src/assets/styles"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
