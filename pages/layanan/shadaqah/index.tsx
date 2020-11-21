@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import React from 'react';
-import Button from 'src/components/basics/button/button.component';
 import MainComponent from 'src/components/layout/main/main-layout.component';
 
 
-export default class Index extends React.Component {
+export default class ShadaqahServiceComponent extends React.Component {
 
     render() {
         return (
@@ -20,7 +19,7 @@ export default class Index extends React.Component {
                         <link rel="canonical" href="https://uhuy.com/" />
                     </Head>
                     <MainComponent>
-                        Home
+                        Layanan Shadaqah
                     </MainComponent>
                 </div>
             </>

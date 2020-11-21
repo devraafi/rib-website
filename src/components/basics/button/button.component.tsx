@@ -1,6 +1,5 @@
 import React from "react";
 import { ButtonProps } from "./button";
-import 'src/assets/styles/components/_button.scss';
 
 const Button = (props: ButtonProps) => (
     <React.Fragment>
