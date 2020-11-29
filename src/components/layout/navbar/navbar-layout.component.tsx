@@ -1,20 +1,23 @@
 import React from 'react';
-import dataMenu from 'src/files/menus.json';
+import dataMenu from 'files/menus.json';
 import Link from 'next/link';
-
 export default class NavbarComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">DH Logo</a>
+            <div className="container-fluid container-lg mt-2">
+                <nav className="navbar navbar-expand-lg" id="navbar-dh">
+                    <Link href="/">
+                        <a className="navbar-brand" href="/">
+                            <img src="/images/logos/dh-logo.svg" alt="" />
+                        </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
+                    <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
+                        <ul className="navbar-nav m-auto">
 
                             {
                                 dataMenu.menus.map((menu, i) => {
@@ -22,11 +25,11 @@ export default class NavbarComponent extends React.Component {
                                         {
                                             (menu.subMenu && menu.subMenu.length)
                                                 ?
-                                                <li className="nav-item dropdown">
+                                                <li key={i} className="nav-item dropdown">
                                                     <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         {menu.label}
                                                     </a>
-                                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <div className="dropdown-menu border-0 shadow dh" aria-labelledby="navbarDropdown">
                                                         {
                                                             menu.subMenu.map((sub, i) => {
                                                                 return <>
@@ -52,8 +55,9 @@ export default class NavbarComponent extends React.Component {
                             }
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <Link href="">
+                                <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                            </Link>
                         </form>
                     </div>
                 </nav>

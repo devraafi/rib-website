@@ -1,5 +1,5 @@
 import React from 'react';
-import 'src/assets/styles/main.scss';
+import '@Styles/main.scss';
 
 export default function MyApp({ Component, pageProps }: any) {
     return <React.Fragment>

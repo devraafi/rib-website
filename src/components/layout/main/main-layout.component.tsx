@@ -1,18 +1,18 @@
 import React, { } from 'react';
-import HeaderComponent from '../header/header-layout.component';
-import NavbarComponent from '../navbar/navbar-layout.component';
-import FooterComponent from '../footer/footer-layout.component';
+import HeaderComponent from '@Components/layout/header/header-layout.component';
+import NavbarComponent from '@Components/layout/navbar/navbar-layout.component';
+import FooterComponent from '@Components/layout/footer/footer-layout.component';
 
 const MainComponent = (props: any) => (
     <React.Fragment>
-        <div>
+        <div className="container-fluid p-0">
             <HeaderComponent />
             <NavbarComponent />
-            <div className="main-container p-4" id="main-container">
-                <div className="content-wrapper">
+            <div className="main-container" id="main-container">
+                <div className="container-lg container content-wrapper p-4">
                     {props.children}
                 </div>
-                {/* <FooterComponent /> */}
+                <FooterComponent />
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"></script>

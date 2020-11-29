@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import MainComponent from 'src/components/layout/main/main-layout.component';
+import MainComponent from '@Components/layout/main/main-layout.component';
 
 
 export default class AboutUsComponent extends React.Component {

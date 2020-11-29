@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export default class FooterComponent extends React.Component {
@@ -5,49 +6,171 @@ export default class FooterComponent extends React.Component {
     render() {
         return (
             <div>
-                <footer className="container py-5">
+                <footer className="container-fluid pt-5 pb-2" id="footer-dh">
                     <div className="row">
-                        <div className="col-12 col-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="d-block mb-2" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
-                            <small className="d-block mb-3 text-muted">© 2017-2019</small>
-                        </div>
-                        <div className="col-6 col-md">
-                            <h5>Features</h5>
-                            <ul className="list-unstyled text-small">
-                                <li><a className="text-muted" href="#">Cool stuff</a></li>
-                                <li><a className="text-muted" href="#">Random feature</a></li>
-                                <li><a className="text-muted" href="#">Team feature</a></li>
-                                <li><a className="text-muted" href="#">Stuff for developers</a></li>
-                                <li><a className="text-muted" href="#">Another one</a></li>
-                                <li><a className="text-muted" href="#">Last time</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-6 col-md">
-                            <h5>Resources</h5>
-                            <ul className="list-unstyled text-small">
-                                <li><a className="text-muted" href="#">Resource</a></li>
-                                <li><a className="text-muted" href="#">Resource name</a></li>
-                                <li><a className="text-muted" href="#">Another resource</a></li>
-                                <li><a className="text-muted" href="#">Final resource</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-6 col-md">
-                            <h5>Resources</h5>
-                            <ul className="list-unstyled text-small">
-                                <li><a className="text-muted" href="#">Business</a></li>
-                                <li><a className="text-muted" href="#">Education</a></li>
-                                <li><a className="text-muted" href="#">Government</a></li>
-                                <li><a className="text-muted" href="#">Gaming</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-6 col-md">
-                            <h5>About</h5>
-                            <ul className="list-unstyled text-small">
-                                <li><a className="text-muted" href="#">Team</a></li>
-                                <li><a className="text-muted" href="#">Locations</a></li>
-                                <li><a className="text-muted" href="#">Privacy</a></li>
-                                <li><a className="text-muted" href="#">Terms</a></li>
-                            </ul>
+                        <div className="col-12">
+                            <div className="row justify-content-center">
+                                <div className="col-auto">
+                                    <div className="text-download">
+                                        Download Aplikasi Lazis di
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row justify-content-center py-2">
+                                <div className="col-lg-auto text-center">
+                                    <img className="img-fluid" src="/images/footer/appstore.svg" alt="" />
+                                </div>
+                                <div className="col-lg-auto text-center">
+                                    <img className="img-fluid" src="/images/footer/playstore.svg" alt="" />
+                                </div>
+                            </div>
+                            <div className="container py-5">
+                                <div className="separator-dh mx-5"></div>
+                            </div>
+                            <div className="container-fluid container-lg py-3">
+                                <div className="row">
+                                    <div className="col-12 col-md dh-desc py-2">
+                                        Lazis Darul Hikam merupakan lembaga filantropi islam yang bergerak pada pengelolaan zakat infak dan sodaqah untuk pemberdayaan dan kemaslahatan umat
+                                    </div>
+                                    <div className="col-12 col-md py-2">
+                                        <div className="dh-footer-title">Services</div>
+                                        <ul className="list-unstyled">
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/location.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Ir.H.Juanda No. 285 , Bandung
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/call.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            022 - 2505375
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/mail.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            lazisdarulhikam@gmail.com
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="col-6 col-md py-2">
+                                        <div className="dh-footer-title">Rekening Donasi</div>
+                                        <ul className="list-unstyled">
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            BNI Syariah  <br />
+                                                            <span className="ml-4 rek">
+                                                                4111711147
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Bank Muamalat  <br />
+                                                            <span className="ml-4 rek">
+                                                                1110007373
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Mandiri Syariah       <br />
+                                                            <span className="ml-4 rek">
+                                                                7728528577
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <div className="separator-dh mx-4"></div>
+                                            </li>
+                                            <li className="my-2">
+                                                <div className="dh-footer-item-link">
+                                                    <span className="ml-4">
+                                                        An. Lazis Darul Hikam
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="col-6 col-md py-2">
+                                        <div className="dh-footer-title">Follow Us</div>
+                                        <ul className="list-unstyled">
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/fb.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Facebook
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/twit.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Twitter
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                            <li className="my-2">
+                                                <Link href="/">
+                                                    <a className="dh-footer-item-link" href="#">
+                                                        <img className="img-fluid" src="/images/icons/ig.svg" alt="" />
+                                                        <span className="ml-3">
+                                                            Instagram
+                                                        </span>
+                                                    </a>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="container py-2">
+                                <div className="separator-dh mx-5"></div>
+                            </div>
+                            <div className="container-fluid container-lg py-3 px-md-4">
+                                <div className="row justify-content-between">
+                                    <div className="col-auto text-copyright">
+                                        Copyright © 2020. Darul Hikam. All rights reserved.
+                                    </div>
+                                    <div className="col-auto text-copyright">
+                                        Terms & Conditions <span className="ml-3">Privacy Policy</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </footer>

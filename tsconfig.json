@@ -20,20 +20,23 @@
     "jsx": "preserve",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@Components": [
-        "src/components"
+      "@Components/*": [
+        "components/*"
       ],
-      "@Styles": [
-        "src/assets/styles"
+      "@Images/*": [
+        "images/*"
+      ],
+      "@Styles/*": [
+        "assets/styles/*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules"

@@ -1,0 +1,50 @@
+#footer-dh {
+    background: #f7f9f4;
+    .text-download {
+        font-weight: bold;
+        font-size: 24px;
+        color: #3e5921;
+    }
+
+    .separator-dh {
+        border-bottom: 1px solid #91c35d;
+    }
+
+    .dh-desc {
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: -0.204545px;
+        color: #293b16;
+    }
+
+    .dh-footer-title {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.231818px;
+        color: #186d8b;
+    }
+    .text-copyright {
+        font-size: 15px;
+        line-height: 20px;
+        color: #8896a2;
+    }
+    .list-unstyled {
+        li {
+            .dh-footer-item-link {
+                font-size: 13px;
+                line-height: 19px;
+                letter-spacing: -0.204545px;
+                color: #414b54;
+                .rek {
+                    color: #679437;
+                    font-weight: 600;
+                }
+            }
+            .separator-dh {
+                border-bottom: 1px solid #bddb9e;
+            }
+        }
+    }
+}

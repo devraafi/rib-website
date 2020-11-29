@@ -1,10 +1,14 @@
-import Head from 'next/head';
-import React from 'react';
-import Button from '@Components/basics/button/button.component';
-import MainComponent from '@Components/layout/main/main-layout.component';
+import MainComponent from "@Components/layout/main/main-layout.component";
+import Head from "next/dist/next-server/lib/head";
+import React from "react";
 
+export default class HomePage extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
 
-export default class Index extends React.Component {
+        }
+    }
 
     render() {
         return (
@@ -19,7 +23,7 @@ export default class Index extends React.Component {
                     <link rel="canonical" href="https://uhuy.com/" />
                 </Head>
                 <MainComponent>
-                    Home
+                    
                 </MainComponent>
             </>
         )
