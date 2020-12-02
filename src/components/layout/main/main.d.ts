@@ -5,5 +5,5 @@ export interface MainProps {
     description?: string;
     canonical?: string;
     children: ReactNode;
-    pageId: string;
+    pageId?: string;
 }
