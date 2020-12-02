@@ -1,0 +1,30 @@
+#home-page-dh {
+    .banner-section {
+        .text-date {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            color: #62717d;
+        }
+
+        .title {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 800;
+            font-size: 30px;
+            color: #293b16;
+            @media (min-width: 992px) {
+                font-size: 48px;
+            }
+        }
+
+        .description {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: #333333;
+        }
+    }
+}

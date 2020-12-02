@@ -1,2 +1,8 @@
-@import "../../../../node_modules/bootstrap/scss/buttons";
-@import "../../../../node_modules/bootstrap/scss/button-group";
+.btn {
+    &.btn-dh-primary {
+        @include btn-dh("primary");
+        &.disable {
+            // @include btn-deo-disabled("primary");
+        }
+    }
+}

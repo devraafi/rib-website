@@ -1,5 +1,5 @@
 import React from "react"
-import HomePage from "@Components/pages/home.component"
+import HomePage from "@Main/home/home.component"
 
 const Index = () => {
     return (

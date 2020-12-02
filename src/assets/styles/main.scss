@@ -1,12 +1,13 @@
-@import "./abstracts/global";
-@import "./base/global";
 @import "./vendor/global";
+@import "./base/global";
+@import "./abstracts/global";
 @import "./components/global";
 @import "./layout/global";
+@import "./pages/global";
 
 body {
     margin: 0;
-    font-family: "Inter";
+    font-family: "FiraSans", "Poppins";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

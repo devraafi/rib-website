@@ -1,0 +1,55 @@
+{
+    "date": "06 November 2020",
+    "title": "Apply for help from National Zakat Foundation",
+    "description": "Cursus at id imperdiet lectus quisque volutpat. Risus convallis et nunc, ipsum. Mauris posuere dolor, facilisis mauris, tortor malesuada.",
+    "to": {
+        "link": "/zakat",
+        "label": "Daftar Zakat"
+    },
+    "bannerList": [
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        },
+        {
+            "imagesUrl": "/images/home-banner/banner-1.png",
+            "bannerTitle": "Distribusi 150 Paket Sembako Bersama Qur'an Best"
+        }
+    ]
+}

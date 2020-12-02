@@ -2,14 +2,20 @@ import React, { } from 'react';
 import HeaderComponent from '@Components/layout/header/header-layout.component';
 import NavbarComponent from '@Components/layout/navbar/navbar-layout.component';
 import FooterComponent from '@Components/layout/footer/footer-layout.component';
+import { NextSeo } from 'next-seo';
+import { MainProps } from './main';
 
-const MainComponent = (props: any) => (
+const MainComponent = (props: MainProps) => (
     <React.Fragment>
         <div className="container-fluid p-0">
             <HeaderComponent />
+            <NextSeo
+                title={props.title || 'Lazis Darul Hikam'}
+                description={props.description || 'Lazis Darul Hikam'}
+            />
             <NavbarComponent />
             <div className="main-container" id="main-container">
-                <div className="container-lg container content-wrapper p-4">
+                <div className="container-lg container content-wrapper p-4" id={props.pageId}>
                     {props.children}
                 </div>
                 <FooterComponent />
