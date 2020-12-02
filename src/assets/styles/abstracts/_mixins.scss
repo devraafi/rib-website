@@ -1,18 +1,41 @@
-@mixin btn-theme($type) {
+@mixin btn-dh($type) {
+    border: none;
+    @include rounded(28px, false);
+    @include transition(all, 0.4s, ease-in-out);
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 30px;
     @if $type == "primary" {
+        background: #7bb142;
+        color: #ffffff;
         &:hover {
+            color: #ffffff;
+            background: #7bb142;
         }
-        &:active {
-        }
-    } @else if $type == "secondary" {
-        &:hover {
-        }
-        &:active {
-        }
-    } @else if $type == "primary" {
-        &:hover {
-        }
-        &:active {
+        &:active,
+        &:focus {
+            color: #ffffff;
+            background: #7bb142;
         }
     }
+}
+
+// Border radius Mixi
+@mixin rounded($size, $important) {
+    @if $important {
+        border-radius: $size !important;
+    } @else {
+        border-radius: $size;
+    }
+}
+
+//Mixin Transition
+@mixin transition($type, $time, $ease) {
+    -ms-transition: $type $time $ease;
+    -moz-transition: $type $time $ease;
+    -o-transition: $type $time $ease;
+    -webkit-transition: $type $time $ease;
+    transition: $type $time $ease;
 }
