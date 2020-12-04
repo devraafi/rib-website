@@ -11,9 +11,11 @@ export default class BannerSection extends React.Component<any, any> {
     }
 
     render() {
+        let bannerList = [];
+        bannerList = this.state.bannerData.bannerList;
         return (
             <>
-                <div className="banner-section py-lg-5">
+                <div className="container banner-section py-5 px-4">
                     <div className="row justify-content-center justify-content-lg-start">
                         <div className="text-date col-12 text-center text-lg-left">
                             {moment(this.state.bannerData).format('M YY')}

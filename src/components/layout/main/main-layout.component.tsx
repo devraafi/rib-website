@@ -14,8 +14,8 @@ const MainComponent = (props: MainProps) => (
                 description={props.description || 'Lazis Darul Hikam'}
             />
             <NavbarComponent />
-            <div className="main-container" id="main-container">
-                <div className="container-lg container content-wrapper p-4" id={props.pageId}>
+            <div className="main-container" id={props.pageId}>
+                <div className="content-wrapper container-fluid p-0" >
                     {props.children}
                 </div>
                 <FooterComponent />

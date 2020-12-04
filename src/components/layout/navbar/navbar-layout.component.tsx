@@ -5,7 +5,7 @@ export default class NavbarComponent extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid container-lg mt-2">
+            <div className="container-fluid container-lg dhv">
                 <nav className="navbar navbar-expand-lg" id="navbar-dh">
                     <Link href="/">
                         <a className="navbar-brand" href="/">
@@ -42,7 +42,7 @@ export default class NavbarComponent extends React.Component {
                                                     </div>
                                                 </li>
                                                 :
-                                                <li className="nav-item">
+                                                <li className="nav-item" key={i}>
                                                     <Link href={menu.link}>
                                                         <a className="nav-link">
                                                             {menu.label}

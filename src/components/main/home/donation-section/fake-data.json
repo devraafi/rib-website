@@ -1,0 +1,19 @@
+{
+    "donationSummary": [
+        {
+            "amount": "70",
+            "currency": "ribu",
+            "title": "Total Campaign"
+        },
+        {
+            "amount": "89",
+            "currency": "miliar",
+            "title": "Donasi Terkumpul"
+        },
+        {
+            "amount": "265",
+            "currency": "ribu",
+            "title": "Donasi Terkumpul"
+        }
+    ]
+}

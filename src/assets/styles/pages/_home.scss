@@ -27,4 +27,106 @@
             color: #333333;
         }
     }
+
+    .donation-section {
+        background: #f7f9f4;
+        padding-top: 10rem !important;
+        .header {
+            text-align: center;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 120%;
+        }
+
+        .card-donation {
+            background: #ffffff;
+            box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
+            border-radius: 26px;
+            padding: 1.5rem !important;
+            .card-child {
+                width: 73px;
+                height: 73px;
+                background: rgba(233, 243, 223, 0.7);
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+            }
+
+            .value {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 40px;
+                color: #186d8b;
+                .currency {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+
+            .value-label {
+                font-family: "FiraSans";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 120%;
+                color: #333333;
+            }
+        }
+    }
+
+    .zakat-section {
+        background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
+        // background-image: url("/images/backgrounds/islamic-bg.svg");
+        border-radius: 30px;
+        position: relative;
+        top: 6em;
+        .islamic-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 30px;
+            width: 100%;
+            height: 100%;
+        }
+        .header {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 120%;
+            text-align: center;
+            color: #293b16;
+        }
+
+        .card-zakat {
+            background: #ffffff;
+            box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
+            border-radius: 26px;
+            padding: 1.5rem !important;
+            .card-child {
+                width: 73px;
+                height: 73px;
+                background: rgba(233, 243, 223, 0.7);
+                border-radius: 20px;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+            }
+
+            .label {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                text-align: center;
+                color: #151e0b;
+            }
+        }
+    }
 }

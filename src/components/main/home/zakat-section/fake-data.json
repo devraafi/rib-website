@@ -1,0 +1,19 @@
+{
+    "menu": [
+        {
+            "title": "Give Zakat",
+            "imgUrl": "/images/icons/infaq.svg",
+            "link": "/"
+        },
+        {
+            "title": "Calculate Zakat",
+            "imgUrl": "/images/icons/money.svg",
+            "link": "/"
+        },
+        {
+            "title": "Galang dana",
+            "imgUrl": "/images/icons/gift.svg",
+            "link": "/"
+        }
+    ]
+}
