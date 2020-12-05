@@ -13,11 +13,11 @@ export default class ZakatSection extends React.Component<any, any> {
     render() {
         return (
             <>
-                <div className="container zakat-section p-3 p-lg-5">
+                <div className="container zakat-section p-5">
 
                     <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" />
 
-                    <div className="col-lg-4 m-auto header">
+                    <div className="col-lg-4 col-12 m-auto header">
                         Helping you bring Zakat
                         to life where you live
                     </div>

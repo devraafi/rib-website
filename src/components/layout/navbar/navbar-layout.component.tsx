@@ -9,7 +9,7 @@ export default class NavbarComponent extends React.Component<any, any> {
         this.handleScroll = this.handleScroll.bind(this);
     }
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll, { passive: true })
+        window.addEventListener('scroll', this.handleScroll)
     }
 
     handleScroll() {

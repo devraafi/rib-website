@@ -14,7 +14,7 @@ export default class ProgramSection extends React.Component<any, any> {
         return (
             <>
                 <div className="container program-section py-5">
-                    <div className="col-lg-4 m-auto header">
+                    <div className="col-lg-4 col-9 m-auto header">
                         Helping you bring Zakat
                         to life where you live
                     </div>
@@ -101,7 +101,7 @@ export default class ProgramSection extends React.Component<any, any> {
                             })
                         }
                     </div>
-                    <div className="row justify-content-center py-4 program-footer">
+                    <div className="row justify-content-center py-4 program-footer mx-5">
                         <div className="col-auto">
                             <button className="btn btn-dh-outline">
                                 Lihat Semua
