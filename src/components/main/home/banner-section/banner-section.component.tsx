@@ -23,7 +23,7 @@ export default class BannerSection extends React.Component<any, any> {
                         <div className="title col-lg-9 col-12 text-center text-lg-left">
                             {this.state.bannerData.title}
                         </div>
-                        <div className="description col-lg-5 col-12 text-center text-lg-left">
+                        <div className="description col-lg-5 col-12 text-center text-lg-left py-3">
                             {this.state.bannerData.description}
                         </div>
                         <div className="to col-12 py-4 text-center text-lg-left">

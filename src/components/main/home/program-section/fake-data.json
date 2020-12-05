@@ -1,0 +1,88 @@
+{
+    "programList": [
+        {
+            "id": "1001",
+            "title": "Nibh integer convallis donec risus pretium, dapibus suspendisse",
+            "imageUrl": "/images/program/1.png",
+            "userInfo": {
+                "name": "Jon Snow Foundation",
+                "imageUrl": "/images/user/exp/1.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        },
+        {
+            "id": "1002",
+            "title": "Egestas nec orci, eget ante parturient consequat volutpat Uye...",
+            "imageUrl": "/images/program/2.png",
+            "userInfo": {
+                "name": "Robb Stark",
+                "imageUrl": "/images/user/exp/2.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        },
+        {
+            "id": "1003",
+            "title": "Sedekah Jariyah 10.000 Qur'an untuk Korban Bencana",
+            "imageUrl": "/images/program/3.png",
+            "userInfo": {
+                "name": "Robb Stark",
+                "imageUrl": "/images/user/exp/2.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        },
+        {
+            "id": "1004",
+            "title": "Integer pulvinar nulla malesuada malesuada duis viverra integer",
+            "imageUrl": "/images/program/4.png",
+            "userInfo": {
+                "name": "Arya Stark",
+                "imageUrl": "/images/user/exp/4.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        },
+        {
+            "id": "1005",
+            "title": "Integer pulvinar nulla malesuada malesuada duis viverra integer",
+            "imageUrl": "/images/program/5.png",
+            "userInfo": {
+                "name": "Cersei Lannister",
+                "imageUrl": "/images/user/exp/5.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        },
+        {
+            "id": "1006",
+            "title": "Lacus in potenti urna ac cursus consectetur eu",
+            "imageUrl": "/images/program/6.png",
+            "userInfo": {
+                "name": "Margaery Tyrell",
+                "imageUrl": "/images/user/exp/6.svg"
+            },
+            "isCertified": true,
+            "amount": 1600000000,
+            "targetAmount": 2500000000,
+            "donaturAmount": 1020,
+            "dayAmount": 65
+        }
+    ]
+}

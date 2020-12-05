@@ -5,4 +5,11 @@
             // @include btn-deo-disabled("primary");
         }
     }
+
+    &.btn-dh-outline {
+        @include btn-dh("outline");
+        &.disable {
+            // @include btn-deo-disabled("primary");
+        }
+    }
 }

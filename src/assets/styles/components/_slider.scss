@@ -1,0 +1,30 @@
+.p-slider {
+    &.slider-program-dh,
+    &.p-disabled {
+        opacity: 1;
+        border-radius: 10px;
+        background: #c4e8f5;
+        .p-slider-range {
+            border-radius: 10px;
+            background: linear-gradient(90deg, #239cc6 0%, #4ebae0 99.54%);
+        }
+        .p-slider-handle {
+            background: rgb(35, 156, 198, 0.7);
+            border: 0;
+            cursor: default;
+            &:hover {
+                border: 0;
+            }
+            &::before {
+                top: 23%;
+                position: absolute;
+                content: "";
+                width: 10px;
+                height: 10px;
+                background: #239cc6;
+                border-radius: 10px;
+                right: 20%;
+            }
+        }
+    }
+}

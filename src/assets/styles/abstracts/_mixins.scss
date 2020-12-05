@@ -19,6 +19,19 @@
             color: #ffffff;
             background: #7bb142;
         }
+    } @else if $type == "outline" {
+        border: 1px solid #a7cf7d;  
+        background: #e9f3df;
+        color: #52762c;
+        &:hover {
+            background: #e9f3df;
+            color: #52762c;
+        }
+        &:active,
+        &:focus {
+            background: #e9f3df;
+            color: #52762c;
+        }
     }
 }
 
