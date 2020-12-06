@@ -1,0 +1,64 @@
+{
+    "list": [
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/1.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        },
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/2.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        },
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/3.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        },
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/4.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        },
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/5.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        },
+        {
+            "title": "Keutamaan Qurban",
+            "imageUrl": "/images/news-and-stories/6.svg",
+            "newsDate": "06-12-2020",
+            "category": "Pendidikan",
+            "user" : {
+                "imgUrl": "/images/user/exp/1.svg",
+                "name": "Jason Rodrigues"
+            }
+        }
+    ]
+}

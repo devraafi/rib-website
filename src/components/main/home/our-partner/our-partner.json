@@ -1,0 +1,28 @@
+{
+    "ourPartners": [
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/1.svg"
+        },
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/2.svg"
+        },
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/3.svg"
+        },
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/4.svg"
+        },
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/5.svg"
+        },
+        {
+            "partnerName": "",
+            "imageUrl": "/images/our-partners/6.svg"
+        }
+    ]
+}

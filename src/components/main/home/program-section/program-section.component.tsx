@@ -26,7 +26,7 @@ export default class ProgramSection extends React.Component<any, any> {
                             this.state.fakeData.programList.map((list: any, i: number) => {
                                 return (
 
-                                    <div className="col-lg-4 col-12 py-3" key={i}>
+                                    <div className="col-lg-4 col-12 px-3 py-3" key={i}>
                                         <div className="card-program">
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">

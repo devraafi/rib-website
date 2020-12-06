@@ -3,9 +3,11 @@ import dataMenu from 'files/menus.json';
 import Link from 'next/link';
 export default class NavbarComponent extends React.Component<any, any> {
     navbarRef: any;
+    dhvRef: any;
     constructor(props: any) {
         super(props);
         this.navbarRef = React.createRef();
+        this.dhvRef = React.createRef();
         this.handleScroll = this.handleScroll.bind(this);
     }
     componentDidMount() {
@@ -13,8 +15,7 @@ export default class NavbarComponent extends React.Component<any, any> {
     }
 
     handleScroll() {
-        const navEl: any = document.getElementById("navbar-dh");
-        if (window.pageYOffset > 40) {
+        if (window.pageYOffset > this.dhvRef.offsetHeight) {
             this.navbarRef.classList.add('fixed-top')
         } else {
             this.navbarRef.classList.remove('fixed-top')
@@ -28,7 +29,7 @@ export default class NavbarComponent extends React.Component<any, any> {
     render() {
         return (
             <div className="container-fluid dhv p-0">
-                <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-2">
+                <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-2" ref={el => this.dhvRef = el}>
                     <div className="text-1 px-2">WA</div>
                     <div className="text-2 px-2">0812 3456 7890</div>
                     <div className="text-1 px-2">Phone</div>
