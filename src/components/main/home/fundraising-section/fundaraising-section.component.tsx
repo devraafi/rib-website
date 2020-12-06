@@ -26,7 +26,7 @@ export default class FundaraisingSection extends React.Component<any, any> {
                     {
                         this.state.data.fundaraisingList.map((list: any, i: number) => {
                             return (
-                                <div className="col-12 p-0">
+                                <div className="col-12 p-0" key={i}>
                                     <div className="wrapper-img-fundaraising">
                                         <img src={list.imageUrl} alt="" />
                                         <div className="title col-lg-7 col-12 p-4">
@@ -46,7 +46,9 @@ export default class FundaraisingSection extends React.Component<any, any> {
     render() {
         return (
             <>
-                <div className="container fundaraising-section py-5">
+                <div className="container-fluid fundaraising-section py-5">
+                    <div className="bg">
+                    </div>
                     <div className="col-lg-6 col-auto m-auto">
                         <div className="header">Penggalangan Dana Mendesak</div>
                     </div>
@@ -56,7 +58,7 @@ export default class FundaraisingSection extends React.Component<any, any> {
                         </div>
                     </div>
 
-                    <div className="slider-wrapper">
+                    <div className="slider-wrapper px-3 container-lg">
                         {this.fundaraisingList()}
                     </div>
 

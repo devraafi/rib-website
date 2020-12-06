@@ -1,4 +1,55 @@
 #home-page-dh {
+    .banner-slider {
+        left: 0;
+        right: 0;
+        position: absolute;
+        .slide-index {
+            z-index: -1;
+        }
+        .banner-list {
+            .slick-arrow {
+                display: none !important;
+            }
+            &.one {
+                position: relative;
+                top: 0;
+            }
+            &.two {
+                position: relative;
+                top: -50px;
+            }
+            &.three {
+                position: relative;
+                top: -100px;
+            }
+            width: 180px;
+            .banner-item {
+                width: 100%;
+                height: 230px;
+                border-radius: 20px;
+                position: relative;
+                .title {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 11px;
+                    line-height: 110%;
+                    color: #ffffff;
+                    position: absolute;
+                    bottom: 0;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 20px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
     .banner-section {
         .text-date {
             font-family: "Poppins";
@@ -31,7 +82,6 @@
 
     .donation-section {
         background: #f7f9f4;
-        padding-top: 12rem !important;
         .header {
             text-align: center;
             font-family: "Poppins";
@@ -81,56 +131,67 @@
     }
 
     .zakat-section {
-        background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
-        border-radius: 30px;
         position: relative;
-        top: 10em;
-        .islamic-bg {
-            // background-image: url("/images/backgrounds/islamic.svg");
-            position: absolute;
-            top: 0;
-            right: 0;
-            border-radius: 30px;
+        .bg {
+            background: #f7f9f4;
             width: 100%;
-            height: 100%;
-            opacity: 60%;
-            mix-blend-mode: overlay;
-            object-fit: cover;
-        }
-        .header {
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 120%;
-            text-align: center;
-            color: #293b16;
+            height: 30%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
 
-        .card-zakat {
-            background: #e9f3df;
-            box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
-            backdrop-filter: blur(11px);
-            border-radius: 26px;
-            padding: 1.5rem !important;
-            .card-child {
-                width: 73px;
-                height: 73px;
-                background: #bddb9e;
-                border-radius: 20px;
-                display: flex;
-                justify-content: center;
-                text-align: center;
-                align-items: center;
+        .zakat-wrapper {
+            background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
+            border-radius: 30px;
+            position: relative;
+            .islamic-bg {
+                // background-image: url("/images/backgrounds/islamic.svg");
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 30px;
+                width: 100%;
+                height: 100%;
+                opacity: 60%;
+                mix-blend-mode: overlay;
+                object-fit: cover;
             }
-
-            .label {
+            .header {
                 font-family: "Poppins";
                 font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 120%;
                 text-align: center;
-                color: #151e0b;
+                color: #293b16;
+            }
+
+            .card-zakat {
+                background: #e9f3df;
+                box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
+                backdrop-filter: blur(11px);
+                border-radius: 26px;
+                padding: 1.5rem !important;
+                .card-child {
+                    width: 73px;
+                    height: 73px;
+                    background: #bddb9e;
+                    border-radius: 20px;
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                }
+
+                .label {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    text-align: center;
+                    color: #151e0b;
+                }
             }
         }
     }
@@ -305,7 +366,14 @@
 
     .fundaraising-section {
         position: relative;
-        top: 10em;
+        .bg {
+            background: #f7f9f4;
+            width: 100%;
+            height: 30%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
         .header {
             font-family: "Poppins";
             font-style: normal;
@@ -373,8 +441,6 @@
 
     .our-partner-section {
         background: #f7f9f4;
-        padding-top: 12rem !important;
-
         .header {
             font-family: "Poppins";
             font-style: normal;
@@ -567,93 +633,93 @@
         .feature-section-list {
             margin-top: 25px;
             cursor: pointer;
-          }
+        }
 
-          .feature-section-list.__hovered {
+        .feature-section-list.__hovered {
             border-bottom: 0px;
-          }
+        }
 
-          .feature-section-list-loading-bar {
+        .feature-section-list-loading-bar {
             height: 2px;
             margin-top: 25px;
             position: relative;
-          }
+        }
 
-          .feature-section-list-loading-bar::before {
+        .feature-section-list-loading-bar::before {
             display: block;
-            content: ' ';
+            content: " ";
             position: absolute;
             left: 0;
             top: -0.5px;
             width: 100%;
             height: 1px;
-            background-color: #EEF2F6;
-          }
+            background-color: #eef2f6;
+        }
 
-          .feature-section-list-loading-bar::after {
+        .feature-section-list-loading-bar::after {
             display: block;
-            content: ' ';
+            content: " ";
             position: absolute;
             left: 0;
             width: 0%;
             height: 2px;
-            background-color: #147EE3 !important;
-          }
+            background-color: #147ee3 !important;
+        }
 
-          .feature-section-list-loading-bar.__hovered::after {
+        .feature-section-list-loading-bar.__hovered::after {
             width: 100%;
             transition: width linear 5s;
-          }
-          
-          .featured-section-list-link:hover {
-            text-decoration: none;
-          }
+        }
 
-          .feature-section-list-title {
+        .featured-section-list-link:hover {
+            text-decoration: none;
+        }
+
+        .feature-section-list-title {
             font-family: "Poppins";
             font-style: normal;
             font-weight: 500;
             font-size: 18px;
             line-height: 22px;
-            ccolor: #151E0B;
+            color: #151e0b;
             margin-bottom: 11px;
-            transition: color ease-out .2s;
-          }
+            transition: color ease-out 0.2s;
+        }
 
-          .feature-section-list-title.__hovered {
-            color: #147EE3 !important;              
-          }
+        .feature-section-list-title.__hovered {
+            color: #147ee3 !important;
+        }
 
-          .feature-section-list-arrow {
+        .feature-section-list-arrow {
             height: 16px;
             width: 9px;
             opacity: 0;
             margin-bottom: 11px;
-            transition: opacity ease-out .2s, margin-left ease-out .2s;
-          }
+            transition: opacity ease-out 0.2s, margin-left ease-out 0.2s;
+        }
 
-          .feature-section-list-arrow.__hovered {
+        .feature-section-list-arrow.__hovered {
             opacity: 1;
             margin-left: 18px;
-          }
+        }
 
-          .feature-section-list-desc {
+        .feature-section-list-desc {
             font-family: Ubuntu;
             font-style: normal;
             font-weight: normal;
             font-size: 15px;
             line-height: 20px;
-            color: #62717D;
+            color: #62717d;
             margin-bottom: 0;
             height: 0;
             opacity: 0;
-            transition: color ease-out .2s, opacity ease-out .2s, height ease-out .2s;
-          }
+            transition: color ease-out 0.2s, opacity ease-out 0.2s, height ease-out 0.2s;
+        }
 
-          .feature-section-list-desc.__hovered {
+        .feature-section-list-desc.__hovered {
             height: unset;
             opacity: 1;
-            color: #414B54;
-          }
+            color: #414b54;
+        }
     }
 }

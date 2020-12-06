@@ -13,7 +13,7 @@ export default class DonationSection extends React.Component<any, any> {
     render() {
         return (
             <>
-                <div className="container-fluid donation-section pb-5">
+                <div className="container-fluid donation-section py-5">
                     <div className="col-lg-4 m-auto header">
                         Thank you for your support,
                         Because we had currently help more than

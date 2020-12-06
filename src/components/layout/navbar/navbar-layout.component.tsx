@@ -38,7 +38,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                     <div className="text-2 px-2">lazisdarulhikam@gmail.com</div>
                 </div>
                 <div className="" ref={a => this.navbarRef = a} id="navbar-dh">
-                    <nav className="navbar navbar-expand-lg p-3 container">
+                    <nav className="navbar navbar-expand-lg p-3 container navbar-light">
                         <Link href="/">
                             <a className="navbar-brand" href="/">
                                 <img src="/images/logos/dh-logo.svg" alt="" />
@@ -49,11 +49,11 @@ export default class NavbarComponent extends React.Component<any, any> {
                         </button>
 
                         <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
-                            <ul className="navbar-nav m-auto">
+                            <ul className="m-auto navbar-nav py-3 text-right">
 
                                 {
                                     dataMenu.menus.map((menu, i) => {
-                                        return <>
+                                        return <div key={i}>
                                             {
                                                 (menu.subMenu && menu.subMenu.length)
                                                     ?
@@ -61,14 +61,12 @@ export default class NavbarComponent extends React.Component<any, any> {
                                                         <a className="nav-link px-4 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             {menu.label}
                                                         </a>
-                                                        <div className="dropdown-menu border-0 shadow dh" aria-labelledby="navbarDropdown">
+                                                        <div className="dropdown-menu border-0 shadow dh text-center text-lg-left" aria-labelledby="navbarDropdown">
                                                             {
                                                                 menu.subMenu.map((sub, i) => {
-                                                                    return <>
-                                                                        <Link href={sub.link} key={i}>
-                                                                            <a className="dropdown-item">{sub.label}</a>
-                                                                        </Link>
-                                                                    </>
+                                                                    return <Link href={sub.link} key={i}>
+                                                                        <a className="dropdown-item">{sub.label}</a>
+                                                                    </Link>
                                                                 })
                                                             }
                                                         </div>
@@ -82,11 +80,11 @@ export default class NavbarComponent extends React.Component<any, any> {
                                                         </Link>
                                                     </li>
                                             }
-                                        </>
+                                        </div>
                                     })
                                 }
                             </ul>
-                            <form className="form-inline my-2 my-lg-0 px-4">
+                            <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
                                 <Link href="">
                                     <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
                                 </Link>
