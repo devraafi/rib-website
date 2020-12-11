@@ -28,8 +28,8 @@ export default class OurPartnersSection extends React.Component<any, any> {
                         {
                             this.state.data.ourPartners.map((partner: any, i: number) => {
                                 return (
-                                    <div className="col-auto align-self-center mx-3 py-3">
-                                        <img src={partner.imageUrl} alt="" className="img-fluid" />
+                                    <div key={i} className="col-auto align-self-center mx-3 py-3">
+                                        <img src={partner.imageUrl} alt="" className="img-fluid lazyload blur-up lazyloaded" />
                                     </div>
                                 )
                             })

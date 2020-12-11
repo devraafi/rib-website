@@ -40,7 +40,7 @@ export default class BannerSection extends React.Component<any, any> {
                                                 list.map((li: any, i: number) => {
                                                     return <div className="col-auto px-1 m-ato" key={i}>
                                                         <div className="banner-item">
-                                                            <img src={li.imagesUrl} alt="" />
+                                                            <img src={li.imagesUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                             <div className="title p-4">{li.bannerTitle}</div>
                                                         </div>
                                                     </div>

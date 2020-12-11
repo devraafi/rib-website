@@ -167,7 +167,8 @@ class FeatureSection extends React.Component<any, any> {
                 <div className="wrapper-img p-2 d-flex flex-row" id="wrapper-img-ft" data-aos="zoom-in"
                     onClick={() => { this.setState((state: any) => ({ pauseTransition: !state.pauseTransition })) }}>
                     <div className="feature-img align-self-start">
-                        <img key={5}
+                        <img
+                            key={5}
                             className="p-3 img lazyload blur-up lazyloaded"
                             src={this.state.currentImageSrc}
                             alt={this.state.currentImageAlt}

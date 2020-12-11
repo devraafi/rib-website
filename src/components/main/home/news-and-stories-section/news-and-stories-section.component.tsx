@@ -32,7 +32,7 @@ export default class NewsSection extends React.Component<any, any> {
                                         <div className="card-news">
                                             <div className="d-flex flex-column">
                                                 <div className="news-image">
-                                                    <img src={list.imageUrl} alt="" />
+                                                    <img src={list.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                 </div>
                                                 <div className="news-info p-3">
                                                     <div className="d-flex flex-row justify-content-between py-2">
@@ -46,7 +46,7 @@ export default class NewsSection extends React.Component<any, any> {
                                                     </div>
                                                     <div className="d-flex flex-row profile-info">
                                                         <div className="profile-img">
-                                                            <img src={list.user.imgUrl} alt="" />
+                                                            <img src={list.user.imgUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                         </div>
                                                         <div className="ml-3 profile-name">
                                                             {list.user.name}

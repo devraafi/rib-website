@@ -18,10 +18,10 @@ export default class FooterComponent extends React.Component {
                             </div>
                             <div className="row justify-content-center py-2">
                                 <div className="col-lg-auto text-center">
-                                    <img className="img-fluid" src="/images/footer/appstore.svg" alt="" />
+                                    <img className="lazyload blur-up lazyloaded img-fluid lazyload blur-up lazyloaded" src="/images/footer/appstore.svg" alt="" />
                                 </div>
                                 <div className="col-lg-auto text-center">
-                                    <img className="img-fluid" src="/images/footer/playstore.svg" alt="" />
+                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/footer/playstore.svg" alt="" />
                                 </div>
                             </div>
                             <div className="container py-5">
@@ -30,7 +30,7 @@ export default class FooterComponent extends React.Component {
                             <div className="container-fluid container-lg py-3">
                                 <div className="row">
                                     <div className="col-md-auto col-auto">
-                                        <img src="/images/logos/dh-logo-footer.svg" className="img-fluid" alt="" />
+                                        <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
                                         Lazis Darul Hikam merupakan lembaga filantropi islam yang bergerak pada pengelolaan zakat infak dan sodaqah untuk pemberdayaan dan kemaslahatan umat
@@ -41,7 +41,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/location.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/location.svg" alt="" />
                                                         <span className="ml-3">
                                                             Ir.H.Juanda No. 285 , Bandung
                                                         </span>
@@ -51,7 +51,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/call.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/call.svg" alt="" />
                                                         <span className="ml-3">
                                                             022 - 2505375
                                                         </span>
@@ -61,7 +61,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/mail.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/mail.svg" alt="" />
                                                         <span className="ml-3">
                                                             lazisdarulhikam@gmail.com
                                                         </span>
@@ -76,7 +76,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             BNI Syariah  <br />
                                                             <span className="ml-4 rek">
@@ -89,7 +89,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             Bank Muamalat  <br />
                                                             <span className="ml-4 rek">
@@ -102,7 +102,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             Mandiri Syariah       <br />
                                                             <span className="ml-4 rek">
@@ -130,7 +130,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/fb.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/fb.svg" alt="" />
                                                         <span className="ml-3">
                                                             Facebook
                                                         </span>
@@ -140,7 +140,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/twit.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/twit.svg" alt="" />
                                                         <span className="ml-3">
                                                             Twitter
                                                         </span>
@@ -150,7 +150,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="img-fluid" src="/images/icons/ig.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/ig.svg" alt="" />
                                                         <span className="ml-3">
                                                             Instagram
                                                         </span>

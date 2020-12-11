@@ -28,7 +28,7 @@ export default class FundaraisingSection extends React.Component<any, any> {
                             return (
                                 <div className="col-12 p-0" key={i}>
                                     <div className="wrapper-img-fundaraising">
-                                        <img src={list.imageUrl} alt="" />
+                                        <img src={list.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
                                         <div className="title col-lg-7 col-12 p-4">
                                             {list.title}
                                         </div>
@@ -77,7 +77,7 @@ class NextArrow extends Component<any, any> {
                 style={{ ...style }}
                 onClick={onClick}
             >
-                <img src="/images/icons/forward.svg" alt="" />
+                <img src="/images/icons/forward.svg" alt="" className="lazyload blur-up lazyloaded" />
             </div>
         )
     }
@@ -92,7 +92,7 @@ class PrevArrow extends Component<any, any> {
                 style={{ ...style }}
                 onClick={onClick}
             >
-                <img src="/images/icons/back.svg" alt="" />
+                <img src="/images/icons/back.svg" alt="" className="lazyload blur-up lazyloaded" />
             </div>
         )
     }

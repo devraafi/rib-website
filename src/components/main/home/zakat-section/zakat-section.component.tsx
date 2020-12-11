@@ -30,7 +30,7 @@ export default class ZakatSection extends React.Component<any, any> {
                                             <div className="card-zakat">
                                                 <div className="d-flex">
                                                     <div className="card-child">
-                                                        <img src={data.imgUrl} alt="" />
+                                                        <img src={data.imgUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                     </div>
                                                     <div className="label align-self-center ml-3">
                                                         {data.title}

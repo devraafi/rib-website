@@ -26,7 +26,7 @@ export default class DonationSection extends React.Component<any, any> {
                                         <div className="card-donation">
                                             <div className="d-flex">
                                                 <div className="card-child">
-                                                    <img src="/images/icons/infaq.svg" alt="" />
+                                                    <img src="/images/icons/infaq.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                 </div>
                                                 <div className="d-flex flex-column ml-4">
                                                     <div className="value">{data.amount}

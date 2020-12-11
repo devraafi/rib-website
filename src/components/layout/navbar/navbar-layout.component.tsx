@@ -37,7 +37,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                     <div className="text-1 px-2">Email</div>
                     <div className="text-2 px-2">lazisdarulhikam@gmail.com</div>
                 </div>
-                <div className="" ref={a => this.navbarRef = a} id="navbar-dh">
+                <div ref={a => this.navbarRef = a} id="navbar-dh">
                     <nav className="navbar navbar-expand-lg p-3 container navbar-light">
                         <Link href="/">
                             <a className="navbar-brand" href="/">

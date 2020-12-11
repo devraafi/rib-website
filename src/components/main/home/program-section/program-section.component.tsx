@@ -30,7 +30,7 @@ export default class ProgramSection extends React.Component<any, any> {
                                         <div className="card-program">
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
-                                                    <img src={list.imageUrl} alt="" />
+                                                    <img src={list.imageUrl} alt="" className='lazyload blur-up lazyloaded' />
                                                 </div>
                                                 <div className="program-info p-3">
                                                     <div className="title px-2">
@@ -41,7 +41,7 @@ export default class ProgramSection extends React.Component<any, any> {
                                                         <div className="d-flex flex-row justify-content-between">
                                                             <div className="d-flex flex-row">
                                                                 <div className="profile-img">
-                                                                    <img src={list.userInfo.imageUrl} alt="" />
+                                                                    <img src={list.userInfo.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="ml-3 profile-name">
                                                                     {list.userInfo.name}
@@ -50,7 +50,7 @@ export default class ProgramSection extends React.Component<any, any> {
                                                             <div className="is-certified">
                                                                 {
                                                                     list.isCertified && (
-                                                                        <img src="/images/program/is-cert.svg" className="img-fluid" alt="" />
+                                                                        <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                                                     )
                                                                 }
                                                             </div>
@@ -71,7 +71,7 @@ export default class ProgramSection extends React.Component<any, any> {
                                                         <div className="d-flex flex-row justify-content-between">
                                                             <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="donatur-icon">
-                                                                    <img src="/images/icons/peoples.svg" alt="" />
+                                                                    <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="donatur-amount px-2">
                                                                     {(list.donaturAmount).toLocaleString() || 0}
@@ -82,7 +82,7 @@ export default class ProgramSection extends React.Component<any, any> {
                                                             </div>
                                                             <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="cart">
-                                                                    <img src="/images/icons/cart.svg" alt="" />
+                                                                    <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="days-amount px-2">
                                                                     {list.dayAmount}
