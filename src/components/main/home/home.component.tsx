@@ -33,7 +33,7 @@ export default class HomePage extends React.Component<any, any> {
                     <FundaraisingSection />
                     <OurPartnersSection />
                     <UnnamedSection />
-                    {/* <FeatureSection /> */}
+                    <FeatureSection />
                     <NewsSection />
 
                 </MainComponent>

@@ -29,7 +29,10 @@
     }
     .text-copyright {
         font-family: "Poppins";
-        font-size: 15px;
+        @media (min-width: 992px) {
+            font-size: 15px;
+        }
+        font-size: 10px;
         line-height: 20px;
         color: #8896a2;
     }
