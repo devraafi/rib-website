@@ -1,0 +1,22 @@
+.p-inputswitch {
+    &.dh-switch {
+        .p-inputswitch-slider {
+            height: 15px;
+            width: 35px;
+            &::before {
+                left: 0;
+                box-shadow: 0px 1.5855px 3.17101px rgba(0, 0, 0, 0.2);
+            }
+        }
+        &.p-inputswitch-checked,
+        &.p-inputswitch-checked:not(.p-disabled):hover {
+            .p-inputswitch-slider {
+                background: #91c35d88;
+                mix-blend-mode: normal;
+                &::before {
+                    background: #91c35d;
+                }
+            }
+        }
+    }
+}

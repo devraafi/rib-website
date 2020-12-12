@@ -12,4 +12,28 @@
             // @include btn-deo-disabled("primary");
         }
     }
+
+    &.btn-dh-outline-2 {
+        @include btn-dh("outline-2");
+        &.disable {
+            // @include btn-deo-disabled("primary");
+        }
+    }
+
+    &.btn-dh-outline-3 {
+        @include btn-dh("outline-3");
+        &.disable {
+            // @include btn-deo-disabled("primary");
+        }
+    }
+
+    &.btn-dh-basic {
+        @include btn-dh("basic");
+        &.active {
+            @include btn-dh("outline");
+        }
+    }
+    &.btn-dh-secondary {
+        @include btn-dh("secondary");
+    }
 }

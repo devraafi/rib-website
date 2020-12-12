@@ -20,7 +20,7 @@
             background: #7bb142;
         }
     } @else if $type == "outline" {
-        border: 1px solid #a7cf7d;  
+        border: 1px solid #a7cf7d;
         background: #e9f3df;
         color: #52762c;
         &:hover {
@@ -31,6 +31,64 @@
         &:focus {
             background: #e9f3df;
             color: #52762c;
+        }
+    } @else if $type == "outline-2" {
+        border: 1px solid #91c35d;
+        background: #ffffff;
+        color: #91c35d;
+        border-radius: 10px;
+        font-weight: 500;
+        &:hover {
+            background: #e9f3df;
+            color: #91c35d;
+        }
+        &:active,
+        &:focus {
+            background: #e9f3df;
+            color: #91c35d;
+        }
+    } @else if $type == "outline-3" {
+        border: 1px solid #89d1ea;
+        border-radius: 8px;
+        background: #ffffff;
+        font-weight: 500;
+        color: #239cc6;
+        &:hover {
+            background: #4ebae0;
+            color: #ffffff;
+        }
+        &.fixmen {
+            padding: 5px;
+            font-size: 12px;
+            width: 102px;
+            height: 50px;
+            white-space: nowrap;
+        }
+        &:active,
+        &:focus,
+        &.active {
+            background: #4ebae0;
+            color: #ffffff;
+        }
+    } @else if $type == "basic" {
+        font-weight: 500;
+        color: #8896a2;
+        background: transparent;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #e9f3df;
+            color: #52762c;
+        }
+    } @else if $type == "secondary" {
+        font-weight: 600;
+        color: #ffffff;
+        background: #A7CF7D;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #A7CF7D;
+            color: #ffffff;
         }
     }
 }
@@ -52,7 +110,6 @@
     -webkit-transition: $type $time $ease;
     transition: $type $time $ease;
 }
-
 
 @mixin blur-up {
     -webkit-filter: blur(5px);

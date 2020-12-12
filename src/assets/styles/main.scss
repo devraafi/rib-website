@@ -40,4 +40,30 @@ body {
 
 .blur-up {
     @include blur-up;
-  }
+}
+
+.form-control {
+    border: 0.792752px solid #d4d4d4;
+    border-radius: 6.34202px;
+    padding: 25px 15px;
+    font-family: "Poppins";
+    &::placeholder {
+        color: #bdbdbd;
+    }
+    &.dh-input {
+        border: 1px solid #62717d;
+        border-radius: 10px;
+        font-weight: 600;
+        &::placeholder {
+            color: #a6b0b9;
+        }
+    }
+}
+
+input[type="number"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
