@@ -169,7 +169,7 @@ export default class FooterComponent extends React.Component {
                                     <div className="col-6 text-copyright">
                                         Copyright © 2020. Darul Hikam. All rights reserved.
                                     </div>
-                                    <div className="col-6 text-copyright">
+                                    <div className="col-6 text-copyright text-right">
                                         Terms & Conditions <span className="ml-3">Privacy Policy</span>
                                     </div>
                                 </div>
