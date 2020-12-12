@@ -142,23 +142,21 @@ class FeatureSection extends React.Component<any, any> {
     }
 
     renderListItem = (data: any, key: any) => (
-        <React.Fragment>
-            <Link href={data.href.link} as={data.href.as} passHref>
-                <a className="featured-section-list-link" key={key}>
-                    <div
-                        className={"feature-section-list " + this.isHovered(key)}
-                        onMouseEnter={() => this.setHovered(key)}
-                        onMouseLeave={() => this.unHover()}
-                    >
-                        <div className="d-flex align-items-center">
-                            <div className={"feature-section-list-title " + this.isHovered(key)}>{data.title}</div>
-                        </div>
-                        <p className={'feature-section-list-desc ' + this.isHovered(key)}>{data.description}</p>
-                        <div className={"feature-section-list-loading-bar " + this.isHovered(key)}></div>
+        <Link href={data.href.link} as={data.href.as} passHref key={key}>
+            <a className="featured-section-list-link" key={key}>
+                <div
+                    className={"feature-section-list " + this.isHovered(key)}
+                    onMouseEnter={() => this.setHovered(key)}
+                    onMouseLeave={() => this.unHover()}
+                >
+                    <div className="d-flex align-items-center">
+                        <div className={"feature-section-list-title " + this.isHovered(key)}>{data.title}</div>
                     </div>
-                </a>
-            </Link>
-        </React.Fragment>
+                    <p className={'feature-section-list-desc ' + this.isHovered(key)}>{data.description}</p>
+                    <div className={"feature-section-list-loading-bar " + this.isHovered(key)}></div>
+                </div>
+            </a>
+        </Link>
     )
 
     renderListItemImage = () => {
@@ -168,7 +166,7 @@ class FeatureSection extends React.Component<any, any> {
                     onClick={() => { this.setState((state: any) => ({ pauseTransition: !state.pauseTransition })) }}>
                     <div className="feature-img align-self-start">
                         <img
-                            key={5}
+                            key={this.state.currentImageSrc}
                             className="p-3 img lazyload blur-up lazyloaded"
                             src={this.state.currentImageSrc}
                             alt={this.state.currentImageAlt}

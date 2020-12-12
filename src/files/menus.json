@@ -28,6 +28,11 @@
             "subMenu": []
         },
         {
+            "label": "Donasi",
+            "link": "/tentang-kami",
+            "subMenu": []
+        },
+        {
             "label": "Program",
             "link": "/",
             "subMenu": [
@@ -46,26 +51,13 @@
             ]
         },
         {
-            "label": "Layanan",
-            "link": "/",
-            "subMenu": [
-                {
-                    "label": "Infaq",
-                    "link": "/layanan/infaq"
-                },
-                {
-                    "label": "Shadaqah",
-                    "link": "/layanan/shadaqah"
-                },
-                {
-                    "label": "Donasi",
-                    "link": "/layanan/donasi"
-                }
-            ]
+            "label": "Kontak",
+            "link": "/kontak",
+            "subMenu": []
         },
         {
-            "label": "Hubungi Kami",
-            "link": "/hubungi-kami",
+            "label": "Laporan",
+            "link": "/laporan",
             "subMenu": []
         }
     ]

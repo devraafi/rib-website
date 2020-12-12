@@ -28,7 +28,7 @@ export default class NewsSection extends React.Component<any, any> {
                         {
                             this.state.data.list.map((list: any, i: number) => {
                                 return (
-                                    <div className="col-lg-4 col-12 py-3 px-3">
+                                    <div className="col-lg-4 col-12 py-3 px-3" key={i}>
                                         <div className="card-news">
                                             <div className="d-flex flex-column">
                                                 <div className="news-image">

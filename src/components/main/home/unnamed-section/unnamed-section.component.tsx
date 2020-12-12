@@ -28,7 +28,7 @@ export default class UnnamedSection extends React.Component<any, any> {
                         {
                             this.state.data.list.map((list: any, i: number) => {
                                 return (
-                                    <div className={i == 0 || i == 4 ? 'col-lg-6 col-12 px-1 py-3' : 'col-lg-3 px-1 col-12 py-3'}>
+                                    <div key={i} className={i == 0 || i == 4 ? 'col-lg-6 col-12 px-1 py-3' : 'col-lg-3 px-1 col-12 py-3'}>
                                         <div className="wrapper-img-unnamed">
                                             <img src={list.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
                                             <div className="title p-4">
