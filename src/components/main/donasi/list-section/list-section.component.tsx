@@ -69,19 +69,6 @@ const donationList = [
         targetAmount: 3000000,
         donaturAmount: 450,
         dayAmount: 65,
-        category: 'Pendidikan'
-    },
-    {
-        title: 'Sodales ornare commodo non dui vivamus a lectus',
-        imageUrl: '/images/donasi/list/1.png',
-        profileInfo: {
-            name: 'Cersei Lannister',
-            imageUrl: '/images/user/exp/1.svg'
-        },
-        amount: 2500000,
-        targetAmount: 3000000,
-        donaturAmount: 450,
-        dayAmount: 65,
         category: 'Kesehatan'
     },
     {
@@ -122,32 +109,6 @@ const donationList = [
         donaturAmount: 450,
         dayAmount: 65,
         category: 'Kesehatan'
-    },
-    {
-        title: 'Sodales ornare commodo non dui vivamus a lectus',
-        imageUrl: '/images/donasi/list/1.png',
-        profileInfo: {
-            name: 'Cersei Lannister',
-            imageUrl: '/images/user/exp/1.svg'
-        },
-        amount: 2500000,
-        targetAmount: 3000000,
-        donaturAmount: 450,
-        dayAmount: 65,
-        category: 'Kesehatan'
-    },
-    {
-        title: 'Sodales ornare commodo non dui vivamus a lectus',
-        imageUrl: '/images/donasi/list/1.png',
-        profileInfo: {
-            name: 'Cersei Lannister',
-            imageUrl: '/images/user/exp/1.svg'
-        },
-        amount: 2500000,
-        targetAmount: 3000000,
-        donaturAmount: 450,
-        dayAmount: 65,
-        category: 'Lingkungan'
     },
     {
         title: 'Sodales ornare commodo non dui vivamus a lectus',
