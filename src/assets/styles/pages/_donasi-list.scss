@@ -1,0 +1,199 @@
+.donasi-list-section {
+    .bg-wrapper {
+        background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
+        height: 53px;
+        position: relative;
+        .islamic-bg {
+            // background-image: url("/images/backgrounds/islamic.svg");
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 60%;
+            mix-blend-mode: overlay;
+            object-fit: cover;
+        }
+    }
+
+    .container-list {
+        position: relative;
+        top: -40px;
+        @media (min-width: 992px) {
+            padding: 0 5rem;
+        }
+        padding: 0 3rem;
+        .filter {
+            .header-small {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 130%;
+                color: #000000;
+            }
+
+            .header {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 36px;
+                line-height: 110%;
+                color: #000000;
+            }
+        }
+
+        .list-wrapper {
+            .title-category {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 17.9853px;
+                line-height: 28px;
+                color: #000000;
+            }
+            .card-program {
+                box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+                border-radius: 15px;
+                cursor: pointer;
+                .program-image {
+                    border-top-right-radius: 15px;
+                    border-top-left-radius: 15px;
+                    width: 100%;
+                    height: 50%;
+                    img {
+                        border-top-right-radius: 15px;
+                        border-top-left-radius: 15px;
+                        width: 100%;
+                    }
+                }
+
+                .program-info {
+                    border-bottom-right-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    .title {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 16px;
+                        line-height: 110%;
+                        color: #0c3543;
+                    }
+                    .profile-info {
+                        .profile-img {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 30px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img {
+                                border-radius: 30px;
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                        .profile-name {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 11px;
+                            line-height: 140%;
+                            display: flex;
+                            align-items: center;
+                            color: #414b54;
+                        }
+
+                        .is-certified {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .donation-info {
+                        background: #edf9ff;
+                        border-radius: 5px;
+                        .donatur-icon {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 14px;
+                            height: 14px;
+                            img {
+                                width: 100%;
+                            }
+                        }
+
+                        .donatur-amount {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 10px;
+                            line-height: 140%;
+                            color: #239cc6;
+                        }
+                        .donasi {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 10px;
+                            line-height: 140%;
+                            color: #62717d;
+                        }
+
+                        .cart {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        .days-amount {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 10px;
+                            line-height: 140%;
+                            display: flex;
+                            align-items: center;
+                            color: #62717d;
+                        }
+
+                        .days {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 10px;
+                            line-height: 140%;
+                            display: flex;
+                            align-items: center;
+                            color: #62717d;
+                        }
+                    }
+
+                    .target-info {
+                        .amount {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 13px;
+                            line-height: 19px;
+                            color: #186d8b;
+                        }
+
+                        .target-amount {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 10px;
+                            line-height: 15px;
+                            text-align: right;
+                            letter-spacing: -0.005em;
+                            color: #828282;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

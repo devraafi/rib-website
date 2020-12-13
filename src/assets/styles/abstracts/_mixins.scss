@@ -5,8 +5,14 @@
     font-family: "Poppins";
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    padding: 12px 30px;
+    font-size: 13px;
+    @media (min-width: 992px) {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+    min-width: 102px;
+    min-height: 50px;
+    padding: 5px 15px;
     @if $type == "primary" {
         background: #7bb142;
         color: #ffffff;
@@ -83,11 +89,11 @@
     } @else if $type == "secondary" {
         font-weight: 600;
         color: #ffffff;
-        background: #A7CF7D;
+        background: #a7cf7d;
         &:hover,
         &:active,
         &:focus {
-            background: #A7CF7D;
+            background: #a7cf7d;
             color: #ffffff;
         }
     }

@@ -103,7 +103,7 @@
         }
         .donatur {
             background: #ffffff;
-            box-shadow: 0px 6px 8px -6px rgba(24, 39, 75, 0.12), 0px 8px 16px -6px rgba(24, 39, 75, 0.08);
+            box-shadow: 0px 6px 8px -6px rgba(24, 39, 75, 0.12), 0px 8px 16px 2px rgba(24, 39, 75, 0.08);
             border-radius: 15px;
             padding: 1.5rem;
             .list {
@@ -170,6 +170,10 @@
         background: #ffffff;
         max-width: 100%;
         width: 450px;
+        z-index: 1;
+        @media (min-width: 992px) {
+            position: fixed;
+        }
         .program-image {
             border-top-right-radius: 15px;
             border-top-left-radius: 15px;
@@ -341,6 +345,27 @@
             .link {
                 color: #5790ff;
             }
+            &.detail {
+                font-size: 14px;
+                line-height: 17px;
+                text-align: center;
+                color: #101315;
+            }
+            &.day {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 110%;
+                color: #31383f;
+            }
+        }
+        .timer {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 42px;
+            line-height: 110%;
+            text-align: center;
+            color: #d93535;
         }
         .label-input {
             font-family: "Poppins";
@@ -349,6 +374,217 @@
             font-size: 14px;
             line-height: 150%;
             color: #414b54;
+        }
+        .payment-box {
+            cursor: pointer;
+            background: #ffffff;
+            border: 0.396376px solid #e7e7e7;
+            box-sizing: border-box;
+            box-shadow: 0px 4.75651px 11.0985px -4.75651px rgba(24, 39, 75, 0.12),
+                0px 7.92752px 25.3681px -3.17101px rgba(24, 39, 75, 0.1);
+            border-radius: 6.34202px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 250px;
+            max-width: 100%;
+            height: 100px;
+            &.active {
+                background: #e9f3df;
+            }
+        }
+
+        .box-detail {
+            background: #ffffff;
+            box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+            border-radius: 15px;
+            .header {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 28px;
+                color: #0c3543;
+            }
+            .title {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 120%;
+                color: #101315;
+            }
+
+            .profile-info {
+                .profile-img {
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        border-radius: 30px;
+                        width: 26px;
+                        height: 26px;
+                    }
+                }
+                .profile-name {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 140%;
+                    display: flex;
+                    align-items: center;
+                    color: #414b54;
+                }
+
+                .is-certified {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .total-info {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 28px;
+                color: #62717d;
+                .amount {
+                    font-size: 20px;
+                    line-height: 110%;
+                    text-align: right;
+                    color: #679437;
+                }
+            }
+            .share {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 300;
+                font-size: 10px;
+                line-height: 24px;
+                color: #62717d;
+            }
+        }
+        .card-payment-info {
+            border: none;
+            box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+            border-radius: 16px;
+            .card-header {
+                background: transparent;
+                .name {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 28px;
+                    color: #31383f;
+                }
+            }
+            .card-body {
+                .rek-info {
+                    .header {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 120%;
+                        color: #31383f;
+                        text-align: left;
+                    }
+                    .value {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 20px;
+                        line-height: 28px;
+                        color: #31383f;
+                    }
+                }
+                .total-info {
+                    .header {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 120%;
+                        color: #31383f;
+                        text-align: left;
+                    }
+                    .value {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 20px;
+                        line-height: 28px;
+                        color: #d93535;
+                    }
+                }
+
+                .copy {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 28px;
+                    display: flex;
+                    align-items: center;
+                    text-align: right;
+                    text-decoration-line: underline;
+                    color: #7bb142;
+                }
+            }
+        }
+        .how-to {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 28px;
+            color: #31383f;
+        }
+        .step-card {
+            border: none;
+            background: transparent;
+            .card-header {
+                cursor: pointer;
+                background: transparent;
+                border: none;
+                .title-step {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 28px;
+                    color: #414b54;
+                }
+                .xol {
+                    .arrow {
+                        background-repeat: no-repeat;
+                        background-image: url("/images/icons/arrow-up.svg");
+                    }
+                    &.collapsed {
+                        .arrow {
+                            background-image: url("/images/icons/arrow-down.svg");
+                        }
+                    }
+                }
+            }
+            .card-body {
+                .list {
+                    font-family: "FiraSans";
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 120%;
+                    color: #414b54;
+                }
+            }
         }
     }
 }

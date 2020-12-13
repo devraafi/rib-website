@@ -38,7 +38,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                     <div className="text-2 px-2">lazisdarulhikam@gmail.com</div>
                 </div>
                 <div ref={a => this.navbarRef = a} id="navbar-dh">
-                    <nav className="navbar navbar-expand-lg p-3 container navbar-light">
+                    <nav className="navbar navbar-expand-lg container navbar-light">
                         <Link href="/">
                             <a className="navbar-brand" href="/">
                                 <img src="/images/logos/dh-logo.svg" alt="" />

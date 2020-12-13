@@ -5,7 +5,7 @@ import ContentDonationSection from "./content-section/content-section.component"
 import MainDonation from "./content-section/main-donation/main-donation.component";
 import Step from "./step/step.component";
 
-export default class DonasiPage extends React.Component<any, any> {
+export default class DonationDetailPage extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -38,12 +38,13 @@ export default class DonasiPage extends React.Component<any, any> {
                                         <BannerDonationSection />
                                         <ContentDonationSection />
                                     </div>
-                                    <div className="col-lg-5 py-3 py-lg-0">
+                                    <div className="col-lg-5 py-3 py-lg-0 position-relative">
                                         <MainDonation onDone={(e: any) => this.onDonate(e)} />
                                     </div>
                                 </div>
                             </div>
-                        </div> :
+                        </div>
+                            :
                             <Step step={this.state.step} />
                     }
                 </MainComponent>

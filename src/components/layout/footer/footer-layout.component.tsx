@@ -29,7 +29,7 @@ export default class FooterComponent extends React.Component {
                             </div>
                             <div className="container-fluid container-lg py-3">
                                 <div className="row">
-                                    <div className="col-md-auto col-auto">
+                                    <div className="col-md-auto col-auto mix-blend-multi">
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
