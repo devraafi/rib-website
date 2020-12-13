@@ -231,7 +231,7 @@ const Step = (props: { step: number }) => {
                             <div className="row py-3">
                                 <div className="col-lg-6 py-2">
                                     <Link href="/donasi/list">
-                                        <a type="button" className="btn btn-dh-outline-2 w-100 shadow">Donasi Lagi</a>
+                                        <button type="button" className="btn btn-dh-outline-2 w-100 shadow">Donasi Lagi</button>
                                     </Link>
                                 </div>
                                 <div className="col-lg-6 py-2">

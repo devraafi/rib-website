@@ -23,11 +23,11 @@ const MainDonation = (props: any) => {
     const [donateAmount, setDonateAmount] = useState(0)
     return (
         <div className="main-donation m-auto p-3">
-            <div className="d-flex flex-column">
+            <div className="title-support px-2 py-3">
+                Dukung Program Ini
+                    </div>
+            <div className="d-flex flex-column program-wrapper">
                 <div className="program-info p-3">
-                    <div className="title px-2 py-3">
-                        Dukung Program Ini
-                        </div>
                     <div className="target-info p-2">
                         <div className="py-2">
                             <Slider disabled className="slider-program-dh" value={danation.amount} max={danation.targetAmount} />
@@ -107,24 +107,28 @@ const MainDonation = (props: any) => {
                                 Donate
                             </button>
                         </div>
-                        <div className="col-12 pt-4 share">
-                            <div className="text-center py-2">Sebarkan Program Melalui</div>
-                            <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
-                                <div className="d-flex">
-                                    <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="d-flex">
-                                    <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="d-flex">
-                                    <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="d-flex">
-                                    <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="d-flex">
-                                    <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
-                                </div>
+                    </div>
+                </div>
+            </div>
+            <div className="sharepx-3">
+                <div className="row">
+                    <div className="col-12 pt-4 share">
+                        <div className="text-center py-2">Sebarkan Program Melalui</div>
+                        <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
+                            <div className="d-flex">
+                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                            </div>
+                            <div className="d-flex">
+                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                            </div>
+                            <div className="d-flex">
+                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                            </div>
+                            <div className="d-flex">
+                                <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
+                            </div>
+                            <div className="d-flex">
+                                <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
                             </div>
                         </div>
                     </div>
