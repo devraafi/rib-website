@@ -15,8 +15,7 @@ export default class DonationSection extends React.Component<any, any> {
             <>
                 <div className="container-fluid donation-section py-5">
                     <div className="col-lg-4 m-auto header">
-                        Thank you for your support,
-                        Because we had currently help more than
+                        Dengan dukungan dan kemurahan hati Anda, kami dapat membantu meringankan beban mereka
                     </div>
                     <div className="row container-lg container-fluid m-auto py-4">
                         {

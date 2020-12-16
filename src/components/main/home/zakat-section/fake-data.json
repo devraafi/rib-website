@@ -1,12 +1,12 @@
 {
     "menu": [
         {
-            "title": "Give Zakat",
+            "title": "Tunaikan Zakat",
             "imgUrl": "/images/icons/infaq.svg",
             "link": "/"
         },
         {
-            "title": "Calculate Zakat",
+            "title": "Kalkulator Zakat",
             "imgUrl": "/images/icons/money.svg",
             "link": "/"
         },

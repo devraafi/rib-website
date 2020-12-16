@@ -1,0 +1,77 @@
+.p-steps {
+    &.dh-step {
+        ul {
+            .p-steps-item,
+            .p-disabled {
+                opacity: 1;
+                .p-steps-number {
+                    border: 2px solid #a6b0b9;
+                    color: #a6b0b9;
+                }
+
+                .p-steps-title {
+                    font-weight: 600;
+                    color: #a6b0b9;
+                }
+                &.p-steps-current {
+                    .p-steps-number {
+                        border: 2px solid #91c35d;
+                        color: #91c35d;
+                        background: transparent;
+                    }
+                    .p-steps-title {
+                        color: #414b54;
+                    }
+                }
+                .p-menuitem-link {
+                    background: transparent;
+                    &:not(.p-disabled):focus {
+                        box-shadow: none;
+                    }
+                }
+
+                &::before {
+                    border-top: 5px solid #dee2e6;
+                    width: 30%;
+                    left: 0;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                &::after {
+                    content: " ";
+                    border-top: 5px solid #dee2e6;
+                    width: 30%;
+                    right: 0;
+                    display: block;
+                    position: absolute;
+                    margin-top: -1rem;
+                    top: 50%;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                }
+
+                &:first-child {
+                    &::before {
+                        display: none;
+                    }
+                    &::after {
+                        width: 30%;
+                        right: 0;
+                        left: auto;
+                    }
+                }
+
+                &:last-child {
+                    &::after {
+                        display: none;
+                    }
+                    &::before {
+                        width: 30%;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

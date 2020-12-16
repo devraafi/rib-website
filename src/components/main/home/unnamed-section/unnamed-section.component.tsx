@@ -16,12 +16,12 @@ export default class UnnamedSection extends React.Component<any, any> {
                 <div className="container unnamed-section py-5">
                     <div className="col-lg-6 col-auto m-auto">
                         <div className="header">
-                            Program Lazis DH
+                            Program Lazis Darul Hikam
                         </div>
                     </div>
                     <div className="col-auto py-3 m-auto">
                         <div className="description">
-                            Amet vitae, risus fringilla convallis lorem metus .
+                            Mari berbagi untuk umat, lingkungan, pendidikan maupun kesehatan.
                         </div>
                     </div>
                     <div className="row justify-content-center">

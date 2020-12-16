@@ -16,12 +16,11 @@ export default class ProgramSection extends React.Component<any, any> {
             <>
                 <div className="container program-section py-5">
                     <div className="col-lg-4 col-9 m-auto header">
-                        Helping you bring Zakat
-                        to life where you live
+                        Mari ubah dan ringankan beban mereka yang membutuhkan
                     </div>
                     <div className="col-lg-6 m-auto desc py-3">
-                        Cursus at id imperdiet lectus quisque volutpat. Risus convallis et nunc, ipsum. Mauris posuere dolor, facilisis mauris, tortor malesuada.
-                    </div>
+                        Temukan dan bantu mereka yang sedang berjuang bertahan hidup untuk makan, mendapatkan perawatan kesehatan/pengobatan dan mendapatkan pendidikan.
+                        </div>
                     <div className="row">
                         {
                             this.state.fakeData.programList.map((list: any, i: number) => {

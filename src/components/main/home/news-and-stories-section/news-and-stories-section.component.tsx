@@ -16,7 +16,7 @@ export default class NewsSection extends React.Component<any, any> {
                 <div className="container news-section py-5">
                     <div className="col-lg-6 col-auto m-auto">
                         <div className="header">
-                            News and Stories
+                            Artikel dan Cerita
                         </div>
                     </div>
                     <div className="col-auto py-3 m-auto">

@@ -16,12 +16,12 @@ export default class OurPartnersSection extends React.Component<any, any> {
                 <div className="container-fluid our-partner-section py-5">
                     <div className="col-lg-6 m-auto">
                         <div className="header">
-                            Our Partner
+                            Partner Kami
                         </div>
                     </div>
                     <div className="col-auto py-3 m-auto">
                         <div className="description">
-                            Helping you bring Zakat to life where you live.
+                            Kami bekerjasama dengan pihak-pihak yang terpercaya, amanah dan berpengalaman dalam mendistribusikan dana bantuan
                         </div>
                     </div>
                     <div className="row container-lg container-fluid m-auto py-4 justify-content-center">

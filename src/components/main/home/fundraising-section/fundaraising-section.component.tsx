@@ -54,7 +54,7 @@ export default class FundaraisingSection extends React.Component<any, any> {
                     </div>
                     <div className="col-auto py-3 m-auto">
                         <div className="description">
-                            Amet vitae, risus fringilla convallis lorem metus .
+                            Segera bantu mereka yang membutuhkan untuk mencapai jumlah target donasi agar dapat disalurkan tepat waktu
                         </div>
                     </div>
 
