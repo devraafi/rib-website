@@ -15,7 +15,7 @@ export default class ProgramSection extends React.Component<any, any> {
         return (
             <>
                 <div className="container program-section py-5">
-                    <div className="col-lg-4 col-9 m-auto header">
+                    <div className="col-lg-6 m-auto header">
                         Mari ubah dan ringankan beban mereka yang membutuhkan
                     </div>
                     <div className="col-lg-6 m-auto desc py-3">

@@ -69,7 +69,7 @@ export default class BannerSection extends React.Component<any, any> {
                             {moment(this.state.bannerData).format('M YY')}
                         </div>
                         <div className="title col-12 text-center text-lg-left">
-                            {this.state.bannerData.title}
+                            Ambil tindakan, <br/> bantu sesama
                         </div>
                         <div className="description col-lg-9 col-12 text-center text-lg-left py-3">
                             {this.state.bannerData.description}
