@@ -5,30 +5,37 @@ import Link from 'next/link';
 
 const features = [
     {
-        title: 'You can get help through our four funds',
-        description: 'Sem sed lorem ut odio at. Pretium aliquam quis mauris sagittis fusce vestibulum. Purus ante amet lectus mauris pretium nulla fermentum at.',
-        img: '/images/feature/1.jpg',
+        title: 'Berbagi Untuk Pendidikan',
+        description: 'Sem sed lorem ut odio at. pretium nulla fermentum at.',
+        img: '/images/feature/1.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Donec venenatis lectus scelerisque',
+        title: 'Berbagi Untuk Lingkungan',
         description: 'Donec venenatis lectus scelerisque',
-        img: '/images/feature/2.jpg',
+        img: '/images/feature/2.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Justo, fringilla non ornare',
+        title: 'Berbagi Untuk Umat',
         description: 'Condimentum laoreet semper varius enim tristique',
-        img: '/images/feature/3.jpg',
+        img: '/images/feature/3.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Sit enim ac sagittis',
+        title: 'Berbagi Untuk Kesehatan',
         description: 'Sit enim ac sagittis',
-        img: '/images/feature/4.jpg',
+        img: '/images/feature/4.svg',
+        altImg: '',
+        href: { link: '/', as: '/' }
+    },
+    {
+        title: 'Berbagi Program Khusus',
+        description: 'Sit enim ac sagittis',
+        img: '/images/feature/5.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
