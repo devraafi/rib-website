@@ -27,6 +27,13 @@
         }
     }
 
+    &.btn-dh-outline-4 {
+        @include btn-dh("outline-4");
+        &.disable {
+            // @include btn-deo-disabled("primary");
+        }
+    }
+
     &.btn-dh-basic {
         @include btn-dh("basic");
         &.active {

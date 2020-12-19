@@ -1,0 +1,66 @@
+#zakat-page-dh {
+    .content-zakat {
+        position: relative;
+        &-report {
+            background: #f6f6f6;
+        }
+        &.banner-zakat {
+            background: #d3e7be;
+            img.islamic-bg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 60%;
+                mix-blend-mode: overlay;
+                object-fit: cover;
+            }
+        }
+        .header {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 110%;
+            color: #101315;
+        }
+        .description {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            color: #8896a2;
+            &-1 {
+                color: #414b54;
+            }
+        }
+        .card-report-zakat {
+            padding: 25px;
+            background: #ffffff;
+            box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
+            border-radius: 26px;
+            .amount {
+                color: #186d8b;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 40px;
+                .currency {
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: bold;
+                }
+            }
+            .label-amount {
+                font-family: "FiraSans";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 120%;
+                color: #333333;
+            }
+        }
+    }
+}

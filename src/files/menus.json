@@ -2,7 +2,7 @@
     "menus": [
         {
             "label": "Zakat",
-            "link": "/",
+            "link": "/zakat",
             "subMenu": [
                 
             ]

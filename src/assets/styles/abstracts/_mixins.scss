@@ -4,7 +4,7 @@
     @include transition(all, 0.4s, ease-in-out);
     font-family: "Poppins";
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 13px;
     @media (min-width: 992px) {
         font-size: 16px;
@@ -75,6 +75,18 @@
         &.active {
             background: #4ebae0;
             color: #ffffff;
+        }
+    } @else if $type == "outline-4" {
+        border: 1px solid #a7cf7d;
+        background: #ffffff;
+        font-weight: normal;
+        color: #52762c;
+        &:hover,
+        &:active,
+        &:focus,
+        &.active {
+            background: #a7cf7d;
+            color: #52762c;
         }
     } @else if $type == "basic" {
         font-weight: 500;
