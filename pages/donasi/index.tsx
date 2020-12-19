@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import DonationDetailPage from "@Components/main/donasi/donasi.component";
+import DonationDetailPage from "@Components/main/donation/donation.component";
 import Router from 'next/router';
 import DonasiLIstIndex from "./list";
 

@@ -4,22 +4,7 @@
             "label": "Zakat",
             "link": "/",
             "subMenu": [
-                {
-                    "label": "Kalkulator Zakat",
-                    "link": "/zakat/kalkulator-zakat"
-                },
-                {
-                    "label": "Zakat Penghasilan",
-                    "link": "/zakat/zakat-penghasilan"
-                },
-                {
-                    "label": "Zakat Maal",
-                    "link": "/zakat/zakat-maal"
-                },
-                {
-                    "label": "Zakat Fitra",
-                    "link": "/zakat/zakat-fitra"
-                }
+                
             ]
         },
         {

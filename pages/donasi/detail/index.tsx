@@ -1,5 +1,5 @@
 import React from "react"
-import DonationDetailPage from "@Components/main/donasi/donasi.component";
+import DonationDetailPage from "@Components/main/donation/donation.component";
 
 const Index = () => {
     return (

@@ -1,5 +1,5 @@
 import React from "react"
-import DonationList from "@Components/main/donasi/list-section/list-section.component";
+import DonationList from "@Components/main/donation/list-donation/list-donation.component";
 
 const DonasiLIstIndex = () => {
     return (

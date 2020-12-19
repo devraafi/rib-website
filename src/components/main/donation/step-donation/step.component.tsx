@@ -2,12 +2,22 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { InputSwitch } from 'primereact/inputswitch';
 import payment_step from './payment-step.json';
+// import { Steps } from 'primereact/steps';
 import _ from 'lodash';
-const Step = (props: { step: number }) => {
+import Steps, { Step } from 'rc-steps';
+const StepPage = (props: { step: number }) => {
+    const refDef: any = null;
     const stepData = payment_step;
     const [step, setStep] = useState(props.step);
     const [anonim, setAnonim] = useState(true);
+    const [ref, SetElRef] = useState(refDef);
+    const [stepRef, StepRef] = useState(refDef);
     const [paymentMethod, selectPayment] = useState('');
+    const StepLabels = [
+        { label: 'Isi data diri' },
+        { label: 'Metode Pembayaran' },
+        { label: 'Detail Pembayaran' }
+    ];
     const paymentMethods = [
         {
             type: 'Bank Virtual Account',
@@ -37,13 +47,45 @@ const Step = (props: { step: number }) => {
         return paymentStep.steps;
     }
 
+    const handleScroll = () => {
+        if (ref) {
+            if (window.pageYOffset > 50) {
+                ref.classList.add('scrolled')
+            } else {
+                ref.classList.remove('scrolled')
+            }
+        }
+    }
+
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [step]);
+        window.scrollTo(0, 0);
+        console.log(stepRef);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [step, ref, stepRef]);
 
     return (
         <React.Fragment>
+            {/* <div className="container steps-navbar " ref={el => SetElRef(el)}>
+                <div className="d-flex flex-row">
+                    <Link href="/">
+                        <a className="navbar-brand" href="/">
+                            <img src="/images/logos/dh-logo.svg" alt="" />
+                        </a>
+                    </Link>
+                    <Steps className="dh-step w-50" current={step}>
+                        {
+                            StepLabels.map((step, i) => (
+                                <Step title={step.label} />
+                            ))
+                        }
+                    </Steps>
+                    <div className="close w-25">
+                    </div>
+                </div>
+            </div> */}
             {
+
                 step == 1 ?
                     <div className="container step py-5">
                         <div className="header">
@@ -279,4 +321,4 @@ const Step = (props: { step: number }) => {
     )
 }
 
-export default Step;
+export default StepPage;
