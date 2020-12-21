@@ -6,7 +6,7 @@ import ReportZakatSection from './report-zakat-section/report-zakat.component';
 import ZakatFitrahSection from './zakat-fitrah-section/zakat-fitrah.component';
 import ZakatKnowledgeSection from './zakat-knowledge-section/zakat-knowledge.component';
 
-const ZakatPage = () => {
+const ZakatMainPage = () => {
     return (
         <React.Fragment>
             <MainComponent
@@ -27,4 +27,4 @@ const ZakatPage = () => {
     )
 }
 
-export default ZakatPage;
+export default ZakatMainPage;

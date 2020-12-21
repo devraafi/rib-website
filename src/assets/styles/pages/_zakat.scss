@@ -63,4 +63,236 @@
             }
         }
     }
+
+    .zakat-form-steps {
+        background: #f7f7f7;
+        .header-section {
+            .header {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 110%;
+                color: #101315;
+            }
+
+            .description {
+                font-family: "FiraSans";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 150%;
+                text-align: center;
+                color: #8896a2;
+            }
+        }
+
+        .form-section {
+            min-height: 95vh;
+            .main-form {
+                @media (min-width: 992px) {
+                    position: absolute;
+                    width: 380px;
+                    margin: auto;
+                    bottom: 0;
+                }
+                &.syur {
+                    @media (min-width: 992px) {
+                        position: fixed;
+                        bottom: auto;
+                    }
+                }
+                z-index: 1;
+                background: #ffffff;
+                box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+                border-radius: 15px;
+                padding: 24px;
+                .header {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 16px;
+                    line-height: 110%;
+                    color: #05151b;
+                }
+                .description {
+                    font-family: "FiraSans";
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 10px;
+                    line-height: 150%;
+                    text-align: center;
+                    color: #414b54;
+                }
+
+                .the-box {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    padding: 8px 12px;
+                    top: 0px;
+                    border: 1px solid #c4e8f5;
+                    border-radius: 4px;
+
+                    .label {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 10px;
+                        line-height: 140%;
+                        display: flex;
+                        align-items: center;
+                        color: #62717d;
+                        flex: none;
+                        order: 0;
+                        align-self: stretch;
+                        flex-grow: 0;
+                        margin: 0px 2px;
+                    }
+                    .amount {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 12px;
+                        line-height: 19px;
+                        flex: none;
+                        order: 1;
+                        align-self: stretch;
+                        flex-grow: 0;
+                        margin: 0px 2px;
+                        &.danger {
+                            color: #ef6262;
+                        }
+                        &.success {
+                            color: #91c35d;
+                        }
+                        &.warn {
+                            color: #f18d4b;
+                        }
+                    }
+                }
+
+                .the-lines {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0px 12px 0px 0px;
+                    .label {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 10px;
+                        line-height: 140%;
+                        display: flex;
+                        align-items: center;
+                        color: #414b54;
+                        &.sub {
+                            font-weight: normal;
+                            font-size: 10px;
+                        }
+                    }
+
+                    .amount {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        line-height: 19px;
+                        text-align: right;
+                        color: #414b54;
+                    }
+                }
+
+                .the-total {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 12px;
+                    background: #f7fdff;
+                    border: 1px solid #89d1ea;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    .label {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 10px;
+                        line-height: 140%;
+                        display: flex;
+                        align-items: center;
+                        color: #62717d;
+                    }
+
+                    .amount {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 16px;
+                        line-height: 19px;
+                        text-align: right;
+                        color: #186d8b;
+                    }
+                }
+
+                .the-footer {
+                    font-family: "FiraSans";
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 10px;
+                    line-height: 150%;
+                    text-align: center;
+                    color: #8896a2;
+                }
+            }
+
+            .calculate-zakat-form {
+                .the-card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 25px 64px;
+                    background: #ffffff;
+                    border-radius: 12px;
+                    &.-v {
+                        padding: 30px 30px 15px;
+                    }
+                    .header {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 28px;
+                        color: #151e0b;
+                    }
+
+                    .description {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12px;
+                        line-height: 150%;
+                        color: #414b54;
+                    }
+
+                    .input-label {
+                        font-family: "Inter";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 150%;
+                        color: #000000;
+                    }
+                    .the-card-footer {
+                        border-top: 1px solid #dbe0e3;
+                        padding-top: 20px;
+                        padding-top: 20px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }

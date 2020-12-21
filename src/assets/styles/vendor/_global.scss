@@ -1,2 +1,7 @@
 @import './bootsrap';
 @import './normalize';
+@import '~animate.css/animate.min.css';
+@import "~primeicons/primeicons";
+.p-component {
+    font-family: "Poppins" !important;
+}

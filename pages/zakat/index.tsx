@@ -1,9 +1,9 @@
-import ZakatPage from "@Components/main/zakat/zakat.component";
+import ZakatMainPage from "@Components/main/zakat/main-page/zakat.component";
 import React from "react"
 
 const Index = () => {
     return (
-        <ZakatPage />
+        <ZakatMainPage />
     )
 }
 
