@@ -1,0 +1,21 @@
+.p-checkbox {
+    &.checkbox-dh {
+        .p-checkbox-box {
+            border-radius: 3px;
+            // border-color: #91c35d;
+            box-shadow: none;
+            &:not(.p-checkbox-disabled) {
+                &:hover {
+                    border-color: #91c35d;
+                }
+                &.p-highlight {
+                    border-color: #91c35d !important;
+                    background: #91c35d !important;
+                }
+                &.p-focus {
+                    border-color: #91c35d !important;
+                }
+            }
+        }
+    }
+}

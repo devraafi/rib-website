@@ -248,7 +248,54 @@
                 }
             }
 
-            .calculate-zakat-form {
+            .calculate-zakat-form,
+            .give-zakat-form,
+            .payment-method-zakat-form,
+            .zakat-payment-detail {
+                .payment-box {
+                    cursor: pointer;
+                    background: #ffffff;
+                    border: 0.396376px solid #e7e7e7;
+                    box-sizing: border-box;
+                    box-shadow: 0px 4.75651px 11.0985px -4.75651px rgba(24, 39, 75, 0.12),
+                        0px 7.92752px 25.3681px -3.17101px rgba(24, 39, 75, 0.1);
+                    border-radius: 6.34202px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    width: 250px;
+                    max-width: 100%;
+                    height: 100px;
+                    &.active {
+                        background: #e9f3df;
+                    }
+                }
+                .card-sodaqoh {
+                    cursor: pointer;
+                    padding: 8px 8px 8px 8px;
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 13px;
+                    background: #ffffff;
+                    box-shadow: 0px 2px 4px #dee4ed;
+                    border-radius: 10px;
+                    color: #31383f;
+                    .circle-rp {
+                        font-size: 9px;
+                        color: #186d8b;
+                        background: #c4e8f5;
+                        border-radius: 20px;
+                        width: 26px;
+                        height: 26px;
+                        padding: 3px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                    }
+                }
                 .the-card {
                     display: flex;
                     flex-direction: column;
@@ -285,11 +332,264 @@
                         line-height: 150%;
                         color: #000000;
                     }
+
+                    .the-total {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 12px;
+                        background: #f7fdff;
+                        border: 1px solid #89d1ea;
+                        box-sizing: border-box;
+                        border-radius: 4px;
+                        .label {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 10px;
+                            line-height: 140%;
+                            display: flex;
+                            align-items: center;
+                            color: #62717d;
+                        }
+
+                        .amount {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 16px;
+                            line-height: 19px;
+                            text-align: right;
+                            color: #186d8b;
+                        }
+                    }
+                    .add-plus {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        line-height: 24px;
+                        cursor: pointer;
+                        text-align: right;
+                        color: #4ebae0;
+                    }
+                    .fidyah-section,
+                    .sodaqoh-section {
+                        border-bottom: 1px solid #dbe0e3;
+                    }
                     .the-card-footer {
                         border-top: 1px solid #dbe0e3;
                         padding-top: 20px;
                         padding-top: 20px;
                         width: 100%;
+                    }
+                }
+
+                &.zakat-payment-detail-v {
+                    .header {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 24px;
+                        line-height: 110%;
+                        text-align: center;
+                        color: #101315;
+                    }
+
+                    .sub-header {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 150%;
+                        color: #8896a2;
+                        .link {
+                            color: #5790ff;
+                        }
+                        &.detail {
+                            font-size: 14px;
+                            line-height: 17px;
+                            text-align: center;
+                            color: #101315;
+                        }
+                        &.day {
+                            font-weight: 600;
+                            font-size: 20px;
+                            line-height: 110%;
+                            color: #31383f;
+                        }
+                    }
+                    .timer {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 42px;
+                        line-height: 110%;
+                        text-align: center;
+                        color: #d93535;
+                    }
+                    .label-input {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 150%;
+                        color: #414b54;
+                    }
+
+                    .box-detail {
+                        background: #ffffff;
+                        box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+                        border-radius: 15px;
+                        .header {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: bold;
+                            font-size: 18px;
+                            line-height: 28px;
+                            color: #0c3543;
+                        }
+                        .title {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 120%;
+                            color: #101315;
+                        }
+
+                        .profile-info {
+                            .profile-img {
+                                width: 26px;
+                                height: 26px;
+                                border-radius: 30px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                img {
+                                    border-radius: 30px;
+                                    width: 26px;
+                                    height: 26px;
+                                }
+                            }
+                            .profile-name {
+                                font-family: "Poppins";
+                                font-style: normal;
+                                font-weight: normal;
+                                font-size: 14px;
+                                line-height: 140%;
+                                display: flex;
+                                align-items: center;
+                                color: #414b54;
+                            }
+
+                            .is-certified {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+
+                        .total-info {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 28px;
+                            color: #62717d;
+                            .amount {
+                                font-size: 20px;
+                                line-height: 110%;
+                                text-align: right;
+                                color: #679437;
+                            }
+                        }
+                        .share {
+                            font-family: "Poppins";
+                            font-style: normal;
+                            font-weight: 300;
+                            font-size: 10px;
+                            line-height: 24px;
+                            color: #62717d;
+                        }
+                    }
+                    .card-payment-info {
+                        border: none;
+                        box-shadow: 0px 6px 14px -6px rgba(24, 39, 75, 0.12), 0px 10px 32px -4px rgba(24, 39, 75, 0.1);
+                        border-radius: 16px;
+                        .card-header {
+                            background: transparent;
+                            .name {
+                                font-family: "Poppins";
+                                font-style: normal;
+                                font-weight: bold;
+                                font-size: 18px;
+                                line-height: 28px;
+                                color: #31383f;
+                            }
+                        }
+                        .card-body {
+                            .rek-info {
+                                .header {
+                                    font-family: "Poppins";
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    font-size: 16px;
+                                    line-height: 120%;
+                                    color: #31383f;
+                                    text-align: left;
+                                }
+                                .value {
+                                    font-family: "Poppins";
+                                    font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 20px;
+                                    line-height: 28px;
+                                    color: #31383f;
+                                }
+                            }
+                            .total-info {
+                                .header {
+                                    font-family: "Poppins";
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    font-size: 16px;
+                                    line-height: 120%;
+                                    color: #31383f;
+                                    text-align: left;
+                                }
+                                .value {
+                                    font-family: "Poppins";
+                                    font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 20px;
+                                    line-height: 28px;
+                                    color: #d93535;
+                                }
+                            }
+
+                            .copy {
+                                font-family: "Poppins";
+                                font-style: normal;
+                                font-weight: bold;
+                                font-size: 20px;
+                                line-height: 28px;
+                                display: flex;
+                                align-items: center;
+                                text-align: right;
+                                text-decoration-line: underline;
+                                color: #7bb142;
+                            }
+                        }
+                    }
+                    .how-to {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 28px;
+                        color: #31383f;
                     }
                 }
             }

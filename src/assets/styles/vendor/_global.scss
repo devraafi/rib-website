@@ -1,7 +1,9 @@
-@import './bootsrap';
-@import './normalize';
-@import '~animate.css/animate.min.css';
+@import "./bootsrap";
+@import "./normalize";
+@import "~animate.css/animate.min.css";
 @import "~primeicons/primeicons";
-.p-component {
+@import "~antd/dist/antd.css";
+.p-component,
+[class^="ant-"] * {
     font-family: "Poppins" !important;
 }

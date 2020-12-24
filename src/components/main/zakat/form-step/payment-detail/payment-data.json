@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+            "id": "bca",
+            "steps": [
+                {
+                    "title": "ATM BCA",
+                    "list": [
+                        "Masukan kartu ATM BCA & PIN",
+                        "Pilih menu transaksi lainnya > Transfer > Ke Rekening BCA Virtual Account",
+                        "Masukkan nomor virtual account Darul Hikam ",
+                        "Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti No VA, Nama, Perus/Produk dan Total Tagihan",
+                        "Masukkan Jumlah Transfer sesuai dengan Total Tagihan",
+                        "Ikuti instruksi untuk menyelesaikan transaksi",
+                        "Simpan struk transaksi sebagai bukti pembayaran"
+                    ]
+                },
+                {
+                    "title": "m-BCA (BCA Mobile)",
+                    "list": [
+                        "Masukan kartu ATM BCA & PIN",
+                        "Pilih menu transaksi lainnya > Transfer > Ke Rekening BCA Virtual Account",
+                        "Masukkan nomor virtual account Darul Hikam ",
+                        "Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti No VA, Nama, Perus/Produk dan Total Tagihan",
+                        "Masukkan Jumlah Transfer sesuai dengan Total Tagihan",
+                        "Ikuti instruksi untuk menyelesaikan transaksi",
+                        "Simpan struk transaksi sebagai bukti pembayaran"
+                    ]
+                },
+                {
+                    "title": "Internet Banking BCA",
+                    "list": [
+                        "Masukan kartu ATM BCA & PIN",
+                        "Pilih menu transaksi lainnya > Transfer > Ke Rekening BCA Virtual Account",
+                        "Masukkan nomor virtual account Darul Hikam ",
+                        "Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti No VA, Nama, Perus/Produk dan Total Tagihan",
+                        "Masukkan Jumlah Transfer sesuai dengan Total Tagihan",
+                        "Ikuti instruksi untuk menyelesaikan transaksi",
+                        "Simpan struk transaksi sebagai bukti pembayaran"
+                    ]
+                }
+            ]
+        }
+    ]
+}

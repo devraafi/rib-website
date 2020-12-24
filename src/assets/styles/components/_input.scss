@@ -11,3 +11,48 @@
         padding: 13px 16px;
     }
 }
+
+.p-inputtext {
+    &.input-dh {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        background: #ffffff;
+        border: 0.5px solid #c4cbd1;
+        box-sizing: border-box;
+        border-radius: 10px;
+        &-sodaqoh {
+            background: #f6f8f9;
+            border-radius: 10px;
+            border: none;
+        }
+    }
+}
+
+.p-inputgroup {
+    &.input-group-dh {
+        .p-inputgroup-addon {
+            border: 1px solid #c4cbd1;
+            box-sizing: border-box;
+            border-radius: 10px 0px 0px 10px;
+            background: transparent;
+            border-right: 0;
+        }
+        .p-inputtext {
+            &:enabled,
+            &:focus,
+            &:hover {
+                border-color: #c4cbd1;
+                box-shadow: none;
+            }
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            border: 1px solid #c4cbd1;
+            box-sizing: border-box;
+            border-radius: 0 10px 10px 0;
+            background: transparent;
+            border-left: 0;
+        }
+    }
+}

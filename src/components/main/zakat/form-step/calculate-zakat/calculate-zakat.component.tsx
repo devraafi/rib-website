@@ -1,56 +1,158 @@
 import React, { useEffect, useState } from "react";
 import { Checkbox } from 'primereact/checkbox';
-import Link from "next/link";
+import { ErrorMessage, Field, FieldArray, Form, Formik, useFormik } from "formik";
+import { InputNumber } from 'primereact/inputnumber';
+import _ from "lodash";
+import { Controller, useForm } from "react-hook-form";
 
 const checkDefault = [
     {
         label: "Penghasilan (Maal)",
         isShow: false,
         disabled: false,
-        description: "Enter the amount of cash you have including money in your bank account(s), whatever the source (e.g. salary, rental income, benefits etc.)."
+        description: "Enter the amount of cash you have including money in your bank account(s), whatever the source (e.g. salary, rental income, benefits etc.).",
+        forms: [
+            {
+                label: 'Penghasilan (Maal)',
+                type: 'number',
+                name: 'monthlyIncome'
+            },
+            {
+                label: 'Penghasilan lain-lain saya perbulan',
+                type: 'number',
+                name: 'otherIncome'
+            },
+            {
+                label: 'Uang Tunai',
+                type: 'number',
+                name: 'cashIncome'
+            },
+            {
+                label: 'Tabungan',
+                type: 'number',
+                name: 'savings'
+            },
+            {
+                label: 'Giro',
+                type: 'number',
+                name: 'giro'
+            },
+            {
+                label: 'Bonus',
+                type: 'number',
+                name: 'bonus'
+            },
+            {
+                label: 'THR',
+                type: 'number',
+                name: 'thr'
+            },
+            {
+                label: 'Deposito',
+                type: 'number',
+                name: 'deposito'
+            },
+        ]
     },
     {
         label: "Pertanian",
         isShow: false,
-        disabled: false,
+        disabled: true,
         description: ""
     },
     {
         label: "Pertambangan",
         isShow: false,
-        disabled: false,
+        disabled: true,
         description: ""
     },
     {
         label: "Emas dan Perak",
         isShow: false,
         disabled: false,
-        description: "If you’re not sure how much your gold and silver is worth you can enter the weight in grams. One tola is equal to 11.7 grams."
+        description: "If you’re not sure how much your gold and silver is worth you can enter the weight in grams. One tola is equal to 11.7 grams.",
+        forms: [
+            {
+                label: 'Emas',
+                type: 'number',
+                name: 'gold'
+            },
+            {
+                label: 'Perak',
+                type: 'number',
+                name: 'silver'
+            },
+        ]
     },
     {
         label: "Kendaraan, rumah, aset lain",
         isShow: false,
         disabled: false,
-        description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted."
+        description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted.",
+        forms: [
+            {
+                label: 'Kendaraan',
+                type: 'number',
+                name: 'vehicle'
+            },
+            {
+                label: 'Rumah',
+                type: 'number',
+                name: 'home'
+            },
+            {
+                label: 'Aset lainnya',
+                type: 'number',
+                name: 'otherAssets'
+            },
+        ]
     },
     {
         label: "Jumlah hutang/cicilan",
         isShow: false,
         disabled: false,
-        description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted."
+        customForm: true,
+        description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted.",
+        forms: [
+            {
+                label: 'Mortgage',
+                type: 'number',
+                name: 'mortgage'
+            },
+            {
+                label: 'Personal Loans',
+                type: 'number',
+                name: 'personalLoans'
+            },
+            {
+                label: 'creditCard',
+                type: 'number',
+                name: 'creditCard'
+            },
+            {
+                label: 'Utility bills',
+                type: 'number',
+                name: 'utilityBills'
+            },
+            {
+                label: 'Overdraft',
+                type: 'number',
+                name: 'overDraft'
+            },
+            {
+                label: 'Liabilities',
+                type: 'number',
+                name: 'liabilities'
+            },
+        ]
     },
 ];
-const CalculateZakat = () => {
+
+const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => void }) => {
+    const [step, onChangeStep] = useState(props.step);
     const [defaultChecked, onChange] = useState(checkDefault);
 
     const onChangeCheck = (obj: any, val: boolean, i: number) => {
-        // if (val) {
-        //     document.getElementsByClassName('the-card')?.classList.remove('animate__bounceOut');
-        //     document.getElementsByClassName('the-card')?.classList.add('animate__bounceIn');
-        // } else {
-        //     document.getElementsByClassName('the-card')?.classList.remove('animate__bounceIn');
-        //     document.getElementsByClassName('the-card')?.classList.add('animate__bounceOut');
-        // }
         if (defaultChecked.length) {
             let newState = [...defaultChecked]
             newState[i].isShow = val;
@@ -58,21 +160,31 @@ const CalculateZakat = () => {
         }
     };
 
+    const layout = {
+        labelCol: { span: 8 },
+        wrapperCol: { span: 8 },
+    };
+
+    const onStepChange = (to: number) => {
+        props.stepChanges ? props.stepChanges(to) : null;
+    }
+
     const scrollTo = (i: number, type: string) => {
         let el;
         if (type == 'back') {
-            el = document.getElementById(`vvvv${i - 1}`) || document.getElementById(`vvvv${i - 2}`) || document.getElementById(`vvvv${i - 3}`) || document.getElementById(`vvvv${i - 4}`) || document.getElementById(`vvvv${i - 5}`) || document.getElementById(`vvvv${i - 6}`);
+            el = document.getElementById(`vvvv${i - 1}`) || document.getElementById(`vvvv${i - 2}`) || document.getElementById(`vvvv${i - 3}`) || document.getElementById(`vvvv${i - 4}`) || document.getElementById(`vvvv${i - 5}`) || document.getElementById(`vvvv${i - 6}`) || onStepChange(step - 1);
         } else {
-            el = document.getElementById(`vvvv${i + 1}`) || document.getElementById(`vvvv${i + 2}`) || document.getElementById(`vvvv${i + 3}`) || document.getElementById(`vvvv${i + 4}`) || document.getElementById(`vvvv${i + 5}`) || document.getElementById(`vvvv${i + 6}`);
+            el = document.getElementById(`vvvv${i + 1}`) || document.getElementById(`vvvv${i + 2}`) || document.getElementById(`vvvv${i + 3}`) || document.getElementById(`vvvv${i + 4}`) || document.getElementById(`vvvv${i + 5}`) || document.getElementById(`vvvv${i + 6}`) || onStepChange(step + 1);
         }
         if (el) {
-            window.scrollTo(0, (el.offsetTop + 80));
+            window.scrollTo(0, (el.offsetTop));
         }
     }
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
+
     return (
         <div className="calculate-zakat-form py-2">
             <div className="the-card mb-3" id="vvvv-1">
@@ -87,13 +199,14 @@ const CalculateZakat = () => {
                 <div className="row">
                     {
                         defaultChecked.map((check, i) => (
-                            <div className="col-lg-6 col-12">
+                            <div className="col-lg-6 col-12" key={i}>
                                 <div className="d-flex flex-row">
                                     <Checkbox
                                         disabled={check.disabled}
                                         inputId={`Checkbox${i}`}
                                         checked={check.isShow}
                                         onChange={(e) => onChangeCheck(check, e.checked, i)}
+                                        className="checkbox-dh"
                                     />
                                     <label htmlFor={`Checkbox${i}`} className="p-checkbox-label align-self-center ml-2 input-label">{check.label}</label>
                                 </div>
@@ -106,9 +219,9 @@ const CalculateZakat = () => {
                 </div>
             </div>
             {
-                defaultChecked.map((check, i) => {
+                defaultChecked.map((check, i: number) => {
                     return (
-                        check.isShow && <div className="the-card my-3 -v" id={`vvvv${i}`}>
+                        check.isShow && <div className="the-card my-3 -v" id={`vvvv${i}`} key={i}>
                             <div className="text-left w-100 py-3 px-2">
                                 <div className="header">
                                     {check.label}
@@ -117,16 +230,97 @@ const CalculateZakat = () => {
                                     {check.description}
                                 </div>
                             </div>
-                            <div className="the-card-footer d-flex justify-content-between flex-row">
-                                <button className="btn" onClick={() => scrollTo(i, 'back')}>Kembali</button>
-                                <button className="btn btn-dh-outline" onClick={() => scrollTo(i, 'next')}>Next</button>
-                            </div>
+                            {
+
+                                (check.forms && check.forms.length) && <FormSection customForm={check.customForm || false} onScroll={(i, type) => scrollTo(i, type)} form={check.forms} index={i} />
+                            }
                         </div>
                     )
                 }
                 )
             }
         </div>
+    )
+
+}
+
+const mapingForm = (forms: any) => {
+    const newForms = forms;
+    const initialFormValues: any = {
+
+    };
+    _.forEach(newForms, function (value: any) {
+        initialFormValues[value.name] = null
+    });
+
+    console.log(initialFormValues);
+
+    return initialFormValues;
+};
+
+interface FormSection {
+    index: number;
+    form: any;
+    customForm: boolean;
+    onScroll?: (i: number, type: string) => void;
+}
+
+const FormSection = (props: FormSection) => {
+    const form = mapingForm(props.form);
+    const index = props.index;
+    const { register, handleSubmit, control } = useForm<any>();
+
+    useEffect(() => {
+    })
+
+    const onSubmit = (data: any) => {
+        console.log(data);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)} className="w-100">
+            <div className="row px-3">
+                {
+                    props.form.map((form: any, i: number) => {
+                        register({
+                            name: form.name
+                        });
+                        return <>
+                            <div key={i} className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3' : 'col-lg-6')}>
+                                <label className="input-label w-100" htmlFor={`${form.name}${i}`}>{form.label}</label>
+                            </div>
+                            <div className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3' : 'col-lg-6')}>
+                                <Controller
+                                    name={form.name}
+                                    control={control}
+                                    render={props =>
+                                        <InputNumber
+                                            inputClassName="input-dh text-right w-100"
+                                            className="w-100"
+                                            value={props.value}
+                                            onChange={e => props.onChange(e.value)}
+                                            mode="currency"
+                                            locale="id-ID"
+                                            placeholder="Rp 0,00"
+                                            currency="IDR"
+                                        />}
+                                />
+                            </div>
+                        </>
+                    }
+                    )
+                }
+            </div>
+            <div className="the-card-footer d-flex justify-content-between flex-row">
+                <button className="btn" onClick={() => props.onScroll ? props.onScroll(index, 'back') : null} type="button">Kembali</button>
+                <button className="btn btn-dh-next" onClick={() => props.onScroll ? props.onScroll(index, 'next') : null} type="submit">
+                    Next
+                    <span className="ml-2">
+                        <img src="/images/icons/forward-2.svg" alt="" />
+                    </span>
+                </button>
+            </div>
+        </form>
     )
 }
 

@@ -1,0 +1,38 @@
+.p-accordion {
+    &.accordion-step-payment {
+        .p-accordion-tab {
+            .p-accordion-header {
+                .p-accordion-header-link {
+                    justify-content: space-between;
+                    flex-direction: row-reverse;
+                    text-decoration: none;
+                    box-shadow: none !important;
+                    background: transparent !important;
+                    border: none;
+                    .p-accordion-header-text {
+                        font-family: "Poppins";
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 28px;
+                        text-align: center;
+                        color: #414b54;
+                    }
+                }
+            }
+
+            .p-toggleable-content {
+                .p-accordion-content {
+                    background: transparent;
+                    border: none !important;
+                }
+                font-family: "FiraSans";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 120%;
+                color: #414b54;
+            }
+        }
+    }
+}

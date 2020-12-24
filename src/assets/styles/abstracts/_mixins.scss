@@ -108,6 +108,18 @@
             background: #a7cf7d;
             color: #ffffff;
         }
+    } @else if $type == "next" {
+        padding: 12px 20px;
+        font-weight: 600;
+        border-radius: 24px;
+        background: #e9f3df;
+        color: #679437;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #e9f3df;
+            color: #679437;
+        }
     }
 }
 

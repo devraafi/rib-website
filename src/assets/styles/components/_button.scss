@@ -1,4 +1,5 @@
 .btn {
+    font-family: "Poppins";
     &.btn-dh-primary {
         @include btn-dh("primary");
         &.disable {
@@ -42,5 +43,8 @@
     }
     &.btn-dh-secondary {
         @include btn-dh("secondary");
+    }
+    &.btn-dh-next {
+        @include btn-dh("next");
     }
 }
