@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const BannerZakatSection = () => (
@@ -17,9 +18,11 @@ const BannerZakatSection = () => (
                                 Across the Indonesia, thousands of Muslims are living in desperate situations and being held back by lack of money. But there is a solution. Your Zakat has the power to change the lives of Muslims where you live, and it’s up to you to make sure it achieves that potential.
                             </div>
                             <div className="action text-center text-lg-left">
-                                <button className="btn btn-dh-primary px-5">
-                                    BERI ZAKAT
+                                <Link href="/zakat/form-steps">
+                                    <button className="btn btn-dh-primary px-5">
+                                        BERI ZAKAT
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

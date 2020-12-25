@@ -73,7 +73,7 @@ const ZakatPaymentDetail = () => {
             <div className="row py-3">
                 <div className="col-lg-6 py-2">
                     <Link href="/zakat">
-                        <button type="button" className="btn btn-dh-outline-2 w-100 shadow">Donasi Lagi</button>
+                        <button type="button" className="btn btn-dh-outline rounded w-100 shadow">Selesai</button>
                     </Link>
                 </div>
                 <div className="col-lg-6 py-2">

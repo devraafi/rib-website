@@ -88,10 +88,20 @@
         }
 
         .form-section {
-            min-height: 95vh;
             .main-form {
                 @media (min-width: 992px) {
-                    position: absolute;
+                    .flyover {
+                        overflow: auto;
+                        max-height: 40vh;
+                        padding-left: 1rem !important;
+                        padding-right: 1rem !important;
+                    }
+                }
+                @media (min-width: 992px) {
+                    &.solute {
+                        position: absolute;
+                        bottom: 15px;
+                    }
                     width: 380px;
                     margin: auto;
                     bottom: 0;
@@ -100,6 +110,9 @@
                     @media (min-width: 992px) {
                         position: fixed;
                         bottom: auto;
+                        &.nice {
+                            top: 130px;
+                        }
                     }
                 }
                 z-index: 1;
@@ -381,7 +394,7 @@
                     .the-card-footer {
                         border-top: 1px solid #dbe0e3;
                         padding-top: 20px;
-                        padding-top: 20px;
+                        margin-top: 15px;
                         width: 100%;
                     }
                 }

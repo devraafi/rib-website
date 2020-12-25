@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const CalculatorZakatSection = () => (
@@ -14,9 +15,11 @@ const CalculatorZakatSection = () => (
                                 Working out your Zakat isn’t always easy. Use our step-by-step calculator to make sure you get it right. Or if you know how much to give already, just 'Skip to Give Zakat'
                             </div>
                             <div className="action text-center text-lg-left d-flex flex-row justify-content-center justify-content-lg-start">
-                                <button className="btn btn-dh-primary px-5 mr-3">
-                                    MULAI HITUNG
+                                <Link href="/zakat/form-steps">
+                                    <button className="btn btn-dh-primary px-5 mr-3">
+                                        MULAI HITUNG
                                 </button>
+                                </Link>
                                 <button className="btn btn-dh-outline-4 px-5">
                                     Skip to Give Zakat
                                 </button>

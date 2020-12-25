@@ -62,7 +62,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
     return (
         <div className="give-zakat-form py-2">
 
-            <div className="the-card mb-3 -v" id="zzzz-1">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-1">
                 <div className="row w-100 py-3">
                     <div className="col-12 px-0">
                         <div className="the-total">
@@ -151,18 +151,18 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                 </div>
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
-                    <button className="btn" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
-                    <button className="btn btn-dh-next" onClick={() => scrollTo(2, 'next')} type="submit">
-                        Next
+                    <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
+                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(2, 'next')} type="submit">
+                        Selanjutnya
                     <span className="ml-2">
-                            <img src="/images/icons/forward-2.svg" alt="" />
+                            <img src="/images/icons/down.svg" alt="" />
                         </span>
                     </button>
                 </div>
             </div>
 
 
-            <div className="the-card mb-3 -v" id="zzzz-2">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Fidyah/Kaffarah
@@ -251,9 +251,9 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                 }
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
-                    <button className="btn" onClick={() => scrollTo(1, 'back')} type="button">Kembali</button>
-                    <button className="btn btn-dh-next" onClick={() => scrollTo(3, 'next')} type="submit">
-                        Next
+                    <button className="btn color-back" onClick={() => scrollTo(1, 'back')} type="button">Kembali</button>
+                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
+                        Selanjutnya
                     <span className="ml-2">
                             <img src="/images/icons/forward-2.svg" alt="" />
                         </span>

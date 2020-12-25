@@ -11,6 +11,7 @@ const checkDefault = [
         isShow: false,
         disabled: false,
         description: "Enter the amount of cash you have including money in your bank account(s), whatever the source (e.g. salary, rental income, benefits etc.).",
+        initialForm: "zakatMall",
         forms: [
             {
                 label: 'Penghasilan (Maal)',
@@ -58,19 +59,22 @@ const checkDefault = [
         label: "Pertanian",
         isShow: false,
         disabled: true,
-        description: ""
+        description: "",
+        initialForm: "zakatPertanian",
     },
     {
         label: "Pertambangan",
         isShow: false,
         disabled: true,
-        description: ""
+        description: "",
+        initialForm: "zakatPertambangan",
     },
     {
         label: "Emas dan Perak",
         isShow: false,
         disabled: false,
         description: "If you’re not sure how much your gold and silver is worth you can enter the weight in grams. One tola is equal to 11.7 grams.",
+        initialForm: "zakatEmas",
         forms: [
             {
                 label: 'Emas',
@@ -89,6 +93,7 @@ const checkDefault = [
         isShow: false,
         disabled: false,
         description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted.",
+        initialForm: "zakatKendaraan",
         forms: [
             {
                 label: 'Kendaraan',
@@ -113,6 +118,7 @@ const checkDefault = [
         disabled: false,
         customForm: true,
         description: "For long-term debts (e.g. mortgage), payments and bills, only enter amounts that are either due now or overdue (e.g. arrears). For businesses, any tax liabilities in relation to a prior financial year that are still to be paid can also be deducted.",
+        initialForm: "perhutangan",
         forms: [
             {
                 label: 'Mortgage',
@@ -148,9 +154,10 @@ const checkDefault = [
     },
 ];
 
-const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => void }) => {
+const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => void, zakatAmount: number, onChangeZakatAmount?: (amount: number) => void }) => {
     const [step, onChangeStep] = useState(props.step);
     const [defaultChecked, onChange] = useState(checkDefault);
+    const [amount, synZakatAmount] = useState(props.zakatAmount);
 
     const onChangeCheck = (obj: any, val: boolean, i: number) => {
         if (defaultChecked.length) {
@@ -187,7 +194,7 @@ const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => voi
 
     return (
         <div className="calculate-zakat-form py-2">
-            <div className="the-card mb-3" id="vvvv-1">
+            <div className="the-card mb-3 animate__animated animate__bounceIn" id="vvvv-1">
                 <div className="text-center py-3 px-2">
                     <div className="header">
                         Pilih zakat mu
@@ -219,9 +226,11 @@ const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => voi
                 </div>
             </div>
             {
-                defaultChecked.map((check, i: number) => {
+                _.filter(defaultChecked, function (o: any) { return o.isShow; }).map((check: any, i: number) => {
+                    const firts = i == 0 ? true : false;
+                    const last = i == (_.filter(defaultChecked, function (o: any) { return o.isShow; }).length - 1) ? true : false;
                     return (
-                        check.isShow && <div className="the-card my-3 -v" id={`vvvv${i}`} key={i}>
+                        <div className="the-card my-3 -v animate__animated animate__bounceIn" id={`vvvv${i}`} key={i}>
                             <div className="text-left w-100 py-3 px-2">
                                 <div className="header">
                                     {check.label}
@@ -231,8 +240,8 @@ const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => voi
                                 </div>
                             </div>
                             {
-
-                                (check.forms && check.forms.length) && <FormSection customForm={check.customForm || false} onScroll={(i, type) => scrollTo(i, type)} form={check.forms} index={i} />
+                                (check.forms && check.forms.length) && <FormSection initialForm={check.initialForm} onChangeZakatAmount={(val) => props.onChangeZakatAmount ? props.onChangeZakatAmount(val) : console.log(val)
+                                } first={firts} last={last} customForm={check.customForm || false} onScroll={(i, type) => scrollTo(i, type)} form={check.forms} index={i} />
                             }
                         </div>
                     )
@@ -253,28 +262,41 @@ const mapingForm = (forms: any) => {
         initialFormValues[value.name] = null
     });
 
-    console.log(initialFormValues);
-
     return initialFormValues;
 };
 
 interface FormSection {
+    first: boolean;
+    last: boolean;
     index: number;
     form: any;
     customForm: boolean;
     onScroll?: (i: number, type: string) => void;
+    onChangeZakatAmount?: (amount: number) => void;
+    initialForm?: string;
 }
 
 const FormSection = (props: FormSection) => {
+
     const form = mapingForm(props.form);
+    const [summary, setSummary] = useState([]);
     const index = props.index;
     const { register, handleSubmit, control } = useForm<any>();
 
     useEffect(() => {
-    })
+        console.log('after', summary);
+
+    }, [summary])
 
     const onSubmit = (data: any) => {
-        console.log(data);
+        console.log('summary', summary);
+        
+        let newSum: any = [];
+        newSum = [...summary, ...newSum];
+        newSum.push(Math.random());
+        setSummary(newSum);
+        props.onChangeZakatAmount ? props.onChangeZakatAmount(0) : null;
+        props.onScroll ? props.onScroll(index, 'next') : null;
     };
 
     return (
@@ -293,12 +315,12 @@ const FormSection = (props: FormSection) => {
                                 <Controller
                                     name={form.name}
                                     control={control}
-                                    render={props =>
+                                    render={f =>
                                         <InputNumber
                                             inputClassName="input-dh text-right w-100"
                                             className="w-100"
-                                            value={props.value}
-                                            onChange={e => props.onChange(e.value)}
+                                            value={f.value}
+                                            onChange={e => f.onChange(e.value)}
                                             mode="currency"
                                             locale="id-ID"
                                             placeholder="Rp 0,00"
@@ -311,13 +333,22 @@ const FormSection = (props: FormSection) => {
                     )
                 }
             </div>
-            <div className="the-card-footer d-flex justify-content-between flex-row">
-                <button className="btn" onClick={() => props.onScroll ? props.onScroll(index, 'back') : null} type="button">Kembali</button>
-                <button className="btn btn-dh-next" onClick={() => props.onScroll ? props.onScroll(index, 'next') : null} type="submit">
-                    Next
-                    <span className="ml-2">
-                        <img src="/images/icons/forward-2.svg" alt="" />
-                    </span>
+            <div className={`the-card-footer d-flex justify-content-${props.first ? 'between' : 'end'} flex-row`}>
+                {
+                    props.first &&
+                    <button className="btn color-back" onClick={() => props.onScroll ? props.onScroll(index, 'back') : null} type="button">Kembali</button>
+                }
+                <button className="btn btn-dh-basic color-next" type="submit">
+                    Selanjutnya
+                    {
+                        props.last ?
+                            <span className="ml-2">
+                                <img src="/images/icons/forward-2.svg" alt="" />
+                            </span> :
+                            <span className="ml-2">
+                                <img src="/images/icons/down.svg" alt="" />
+                            </span>
+                    }
                 </button>
             </div>
         </form>

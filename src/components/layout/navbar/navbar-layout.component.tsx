@@ -15,7 +15,7 @@ export default class NavbarComponent extends React.Component<any, any> {
     }
 
     handleScroll() {
-        if (window.pageYOffset > this.dhvRef.offsetHeight) {
+        if (window.pageYOffset > (this.navbarRef.offsetHeight * (50 / 100))) {
             this.navbarRef.classList.add('fixed-top')
         } else {
             this.navbarRef.classList.remove('fixed-top')
@@ -28,7 +28,7 @@ export default class NavbarComponent extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="container-fluid dhv p-0">
+            <div className="container-fluid dhv p-0" ref={a => this.navbarRef = a}>
                 <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-2" ref={el => this.dhvRef = el}>
                     <div className="text-1 px-2">WA</div>
                     <div className="text-2 px-2">0812 3456 7890</div>

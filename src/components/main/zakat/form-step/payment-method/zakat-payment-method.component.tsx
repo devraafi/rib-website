@@ -42,7 +42,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
     return (
 
         <div className="payment-method-zakat-form">
-            <div className="the-card mb-3 -v" id="gggg-1">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-1">
                 <div className="personal-data text-center py-3 px-2 w-100">
                     <div className="header">
                         Isi data diri
@@ -82,17 +82,17 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                 </div>
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
-                    <button className="btn" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
-                    <button className="btn btn-dh-next" onClick={() => scrollTo(100, 'next')} type="submit">
-                        Next
+                    <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
+                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(2, 'next')} type="submit">
+                        Selanjutnya
                     <span className="ml-2">
-                            <img src="/images/icons/forward-2.svg" alt="" />
+                            <img src="/images/icons/down.svg" alt="" />
                         </span>
                     </button>
                 </div>
             </div>
 
-            <div className="the-card mb-3 -v" id="gggg-2">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Pilih metode pembayaran
@@ -121,6 +121,11 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                             )
                         })
                     }
+                </div>
+                <div className="the-card-footer border-0">
+                    <button className="btn btn-dh-secondary rounded btn-block" onClick={() => scrollTo(3, 'next')}>
+                        Lanjut ke pembayaran
+                    </button>
                 </div>
             </div>
         </div>
