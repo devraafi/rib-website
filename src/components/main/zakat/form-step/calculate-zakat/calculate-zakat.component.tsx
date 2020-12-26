@@ -277,25 +277,19 @@ interface FormSection {
 }
 
 const FormSection = (props: FormSection) => {
-
+    const key: any = props.initialForm;
     const form = mapingForm(props.form);
-    const [summary, setSummary] = useState([]);
+    const [summary, setSummary] = useState({});
     const index = props.index;
     const { register, handleSubmit, control } = useForm<any>();
 
     useEffect(() => {
-        console.log('after', summary);
+        console.log('changes');
 
     }, [summary])
 
     const onSubmit = (data: any) => {
-        console.log('summary', summary);
         
-        let newSum: any = [];
-        newSum = [...summary, ...newSum];
-        newSum.push(Math.random());
-        setSummary(newSum);
-        props.onChangeZakatAmount ? props.onChangeZakatAmount(0) : null;
         props.onScroll ? props.onScroll(index, 'next') : null;
     };
 

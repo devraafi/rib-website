@@ -250,8 +250,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                         </div>
                 }
 
-                <div className="the-card-footer d-flex justify-content-between flex-row">
-                    <button className="btn color-back" onClick={() => scrollTo(1, 'back')} type="button">Kembali</button>
+                <div className="the-card-footer d-flex justify-content-end flex-row">
+                    <button className="btn color-back" onClick={() => scrollTo(3, 'next')} type="button">Lewati</button>
                     <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
                         Selanjutnya
                     <span className="ml-2">
