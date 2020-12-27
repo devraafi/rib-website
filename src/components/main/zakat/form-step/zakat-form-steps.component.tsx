@@ -1,12 +1,17 @@
 import MainComponent from "@Components/layout/main/main-layout.component";
-import React, { useEffect, useState } from "react";
+import { Steps } from "antd";
+import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 import CalculateZakat from "./calculate-zakat/calculate-zakat.component";
 import GiveZakat from "./give-zakat/give-zakat.component";
 import ZakatPaymentDetail from "./payment-detail/zakat-payment-detail.component";
 import ZakatPaymetMethod from "./payment-method/zakat-payment-method.component";
+import { Messages } from 'primereact/messages';
 
 const ZakatFormSteps = () => {
-
+    const steps = ['Hitung Zakat', 'Beri Zakat', 'Beri Sedekah', 'Selesai'];
+    const msgPrivacy = useRef(null);
+    const { Step } = Steps;
     const [step, onStepChange] = useState(1);
     const [wealthAmount, onChangewealthAmount] = useState(15000000);
     const [goldPrice, onChangeGoldPrice] = useState(150000);
@@ -45,18 +50,61 @@ const ZakatFormSteps = () => {
 
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
+        const msgPriv: any = msgPrivacy.current;
+        msgPriv ? msgPriv.show({
+            sticky: true, content: (
+                <React.Fragment>
+                    <div className="d-flex flex-row privacy-alert text-left">
+                        <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
+                        <div className="pl-3 d-flex flex-column">
+                            <div className="title">Privisi infirmisi ying indi birikin tilih tirlindingi ilih sistim kimi</div>
+                            <Link href="#">
+                                <a className="desc">Pelajajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
+                            </Link>
+                        </div>
+                    </div>
+                </React.Fragment>
+            )
+        }) : '';
+        return () => msgPriv ? msgPriv.clear() : null;
+    }, [])
 
-    })
+    const StepNav = () => (
+        <div id="navbar-dh" className="d-none d-md-flex">
+            <nav className="navbar navbar-expand-lg container-fluid container-lg navbar-light">
+                <Link href="/">
+                    <a className="navbar-brand" href="/">
+                        <img src="/images/logos/dh-logo.svg" alt="" />
+                    </a>
+                </Link>
+                <div className="m-auto">
+                    <Steps current={step - 1} labelPlacement="vertical" className="step-antd-dh">
+                        {
+                            steps.map((s) => (
+                                <Step title={s} />
+                            ))
+                        }
+                    </Steps>
+                </div>
+                <Link href="/zakat">
+                    <div className="close-circle">
+                        <img src="/images/icons/close.svg" alt="" />
+                    </div>
+                </Link>
+            </nav>
+        </div>
+    )
     return (
         <React.Fragment>
             <MainComponent
                 title="Zakat Lazis Darul Hikam"
                 description="lazis Darul Hikam"
                 pageId="zakat-page-dh"
+                customNav={<StepNav />}
             >
 
                 <div className="container-fluid p-0 zakat-form-steps">
-                    <div className="conatiner py-5 header-section">
+                    <div className="container-lg container-fluid py-5 header-section">
                         <div className="d-flex flex-column m-auto text-center">
                             <div className="header">
                                 I'm ready to work out my Zakat
@@ -64,11 +112,12 @@ const ZakatFormSteps = () => {
                             <div className="description py-3">
                                 Working out your Zakat isn’t always easy. Use our step-by-step calculator to make sure you get it right.
                             </div>
+                            <Messages ref={msgPrivacy} className="messages-dh-privacy" />
                         </div>
                         <div className="container-lg container-fluid form-section">
                             <div className="row" style={{ minHeight: '95vh' }}>
                                 {
-                                    step == 100 ? <ZakatPaymentDetail /> :
+                                    step >= 4 ? <ZakatPaymentDetail /> :
                                         <>
                                             <div className="col-lg-7 col-12">
                                                 {

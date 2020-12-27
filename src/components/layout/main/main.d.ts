@@ -6,4 +6,5 @@ export interface MainProps {
     canonical?: string;
     children: ReactNode;
     pageId?: string;
+    customNav?: ReactNode;
 }

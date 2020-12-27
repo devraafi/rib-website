@@ -13,7 +13,7 @@ const MainComponent = (props: MainProps) => (
                 title={props.title || 'Lazis Darul Hikam'}
                 description={props.description || 'Lazis Darul Hikam'}
             />
-            <NavbarComponent />
+            <NavbarComponent customNav={props.customNav || null} />
             <div className="main-container" id={props.pageId}>
                 <div className="content-wrapper container-fluid p-0" >
                     {props.children}

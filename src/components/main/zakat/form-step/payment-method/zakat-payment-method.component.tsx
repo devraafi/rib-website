@@ -13,7 +13,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
         if (type == 'back') {
             el = document.getElementById(`gggg-${i}`) || onStepChange(step - 1);
         } else {
-            el = document.getElementById(`gggg-${i}`) || onStepChange(100);
+            el = document.getElementById(`gggg-${i}`) || onStepChange(4);
         }
         if (el) {
             window.scrollTo(0, (el.offsetTop));

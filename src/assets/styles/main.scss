@@ -85,3 +85,22 @@ input[type="number"] {
 .rounded-16 {
     border-radius: 16px !important;
 }
+
+.privacy-alert {
+    .title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%;
+        color: #005d58;
+    }
+    .desc {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 150%;
+        color: #00a88b;
+    }
+}

@@ -37,61 +37,122 @@ export default class NavbarComponent extends React.Component<any, any> {
                     <div className="text-1 px-2">Email</div>
                     <div className="text-2 px-2">lazisdarulhikam@gmail.com</div>
                 </div>
-                <div ref={a => this.navbarRef = a} id="navbar-dh">
-                    <nav className="navbar navbar-expand-lg container navbar-light">
-                        <Link href="/">
-                            <a className="navbar-brand" href="/">
-                                <img src="/images/logos/dh-logo.svg" alt="" />
-                            </a>
-                        </Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                { (this.props && this.props.customNav) ?
+                    <>
+                        {this.props.customNav}
+                        <div id="navbar-dh" className="d-md-none">
+                            <nav className="navbar navbar-expand-lg container-lg container-fluid navbar-light">
+                                <Link href="/">
+                                    <a className="navbar-brand" href="/">
+                                        <img src="/images/logos/dh-logo.svg" alt="" />
+                                    </a>
+                                </Link>
+                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
 
-                        <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
-                            <ul className="m-auto navbar-nav py-3 text-right">
+                                <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
+                                    <ul className="m-auto navbar-nav py-3 text-right">
 
-                                {
-                                    dataMenu.menus.map((menu, i) => {
-                                        return <div key={i}>
-                                            {
-                                                (menu.subMenu && menu.subMenu.length)
-                                                    ?
-                                                    <li key={i} className="nav-item dropdown">
-                                                        <a className="nav-link px-4 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            {menu.label}
-                                                        </a>
-                                                        <div className="dropdown-menu border-0 shadow dh text-center text-lg-left" aria-labelledby="navbarDropdown">
-                                                            {
-                                                                menu.subMenu.map((sub, i) => {
-                                                                    return <Link href={sub.link} key={i}>
-                                                                        <a className="dropdown-item">{sub.label}</a>
-                                                                    </Link>
-                                                                })
-                                                            }
-                                                        </div>
-                                                    </li>
-                                                    :
-                                                    <li className="nav-item" key={i}>
-                                                        <Link href={menu.link}>
-                                                            <a className="nav-link px-4">
+                                        {
+                                            dataMenu.menus.map((menu, i) => {
+                                                return <div key={i}>
+                                                    {
+                                                        (menu.subMenu && menu.subMenu.length)
+                                                            ?
+                                                            <li key={i} className="nav-item dropdown">
+                                                                <a className="nav-link px-4 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    {menu.label}
+                                                                </a>
+                                                                <div className="dropdown-menu border-0 shadow dh text-center text-lg-left" aria-labelledby="navbarDropdown">
+                                                                    {
+                                                                        menu.subMenu.map((sub, i) => {
+                                                                            return <Link href={sub.link} key={i}>
+                                                                                <a className="dropdown-item">{sub.label}</a>
+                                                                            </Link>
+                                                                        })
+                                                                    }
+                                                                </div>
+                                                            </li>
+                                                            :
+                                                            <li className="nav-item" key={i}>
+                                                                <Link href={menu.link}>
+                                                                    <a className="nav-link px-4">
+                                                                        {menu.label}
+                                                                    </a>
+                                                                </Link>
+                                                            </li>
+                                                    }
+                                                </div>
+                                            })
+                                        }
+                                    </ul>
+                                    <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
+                                        <Link href="">
+                                            <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                        </Link>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </>
+                    :
+                    <div id="navbar-dh">
+                        <nav className="navbar navbar-expand-lg container-lg container-fluid navbar-light">
+                            <Link href="/">
+                                <a className="navbar-brand" href="/">
+                                    <img src="/images/logos/dh-logo.svg" alt="" />
+                                </a>
+                            </Link>
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
+                                <ul className="m-auto navbar-nav py-3 text-right">
+
+                                    {
+                                        dataMenu.menus.map((menu, i) => {
+                                            return <div key={i}>
+                                                {
+                                                    (menu.subMenu && menu.subMenu.length)
+                                                        ?
+                                                        <li key={i} className="nav-item dropdown">
+                                                            <a className="nav-link px-4 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {menu.label}
                                                             </a>
-                                                        </Link>
-                                                    </li>
-                                            }
-                                        </div>
-                                    })
-                                }
-                            </ul>
-                            <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
-                                <Link href="">
-                                    <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
-                                </Link>
-                            </form>
-                        </div>
-                    </nav>
-                </div>
+                                                            <div className="dropdown-menu border-0 shadow dh text-center text-lg-left" aria-labelledby="navbarDropdown">
+                                                                {
+                                                                    menu.subMenu.map((sub, i) => {
+                                                                        return <Link href={sub.link} key={i}>
+                                                                            <a className="dropdown-item">{sub.label}</a>
+                                                                        </Link>
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </li>
+                                                        :
+                                                        <li className="nav-item" key={i}>
+                                                            <Link href={menu.link}>
+                                                                <a className="nav-link px-4">
+                                                                    {menu.label}
+                                                                </a>
+                                                            </Link>
+                                                        </li>
+                                                }
+                                            </div>
+                                        })
+                                    }
+                                </ul>
+                                <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
+                                    <Link href="">
+                                        <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                    </Link>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                }
             </div>
         )
     }
