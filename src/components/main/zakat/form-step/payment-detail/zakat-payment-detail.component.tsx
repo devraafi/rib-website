@@ -13,7 +13,7 @@ const getPaymentStep = (id: string) => {
 }
 
 
-const ZakatPaymentDetail = () => {
+const ZakatPaymentDetail = (props: { total: number }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -59,8 +59,8 @@ const ZakatPaymentDetail = () => {
                                         Total pembayaran
                                                 </div>
                                     <div className="value">
-                                        Rp 100.000
-                                                </div>
+                                        Rp {(props.total).toLocaleString()}
+                                    </div>
                                 </div>
                             </div>
                             <div className="align-self-center copy">

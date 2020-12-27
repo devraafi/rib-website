@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
 
-const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) => {
+const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, shodaqohChanges?: (amount: number) => void, fidyahChanges?: (amount: number) => void, roundUpChanges?: (amount: number) => void }) => {
     const [step, onChangeStep] = useState(props.step);
     const [checkList, onSetChecklist] = useState({
         1: false,
@@ -15,10 +15,10 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
     });
     const sodaqohValueList = [25000, 40000, 100000, 250000, 500000];
     const [fidyahAmount, onChangeFidyah] = useState(0);
-    const [sodaqohAmount, onChangeSodaqoh] = useState(0);
+    const [shodaqohAmount, onChangeSodaqoh] = useState(0);
     const [fidyah, setFidyah] = useState(false);
     const [sodaqoh, setSodaqoh] = useState(false);
-    const [roundValue, setRoundVal] = useState(0);
+    const [roundValue, setRoundVal] = useState(5425300);
 
     const valueRoundUps = [
         0, 5500000, 5400000, 5600000
@@ -33,7 +33,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                 newCheck[lop] = false;
             }
             if (newCheck[lop]) {
-                setRoundVal(valueRoundUps[lop])
+                setRoundVal(valueRoundUps[lop]);
+                props.roundUpChanges ? props.roundUpChanges(valueRoundUps[lop]) : '';
             }
         });
 
@@ -56,6 +57,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
     }
 
     useEffect(() => {
+        props.roundUpChanges ? props.roundUpChanges(roundValue) : '';
         window.scrollTo(0, 0);
     }, [])
 
@@ -71,7 +73,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                         </div>
                     </div>
                 </div>
-                <div className="text-left py-3 px-2">
+                <div className="text-left py-3 px-2 w-100">
                     <div className="header">
                         Round up my Zakat
                     </div>
@@ -163,11 +165,11 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
 
 
             <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-2">
-                <div className="text-left px-2">
+                <div className="text-left px-2 w-100">
                     <div className="header">
                         Fidyah/Kaffarah
                     </div>
-                    <div className="description text-left">
+                    <div className="description text-left w-100">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eu luctus metus, malesuada et nunc neque sed nibh.
                     </div>
                 </div>
@@ -183,6 +185,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                                 readonly
                                 className="w-100"
                                 value={fidyahAmount}
+                                onChange={(e) => { onChangeFidyah(e.value); props.fidyahChanges ? props.fidyahChanges(e.value) : '' }}
                                 mode="currency"
                                 locale="id-ID"
                                 placeholder="Rp 0,00"
@@ -210,7 +213,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                             {
                                 sodaqohValueList.map((val, key) => (
                                     <div className="px-2" key={key}>
-                                        <div onClick={() => onChangeSodaqoh(val)} className={"card-sodaqoh " + (val == sodaqohAmount ? 'active' : '')}>
+                                        <div onClick={() => { onChangeSodaqoh(val); props.shodaqohChanges ? props.shodaqohChanges(val) : ''; }} className={"card-sodaqoh " + (val == shodaqohAmount ? 'active' : '')}>
                                             <div className="d-flex flex-column">
                                                 <div className="align-self-start mb-2">
                                                     <div className="circle-rp">Rp</div>
@@ -228,8 +231,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void }) 
                                     inputClassName="input-dh input-dh-sodaqoh py-3 text-right"
                                     readonly
                                     className="w-100"
-                                    value={sodaqohAmount}
-                                    onChange={e => onChangeSodaqoh(e.value)}
+                                    value={shodaqohAmount}
+                                    onChange={e => { onChangeSodaqoh(e.value); props.shodaqohChanges ? props.shodaqohChanges(e.value) : ''; }}
                                     mode="currency"
                                     locale="id-ID"
                                     placeholder="enter amount"

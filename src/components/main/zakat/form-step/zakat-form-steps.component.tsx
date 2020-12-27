@@ -19,10 +19,19 @@ const ZakatFormSteps = () => {
     const [debAmount, onChangeDebAmount] = useState(1344000);
     const [subTotal, onChangeSubtotal] = useState(wealthAmount * (2.5 / 100));
     const [zakatAmount, onChangeZakatAmont] = useState(0);
-    const [totalAmount, onChangeTotalAmount] = useState(5000000);
+    const [roundUpAmount, onChangeRoundUpAmont] = useState(0);
+    const [fidyahAmount, onChangeFidyahAmont] = useState(0);
+    const [shodaqohAmount, onChangeShodaqohAmont] = useState(0);
+    const [totalAmount, onChangeTotalAmount] = useState(subTotal + zakatAmount + fidyahAmount + shodaqohAmount + roundUpAmount);
 
     const syncAmount = (amount: number) => {
         onChangeZakatAmont(amount);
+        syncTotal()
+    }
+
+    const syncTotal = () => {
+        const total = subTotal + zakatAmount + fidyahAmount + shodaqohAmount + roundUpAmount;
+        onChangeTotalAmount(total);
     }
 
     const scrollFunction = () => {
@@ -57,7 +66,7 @@ const ZakatFormSteps = () => {
                     <div className="d-flex flex-row privacy-alert text-left">
                         <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
                         <div className="pl-3 d-flex flex-column">
-                            <div className="title">Privisi infirmisi ying indi birikin tilih tirlindingi ilih sistim kimi</div>
+                            <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
                             <Link href="#">
                                 <a className="desc">Pelajajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
                             </Link>
@@ -66,8 +75,9 @@ const ZakatFormSteps = () => {
                 </React.Fragment>
             )
         }) : '';
+        syncTotal();
         return () => msgPriv ? msgPriv.clear() : null;
-    }, [])
+    }, [totalAmount])
 
     const StepNav = () => (
         <div id="navbar-dh" className="d-none d-md-flex">
@@ -117,14 +127,18 @@ const ZakatFormSteps = () => {
                         <div className="container-lg container-fluid form-section">
                             <div className="row" style={{ minHeight: '95vh' }}>
                                 {
-                                    step >= 4 ? <ZakatPaymentDetail /> :
+                                    step >= 4 ? <ZakatPaymentDetail total={totalAmount} /> :
                                         <>
                                             <div className="col-lg-7 col-12">
                                                 {
                                                     step == 1 ?
                                                         <CalculateZakat zakatAmount={zakatAmount} onChangeZakatAmount={syncAmount} step={step} stepChanges={(to) => onStepChange(to)} />
                                                         : step == 2 ?
-                                                            <GiveZakat step={step} stepChanges={(to) => onStepChange(to)} />
+                                                            <GiveZakat step={step} stepChanges={(to) => onStepChange(to)} fidyahChanges={(a) => { onChangeFidyahAmont(a); syncTotal() }
+                                                            } shodaqohChanges={(a) => { onChangeShodaqohAmont(a); syncTotal() }} roundUpChanges={(a) => {
+                                                                onChangeRoundUpAmont(a);
+                                                                syncTotal()
+                                                            }} />
                                                             : step == 3 ? <ZakatPaymetMethod step={step} stepChanges={(to) => onStepChange(to)} />
                                                                 : ''
                                                 }
@@ -203,18 +217,42 @@ const ZakatFormSteps = () => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="col-12">
-                                                                <div className="the-lines">
-                                                                    <div className="label">Fidyah/Kaffarah</div>
-                                                                    <div className="amount">Rp 20.000</div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-12">
-                                                                <div className="the-lines">
-                                                                    <div className="label">Round Up Zakat</div>
-                                                                    <div className="amount">Rp 400.000</div>
-                                                                </div>
-                                                            </div>
+                                                            {
+                                                                (roundUpAmount > 0) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Round Up Zakat</div>
+                                                                            <div className="amount">
+                                                                                Rp {roundUpAmount ? (roundUpAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            {
+                                                                (fidyahAmount > 0) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Fidyah/Kaffarah</div>
+                                                                            <div className="amount">
+                                                                                Rp {fidyahAmount ? (fidyahAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            {
+                                                                (shodaqohAmount > 0) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Sadaqah</div>
+                                                                            <div className="amount">
+                                                                                Rp {shodaqohAmount ? (shodaqohAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
                                                         </div>
                                                     </div>
                                                     <div className="row py-3">
