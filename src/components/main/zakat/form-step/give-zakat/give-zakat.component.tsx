@@ -75,10 +75,10 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                 </div>
                 <div className="text-left py-3 px-2 w-100">
                     <div className="header">
-                        Round up my Zakat
+                        Bulatkan perhitungan Zakat
                     </div>
                     <div className="description text-left">
-                        After working out their Zakat, many people choose to round it up just to be safe. Choose from one of the options below. You'll be able to change this in the next section if required.
+                        Anda dapat memilih satu jumlah pembulatan Zakat dari beberapa opsi dibawah ini.
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                         Fidyah/Kaffarah
                     </div>
                     <div className="description text-left w-100">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eu luctus metus, malesuada et nunc neque sed nibh.
+                    Tambah pembayaran Fidyah maupun Kaffarah Anda disini
                     </div>
                 </div>
 
@@ -200,10 +200,10 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
 
                 <div className="text-left  px-2">
                     <div className="header">
-                        Sadaqah (voluntary donation)
+                        Sadaqah
                     </div>
                     <div className="description text-left">
-                        Every £1 of Sadaqah you give to NZF's Growth Fund can help us increase our capacity, improve the quality of our services and generate £5 or more of Zakat so we can reach more people during this historic time of need.
+                       Tambah pembayaran Sodaqoh Anda disini
                     </div>
                 </div>
 

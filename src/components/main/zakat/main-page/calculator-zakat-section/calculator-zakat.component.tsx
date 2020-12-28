@@ -12,7 +12,7 @@ const CalculatorZakatSection = () => (
                                 Kalkulator Zakat
                             </div>
                             <div className="description px-md-5 px-lg-0 px-0 mb-5 text-center text-lg-left">
-                                Working out your Zakat isn’t always easy. Use our step-by-step calculator to make sure you get it right. Or if you know how much to give already, just 'Skip to Give Zakat'
+                                Melakukan perhitungan Zakat tidak selalu mudah. Gunakan kalkulator Zakat kami untuk mempermudah perhitungan Anda!
                             </div>
                             <div className="action text-center text-lg-left d-flex flex-row justify-content-center justify-content-lg-start">
                                 <Link href="/zakat/form-steps">
@@ -20,9 +20,11 @@ const CalculatorZakatSection = () => (
                                         MULAI HITUNG
                                 </button>
                                 </Link>
+                                <Link href="/zakat/form-steps">
                                 <button className="btn btn-dh-outline-4 px-5">
-                                    Skip to Give Zakat
+                                    Langsung Berikan Zakat
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

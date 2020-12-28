@@ -10,12 +10,12 @@ const BannerZakatSection = () => (
                     <div className="col-lg-6 order-lg-1 order-2">
                         <div className="d-flex flex-column">
                             <div className="header mb-3 text-center text-lg-left">
-                                Why your Zakat is needed here
+                                Dengan Bantuan Anda, Ubah Kehidupan Mereka Jadi Lebih Baik
                             </div>
                             <div className="description-1 px-md-5 px-lg-0 px-0 px-md-5 px-lg-0 px-0 mb-5 text-center text-lg-left">
-                                Your Zakat is more than just a payment, it’s a way to create social change.
+                                Ribuan Muslim hidup dalam situasi putus asa dan terhambat secara ekonomi. Karena itu Zakat Anda memiliki kekuatan untuk mengubah kehidupan Muslim di seluruh Indonesia.
                                 <br /> <br />
-                                Across the Indonesia, thousands of Muslims are living in desperate situations and being held back by lack of money. But there is a solution. Your Zakat has the power to change the lives of Muslims where you live, and it’s up to you to make sure it achieves that potential.
+                                Lazis Darul Hikam memiliki tujuan untuk mendistribusikan Zakat bagi umat yang membutuhkan. Dengan penyaluran yang terpercaya dan tepat, kami berharap dapat meringankan beban saudara-saudara kita yang membutuhkan. 
                             </div>
                             <div className="action text-center text-lg-left">
                                 <Link href="/zakat/form-steps">

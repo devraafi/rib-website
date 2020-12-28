@@ -197,10 +197,10 @@ const CalculateZakat = (props: { step: number, stepChanges?: (to: number) => voi
             <div className="the-card mb-3 animate__animated animate__bounceIn" id="vvvv-1">
                 <div className="text-center py-3 px-2">
                     <div className="header">
-                        Pilih zakat mu
+                        Pilih Zakat Anda
                     </div>
                     <div className="description">
-                        Please select the options that you think may apply to you. If you're not sure about an option, select it anyway and more information will follow to help you decide.
+                        Pilih jenis zakat yang ingin ditunaikan atau dibayarkan (dapat memilih lebih dari satu).
                     </div>
                 </div>
                 <div className="row">

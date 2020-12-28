@@ -72,11 +72,10 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                         Pesan dan Doa
                     </div>
                     <div className="description text-left">
-                        Tincidunt scelerisque sed curabitur neque nulla commodo nec, ac turpis. Sed congue semper enim dolor orci. Pretium enim mauris dui dignissim.
                     </div>
                     <div className="row w-100">
                         <div className="col-12 py-2">
-                            <InputTextarea placeholder="Beri doa, dan dukunganmu disini" className="input-dh w-100" rows={5} cols={30} value={messagesDoa} onChange={(e: any) => onChangeMsgDoa(e.target.value)} autoResize />
+                            <InputTextarea placeholder="Tulis pesan, harapan atau do’a disini jika ada" className="input-dh w-100" rows={5} cols={30} value={messagesDoa} onChange={(e: any) => onChangeMsgDoa(e.target.value)} autoResize />
                         </div>
                     </div>
                 </div>

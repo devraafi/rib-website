@@ -20,8 +20,7 @@ const ReportZakatSection = () => {
             <div className="container-fluid py-5 content-zakat-report">
                 <div className="container-lg">
                     <div className="header text-center pb-4 col-lg-6 m-auto">
-                        Thank you for your support,
-                        Because we had currently help more than
+                        Dengan dukungan dan kemurahan hati Anda, kami dapat membantu meringankan beban mereka
                     </div>
                     <div className="row justify-content-center">
                         {

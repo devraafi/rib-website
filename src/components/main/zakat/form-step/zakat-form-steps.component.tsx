@@ -9,7 +9,7 @@ import ZakatPaymetMethod from "./payment-method/zakat-payment-method.component";
 import { Messages } from 'primereact/messages';
 
 const ZakatFormSteps = () => {
-    const steps = ['Hitung Zakat', 'Beri Zakat', 'Beri Sedekah', 'Selesai'];
+    const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran', 'Selesai'];
     const msgPrivacy = useRef(null);
     const { Step } = Steps;
     const [step, onStepChange] = useState(1);
@@ -117,10 +117,10 @@ const ZakatFormSteps = () => {
                     <div className="container-lg container-fluid py-5 header-section">
                         <div className="d-flex flex-column m-auto text-center">
                             <div className="header">
-                                I'm ready to work out my Zakat
+                                Percayakan Zakat Anda pada Kami
                             </div>
                             <div className="description py-3">
-                                Working out your Zakat isn’t always easy. Use our step-by-step calculator to make sure you get it right.
+                            Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
                             </div>
                             <Messages ref={msgPrivacy} className="messages-dh-privacy" />
                         </div>
@@ -147,10 +147,10 @@ const ZakatFormSteps = () => {
                                                 <div className="main-form my-2 animate__animated animate__bounceIn" id='main-form-zakat'>
                                                     <div className="text-center mb-2 px-2">
                                                         <div className="header mb-2">
-                                                            Total zakat anda
+                                                            Total Zakat Anda
                                                         </div>
                                                         <div className="description">
-                                                            Here's a summary of the information you've provided and how much Zakat you need to give.
+                                                        Berikut ringkasan informasi yang Anda berikan dan berapa banyak Zakat yang perlu dibayarkan
                                                         </div>
                                                     </div>
                                                     <div className="flyover">
