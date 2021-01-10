@@ -93,9 +93,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                 className="w-100"
                                 inputClassName="py-3"
                                 value={valueRoundUps[1]}
-                                mode="currency"
                                 locale="id-ID"
-                                placeholder="Rp 0,00"
+                                placeholder="Rp 0"
                                 currency="IDR"
                             />
                         </div>
@@ -110,9 +109,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                 className="w-100"
                                 inputClassName="py-3"
                                 value={valueRoundUps[2]}
-                                mode="currency"
                                 locale="id-ID"
-                                placeholder="Rp 0,00"
+                                placeholder="Rp 0"
                                 currency="IDR"
                             />
                         </div>
@@ -127,9 +125,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                 className="w-100"
                                 inputClassName="py-3"
                                 value={valueRoundUps[3]}
-                                mode="currency"
                                 locale="id-ID"
-                                placeholder="Rp 0,00"
+                                placeholder="Rp 0"
                                 currency="IDR"
                             />
                         </div>
@@ -143,9 +140,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                 readOnly
                                 className="w-100 py-3"
                                 value={`No, Keep my Zakat value as Rp 5,425,300`}
-                                mode="currency"
                                 locale="id-ID"
-                                placeholder="Rp 0,00"
+                                placeholder="Rp 0"
                                 currency="IDR"
                             />
                         </div>
@@ -186,9 +182,8 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                 className="w-100"
                                 value={fidyahAmount}
                                 onChange={(e) => { onChangeFidyah(e.value); props.fidyahChanges ? props.fidyahChanges(e.value) : '' }}
-                                mode="currency"
                                 locale="id-ID"
-                                placeholder="Rp 0,00"
+                                placeholder="Rp 0"
                                 currency="IDR"
                             /> :
                                 <div className="add-plus" onClick={() => setFidyah(!fidyah)}>
@@ -233,7 +228,6 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                     className="w-100"
                                     value={shodaqohAmount}
                                     onChange={e => { onChangeSodaqoh(e.value); props.shodaqohChanges ? props.shodaqohChanges(e.value) : ''; }}
-                                    mode="currency"
                                     locale="id-ID"
                                     placeholder="enter amount"
                                     currency="IDR"

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => void }) => {
     const [step, onChangeStep] = useState(props.step);
-    const [anonim, setAnonim] = useState(true);
+    const [anonim, setAnonim] = useState(false);
     const [paymentMethod, selectPayment] = useState('');
     const [messagesDoa, onChangeMsgDoa] = useState('');
 
@@ -57,17 +57,17 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                         <div className="form-group">
                             <input type="text" disabled={anonim} placeholder="Nomor ponsel atau email" name="" id="" className="form-control" />
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <div className="d-flex flex-row justify-content-between">
                                 <label className="label-input">Sembunyikan nama saya (Anonim)</label>
                                 <div className="">
                                     <InputSwitch className="dh-switch" checked={anonim} onChange={(e) => setAnonim(e.value)} />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
-                <div className="message-doa text-left py-3 px-2 w-100">
+                {/* <div className="message-doa text-left py-3 px-2 w-100">
                     <div className="header">
                         Pesan dan Doa
                     </div>
@@ -78,7 +78,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                             <InputTextarea placeholder="Tulis pesan, harapan atau do’a disini jika ada" className="input-dh w-100" rows={5} cols={30} value={messagesDoa} onChange={(e: any) => onChangeMsgDoa(e.target.value)} autoResize />
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
                     <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>

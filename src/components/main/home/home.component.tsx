@@ -32,7 +32,7 @@ export default class HomePage extends React.Component<any, any> {
                     <ProgramSection />
                     <FundaraisingSection />
                     <OurPartnersSection />
-                    <UnnamedSection />
+                    {/* <UnnamedSection /> */}
                     <FeatureSection />
                     <NewsSection />
 

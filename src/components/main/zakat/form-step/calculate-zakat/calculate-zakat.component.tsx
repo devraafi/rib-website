@@ -8,7 +8,7 @@ import { Controller, useForm } from "react-hook-form";
 const checkDefault = [
     {
         label: "Penghasilan (Maal)",
-        isShow: false,
+        isShow: true,
         disabled: false,
         description: "Enter the amount of cash you have including money in your bank account(s), whatever the source (e.g. salary, rental income, benefits etc.).",
         initialForm: "zakatMall",
@@ -315,9 +315,8 @@ const FormSection = (props: FormSection) => {
                                             className="w-100"
                                             value={f.value}
                                             onChange={e => f.onChange(e.value)}
-                                            mode="currency"
                                             locale="id-ID"
-                                            placeholder="Rp 0,00"
+                                            placeholder="Rp 0"
                                             currency="IDR"
                                         />}
                                 />
