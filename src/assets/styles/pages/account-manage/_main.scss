@@ -1,0 +1,24 @@
+@import "./login";
+#account-manage-page {
+    .main-login-register {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        .page-wrapper {
+            @media (min-width: 992px) {
+                max-width: 880px;
+                min-height: 500px;
+            }
+            position: relative;
+            align-self: center;
+            background: #b1b1b1;
+            box-shadow: 0px 8px 22px -6px rgba(24, 39, 75, 0.12), 0px 14px 64px -4px rgba(24, 39, 75, 0.12);
+            border-radius: 20px;
+            width: 100%;
+            background: linear-gradient(360deg, #797979 0%, rgba(91, 91, 91, 0) 66.15%),
+                url("/images/backgrounds/account-manage.svg");
+            background-blend-mode: multiply, normal;
+        }
+    }
+}

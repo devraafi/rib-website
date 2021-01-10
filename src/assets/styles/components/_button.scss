@@ -47,4 +47,10 @@
     &.btn-dh-next {
         @include btn-dh("next");
     }
+    &.btn-dh-g {
+        @include btn-dh("g");
+    }
+    &.btn-dh-fb {
+        @include btn-dh("fb");
+    }
 }
