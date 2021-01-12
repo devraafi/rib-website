@@ -12,6 +12,7 @@
     }
     min-width: 102px;
     min-height: 50px;
+    max-height: 50px;
     padding: 5px 15px;
     @if $type == "primary" {
         background: #7bb142;

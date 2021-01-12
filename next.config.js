@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+  env: {
+    staging: 'https://staging-lazis-dh.herokuapp.com/'
   },
   externals: {
     'react': 'React'

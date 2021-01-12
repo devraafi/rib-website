@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { Slider } from 'primereact/slider';
+import Link from 'next/link';
 const danation = {
     amount: 1600000000,
     targetAmount: 2500000000,
@@ -20,9 +21,35 @@ const MainDonation = (props: any) => {
         props.onDone(1);
     }
 
-    const [donateAmount, setDonateAmount] = useState(0)
+    const [donateAmount, setDonateAmount] = useState(0);
+    const scrollFunction = () => {
+        const windTop = window.pageYOffset;
+        const footerTop: any = document.getElementById('footer-dh')?.offsetTop;
+        const mainFormHeight: any = document.getElementById('main-donation')?.offsetHeight;
+
+        if ((windTop + mainFormHeight + 200) > footerTop) {
+            document.getElementById('main-donation')?.classList.remove('syur')
+            document.getElementById('main-donation')?.classList.add('solute')
+            console.log('1-solute');
+
+        } else {
+            document.getElementById('main-donation')?.classList.add('syur');
+            document.getElementById('main-donation')?.classList.remove('solute');
+            if (window.pageYOffset > 70) {
+
+                document.getElementById('main-donation')?.classList.add('nice');
+            } else {
+                document.getElementById('main-donation')?.classList.remove('nice');
+            }
+        }
+    }
+
+    useEffect(() => {
+        window.onscroll = function () { scrollFunction() };
+    });
+
     return (
-        <div className="main-donation m-auto p-3">
+        <div className="main-donation m-auto p-3" id="main-donation">
             <div className="title-support px-2 py-3">
                 Dukung Program Ini
                     </div>
@@ -103,9 +130,11 @@ const MainDonation = (props: any) => {
                             <input type="number" onChange={(e: any) => setDonateAmount(e.target.value)} name="" id="" value={donateAmount} placeholder="Rp 0,00" className="form-control dh-input" />
                         </div>
                         <div className="col-12 my-1">
-                            <button className="btn btn-dh-secondary w-100 rounded-lg" onClick={() => handleClick()}>
-                                Donate
+                            <Link href="/donasi/form-steps">
+                                <button className="btn btn-dh-secondary w-100 rounded-lg" onClick={() => handleClick()}>
+                                    Donate
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

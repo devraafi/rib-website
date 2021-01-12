@@ -36,7 +36,6 @@ const ZakatFormSteps = () => {
 
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
-        const mainFormTop: any = document.getElementById('main-form-zakat')?.offsetTop;
         const footerTop: any = document.getElementById('footer-dh')?.offsetTop;
         const mainFormHeight: any = document.getElementById('main-form-zakat')?.offsetHeight;
 
