@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
+import { InputNumber } from 'primereact/inputnumber';
+import { DonationService } from '../../donation.services';
 const danation = {
     amount: 1600000000,
     targetAmount: 2500000000,
@@ -15,13 +17,14 @@ const danation = {
 };
 
 const priceList = [20000, 50000, 100000, 250000, 500000, 1000000];
-
+const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
+    const [donateAmount, setDonateAmount] = useState(0);
     function handleClick() {
-        props.onDone(1);
+        donationService.setTotal(donateAmount);
+        props.onDone ? props.onDone(donateAmount) : '';
     }
 
-    const [donateAmount, setDonateAmount] = useState(0);
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
         const footerTop: any = document.getElementById('footer-dh')?.offsetTop;
@@ -60,7 +63,7 @@ const MainDonation = (props: any) => {
                             <Slider disabled className="slider-program-dh" value={danation.amount} max={danation.targetAmount} />
                         </div>
                         <div className="d-flex flex-row justify-content-between py-2">
-                            <div className="amount">{'Rp. ' + (danation.amount).toLocaleString()}</div>
+                            <div className="amount text-left">{'Rp. ' + (danation.amount).toLocaleString()}</div>
                             <div className="target-amount">{`Target Rp. ${(danation.targetAmount).toLocaleString()}`}</div>
                         </div>
                     </div>
@@ -95,7 +98,7 @@ const MainDonation = (props: any) => {
                                 </div>
                                 <div className="donasi">
                                     Donasi
-                                                                </div>
+                                </div>
                             </div>
                             <div className="d-flex flex-row justify-content-arround">
                                 <div className="cart">
@@ -127,14 +130,21 @@ const MainDonation = (props: any) => {
                     </div>
                     <div className="row py-3">
                         <div className="col-12 my-1">
-                            <input type="number" onChange={(e: any) => setDonateAmount(e.target.value)} name="" id="" value={donateAmount} placeholder="Rp 0,00" className="form-control dh-input" />
+                            <InputNumber locale="id-ID"
+                                placeholder="Rp 0"
+                                currency="IDR" onChange={(e) => setDonateAmount(e.value)}
+                                name=""
+                                id=""
+                                value={donateAmount}
+                                inputClassName="input-dh text-right w-100"
+                                className="w-100"
+                            />
                         </div>
                         <div className="col-12 my-1">
-                            <Link href="/donasi/form-steps">
-                                <button className="btn btn-dh-secondary w-100 rounded-lg" onClick={() => handleClick()}>
-                                    Donate
+                            <button className="btn btn-dh-secondary w-100 rounded-lg" onClick={() => handleClick()}>
+                                Donate
                             </button>
-                            </Link>
+
                         </div>
                     </div>
                 </div>

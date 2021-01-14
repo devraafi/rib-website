@@ -1,0 +1,61 @@
+#program-list {
+    .card-program-list {
+        box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+        border-radius: 15px;
+        .image {
+            background: hsl(90, 45%, 91%);
+            height: 160px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            img {
+                border-top-right-radius: 15px;
+                border-top-left-radius: 15px;
+                width: 100%;
+            }
+        }
+        .content {
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            .title-content {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 13.0795px;
+                line-height: 110%;
+                color: #0c3543;
+            }
+        }
+        .profile {
+            display: flex;
+            flex-direction: row;
+            .profile-img {
+                width: 20px;
+                height: 20px;
+                border-radius: 30px;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                img {
+                    border-radius: 30px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            .profile-name {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: normal;
+                font-size: 11px;
+                line-height: 140%;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-align-items: center;
+                align-items: center;
+                color: #414b54;
+            }
+        }
+    }
+}

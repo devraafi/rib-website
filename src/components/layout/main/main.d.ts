@@ -7,4 +7,5 @@ export interface MainProps {
     children: ReactNode;
     pageId?: string;
     customNav?: ReactNode;
+    hideNav?: boolean;
 }

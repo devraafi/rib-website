@@ -19,20 +19,8 @@
         },
         {
             "label": "Program",
-            "link": "/",
+            "link": "/program",
             "subMenu": [
-                {
-                    "label": "Program DH",
-                    "link": "/"
-                },
-                {
-                    "label": "Program DH",
-                    "link": "/"
-                },
-                {
-                    "label": "Program DH",
-                    "link": "/"
-                }
             ]
         },
         {
