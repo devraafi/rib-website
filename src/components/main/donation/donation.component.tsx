@@ -5,8 +5,11 @@ import BannerDonationSection from "./banner-donation-section/banner-donation.sec
 import ContentDonationSection from "./content-donation-section/content-donation-section.component";
 import MainDonation from "./content-donation-section/main-donation/main-donation.component";
 import DonasiFormStep from "./form-step/donasi-form-steps.component";
+import { useRouter } from 'next/router';
 
 const DonationPage = () => {
+    const router = useRouter();
+    const { id } = router.query
     const [step, setStep] = useState(0);
     const [total, setTotal] = useState(0);
     function onDonate(total: number) {
@@ -39,7 +42,7 @@ const DonationPage = () => {
                         </div>
                     </div>
                     :
-                    <DonasiFormStep step={step} total={total} />
+                    <DonasiFormStep step={step} total={total} id={id} />
                 }
             </MainComponent>
         </React.Fragment>

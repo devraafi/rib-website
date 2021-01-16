@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class DonationRestServices {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'https://staging-lazis-dh.herokuapp.com/public/transaction/';
+    urlDh: string = 'https://staging-lazis-dh.herokuapp.com/public/';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,
@@ -22,6 +22,10 @@ export class DonationRestServices {
             showAsAnonymous: boolean
         }
     }) {
-        return this.request.post(`/create/program/midtrans-snap`, payload);
+        return this.request.post(`transaction/create/program/midtrans-snap`, payload);
+    }
+
+    loadProgram() {
+        return this.request.get(`program`);
     }
 }

@@ -8,12 +8,12 @@ import { catchError } from 'rxjs/operators';
 import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
 import DonasiPaymentDetail from './payment-detail/payment-detail.component';
-import PaymentMethodStep from './payment-method/payment-method.component'; 
-import redirect from 'nextjs-redirect'
+import PaymentMethodStep from './payment-method/payment-method.component';
+
 const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices;
 
-const DonasiFormStep = (props: { step: number, total?: number }) => {
+const DonasiFormStep = (props: { step: number, total?: number, id: string }) => {
     const [step, onStepChange] = useState(props.step);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Detail Pembayaran'];
     const [customerInfo, setCustomerInfo] = useState({
@@ -92,7 +92,7 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
         const wind: any = window;
 
         const payload = {
-            programId: '6002894ddf15810f57968d76',
+            programId: props.id,
             amount: props.total || 0,
             customerInfo: customerInfo
         }
@@ -102,7 +102,6 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
                 return throwError(err);
             })
         ).subscribe((res: any) => {
-            // wind ? wind.snap.pay(res.token) : '';
             document.location.href = res.redirect_url;
         });
     }
