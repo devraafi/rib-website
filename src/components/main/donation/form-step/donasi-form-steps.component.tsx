@@ -8,7 +8,7 @@ import DonasiPaymentDetail from './payment-detail/payment-detail.component';
 import PaymentMethodStep from './payment-method/payment-method.component';
 const donationService: DonationService = new DonationService;
 
-const DonasiFormStep = (props: { step: number, total: number }) => {
+const DonasiFormStep = (props: { step: number, total?: number }) => {
     const [step, onStepChange] = useState(props.step);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Detail Pembayaran'];
     const danation = {
