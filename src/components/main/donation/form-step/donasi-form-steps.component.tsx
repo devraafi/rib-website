@@ -3,14 +3,26 @@ import { Steps } from 'antd';
 import Link from 'antd/lib/typography/Link';
 import { Step } from 'rc-steps';
 import React, { useEffect, useState } from 'react';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
 import DonasiPaymentDetail from './payment-detail/payment-detail.component';
-import PaymentMethodStep from './payment-method/payment-method.component';
+import PaymentMethodStep from './payment-method/payment-method.component'; 
+import redirect from 'nextjs-redirect'
 const donationService: DonationService = new DonationService;
+const donationRestService: DonationRestServices = new DonationRestServices;
 
 const DonasiFormStep = (props: { step: number, total?: number }) => {
     const [step, onStepChange] = useState(props.step);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Detail Pembayaran'];
+    const [customerInfo, setCustomerInfo] = useState({
+        fullName: '',
+        notes: '',
+        phoneOrEmail: '',
+        showAsAnonymous: false
+    });
+
     const danation = {
         title: 'Tebar 1000 Sejadah Untuk Masjid Pelosok',
         amount: 1600000000,
@@ -72,10 +84,27 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
         }
     }
 
+    function onChangeCustomerInfo(val: any) {
+        setCustomerInfo(val);
+    }
+
     function onSubmit() {
-        // onStepChange(step + 1);
         const wind: any = window;
-        wind ? wind.snap.pay('<snap-token>') : '';
+
+        const payload = {
+            programId: '6002894ddf15810f57968d76',
+            amount: props.total || 0,
+            customerInfo: customerInfo
+        }
+
+        donationRestService.transactionMidtransSnap(payload).pipe(
+            catchError(err => {
+                return throwError(err);
+            })
+        ).subscribe((res: any) => {
+            // wind ? wind.snap.pay(res.token) : '';
+            document.location.href = res.redirect_url;
+        });
     }
 
     useEffect(() => {
@@ -87,7 +116,7 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
             title="Donasi Lazis Darul Hikam"
             description="Donasi Darul Hikam"
             pageId="donasi-step-page-dh"
-            // customNav={<StepNav />}
+        // customNav={<StepNav />}
         >
 
             <div className="container-fluid p-0 donasi-form-steps">
@@ -97,7 +126,7 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
                             step == (1 || 2) ?
                                 <div className="row" style={{ minHeight: '95vh' }}>
                                     <div className="col-lg-7 col-12">
-                                        <PaymentMethodStep step={step} stepChanges={onStepChange} />
+                                        <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} />
                                     </div>
 
                                     <div className="col-lg-5 col-12 position-relative">

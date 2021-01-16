@@ -28,6 +28,7 @@
     "next-babel-minify": "^1.0.0",
     "next-optimized-images": "^2.6.2",
     "next-seo": "^4.17.0",
+    "nextjs-redirect": "^5.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "primeicons": "^4.1.0",
     "primereact": "^5.0.2",
