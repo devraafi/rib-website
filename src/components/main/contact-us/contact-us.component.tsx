@@ -37,13 +37,13 @@ const ContactUs = () => {
                 </div>
                 <div className="form-contact-us mt-5">
                     <div className="row">
-                        <div className="col-6 px-2 py-4">
+                        <div className="col-lg-6 col-12 px-2 py-4">
                             <span className="p-float-label floating-input-dh">
                                 <InputText id="name" className="w-100 name-contact" placeholder={focus === 1 ? 'First and last name' : ''} onBlur={() => setFocus(0)} onFocus={() => setFocus(1)} value={form.name} onChange={(e: any) => setForm({ ...form, name: e.target.value })} />
                                 <label className="label-contact-us" htmlFor="name">Nama</label>
                             </span>
                         </div>
-                        <div className="col-6 px-2 py-4">
+                        <div className="col-lg-6 col-12 px-2 py-4">
                             <span className="p-float-label floating-input-dh">
                                 <InputText id="email" type="email" className="w-100" value={form.email} onChange={(e: any) => setForm({ ...form, email: e.target.value })} placeholder={focus === 2 ? 'name@domain.com' : ''} onBlur={() => setFocus(0)} onFocus={() => setFocus(2)} />
                                 <label className="label-contact-us" htmlFor="email">Email</label>
@@ -56,7 +56,7 @@ const ContactUs = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="text-right w-100">
+                    <div className="text-lg-right text-center w-100">
                         <button type="submit" className="btn btn-dh-primary" onClick={onSubmit}>Submit</button>
                     </div>
                 </div>
