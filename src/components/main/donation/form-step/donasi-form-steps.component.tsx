@@ -87,7 +87,7 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
             title="Donasi Lazis Darul Hikam"
             description="Donasi Darul Hikam"
             pageId="donasi-step-page-dh"
-            customNav={<StepNav />}
+            // customNav={<StepNav />}
         >
 
             <div className="container-fluid p-0 donasi-form-steps">

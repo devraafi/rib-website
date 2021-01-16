@@ -80,7 +80,7 @@ const PaymentMethodStep = (props: { step: number, stepChanges?: (to: number) => 
                     </div>
                 </div>
 
-                <div className="the-card-footer d-flex justify-content-between flex-row">
+                {/* <div className="the-card-footer d-flex justify-content-between flex-row">
                     <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
                     <button className="btn btn-dh-basic color-next" onClick={() => { scrollTo(2, 'next'); onChangeStep(step + 1) }} type="submit">
                         Selanjutnya
@@ -88,10 +88,10 @@ const PaymentMethodStep = (props: { step: number, stepChanges?: (to: number) => 
                             <img src="/images/icons/down.svg" alt="" />
                         </span>
                     </button>
-                </div>
+                </div> */}
             </div>
 
-            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
+            {/* <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Pilih metode pembayaran
@@ -126,7 +126,7 @@ const PaymentMethodStep = (props: { step: number, stepChanges?: (to: number) => 
                         Lanjut ke pembayaran
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
