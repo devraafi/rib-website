@@ -139,7 +139,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                                         </div>
                                                         <div className="is-certified">
                                                             {
-                                                                (props.data && props.data.user.isCertified) && (
+                                                                ((props.data && props.data.user) && props.data.user.isCertified) && (
                                                                     <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                                                 )
                                                             }
