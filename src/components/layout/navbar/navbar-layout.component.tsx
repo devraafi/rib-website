@@ -123,7 +123,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                                             </a>
                                                             <div className="dropdown-menu border-0 shadow dh text-center text-lg-left" aria-labelledby="navbarDropdown">
                                                                 {
-                                                                    menu.subMenu.map((sub, i) => {
+                                                                    menu.subMenu.map((sub: any, i) => {
                                                                         return <Link href={sub.link} key={i}>
                                                                             <a className="dropdown-item">{sub.label}</a>
                                                                         </Link>
