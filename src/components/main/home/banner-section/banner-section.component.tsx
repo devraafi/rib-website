@@ -3,6 +3,7 @@ import data from './fake-data.json';
 import moment from 'moment';
 import _ from 'lodash';
 import Slider from 'react-slick';
+import Link from 'next/link';
 
 export default class BannerSection extends React.Component<any, any> {
     constructor(props: any) {
@@ -69,15 +70,17 @@ export default class BannerSection extends React.Component<any, any> {
                             {moment(this.state.bannerData).format('M YY')}
                         </div>
                         <div className="title col-12 text-center text-lg-left">
-                            Ambil tindakan, <br/> bantu sesama
+                            Ambil tindakan, <br /> bantu sesama
                         </div>
                         <div className="description col-lg-9 col-12 text-center text-lg-left py-3">
                             {this.state.bannerData.description}
                         </div>
                         <div className="to col-12 py-4 text-center text-lg-left">
-                            <button className="btn btn-dh-primary">
-                                {this.state.bannerData.to.label}
-                            </button>
+                            <Link href="/donasi">
+                                <button className="btn btn-dh-primary">
+                                    {this.state.bannerData.to.label}
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ const checkDefault = [
         label: "Penghasilan (Maal)",
         isShow: true,
         disabled: false,
-        description: "Enter the amount of cash you have including money in your bank account(s), whatever the source (e.g. salary, rental income, benefits etc.).",
+        description: "Masukkan jumlah harta termasuk uang yang ada dalam bank maupun dari berbagai sumber yang dimiliki",
         initialForm: "zakatMall",
         forms: [
             {
@@ -289,7 +289,7 @@ const FormSection = (props: FormSection) => {
     }, [summary])
 
     const onSubmit = (data: any) => {
-        
+
         props.onScroll ? props.onScroll(index, 'next') : null;
     };
 

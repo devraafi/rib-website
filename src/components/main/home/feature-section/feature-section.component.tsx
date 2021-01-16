@@ -6,35 +6,40 @@ import Link from 'next/link';
 const features = [
     {
         title: 'Berbagi Untuk Pendidikan',
-        description: 'Sem sed lorem ut odio at. pretium nulla fermentum at.',
+        subtitle: 'Program untuk membantu pendidikan generasi-generasi penerus bangsa',
+        description: 'Bantuan dapat berupa uang pendidikan maupun alat penunjang pendidikan. Wilayah sebaran program pendidikan yaitu di seluruh Indonesia, terutama di daerah-daerah pelosok yang membutuhkan bantuan pendidikan. ',
         img: '/images/feature/1.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
         title: 'Berbagi Untuk Lingkungan',
-        description: 'Donec venenatis lectus scelerisque',
+        subtitle: 'Merupakan sebuah program kepedulian terhadap daerah/lingkungan sekitar',
+        description: 'Mebantu lungkungan yang membutuhkan baik manusia ataupun hewan. Dalam program berbagi lingkungan ini ada beberapa program yang telah dilakukan diantaranya siaga bencana, kerelawanan, dan lainnya.',
         img: '/images/feature/2.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
         title: 'Berbagi Untuk Umat',
-        description: 'Condimentum laoreet semper varius enim tristique',
+        subtitle: 'Program bentuk kepedulian terhadap seluruh umat, utamanya adalah umat muslim',
+        description: 'Wilayah sebarannya tidak hanya di Indonesia saja tapi di seluruh dunia termasuk di negara-negara konflik seperti Palestina, Suriah dan Rohingya.',
         img: '/images/feature/3.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
         title: 'Berbagi Untuk Kesehatan',
-        description: 'Sit enim ac sagittis',
+        subtitle: 'Program berbagi yang diberikan kepada para pejuang tangguh yang sedang di uji kesehatannya.',
+        description: 'Bentuk kepedulian yang diberikan beragam, disesuaikan dengan kebutuhan dan kondisi yang ada seperti pengobatan kesehatan dhuafa, program pengobatan gratis dan pelayanan ambulance.',
         img: '/images/feature/4.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
         title: 'Berbagi Program Khusus',
-        description: 'Sit enim ac sagittis',
+        subtitle: 'Program berbagi yang bersifat khusus tergantung waktu dan kebutuhan.',
+        description: 'Contoh program khusus adalah program khusus Ramadhan yang meliputi paket Lebaran yatim dan dhuafa, bingkisan untuk lansia dan ifthor Ramadhan; program khusus penanganan Covid-19, dan hari Raya Idul Adha.',
         img: '/images/feature/5.svg',
         altImg: '',
         href: { link: '/', as: '/' }
@@ -159,7 +164,7 @@ class FeatureSection extends React.Component<any, any> {
                     <div className="d-flex align-items-center">
                         <div className={"feature-section-list-title " + this.isHovered(key)}>{data.title}</div>
                     </div>
-                    <p className={'feature-section-list-desc ' + this.isHovered(key)}>{data.description}</p>
+                    <p className={'feature-section-list-desc ' + this.isHovered(key)}>{data.subtitle}</p>
                     <div className={"feature-section-list-loading-bar " + this.isHovered(key)}></div>
                 </div>
             </a>

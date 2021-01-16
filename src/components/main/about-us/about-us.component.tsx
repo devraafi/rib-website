@@ -18,7 +18,7 @@ const AboutUsComponent = () => (
             pageId="about-page-dh"
         >
             <div className="container-fluid p-0 about-us-page">
-                <div className="p-lg-5 p-3 container">
+                <div className="p-lg-5 p-3 container ">
                     <div className="header-about-us">
                         <div className="title-about-us mb-4 col-lg-8 col-12 p-0">
                             {data.title || ''}
@@ -33,9 +33,9 @@ const AboutUsComponent = () => (
                             }
                         </div>
                     </div>
-                    <div className="vision-mision-board-section text-center py-5">
+                    <div className="vision-mision-board-section text-center py-5 p-lg-5">
                         <div className="vision py-5 ">
-                            <div className="title pb-3 mb-3 w-75 mx-auto">
+                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                                 {vision.label || ''}
                             </div>
                             <div className="description py-4">
@@ -43,14 +43,14 @@ const AboutUsComponent = () => (
                             </div>
                         </div>
                         <div className="mision py-5 ">
-                            <div className="title pb-3 mb-3 w-75 mx-auto">
+                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                                 {mission.label || ''}
                             </div>
                             <div className="row description py-4">
                                 {
                                     mission.list.map((li: any, i: number) => (
                                         <div className="col-6 p-2" key={i}>
-                                            <div className="d-flex flex-column text-center m-auto w-100">
+                                            <div className="d-flex flex-column text-center m-auto w-100 px-lg-4">
                                                 <div className="icon text-center">
                                                     <img src={li.image} alt="" />
                                                 </div>
@@ -64,7 +64,7 @@ const AboutUsComponent = () => (
                             </div>
                         </div>
                         <div className="meet-the-board py-5">
-                            <div className="title pb-3 mb-3 w-75 mx-auto">
+                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                                 {meetTheBoard.label || ''}
                             </div>
                             <div className="meet-the-board-slider">

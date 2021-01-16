@@ -212,9 +212,9 @@ export default class DonationList extends React.Component<any, any> {
                                 100+ Program Donasi
                             </div>
                             <div className="header py-3">
-                                Integer tellus dui amet.
+                                Bantu umat dan lingkungan sekitar yang membutuhkan
                             </div>
-                            <div className="d-flex flex-row flex-wrap">
+                            {/* <div className="d-flex flex-row flex-wrap">
                                 {
                                     filters.map((filter, i) => {
                                         return (
@@ -226,7 +226,7 @@ export default class DonationList extends React.Component<any, any> {
                                         )
                                     })
                                 }
-                            </div>
+                            </div> */}
                         </div>
                         <div className="list-wrapper">
                             {
@@ -247,75 +247,75 @@ export default class DonationList extends React.Component<any, any> {
                                                     return (
                                                         <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
                                                             <Link href="/donasi/detail">
-                                                                    <div className="card-program">
-                                                                        <div className="d-flex flex-column">
-                                                                            <div className="program-image">
-                                                                                <img src={list.imageUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                                <div className="card-program">
+                                                                    <div className="d-flex flex-column">
+                                                                        <div className="program-image">
+                                                                            <img src={list.imageUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                                        </div>
+                                                                        <div className="program-info p-3">
+                                                                            <div className="title px-2">
+                                                                                {list.title}
                                                                             </div>
-                                                                            <div className="program-info p-3">
-                                                                                <div className="title px-2">
-                                                                                    {list.title}
-                                                                                </div>
 
-                                                                                <div className="profile-info py-3 px-2">
-                                                                                    <div className="d-flex flex-row justify-content-between">
-                                                                                        <div className="d-flex flex-row">
-                                                                                            <div className="profile-img">
-                                                                                                <img src={list.profileInfo.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
-                                                                                            </div>
-                                                                                            <div className="ml-3 profile-name">
-                                                                                                {list.profileInfo.name}
-                                                                                            </div>
+                                                                            <div className="profile-info py-3 px-2">
+                                                                                <div className="d-flex flex-row justify-content-between">
+                                                                                    <div className="d-flex flex-row">
+                                                                                        <div className="profile-img">
+                                                                                            <img src={list.profileInfo.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
                                                                                         </div>
-                                                                                        <div className="is-certified">
-                                                                                            {
-                                                                                                list.isCertified && (
-                                                                                                    <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                                                                                )
-                                                                                            }
+                                                                                        <div className="ml-3 profile-name">
+                                                                                            {list.profileInfo.name}
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-
-                                                                                <div className="target-info p-2">
-                                                                                    <div className="py-2">
-                                                                                        <Slider disabled className="slider-program-dh" value={list.amount} max={list.targetAmount} />
-                                                                                    </div>
-                                                                                    <div className="d-flex flex-row justify-content-between py-2">
-                                                                                        <div className="amount">{'Rp. ' + (list.amount).toLocaleString()}</div>
-                                                                                        <div className="target-amount">{`Target Rp. ${(list.targetAmount).toLocaleString()}`}</div>
+                                                                                    <div className="is-certified">
+                                                                                        {
+                                                                                            list.isCertified && (
+                                                                                                <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                                                                            )
+                                                                                        }
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
 
-                                                                                <div className="donation-info p-2">
-                                                                                    <div className="d-flex flex-row justify-content-between">
-                                                                                        <div className="d-flex flex-row justify-content-arround">
-                                                                                            <div className="donatur-icon">
-                                                                                                <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
-                                                                                            </div>
-                                                                                            <div className="donatur-amount px-2">
-                                                                                                {(list.donaturAmount).toLocaleString() || 0}
-                                                                                            </div>
-                                                                                            <div className="donasi">
-                                                                                                Donasi
+                                                                            <div className="target-info p-2">
+                                                                                <div className="py-2">
+                                                                                    <Slider disabled className="slider-program-dh" value={list.amount} max={list.targetAmount} />
                                                                                 </div>
-                                                                                        </div>
-                                                                                        <div className="d-flex flex-row justify-content-arround">
-                                                                                            <div className="cart">
-                                                                                                <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
-                                                                                            </div>
-                                                                                            <div className="days-amount px-2">
-                                                                                                {list.dayAmount}
-                                                                                            </div>
-                                                                                            <div className="days">
-                                                                                                Hari
+                                                                                <div className="d-flex flex-row justify-content-between py-2">
+                                                                                    <div className="amount">{'Rp. ' + (list.amount).toLocaleString()}</div>
+                                                                                    <div className="target-amount">{`Target Rp. ${(list.targetAmount).toLocaleString()}`}</div>
                                                                                 </div>
+                                                                            </div>
+
+                                                                            <div className="donation-info p-2">
+                                                                                <div className="d-flex flex-row justify-content-between">
+                                                                                    <div className="d-flex flex-row justify-content-arround">
+                                                                                        <div className="donatur-icon">
+                                                                                            <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                                         </div>
+                                                                                        <div className="donatur-amount px-2">
+                                                                                            {(list.donaturAmount).toLocaleString() || 0}
+                                                                                        </div>
+                                                                                        <div className="donasi">
+                                                                                            Donasi
+                                                                                </div>
+                                                                                    </div>
+                                                                                    <div className="d-flex flex-row justify-content-arround">
+                                                                                        <div className="cart">
+                                                                                            <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                                                                        </div>
+                                                                                        <div className="days-amount px-2">
+                                                                                            {list.dayAmount}
+                                                                                        </div>
+                                                                                        <div className="days">
+                                                                                            Hari
+                                                                                </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                </div>
                                                             </Link>
                                                         </div>
                                                     )

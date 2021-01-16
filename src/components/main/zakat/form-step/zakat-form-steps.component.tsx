@@ -1,5 +1,5 @@
 import MainComponent from "@Components/layout/main/main-layout.component";
-import { Steps } from "antd";
+import { Popover, Steps } from "antd";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import CalculateZakat from "./calculate-zakat/calculate-zakat.component";
@@ -67,7 +67,7 @@ const ZakatFormSteps = () => {
                         <div className="pl-3 d-flex flex-column">
                             <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
                             <Link href="#">
-                                <a className="desc">Pelajajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
+                                <a className="desc">Pelajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
                             </Link>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ const ZakatFormSteps = () => {
                                 Percayakan Zakat Anda pada Kami
                             </div>
                             <div className="description py-3">
-                            Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
+                                Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
                             </div>
                             <Messages ref={msgPrivacy} className="messages-dh-privacy" />
                         </div>
@@ -149,7 +149,7 @@ const ZakatFormSteps = () => {
                                                             Total Zakat Anda
                                                         </div>
                                                         <div className="description">
-                                                        Berikut ringkasan informasi yang Anda berikan dan berapa banyak Zakat yang perlu dibayarkan
+                                                            Berikut ringkasan informasi yang Anda berikan dan berapa banyak Zakat yang perlu dibayarkan
                                                         </div>
                                                     </div>
                                                     <div className="flyover">
@@ -191,7 +191,9 @@ const ZakatFormSteps = () => {
                                                                         <div className="label">
                                                                             Nisab hari ini
                                                                         </div>
-                                                                        <img src="/images/icons/tooltip.svg" alt="" className="img-fluid" />
+                                                                        <Popover content={'Nilai nisab adalah sebesar 20 Dinar emas (85 gram) dalam satu tahun'} title="Nisab">
+                                                                            <img src="/images/icons/tooltip.svg" alt="" className="img-fluid" />
+                                                                        </Popover>
                                                                     </div>
                                                                     <div className="amount warn">
                                                                         Rp {nisabAmount ? (nisabAmount).toLocaleString() : 0}
@@ -267,7 +269,7 @@ const ZakatFormSteps = () => {
                                                     <div className="row py-3">
                                                         <div className="col-12">
                                                             <div className="the-footer">
-                                                                Still have questions? Email us on zakatquery@darulhikam.com and we’d be happy to help with any questions you have.
+                                                                Masih memiliki pertanyaan? Hubungi kami di lazisdarulhikam@gmail.com
                                                             </div>
                                                         </div>
                                                     </div>

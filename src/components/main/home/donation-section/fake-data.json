@@ -3,17 +3,17 @@
         {
             "amount": "70",
             "currency": "ribu",
-            "title": "Total Campaign"
+            "title": "Jumlah mustahik/tahun"
         },
         {
             "amount": "89",
             "currency": "miliar",
-            "title": "Donasi Terkumpul"
+            "title": " Jumlah mustahik/bulan"
         },
         {
             "amount": "265",
             "currency": "ribu",
-            "title": "Donasi Terkumpul"
+            "title": "Total Donasi Terkumpu"
         }
     ]
 }

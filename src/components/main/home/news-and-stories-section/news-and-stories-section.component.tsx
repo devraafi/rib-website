@@ -21,7 +21,6 @@ export default class NewsSection extends React.Component<any, any> {
                     </div>
                     <div className="col-auto py-3 m-auto">
                         <div className="description">
-                            Amet vitae, risus fringilla convallis lorem metus .
                         </div>
                     </div>
                     <div className="row justify-content-center py-3">

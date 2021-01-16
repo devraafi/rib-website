@@ -1,11 +1,21 @@
 {
+    "hide": [
+        {
+            "label": "Laporan",
+            "link": "/laporan",
+            "subMenu": []
+        },
+        {
+            "label": "Program",
+            "link": "/program",
+            "subMenu": []
+        }
+    ],
     "menus": [
         {
             "label": "Zakat",
             "link": "/zakat",
-            "subMenu": [
-                
-            ]
+            "subMenu": []
         },
         {
             "label": "Tentang Kami",
@@ -18,19 +28,8 @@
             "subMenu": []
         },
         {
-            "label": "Program",
-            "link": "/program",
-            "subMenu": [
-            ]
-        },
-        {
             "label": "Kontak",
             "link": "/kontak",
-            "subMenu": []
-        },
-        {
-            "label": "Laporan",
-            "link": "/laporan",
             "subMenu": []
         }
     ]

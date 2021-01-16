@@ -4,7 +4,7 @@ import fakeData from './fake-data.json'
 const DonationSection = () => {
     const [datas, setData] = useState(fakeData);
     return <div className="container-fluid donation-section py-5">
-        <div className="col-lg-4 m-auto header">
+        <div className="col-lg-6 m-auto header">
             Dengan dukungan dan kemurahan hati Anda, kami dapat membantu meringankan beban mereka
         </div>
         <div className="row container-lg container-fluid m-auto py-4">
