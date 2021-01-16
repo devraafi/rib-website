@@ -6,7 +6,6 @@ import ProgramList from "./list/program-list.component";
 const ProgramComponent = () => {
     const router = useRouter()
     const { list } = router.query;
-    console.log(router);
     
     return <MainComponent
         title="Zakat Lazis Darul Hikam"

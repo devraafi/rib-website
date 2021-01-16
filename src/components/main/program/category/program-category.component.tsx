@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import data from './category.json';
 const ProgramCategory = () => {
@@ -25,7 +26,9 @@ const ProgramCategory = () => {
                                     }
                                 </div>
                                 <div className="footer">
-                                    <button className="btn btn-dh-next">Lihat Program</button>
+                                    <Link href={`?list=true`}>
+                                        <button className="btn btn-dh-next">Lihat Program</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

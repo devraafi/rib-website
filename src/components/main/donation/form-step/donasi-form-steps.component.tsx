@@ -74,7 +74,8 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
 
     function onSubmit() {
         // onStepChange(step + 1);
-        window ? window.snap.pay('<snap-token>') : '';
+        const wind: any = window;
+        wind ? wind.snap.pay('<snap-token>') : '';
     }
 
     useEffect(() => {
@@ -130,7 +131,7 @@ const DonasiFormStep = (props: { step: number, total?: number }) => {
                                                 <div className="d-flex flex-row justify-content-between">
                                                     <div>Total Donasi</div>
                                                     <div className="amount">
-                                                        Rp. {(props.total).toLocaleString()}
+                                                        Rp. {(props.total ? props.total : 0).toLocaleString()}
                                                     </div>
                                                 </div>
                                             </div>
