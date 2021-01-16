@@ -1,0 +1,49 @@
+.contact-us-page {
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            #ffffff 30%,
+            #ffffff 50%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        url("/images/backgrounds/islamic-full.svg");
+
+    .header-contact-us {
+        .title-contact-us {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 42px;
+            line-height: 120%;
+            color: #7bb142;
+        }
+
+        .description-contact-us {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            color: #62717d;
+        }
+    }
+    .form-contact-us {
+        .floating-input-dh {
+            .label-contact-us {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 150%;
+                text-align: center;
+                color: #679437;
+            }
+            input {
+                border: none;
+                box-shadow: none !important;
+                border-bottom: 0.5px solid #8896a2;
+                border-radius: 0%;
+            }
+        }
+    }
+}

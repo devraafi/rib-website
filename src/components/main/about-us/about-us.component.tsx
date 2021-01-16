@@ -9,7 +9,6 @@ const data: any = aboutUsJson;
 const { vision } = data;
 const { mission } = data;
 const { meetTheBoard } = data;
-declare var google: any;
 const AboutUsComponent = () => (
     <React.Fragment>
         <MainComponent
