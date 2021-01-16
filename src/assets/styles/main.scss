@@ -104,3 +104,32 @@ input[type="number"] {
         color: #00a88b;
     }
 }
+
+.dh-arrow {
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    background: #e9f3df;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &::before {
+        content: "" !important;
+    }
+
+    &.next-about {
+        bottom: 0 !important;
+        top: auto !important;
+        right: 50px !important;
+        left: auto !important;
+    }
+    
+    &.prev-about {
+        bottom: 0 !important;
+        top: auto !important;
+        right: 70px !important;
+        left: auto !important;
+    }
+}

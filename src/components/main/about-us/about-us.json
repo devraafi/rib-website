@@ -1,0 +1,54 @@
+{
+    "title": "Ambil tindakan, bantu sesama",
+    "desc": [
+        "LAZIS Darul Hikam merupakan metamorfosa dari Lawazis (Lembaga Amil Wakaf, Zakat, Infaq dan Shedaqah) Darul Hikam yang sudah berkiprah cukup lama. Lawazis di bawah kepemimpinan H. Agus Sumarno memberikan landasan pengelolaan zakat, infak dan shadaqah terutama di internal Yayasan Darul Hikam.",
+        "Seiring dengan perkembangan, Ketua Yayasan Darul Hikam Dr. Ir. H. Sodik Mudjahid, M. Sc mempunyai impian lembaga philantropi ini lebih berkembang untuk menghimpun dana umat, membantu dakwah dan pemberdayaan umat lebih besar dan luas lagi. Sehingga dibentuklah LAZIS Darul Hikam yang berada dibawah Direktorat Dakwah dan Pemberdayaan Umat (DPU) pada akhir Tahun 2019.",
+        "LAZIS Darul Hikam dipimpin oleh Bapak Hadi Gumilar terhitung sejak tanggal 6 Januari 2020. Dengan Akta Perubahan Yayasan No 03 Tanggal 20 Januari 2016. LAZIS Darul Hikam berdiri berdasarkan lima core program yaitu Peduli Pendidikan, Peduli Umat, Peduli Lingkungan, Peduli Kesehatan dan Program Khusus. "
+    ],
+    "vision": {
+        "label": "Vision",
+        "list": "Menjadi lembaga pengelola ZIS bertaraf Internasional yang profesional dan amanah"
+    },
+    "mission": {
+        "label": " Mission",
+        "list": [
+            {
+                "mission": "Membangun sistem manajemen zakat terkini",
+                "image": "/images/icons/mission/charity.svg"
+            },
+            {
+                "mission": "Membuat program pemberdayaan masyarakat yang berkesinambungan",
+                "image": "/images/icons/mission/unite.svg"
+            },
+            {
+                "mission": "Membangun hubungan seluas luasnya",
+                "image": "/images/icons/mission/muslim.svg"
+            },
+            {
+                "mission": "Meningkatkan kemampuan SDM lebih kompeten",
+                "image": "/images/icons/mission/parents.svg"
+            }
+        ]
+    },
+    "meetTheBoard": {
+        "label": "Meet The Board",
+        "list": [
+            {
+                "position": "Dewan Pembina",
+                "name": "Dr. Ir. H. Sodik Mujahid, M.Sc."
+            },
+            {
+                "position": "Dewan Syariah",
+                "name": "Prof. Dr. Hj. Neni Sri Imaniyati, S.H.,M.H."
+            },
+            {
+                "position": "Dewan Penasihat",
+                "name": "H. Dedi Ahmad Santika"
+            },
+            {
+                "position": "Direktur",
+                "name": "Hadi Gumilar"
+            }
+        ]
+    }
+}

@@ -1,0 +1,154 @@
+.about-us-page {
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            #ffffff 40%,
+            #ffffff 50%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        url("/images/backgrounds/islamic-full.svg");
+
+    .header-about-us {
+        .title-about-us {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 120%;
+            color: #7bb142;
+        }
+
+        .description-about-us {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 150%;
+            color: #62717d;
+        }
+    }
+
+    .vision-mision-board-section {
+        .title {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 110%;
+            color: #31383f;
+            border-bottom: 1px solid #bddb9e;
+        }
+
+        .description {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 150%;
+            text-align: center;
+            color: #0c3543;
+            .bit {
+                font-size: 17px;
+            }
+        }
+    }
+
+    .maps-section {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        .card-connect {
+            position: absolute;
+            background: #ffffff;
+            box-shadow: 0px 6.12935px 13.791px -4.59701px rgba(24, 39, 75, 0.12),
+                0px 9.19403px 32.1791px -3.06468px rgba(24, 39, 75, 0.12);
+            border-radius: 20px;
+            max-width: 250px;
+            z-index: 1;
+            left: 5%;
+            top: 5%;
+            .body-connect {
+                border-radius: 20px 20px 0 0;
+                .title-connect {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 110%;
+                    color: #151e0b;
+                }
+
+                .field {
+                    margin-bottom: 15px;
+                    .sub-title {
+                        font-family: "FiraSans";
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 13px;
+                        line-height: 21px;
+                        color: #91c35d;
+                    }
+
+                    .sub {
+                        font-family: "FiraSans";
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12.2587px;
+                        line-height: 21px;
+                        color: #0c3543;
+                    }
+                }
+            }
+
+            .footer-connect {
+                border-radius: 0 0 20px 20px;
+                cursor: pointer;
+                width: 100;
+                text-align: center;
+                background: #e9f3df;
+                font-weight: 500;
+                font-size: 12.2587px;
+                line-height: 21px;
+                color: #0c3543;
+            }
+        }
+    }
+
+    .card-meet-the-board {
+        background: #ffffff;
+        box-shadow: 0px 6.83128px 15.3704px -5.12346px rgba(24, 39, 75, 0.12),
+            0px 10.2469px 35.8642px -3.41564px rgba(24, 39, 75, 0.12);
+        border-radius: 20px;
+        max-height: 356px;
+        .left {
+            border-radius: 20px 0px 0px 20px;
+            width: 55%;
+            img {
+                height: 100%;
+                border-radius: 20px 0px 0px 20px;
+                width: 100%;
+            }
+        }
+
+        .right {
+            width: 45%;
+            .position {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 24px;
+                color: #000000;
+            }
+
+            .name {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 110%;
+                color: #000000;
+            }
+        }
+    }
+}
