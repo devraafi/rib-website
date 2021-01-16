@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import _ from 'lodash';
-import data from './file.json'
 
-const BannerDonationSection = () => {
+const BannerDonationSection = (props: any) => {
+    const { data } = props;
     const [newData, setData] = useState(data)
     return (
         <div className="container-fluid banner-section">
             <div className="banner-img-wrapper">
-                <img src={newData.imageUrl} alt="" srcSet="" />
+                {(data && data.imageUrl) ?
+                    <img src={data ? data.imageUrl : ''} alt="" className="imooge" srcSet="" />
+                    : <div className="imooge"></div>
+                }
                 <div className="title p-4">
-                    {newData.title}
+                    {data.name || 'Program'}
                 </div>
             </div>
         </div>

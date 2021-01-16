@@ -37,7 +37,8 @@
             border-radius: 35px;
             position: relative;
             margin: auto;
-            img {
+            .imooge {
+                background: #a7cf7d;
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -45,10 +46,25 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                background: #E9F3DF;
             }
         }
     }
     .content-section {
+        .detail-program-desc {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                font-family: "Poppins" !important;
+            }
+
+            p,
+            label {
+                font-family: "FiraSans" !important;
+            }
+        }
         .new-info {
             .box-info {
                 display: flex;
@@ -201,6 +217,7 @@
             border-top-left-radius: 15px;
             width: 100%;
             height: 50%;
+            background: #E9F3DF;
             img {
                 border-top-right-radius: 15px;
                 border-top-left-radius: 15px;

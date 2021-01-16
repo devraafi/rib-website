@@ -1,5 +1,6 @@
+import { Loading } from '@Components/basics/loading/loading.component';
 import MainComponent from '@Components/layout/main/main-layout.component';
-import { Steps } from 'antd';
+import { Spin, Steps } from 'antd';
 import Link from 'antd/lib/typography/Link';
 import { Step } from 'rc-steps';
 import React, { useEffect, useState } from 'react';
@@ -13,8 +14,9 @@ import PaymentMethodStep from './payment-method/payment-method.component';
 const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices;
 
-const DonasiFormStep = (props: { step: number, total?: number, id: string }) => {
+const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any }) => {
     const [step, onStepChange] = useState(props.step);
+    const [spin, setSpin] = useState(false);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Detail Pembayaran'];
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
@@ -22,19 +24,6 @@ const DonasiFormStep = (props: { step: number, total?: number, id: string }) => 
         phoneOrEmail: '',
         showAsAnonymous: false
     });
-
-    const danation = {
-        title: 'Tebar 1000 Sejadah Untuk Masjid Pelosok',
-        amount: 1600000000,
-        targetAmount: 2500000000,
-        user: {
-            name: 'Jon Snow Foundation',
-            imageUrl: '/images/user/exp/1.svg',
-            isCertified: true
-        },
-        donaturAmount: 1020,
-        dayAmount: 65
-    };
 
     const StepNav = () => (
         <div id="navbar-dh" className="d-none d-md-flex">
@@ -89,8 +78,8 @@ const DonasiFormStep = (props: { step: number, total?: number, id: string }) => 
     }
 
     function onSubmit() {
+        setSpin(true);
         const wind: any = window;
-
         const payload = {
             programId: props.id,
             amount: props.total || 0,
@@ -99,9 +88,11 @@ const DonasiFormStep = (props: { step: number, total?: number, id: string }) => 
 
         donationRestService.transactionMidtransSnap(payload).pipe(
             catchError(err => {
+                setSpin(false);
                 return throwError(err);
             })
         ).subscribe((res: any) => {
+            setSpin(false);
             document.location.href = res.redirect_url;
         });
     }
@@ -117,86 +108,87 @@ const DonasiFormStep = (props: { step: number, total?: number, id: string }) => 
             pageId="donasi-step-page-dh"
         // customNav={<StepNav />}
         >
-
-            <div className="container-fluid p-0 donasi-form-steps">
-                <div className="container-lg container-fluid py-5 header-section">
-                    <div className="container-lg container-fluid form-section">
-                        {
-                            step == (1 || 2) ?
-                                <div className="row" style={{ minHeight: '95vh' }}>
-                                    <div className="col-lg-7 col-12">
-                                        <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} />
-                                    </div>
-
-                                    <div className="col-lg-5 col-12 position-relative">
-                                        <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
-                                            <div className="header pb-3 pt-1">
-                                                Ringkasan Donasi
+            <Spin indicator={<Loading />} spinning={spin}>
+                <div className="container-fluid p-0 donasi-form-steps">
+                    <div className="container-lg container-fluid py-5 header-section">
+                        <div className="container-lg container-fluid form-section">
+                            {
+                                step == (1 || 2) ?
+                                    <div className="row" style={{ minHeight: '95vh' }}>
+                                        <div className="col-lg-7 col-12">
+                                            <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} />
                                         </div>
-                                            <div className="title py-1">
-                                                {danation.title}
-                                            </div>
-                                            <div className="profile-info py-3">
-                                                <div className="d-flex flex-row justify-content-between">
-                                                    <div className="d-flex flex-row">
-                                                        <div className="profile-img">
-                                                            <img src={danation.user.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
+
+                                        <div className="col-lg-5 col-12 position-relative">
+                                            <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
+                                                <div className="header pb-3 pt-1">
+                                                    Ringkasan Donasi
+                                        </div>
+                                                <div className="title py-1">
+                                                    {props.data.name || 'Program'}
+                                                </div>
+                                                <div className="profile-info py-3">
+                                                    <div className="d-flex flex-row justify-content-between">
+                                                        <div className="d-flex flex-row">
+                                                            <div className="profile-img">
+                                                                <img src={props.data.user ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
+                                                            </div>
+                                                            <div className="ml-3 profile-name">
+                                                                {props.data.user ? props.data.user.name : 'Anonim'}
+                                                            </div>
                                                         </div>
-                                                        <div className="ml-3 profile-name">
-                                                            {danation.user.name}
+                                                        <div className="is-certified">
+                                                            {
+                                                                (props.data.user && props.data.user.isCertified) && (
+                                                                    <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                                                )
+                                                            }
                                                         </div>
-                                                    </div>
-                                                    <div className="is-certified">
-                                                        {
-                                                            danation.user.isCertified && (
-                                                                <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                                            )
-                                                        }
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="total-info py-3">
-                                                <div className="d-flex flex-row justify-content-between">
-                                                    <div>Total Donasi</div>
-                                                    <div className="amount">
-                                                        Rp. {(props.total ? props.total : 0).toLocaleString()}
+                                                <div className="total-info py-3">
+                                                    <div className="d-flex flex-row justify-content-between">
+                                                        <div>Total Donasi</div>
+                                                        <div className="amount">
+                                                            Rp. {(props.total ? props.total : 0).toLocaleString()}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="py-3">
-                                                <button className="btn btn-dh-secondary w-100 rounded" onClick={() => onSubmit()}>Bayar</button>
-                                            </div>
-                                            <div className="row py-3 donate-price">
-                                                <div className="col-12 pt-4 share">
-                                                    <div className="text-center py-2">Sebarkan Program Melalui</div>
-                                                    <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
+                                                <div className="py-3">
+                                                    <button className="btn btn-dh-secondary w-100 rounded" onClick={() => onSubmit()}>Bayar</button>
+                                                </div>
+                                                <div className="row py-3 donate-price">
+                                                    <div className="col-12 pt-4 share">
+                                                        <div className="text-center py-2">Sebarkan Program Melalui</div>
+                                                        <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
+                                                            <div className="d-flex">
+                                                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                :
-                                <DonasiPaymentDetail total={100000} />
-                        }
+                                    :
+                                    <DonasiPaymentDetail total={100000} />
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Spin>
 
         </MainComponent>
     )

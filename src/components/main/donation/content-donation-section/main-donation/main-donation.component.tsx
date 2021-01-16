@@ -19,6 +19,7 @@ const danation = {
 const priceList = [20000, 50000, 100000, 250000, 500000, 1000000];
 const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
+    const { data } = props;
     const [donateAmount, setDonateAmount] = useState(0);
     function handleClick() {
         donationService.setTotal(donateAmount);
@@ -55,31 +56,33 @@ const MainDonation = (props: any) => {
         <div className="main-donation m-auto p-3" id="main-donation">
             <div className="title-support px-2 py-3">
                 Dukung Program Ini
-                    </div>
+            </div>
             <div className="d-flex flex-column program-wrapper">
                 <div className="program-info p-3">
                     <div className="target-info p-2">
                         <div className="py-2">
-                            <Slider disabled className="slider-program-dh" value={danation.amount} max={danation.targetAmount} />
+                            <Slider disabled className="slider-program-dh" value={data.currentAmount} max={data.targetAmount} />
                         </div>
                         <div className="d-flex flex-row justify-content-between py-2">
-                            <div className="amount text-left">{'Rp. ' + (danation.amount).toLocaleString()}</div>
-                            <div className="target-amount">{`Target Rp. ${(danation.targetAmount).toLocaleString()}`}</div>
+                            <div className="amount text-left">{'Rp. ' + (data.currentAmount).toLocaleString()}</div>
+                            <div className="target-amount">{`Target Rp. ${(data.targetAmount).toLocaleString()}`}</div>
                         </div>
                     </div>
                     <div className="profile-info py-3 px-2">
                         <div className="d-flex flex-row justify-content-between">
                             <div className="d-flex flex-row">
                                 <div className="profile-img">
-                                    <img src={danation.user.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
+                                    {
+                                        <img src={data.user ? data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
+                                    }
                                 </div>
                                 <div className="ml-3 profile-name">
-                                    {danation.user.name}
+                                    {data.user ? data.user.name : 'Anonim'}
                                 </div>
                             </div>
                             <div className="is-certified">
                                 {
-                                    danation.user.isCertified && (
+                                    data.isPartnerProgram && (
                                         <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     )
                                 }
@@ -94,7 +97,7 @@ const MainDonation = (props: any) => {
                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
                                 <div className="donatur-amount px-2">
-                                    {(danation.donaturAmount).toLocaleString() || 0}
+                                    {(data.donaturAmount || 0).toLocaleString() || 0}
                                 </div>
                                 <div className="donasi">
                                     Donasi
@@ -105,11 +108,11 @@ const MainDonation = (props: any) => {
                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
                                 <div className="days-amount px-2">
-                                    {danation.dayAmount}
+                                    {data.dayAmount || 0}
                                 </div>
                                 <div className="days">
                                     Hari
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

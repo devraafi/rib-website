@@ -67,7 +67,7 @@ export default class BannerSection extends React.Component<any, any> {
                 <div className="container banner-section py-5 px-4">
                     <div className="row justify-content-center justify-content-lg-start col-lg-7 px-0">
                         <div className="text-date col-12 text-center text-lg-left">
-                            {moment(this.state.bannerData).format('M YY')}
+                            {moment(new Date).format('MMMM YYYY')}
                         </div>
                         <div className="title col-12 text-center text-lg-left">
                             Ambil tindakan, <br /> bantu sesama

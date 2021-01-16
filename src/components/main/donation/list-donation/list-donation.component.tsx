@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Skeleton } from 'antd';
 
 const filters = [
     'Bandung', 'Jakarta', 'Kesehatan', 'Pendidikan', 'Lingkungan', 'Umat', 'More Filters'
@@ -15,6 +16,7 @@ const filters = [
 const donationRestService: DonationRestServices = new DonationRestServices;
 
 const DonationList = () => {
+    const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const [response, setResponse] = useState<any>({})
     useEffect(() => {
         donationRestService.loadProgram().pipe(
@@ -42,7 +44,7 @@ const DonationList = () => {
                 </div>
                 <div className="d-flex flex-column filter">
                     <div className="header-small">
-                        100+ Program Donasi
+                        {response.total || 0} Program Donasi
                 </div>
                     <div className="header py-3">
                         Bantu umat dan lingkungan sekitar yang membutuhkan
@@ -72,7 +74,7 @@ const DonationList = () => {
                             </div>
                         </div> */}
                         {
-                            (response && response.data) && response.data.map((list: any, i: number) => (
+                            (response && response.data) ? response.data.map((list: any, i: number) => (
                                 <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
                                     <Link href={`/donasi/detail?id=${list._id}`}>
                                         <div className="card-program">
@@ -92,12 +94,12 @@ const DonationList = () => {
                                                         <div className="d-flex flex-row justify-content-between">
                                                             <div className="d-flex flex-row">
                                                                 <div className="profile-img">
-                                                                    {list.profileInfo &&
-                                                                        <img src={list.profileInfo.imageUrl} alt="" className="lazyload blur-up lazyloaded" />
+                                                                    {
+                                                                        <img src={list.profileInfo ? list.profileInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                                     }
                                                                 </div>
                                                                 <div className="ml-3 profile-name">
-                                                                    {list.profileInfo ? list.profileInfo.name : 'No name boi'}
+                                                                    {list.profileInfo ? list.profileInfo.name : 'Anonim'}
                                                                 </div>
                                                             </div>
                                                             <div className="is-certified">
@@ -131,7 +133,7 @@ const DonationList = () => {
                                                                 </div>
                                                                 <div className="donasi">
                                                                     Donasi
-                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="cart">
@@ -152,6 +154,12 @@ const DonationList = () => {
                                     </Link>
                                 </div>
                             ))
+                                :
+                                fakeLoading.map((li: any, i: number) => (
+                                    <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
+                                        <Skeleton.Input active className="w-100 card-program" />
+                                    </div>
+                                ))
                         }
                     </div>
                 </div>

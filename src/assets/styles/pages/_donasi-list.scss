@@ -55,13 +55,15 @@
             .card-program {
                 box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
                 border-radius: 15px;
+                min-height: 200px;
                 cursor: pointer;
                 .program-image {
                     border-top-right-radius: 15px;
                     border-top-left-radius: 15px;
                     width: 100%;
                     height: 50%;
-                    min-height: 200px;
+                    background: #E9F3DF;
+                    min-height: 150px;
                     img {
                         border-top-right-radius: 15px;
                         border-top-left-radius: 15px;
@@ -79,6 +81,9 @@
                         font-size: 16px;
                         line-height: 110%;
                         color: #0c3543;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
                     }
                     .profile-info {
                         .profile-img {
