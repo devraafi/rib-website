@@ -160,9 +160,9 @@ const PrevArrow = (props: any) => {
 
 const MeetTheBoardSlide = (props: { data: [] }) => {
     const settings = {
-        speed: 500,
+        speed: 1000,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
     };
 
     return <div className="card-meet-the-board w-100 d-flex flex-row mt-5">
@@ -171,7 +171,7 @@ const MeetTheBoardSlide = (props: { data: [] }) => {
         </div>
         <div className="right d-flex align-item-center justify-content-center align-items-center">
             {
-                <Slider {...settings} autoplay autoplaySpeed={1000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
+                <Slider infinite {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
                     {
                         props.data.map((list: any, i: any) => (
                             <>
