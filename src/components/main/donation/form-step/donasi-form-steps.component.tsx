@@ -125,21 +125,21 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                                     Ringkasan Donasi
                                         </div>
                                                 <div className="title py-1">
-                                                    {props.data.name || 'Program'}
+                                                    {props.data ? props.data.name : 'Program'}
                                                 </div>
                                                 <div className="profile-info py-3">
                                                     <div className="d-flex flex-row justify-content-between">
                                                         <div className="d-flex flex-row">
                                                             <div className="profile-img">
-                                                                <img src={props.data.user ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
+                                                                <img src={(props.data && props.data.user) ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                             </div>
                                                             <div className="ml-3 profile-name">
-                                                                {props.data.user ? props.data.user.name : 'Anonim'}
+                                                                {(props.data && props.data.user) ? props.data.user.name : 'Anonim'}
                                                             </div>
                                                         </div>
                                                         <div className="is-certified">
                                                             {
-                                                                (props.data.user && props.data.user.isCertified) && (
+                                                                (props.data && props.data.user.isCertified) && (
                                                                     <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                                                 )
                                                             }
