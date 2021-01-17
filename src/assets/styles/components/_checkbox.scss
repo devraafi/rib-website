@@ -19,3 +19,32 @@
         }
     }
 }
+
+.ant-checkbox-wrapper {
+    &:hover {
+        .ant-checkbox-inner {
+            border-color: #91c35d;
+        }
+    }
+    &.checkbox-dh {
+        .ant-checkbox {
+            border-radius: 3px;
+            box-shadow: none;
+            &:hover {
+                .ant-checkbox-inner {
+                    border-color: #91c35d;
+                }
+            }
+            &.ant-checkbox-checked {
+                .ant-checkbox-inner {
+                    border-color: #91c35d !important;
+                    background: #91c35d !important;
+                }
+                &::after {
+                    border-color: #91c35d !important;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}

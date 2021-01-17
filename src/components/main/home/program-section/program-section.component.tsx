@@ -20,7 +20,7 @@ const ProgramSection = () => {
             })).subscribe((res: any) => {
                 setResponse(res)
             })
-    })
+    }, [])
     return <div className="container program-section py-5">
         <div className="col-lg-6 m-auto header">
             Mari bantu dan ringankan beban mereka yang membutuhkan

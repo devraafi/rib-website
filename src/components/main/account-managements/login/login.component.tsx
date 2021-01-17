@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { EyeIcon } from '@Components/icons/icons';
 import { AccountMangeRestServices } from '../account-managements-rest.services';
-import { catchError } from 'rxjs/operators';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('https://staging-lazis-dh.herokuapp.com/');
 const LoginComponent = (props: {
     onLogin?: (val: any) => void;
@@ -16,8 +15,8 @@ const LoginComponent = (props: {
         <div className="login-wrapper">
             <div className="header-section">
                 <img src="/images/logos/dh-logo.svg" alt="" className="img-fluid mb-2" />
-                <div className="title my-2">Welcome back,</div>
-                <div className="text">Doesn’t have an account yet?
+                <div className="title my-2">Selamat datang,</div>
+                <div className="text">Belum memiliki akun?
                     <Link href="#">
                         <a href="" className="text link"> Sign up</a>
                     </Link>
@@ -25,13 +24,14 @@ const LoginComponent = (props: {
             </div>
             <div className="form-section mt-4">
                 <Form
-                    initialValues={{ remember: true }}
+                    initialValues={{ remember: false }}
                     onFinish={onFinish}
                 >
                     <div className="row">
                         <div className="col-12 my-2">
                             <Form.Item
                                 name="username"
+                                className="m-0"
                                 rules={
                                     [{
                                         required: true, message: 'Harap ini username atau email!'
@@ -49,6 +49,7 @@ const LoginComponent = (props: {
                         <div className="col-12 my-2">
                             <Form.Item
                                 name="password"
+                                className="m-0"
                                 rules={
                                     [{
                                         required: true, message: 'Harap ini password!'
@@ -68,11 +69,24 @@ const LoginComponent = (props: {
                                 />
                             </Form.Item>
                         </div>
+                        <div className="col-6 text align-self-center">
+                            <Form.Item
+                                name="remember"
+                                className="m-0"
+                            >
+                                <Checkbox className="checkbox-dh text">Ingat Saya</Checkbox>
+                            </Form.Item>
+                        </div>
+                        <div className="col-6 text text-right align-self-center">
+                            <Link href="#">
+                                <a href="" className="text link"> Lupa Password</a>
+                            </Link>
+                        </div>
                         <div className="col-12 my-2">
                             <Form.Item>
                                 <Button htmlType="submit" className="btn btn-dh-primary btn-block">
                                     Log in
-                        </Button>
+                                </Button>
                             </Form.Item>
                         </div>
                     </div>

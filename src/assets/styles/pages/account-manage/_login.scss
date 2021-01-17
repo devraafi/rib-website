@@ -17,27 +17,27 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        .title {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 110%;
+            color: #101315;
+        }
+        .text {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 120%;
+            color: #8896a2;
+            &.link {
+                color: #91c35d;
+            }
+        }
         .header-section {
             align-self: start;
-            .title {
-                font-family: "Poppins";
-                font-style: normal;
-                font-weight: 500;
-                font-size: 24px;
-                line-height: 110%;
-                color: #101315;
-            }
-            .text {
-                font-family: "FiraSans";
-                font-style: normal;
-                font-weight: normal;
-                font-size: 12px;
-                line-height: 120%;
-                color: #8896a2;
-                &.link {
-                    color: #91c35d;
-                }
-            }
         }
 
         .footer-section {
