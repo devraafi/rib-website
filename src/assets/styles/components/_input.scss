@@ -54,10 +54,16 @@
     }
 }
 
-.ant-input-affix-wrapper {
+.ant-input-affix-wrapper,
+.ant-input {
+    &.input-account,
     &.input-login-email,
     &.input-login-password {
         border: 1px solid #dddddd;
         border-radius: 10px;
     }
+}
+
+.plus62 {
+    color: #c4cbd1;
 }

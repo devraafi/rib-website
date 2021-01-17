@@ -1,17 +1,27 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { EyeIcon } from '@Components/icons/icons';
 import { AccountMangeRestServices } from '../account-managements-rest.services';
+import { NextSeo } from 'next-seo';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('https://staging-lazis-dh.herokuapp.com/');
 const LoginComponent = (props: {
     onLogin?: (val: any) => void;
 }) => {
+    const [registerData, setData] = useState<any>(null);
+
+    useEffect(() => {
+        localStorage.clear();
+    }, []);
+
     function onFinish(val: any) {
         props.onLogin ? props.onLogin(val) : '';
-    }
+    };
 
     return <div id="login-page-dh">
+        <NextSeo
+            title="Login | Lazih Darul Hikam"
+        />
         <div className="login-wrapper">
             <div className="header-section">
                 <img src="/images/logos/dh-logo.svg" alt="" className="img-fluid mb-2" />
@@ -24,7 +34,11 @@ const LoginComponent = (props: {
             </div>
             <div className="form-section mt-4">
                 <Form
-                    initialValues={{ remember: false }}
+                    initialValues={{ 
+                        remember: false,
+                        username: 'testing-user@user.id',
+                        password: 'testinguser'
+                     }}
                     onFinish={onFinish}
                 >
                     <div className="row">
@@ -83,11 +97,9 @@ const LoginComponent = (props: {
                             </Link>
                         </div>
                         <div className="col-12 my-2">
-                            <Form.Item>
-                                <Button htmlType="submit" className="btn btn-dh-primary btn-block">
-                                    Log in
-                                </Button>
-                            </Form.Item>
+                            <Button htmlType="submit" className="btn btn-dh-primary btn-block">
+                                Log in
+                            </Button>
                         </div>
                     </div>
                 </Form>
@@ -95,7 +107,7 @@ const LoginComponent = (props: {
             <div className="footer-section w-100">
                 <div className="d-flex flex-row justify-content-between">
                     <div className="brd"></div>
-                    <div className="text">Or Login with</div>
+                    <div className="text">Atau masuk dengan</div>
                     <div className="brd"></div>
                 </div>
                 <div className="action d-flex flex-row justify-content-between my-2">

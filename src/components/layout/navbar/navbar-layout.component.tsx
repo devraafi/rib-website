@@ -9,9 +9,13 @@ export default class NavbarComponent extends React.Component<any, any> {
         this.navbarRef = React.createRef();
         this.dhvRef = React.createRef();
         this.handleScroll = this.handleScroll.bind(this);
+        this.getItem = this.getItem.bind(this);
+        this.state = {
+            userInfo: null
+        }
     }
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll)
+        window.addEventListener('scroll', this.handleScroll);
     }
 
     handleScroll() {
@@ -24,6 +28,16 @@ export default class NavbarComponent extends React.Component<any, any> {
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll)
+    }
+
+    getItem() {
+        const local = localStorage;
+        const userInfo = local.getItem('userinfo');
+        if (userInfo) {
+            return JSON.parse(userInfo)
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -144,11 +158,20 @@ export default class NavbarComponent extends React.Component<any, any> {
                                         })
                                     }
                                 </ul>
-                                <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
-                                    <Link href="">
-                                        <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
-                                    </Link>
-                                </form>
+                                <div style={{
+                                    zIndex: 1
+                                }} className="z-index-yow form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
+                                    {
+                                        (typeof window !== 'undefined' && this.getItem()) ?
+                                            < Link href="/login">
+                                                <a className="sign-up">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                            </ Link>
+                                            :
+                                            < Link href="/signup">
+                                                <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                            </Link>
+                                    }
+                                </div>
                             </div>
                         </nav>
                     </div>

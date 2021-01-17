@@ -1,14 +1,15 @@
-@import "./login";
 #account-manage-page {
     .main-login-register {
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
         min-height: 100vh;
         .page-wrapper {
             @media (min-width: 992px) {
-                max-width: 880px;
-                min-height: 500px;
+                max-width: 95%;
+                min-height: 610px;
+                height: auto;
             }
             position: relative;
             align-self: center;
@@ -19,6 +20,9 @@
             background: linear-gradient(360deg, #797979 0%, rgba(91, 91, 91, 0) 66.15%),
                 url("/images/backgrounds/account-manage.svg");
             background-blend-mode: multiply, normal;
+            background-size: contain;
+            @import "./login";
+            @import "./signup";
         }
     }
 }
