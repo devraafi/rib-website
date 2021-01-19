@@ -6,7 +6,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
 
 const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, shodaqohChanges?: (amount: number) => void, fidyahChanges?: (amount: number) => void, roundUpChanges?: (amount: number) => void }) => {
-    const [step, onChangeStep] = useState(props.step);
+    const { step } = props;
     const [checkList, onSetChecklist] = useState({
         1: false,
         2: false,
@@ -41,7 +41,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
         onSetChecklist(newCheck)
     }
 
-    const onStepChange = (to: number) => {
+    function onStepChange(to: number) {
         props.stepChanges ? props.stepChanges(to) : null;
     }
     const scrollTo = (i: number, type: string) => {
@@ -166,7 +166,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                         Fidyah/Kaffarah
                     </div>
                     <div className="description text-left w-100">
-                    Tambah pembayaran Fidyah maupun Kaffarah Anda disini
+                        Tambah pembayaran Fidyah maupun Kaffarah Anda disini
                     </div>
                 </div>
 
@@ -198,7 +198,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                         Sadaqah
                     </div>
                     <div className="description text-left">
-                       Tambah pembayaran Sodaqoh Anda disini
+                        Tambah pembayaran Sodaqoh Anda disini
                     </div>
                 </div>
 

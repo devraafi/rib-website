@@ -125,11 +125,38 @@ input[type="number"] {
         right: 50px !important;
         left: auto !important;
     }
-    
+
     &.prev-about {
         bottom: 0 !important;
         top: auto !important;
         right: 70px !important;
         left: auto !important;
+    }
+}
+
+.field-required {
+    &::after {
+        content: "*";
+        color: #ff4d4f;
+        margin-left: 1px;
+    }
+}
+
+.ant-form-item-has-error {
+    .ant-input,
+    .ant-picker,
+    .ant-input-number,
+    .ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) .ant-select-selector {
+        border-color: #ff4d4f !important;
+        background: #ffeff3 !important;
+    }
+}
+
+.ant-form-item-explain {
+    &.ant-form-item-explain-error {
+        margin-left: 5px;
+        font-size: 12px;
+        line-height: 30px;
+        color: #e32a58;
     }
 }

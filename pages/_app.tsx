@@ -7,6 +7,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 export default function MyApp({ Component, pageProps }: any) {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+        return <div>
+            loading
+        </div>;
+      }
     return <React.Fragment>
         <Component {...pageProps} />
     </React.Fragment>

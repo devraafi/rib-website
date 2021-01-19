@@ -64,6 +64,24 @@
     }
 }
 
+.ant-input-number {
+    &.input-number-dh {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        border: 1px solid #c4cbd1;
+        border-radius: 10px;
+        background: transparent;
+        .ant-input-number-input {
+            text-align: right;
+        }
+        .ant-input-number-handler-wrap {
+            display: none;
+            border-radius: 0px 6px 6px 0px;
+        }
+    }
+}
+
 .plus62 {
     color: #c4cbd1;
 }

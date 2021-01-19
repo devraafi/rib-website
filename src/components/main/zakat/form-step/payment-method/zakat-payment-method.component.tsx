@@ -3,7 +3,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
 
 const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => void }) => {
-    const [step, onChangeStep] = useState(props.step);
+    const { step } = props;
     const [anonim, setAnonim] = useState(false);
     const [paymentMethod, selectPayment] = useState('');
     const [messagesDoa, onChangeMsgDoa] = useState('');
