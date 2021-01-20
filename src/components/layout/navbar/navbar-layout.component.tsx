@@ -61,11 +61,11 @@ export default class NavbarComponent extends React.Component<any, any> {
                                         <img src="/images/logos/dh-logo.svg" alt="" />
                                     </a>
                                 </Link>
-                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#customNavbar" aria-controls="customNavbar" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
 
-                                <div className="collapse navbar-collapse navbar-collapse-dh" id="navbarSupportedContent">
+                                <div className="collapse navbar-collapse navbar-collapse-dh" id="customNavbar">
                                     <ul className="m-auto navbar-nav py-3 text-right">
 
                                         {
@@ -102,7 +102,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                         }
                                     </ul>
                                     <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
-                                        <Link href="">
+                                        <Link href="/signup">
                                             <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
                                         </Link>
                                     </form>

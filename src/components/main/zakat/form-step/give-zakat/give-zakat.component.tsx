@@ -1,10 +1,10 @@
-import { Checkbox } from 'primereact/checkbox';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import React, { useEffect, useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
 import { isFormat } from './math.service';
+import { Checkbox } from 'antd';
 
 const GiveZakat = (props: {
     step: number,
@@ -88,14 +88,16 @@ const GiveZakat = (props: {
 
                 <div className="row pb-3 w-100">
                     {valuesRoundUp && valuesRoundUp.map((val, i: number) => (
-                        <div className="col-12 py-2">
+                        <div className="col-12 py-2" key={i}>
                             <div className="p-inputgroup input-group-dh">
                                 <span className="p-inputgroup-addon py-3">
-                                    <Checkbox className="checkbox-dh"
+                                    <Checkbox
+                                        id={val + 'lo'}
                                         checked={roundValue == val}
                                         onChange={() => {
                                             setRoundVal(val);
-                                        }} />
+                                        }} className="checkbox-dh text">
+                                    </Checkbox>
                                 </span>
                                 <InputNumber
                                     readonly

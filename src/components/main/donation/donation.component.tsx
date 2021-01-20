@@ -40,42 +40,40 @@ const DonationPage = (props: any) => {
     }, [query.id]);
 
     return (
-        <React.Fragment>
-            <MainComponent
-                title="Donasi Lazis Darul Hikam"
-                description="lazis Darul Hikam"
-                pageId="donasi-page-dh"
-                hideNav={step > 0}
-            >
-                <Spin spinning={loading} indicator={<Loading />}>
-                    {step === 0 ?
+        <MainComponent
+            title="Donasi Lazis Darul Hikam"
+            description="lazis Darul Hikam"
+            pageId="donasi-page-dh"
+            hideNav={step > 0}
+        >
+            <Spin spinning={loading} indicator={<Loading />}>
+                {step === 0 ?
 
-                        <div className="container-fluid p-0">
-                            <div className="donation-section">
-                                <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" />
-                            </div>
-                            <div className="container-lg content">
-                                <div className="row">
-                                    <div className="col-lg-7">
-                                        {data && <BannerDonationSection data={data} />}
-                                        {data && <ContentDonationSection data={data} />}
-                                    </div>
-                                    <div className="col-lg-5 py-3 py-lg-0 position-relative">
-                                        {
-                                            data &&
-                                            <MainDonation data={data} onDone={(total: number) => onDonate(total)} />
-                                        }
-                                    </div>
+                    <div className="container-fluid p-0">
+                        <div className="donation-section">
+                            <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" />
+                        </div>
+                        <div className="container-lg content">
+                            <div className="row">
+                                <div className="col-lg-7">
+                                    {data && <BannerDonationSection data={data} />}
+                                    {data && <ContentDonationSection data={data} />}
+                                </div>
+                                <div className="col-lg-5 py-3 py-lg-0 position-relative">
+                                    {
+                                        data &&
+                                        <MainDonation data={data} onDone={(total: number) => onDonate(total)} />
+                                    }
                                 </div>
                             </div>
                         </div>
-                        :
-                        <DonasiFormStep step={step} data={data} total={total} id={query.id} />
-                    }
-                </Spin>
+                    </div>
+                    :
+                    <DonasiFormStep step={step} data={data} total={total} id={query.id} />
+                }
+            </Spin>
 
-            </MainComponent>
-        </React.Fragment>
+        </MainComponent>
     )
 }
 

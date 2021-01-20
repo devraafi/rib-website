@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Checkbox } from 'primereact/checkbox';
 import _, { values } from "lodash";
-import { Form, Input, InputNumber } from "antd";
+import { Checkbox, Form, Input, InputNumber } from "antd";
 
 const CalculateZakat = (props: {
     step: number,
@@ -114,15 +113,13 @@ const CalculateZakat = (props: {
                     {
                         zakatList && zakatList.map((list, i) => (
                             <div className="col-lg-6 col-12" key={i}>
-                                <div className="d-flex flex-row">
-                                    <Checkbox
-                                        inputId={`Checkbox${i}`}
-                                        checked={list.checked}
-                                        onChange={(e) => onChangeCheck(list, e.checked, i)}
-                                        className="checkbox-dh"
-                                    />
-                                    <label htmlFor={`Checkbox${i}`} className="p-checkbox-label align-self-center ml-2 input-label">{list.name}</label>
-                                </div>
+                                <Checkbox
+                                    id={i + 'checkboxxxx'}
+                                    checked={list.checked}
+                                    onChange={(e) => onChangeCheck(list, e.target.checked, i)}
+                                    className="checkbox-dh text">
+                                    {list.name}
+                                </Checkbox>
                             </div>
                         ))
                     }

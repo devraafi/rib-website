@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ZakatFitrahSection = () => (
-    <React.Fragment>
         <div className="container-fluid p-0 content-zakat py-5">
             <div className="container-lg container-fluid">
                 <div className="row">
@@ -28,7 +27,6 @@ const ZakatFitrahSection = () => (
                 </div>
             </div>
         </div>
-    </React.Fragment>
 );
 
 export default ZakatFitrahSection;

@@ -10,107 +10,106 @@ const { vision } = data;
 const { mission } = data;
 const { meetTheBoard } = data;
 const AboutUsComponent = () => (
-    <React.Fragment>
-        <MainComponent
-            title="About Us Lazis Darul Hikam"
-            description="lazis Darul Hikam"
-            pageId="about-page-dh"
-        >
-            <div className="container-fluid p-0 about-us-page">
-                <div className="p-lg-5 p-3 container ">
-                    <div className="header-about-us">
-                        <div className="title-about-us mb-4 col-lg-8 col-12 p-0">
-                            {data.title || ''}
+    <MainComponent
+        title="About Us Lazis Darul Hikam"
+        description="lazis Darul Hikam"
+        pageId="about-page-dh"
+    >
+        <div className="container-fluid p-0 about-us-page">
+            <div className="p-lg-5 p-3 container ">
+                <div className="header-about-us">
+                    <div className="title-about-us mb-4 col-lg-8 col-12 p-0">
+                        {data.title || ''}
+                    </div>
+                    <div className="description-about-us">
+                        {
+                            data.desc.map((label: any, i: number) => (
+                                <div className="mb-3">
+                                    {label || ''}
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="vision-mision-board-section text-center py-5 p-lg-5">
+                    <div className="vision py-5 ">
+                        <div className="title pb-3 mb-3 col-lg-6 mx-auto">
+                            {vision.label || ''}
                         </div>
-                        <div className="description-about-us">
+                        <div className="description py-4">
+                            {vision.list || ''}
+                        </div>
+                    </div>
+                    <div className="mision py-5 ">
+                        <div className="title pb-3 mb-3 col-lg-6 mx-auto">
+                            {mission.label || ''}
+                        </div>
+                        <div className="row description py-4">
                             {
-                                data.desc.map((label: any, i: number) => (
-                                    <div className="mb-3">
-                                        {label || ''}
+                                mission.list.map((li: any, i: number) => (
+                                    <div className="col-6 p-2" key={i}>
+                                        <div className="d-flex flex-column text-center m-auto w-100 px-lg-4">
+                                            <div className="icon text-center">
+                                                <img src={li.image} alt="" />
+                                            </div>
+                                            <p className="text-center py-2">
+                                                {li.mission || '-'}
+                                            </p>
+                                        </div>
                                     </div>
                                 ))
                             }
                         </div>
                     </div>
-                    <div className="vision-mision-board-section text-center py-5 p-lg-5">
-                        <div className="vision py-5 ">
-                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
-                                {vision.label || ''}
-                            </div>
-                            <div className="description py-4">
-                                {vision.list || ''}
-                            </div>
+                    <div className="meet-the-board py-5">
+                        <div className="title pb-3 mb-3 col-lg-6 mx-auto">
+                            {meetTheBoard.label || ''}
                         </div>
-                        <div className="mision py-5 ">
-                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
-                                {mission.label || ''}
-                            </div>
-                            <div className="row description py-4">
-                                {
-                                    mission.list.map((li: any, i: number) => (
-                                        <div className="col-6 p-2" key={i}>
-                                            <div className="d-flex flex-column text-center m-auto w-100 px-lg-4">
-                                                <div className="icon text-center">
-                                                    <img src={li.image} alt="" />
-                                                </div>
-                                                <p className="text-center py-2">
-                                                    {li.mission || '-'}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className="meet-the-board py-5">
-                            <div className="title pb-3 mb-3 col-lg-6 mx-auto">
-                                {meetTheBoard.label || ''}
-                            </div>
-                            <div className="meet-the-board-slider">
-                                <MeetTheBoardSlide data={meetTheBoard.list} />
-                            </div>
+                        <div className="meet-the-board-slider">
+                            <MeetTheBoardSlide data={meetTheBoard.list} />
                         </div>
                     </div>
-                </div>
-                <div className="maps-section">
-                    <div className="card-connect">
-                        <div className="body-connect p-4">
-
-                            <div className="title-connect mb-4">
-                                Let’s Connect
-                            </div>
-
-                            <div className="field">
-                                <div className="sub-title">Headquarter</div>
-                                <div className="sub">Jl. Ir. H. Juanda No.285, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 40135</div>
-                            </div>
-
-                            <div className="field">
-                                <div className="sub-title">Phone</div>
-                                <div className="sub">022 - 2505375</div>
-                            </div>
-
-                            <div className="field">
-                                <div className="sub-title">E-Mail</div>
-                                <div className="sub">lazisdarulhikam@gmail.com</div>
-                            </div>
-
-                            <div className="field">
-                                <div className="sub-title">Social</div>
-                                <div className="sub">-</div>
-                            </div>
-                        </div>
-
-                        <div className="footer-connect p-3">
-                            Get Directions
-                            </div>
-
-                    </div>
-                    <MapsSection />
                 </div>
             </div>
-        </MainComponent>
-    </React.Fragment>
+            <div className="maps-section">
+                <div className="card-connect">
+                    <div className="body-connect p-4">
+
+                        <div className="title-connect mb-4">
+                            Let’s Connect
+                            </div>
+
+                        <div className="field">
+                            <div className="sub-title">Headquarter</div>
+                            <div className="sub">Jl. Ir. H. Juanda No.285, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 40135</div>
+                        </div>
+
+                        <div className="field">
+                            <div className="sub-title">Phone</div>
+                            <div className="sub">022 - 2505375</div>
+                        </div>
+
+                        <div className="field">
+                            <div className="sub-title">E-Mail</div>
+                            <div className="sub">lazisdarulhikam@gmail.com</div>
+                        </div>
+
+                        <div className="field">
+                            <div className="sub-title">Social</div>
+                            <div className="sub">-</div>
+                        </div>
+                    </div>
+
+                    <div className="footer-connect p-3">
+                        Get Directions
+                            </div>
+
+                </div>
+                <MapsSection />
+            </div>
+        </div>
+    </MainComponent>
+
 );
 
 const MapsSection = () => {

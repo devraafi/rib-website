@@ -8,22 +8,20 @@ import ZakatKnowledgeSection from './zakat-knowledge-section/zakat-knowledge.com
 
 const ZakatMainPage = () => {
     return (
-        <React.Fragment>
-            <MainComponent
-                title="Zakat Lazis Darul Hikam"
-                description="lazis Darul Hikam"
-                pageId="zakat-page-dh"
-            >
+        <MainComponent
+            title="Zakat Lazis Darul Hikam"
+            description="lazis Darul Hikam"
+            pageId="zakat-page-dh"
+        >
 
-                <div className="container-fluid p-0 content-zakat">
-                    <BannerZakatSection />
-                    <CalculatorZakatSection />
-                    <ZakatFitrahSection />
-                    <ReportZakatSection />
-                    <ZakatKnowledgeSection />
-                </div>
-            </MainComponent>
-        </React.Fragment>
+            <div className="container-fluid p-0 content-zakat">
+                <BannerZakatSection />
+                <CalculatorZakatSection />
+                <ZakatFitrahSection />
+                <ReportZakatSection />
+                <ZakatKnowledgeSection />
+            </div>
+        </MainComponent>
     )
 }
 

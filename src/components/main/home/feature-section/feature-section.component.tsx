@@ -173,24 +173,22 @@ class FeatureSection extends React.Component<any, any> {
 
     renderListItemImage = () => {
         return (
-            <React.Fragment>
-                <div className="wrapper-img p-2 d-flex flex-row" id="wrapper-img-ft" data-aos="zoom-in"
-                    onClick={() => { this.setState((state: any) => ({ pauseTransition: !state.pauseTransition })) }}>
-                    <div className="feature-img align-self-start">
-                        <img
-                            key={this.state.currentImageSrc}
-                            className="p-3 img lazyload blur-up lazyloaded"
-                            src={this.state.currentImageSrc}
-                            alt={this.state.currentImageAlt}
-                        />
-                    </div>
-                    <div className="desc align-self-center align-self-lg-start">
-                        <div className="p-3">
-                            {this.state.currentDesc}
-                        </div>
+            <div className="wrapper-img p-2 d-flex flex-row" id="wrapper-img-ft" data-aos="zoom-in"
+                onClick={() => { this.setState((state: any) => ({ pauseTransition: !state.pauseTransition })) }}>
+                <div className="feature-img align-self-start">
+                    <img
+                        key={this.state.currentImageSrc}
+                        className="p-3 img lazyload blur-up lazyloaded"
+                        src={this.state.currentImageSrc}
+                        alt={this.state.currentImageAlt}
+                    />
+                </div>
+                <div className="desc align-self-center align-self-lg-start">
+                    <div className="p-3">
+                        {this.state.currentDesc}
                     </div>
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 

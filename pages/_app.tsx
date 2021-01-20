@@ -5,14 +5,11 @@ import 'primereact/resources/primereact.min.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 export default function MyApp({ Component, pageProps }: any) {
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
-        return <div>
-            loading
-        </div>;
-      }
-    return <React.Fragment>
-        <Component {...pageProps} />
-    </React.Fragment>
+    // if (typeof window === 'undefined' || typeof document === 'undefined') {
+    //     return <div>
+    //         loading
+    //     </div>;
+    // }
+    return <Component {...pageProps} />
 }

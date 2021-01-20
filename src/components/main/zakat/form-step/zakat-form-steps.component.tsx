@@ -115,17 +115,15 @@ const ZakatFormSteps = () => {
         if (msgPriv) {
             msgPriv.show({
                 sticky: true, content: (
-                    <React.Fragment>
-                        <div className="d-flex flex-row privacy-alert text-left">
-                            <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
-                            <div className="pl-3 d-flex flex-column">
-                                <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
-                                <Link href="#">
-                                    <a className="desc">Pelajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
-                                </Link>
-                            </div>
+                    <div className="d-flex flex-row privacy-alert text-left">
+                        <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
+                        <div className="pl-3 d-flex flex-column">
+                            <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
+                            <Link href="#">
+                                <a className="desc">Pelajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
+                            </Link>
                         </div>
-                    </React.Fragment>
+                    </div>
                 )
             });
         }
@@ -143,7 +141,7 @@ const ZakatFormSteps = () => {
                     <Steps current={step - 1} labelPlacement="vertical" className="step-antd-dh">
                         {
                             steps.map((s) => (
-                                <Step title={s} />
+                                <Step key={s} title={s} />
                             ))
                         }
                     </Steps>
@@ -157,190 +155,189 @@ const ZakatFormSteps = () => {
         </div>
     )
     return (
-        <React.Fragment>
-            <MainComponent
-                title="Zakat Lazis Darul Hikam"
-                description="lazis Darul Hikam"
-                pageId="zakat-page-dh"
-                customNav={<StepNav />}
-            >
-                <Spin indicator={<Loading />} spinning={spin}>
-                    <div className="container-fluid p-0 zakat-form-steps">
-                        <div className="container-lg container-fluid py-5 header-section">
-                            <div className="d-flex flex-column m-auto text-center">
-                                <div className="header">
-                                    Percayakan Zakat Anda pada Kami
+        <MainComponent
+            title="Zakat Lazis Darul Hikam"
+            description="lazis Darul Hikam"
+            pageId="zakat-page-dh"
+            customNav={<StepNav />}
+        >
+            <Spin indicator={<Loading />} spinning={spin}>
+                <div className="container-fluid p-0 zakat-form-steps">
+                    <div className="container-lg container-fluid py-5 header-section">
+                        <div className="d-flex flex-column m-auto text-center">
+                            <div className="header">
+                                Percayakan Zakat Anda pada Kami
                             </div>
-                                <div className="description py-3">
-                                    Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
+                            <div className="description py-3">
+                                Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
                             </div>
-                                <Messages ref={msgPrivacy} className="messages-dh-privacy" />
-                            </div>
-                            <div className="container-lg container-fluid form-section">
-                                <div className="row" style={{ minHeight: '95vh' }}>
-                                    {
-                                        step >= 4 ? <ZakatPaymentDetail total={0} /> :
-                                            <>
-                                                <div className="col-lg-7 col-12">
-                                                    <div className={step !== 1 ? 'd-none' : ''}>
-                                                        <CalculateZakat
-                                                            zakatList={zakatList}
-                                                            step={step}
-                                                            stepChanges={onStepChange}
-                                                            onChangesForm={onChangesCalc}
-                                                        />
-                                                    </div>
-                                                    <div className={step !== 2 ? 'd-none' : ''}>
-                                                        <GiveZakat
-                                                            subtotalAmount={subtotalAmount}
-                                                            step={step}
-                                                            stepChanges={onStepChange}
-                                                            roundUpChanges={onRoundUpChanges}
-                                                            onFidyahChanges={onFidyahAmountChanges}
-                                                            onShodaqohChanges={onShodaqohAmountChanges}
-                                                        />
-                                                    </div>
-                                                    <div className={step !== 3 ? 'd-none' : ''}>
-                                                        <ZakatPaymetMethod
-                                                            step={step}
-                                                            stepChanges={onStepChange}
-                                                        />
-                                                    </div>
+                            <Messages ref={msgPrivacy} className="messages-dh-privacy" />
+                        </div>
+                        <div className="container-lg container-fluid form-section">
+                            <div className="row" style={{ minHeight: '95vh' }}>
+                                {
+                                    step >= 4 ? <ZakatPaymentDetail total={0} /> :
+                                        <>
+                                            <div className="col-lg-7 col-12">
+                                                <div className={step !== 1 ? 'd-none' : ''}>
+                                                    <CalculateZakat
+                                                        zakatList={zakatList}
+                                                        step={step}
+                                                        stepChanges={onStepChange}
+                                                        onChangesForm={onChangesCalc}
+                                                    />
                                                 </div>
-                                                <div className="col-lg-5 col-12 position-relative">
-                                                    <div className="main-form my-2 animate__animated animate__bounceIn" id='main-form-zakat'>
-                                                        <div className="text-center mb-2 px-2">
-                                                            <div className="header mb-2">
-                                                                Total Zakat Anda
+                                                <div className={step !== 2 ? 'd-none' : ''}>
+                                                    <GiveZakat
+                                                        subtotalAmount={subtotalAmount}
+                                                        step={step}
+                                                        stepChanges={onStepChange}
+                                                        roundUpChanges={onRoundUpChanges}
+                                                        onFidyahChanges={onFidyahAmountChanges}
+                                                        onShodaqohChanges={onShodaqohAmountChanges}
+                                                    />
+                                                </div>
+                                                <div className={step !== 3 ? 'd-none' : ''}>
+                                                    <ZakatPaymetMethod
+                                                        step={step}
+                                                        stepChanges={onStepChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-5 col-12 position-relative">
+                                                <div className="main-form my-2 animate__animated animate__bounceIn" id='main-form-zakat'>
+                                                    <div className="text-center mb-2 px-2">
+                                                        <div className="header mb-2">
+                                                            Total Zakat Anda
                                                         </div>
-                                                            <div className="description">
-                                                                Berikut ringkasan informasi yang Anda berikan dan berapa banyak Zakat yang perlu dibayarkan
+                                                        <div className="description">
+                                                            Berikut ringkasan informasi yang Anda berikan dan berapa banyak Zakat yang perlu dibayarkan
                                                         </div>
-                                                        </div>
-                                                        <div className="flyover">
-                                                            <div className="row py-3">
-                                                                <div className="col-6 px-2 py-2">
-                                                                    <div className="the-box">
-                                                                        <div className="label">
-                                                                            Kekayaan saya
+                                                    </div>
+                                                    <div className="flyover">
+                                                        <div className="row py-3">
+                                                            <div className="col-6 px-2 py-2">
+                                                                <div className="the-box">
+                                                                    <div className="label">
+                                                                        Kekayaan saya
                                                                     </div>
-                                                                        <div className="amount success">
-                                                                            Rp {wealthAmount ? (wealthAmount).toLocaleString() : 0}
-                                                                        </div>
+                                                                    <div className="amount success">
+                                                                        Rp {wealthAmount ? (wealthAmount).toLocaleString() : 0}
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-6 px-2  py-2">
-                                                                    <div className="the-box">
-                                                                        <div className="label">
-                                                                            Hutang saya
+                                                            </div>
+                                                            <div className="col-6 px-2  py-2">
+                                                                <div className="the-box">
+                                                                    <div className="label">
+                                                                        Hutang saya
                                                                     </div>
-                                                                        <div className="amount danger">
-                                                                            Rp {0 ? (0).toLocaleString() : 0}
-                                                                        </div>
+                                                                    <div className="amount danger">
+                                                                        Rp {0 ? (0).toLocaleString() : 0}
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-6 px-2 py-2">
+                                                            </div>
+                                                            <div className="col-6 px-2 py-2">
 
-                                                                    <div className="the-box">
+                                                                <div className="the-box">
+                                                                    <div className="label">
+                                                                        Harga emas
+                                                                    </div>
+                                                                    <div className="amount warn">
+                                                                        Rp {0 ? (0).toLocaleString() : 0}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-6 px-2 py-2">
+                                                                <div className="the-box">
+                                                                    <div className="d-flex flex-row w-100 justify-content-between">
                                                                         <div className="label">
-                                                                            Harga emas
+                                                                            Nisab hari ini
+                                                                        </div>
+                                                                        <Popover content={'Nilai nisab adalah sebesar 20 Dinar emas (85 gram) dalam satu tahun'} title="Nisab">
+                                                                            <img src="/images/icons/tooltip.svg" alt="" className="img-fluid" />
+                                                                        </Popover>
                                                                     </div>
-                                                                        <div className="amount warn">
-                                                                            Rp {0 ? (0).toLocaleString() : 0}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-6 px-2 py-2">
-                                                                    <div className="the-box">
-                                                                        <div className="d-flex flex-row w-100 justify-content-between">
-                                                                            <div className="label">
-                                                                                Nisab hari ini
-                                                                        </div>
-                                                                            <Popover content={'Nilai nisab adalah sebesar 20 Dinar emas (85 gram) dalam satu tahun'} title="Nisab">
-                                                                                <img src="/images/icons/tooltip.svg" alt="" className="img-fluid" />
-                                                                            </Popover>
-                                                                        </div>
-                                                                        <div className="amount warn">
-                                                                            Rp {0 ? (0).toLocaleString() : 0}
-                                                                        </div>
+                                                                    <div className="amount warn">
+                                                                        Rp {0 ? (0).toLocaleString() : 0}
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className="row py-3">
-                                                                <div className="col-12">
-                                                                    <div className="the-lines">
-                                                                        <div className="label sub">Subtotal Zakat</div>
-                                                                        <div className="amount">
-                                                                            Rp {subtotalAmount ? (subtotalAmount).toLocaleString() : 0}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {
-                                                                    (roundUpAmount > 0 && step > 1) && (
-                                                                        <div className="col-12">
-                                                                            <div className="the-lines">
-                                                                                <div className="label">Round Up Zakat</div>
-                                                                                <div className="amount">
-                                                                                    Rp {roundUpAmount ? (roundUpAmount).toLocaleString() : 0}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                }
-                                                                {
-                                                                    (fidyahAmount > 0) && (
-                                                                        <div className="col-12">
-                                                                            <div className="the-lines">
-                                                                                <div className="label">Fidyah/Kaffarah</div>
-                                                                                <div className="amount">
-                                                                                    Rp {fidyahAmount ? (fidyahAmount).toLocaleString() : 0}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                }
-                                                                {
-                                                                    (shodaqohAmount > 0) && (
-                                                                        <div className="col-12">
-                                                                            <div className="the-lines">
-                                                                                <div className="label">Sadaqah</div>
-                                                                                <div className="amount">
-                                                                                    Rp {shodaqohAmount ? (shodaqohAmount).toLocaleString() : 0}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                }
                                                             </div>
                                                         </div>
                                                         <div className="row py-3">
                                                             <div className="col-12">
-                                                                <div className="the-total">
-                                                                    <div className="label">Total</div>
+                                                                <div className="the-lines">
+                                                                    <div className="label sub">Subtotal Zakat</div>
                                                                     <div className="amount">
-                                                                        Rp {totalAmount ? (totalAmount).toLocaleString() : 0}
+                                                                        Rp {subtotalAmount ? (subtotalAmount).toLocaleString() : 0}
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            {
+                                                                (roundUpAmount > 0 && step > 1) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Round Up Zakat</div>
+                                                                            <div className="amount">
+                                                                                Rp {roundUpAmount ? (roundUpAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            {
+                                                                (fidyahAmount > 0) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Fidyah/Kaffarah</div>
+                                                                            <div className="amount">
+                                                                                Rp {fidyahAmount ? (fidyahAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
+                                                            {
+                                                                (shodaqohAmount > 0) && (
+                                                                    <div className="col-12">
+                                                                        <div className="the-lines">
+                                                                            <div className="label">Sadaqah</div>
+                                                                            <div className="amount">
+                                                                                Rp {shodaqohAmount ? (shodaqohAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )
+                                                            }
                                                         </div>
-                                                        <div className="row py-3">
-                                                            <div className="col-12">
-                                                                <div className="the-footer">
-                                                                    Masih memiliki pertanyaan? Hubungi kami di lazisdarulhikam@gmail.com
+                                                    </div>
+                                                    <div className="row py-3">
+                                                        <div className="col-12">
+                                                            <div className="the-total">
+                                                                <div className="label">Total</div>
+                                                                <div className="amount">
+                                                                    Rp {totalAmount ? (totalAmount).toLocaleString() : 0}
+                                                                </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row py-3">
+                                                        <div className="col-12">
+                                                            <div className="the-footer">
+                                                                Masih memiliki pertanyaan? Hubungi kami di lazisdarulhikam@gmail.com
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </>
-                                    }
-                                </div>
+                                            </div>
+                                        </>
+                                }
                             </div>
                         </div>
                     </div>
-                </Spin>
-            </MainComponent>
-        </React.Fragment >
+                </div>
+            </Spin>
+        </MainComponent>
+
     )
 }
 
