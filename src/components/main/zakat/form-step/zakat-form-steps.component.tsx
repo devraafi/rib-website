@@ -13,7 +13,8 @@ import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
 const zakatRestService: ZakatRestServices = new ZakatRestServices;
 const ZakatFormSteps = () => {
-    const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran', 'Selesai'];
+    const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran'];
+    // const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran', 'Selesai'];
     const msgPrivacy = useRef(null);
     const { Step } = Steps;
     const [spin, setSpin] = useState(false);

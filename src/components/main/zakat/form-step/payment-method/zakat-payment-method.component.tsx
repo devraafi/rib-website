@@ -91,7 +91,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                 </div>
             </div>
 
-            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
+            {/* <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Pilih metode pembayaran
@@ -126,7 +126,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                         Lanjut ke pembayaran
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

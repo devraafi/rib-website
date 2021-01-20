@@ -27,18 +27,18 @@ const LoginComponent = (props: {
                 <img src="/images/logos/dh-logo.svg" alt="" className="img-fluid mb-2" />
                 <div className="title my-2">Selamat datang,</div>
                 <div className="text">Belum memiliki akun?
-                    <Link href="#">
+                    <Link href="/signup">
                         <a href="" className="text link"> Sign up</a>
                     </Link>
                 </div>
             </div>
             <div className="form-section mt-4">
                 <Form
-                    initialValues={{ 
+                    initialValues={{
                         remember: false,
                         username: 'testing-user@user.id',
                         password: 'testinguser'
-                     }}
+                    }}
                     onFinish={onFinish}
                 >
                     <div className="row">
