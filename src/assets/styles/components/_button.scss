@@ -1,5 +1,8 @@
 .btn {
     font-family: "Poppins";
+    &:disabled {
+        cursor: not-allowed;
+    }
     &.btn-dh-primary {
         @include btn-dh("primary");
         &.disable {

@@ -19,27 +19,51 @@ const ZakatFormSteps = () => {
     const [spin, setSpin] = useState(false);
     const [zakatList, setZakatList] = useState<any>([]);
     const [step, onStepChange] = useState(1);
-    console.log(step);
-    const [wealthAmount, onChangewealthAmount] = useState(15000000);
-    const [goldPrice, onChangeGoldPrice] = useState(150000);
-    const [nisabAmount, onChangeNisabAmount] = useState(150000);
-    const [debAmount, onChangeDebAmount] = useState(1344000);
-    const [subTotal, onChangeSubtotal] = useState(wealthAmount * (2.5 / 100));
-    const [zakatAmount, onChangeZakatAmont] = useState(0);
-    const [roundUpAmount, onChangeRoundUpAmont] = useState(0);
-    const [fidyahAmount, onChangeFidyahAmont] = useState(0);
-    const [shodaqohAmount, onChangeShodaqohAmont] = useState(0);
-    const [totalAmount, onChangeTotalAmount] = useState(subTotal + zakatAmount + fidyahAmount + shodaqohAmount + roundUpAmount);
+    const [totalAmount, setTotalAmount] = useState(0);
+    const [wealthAmount, setWealthAmount] = useState(0);
+    const [subtotalAmount, setSubtotal] = useState(0);
+    const [debtAmount, setDebAmount] = useState(0);
+    const [roundUpAmount, setRoundAmount] = useState(0);
+    const [fidyahAmount, setFidyahAmount] = useState(0);
+    const [shodaqohAmount, setShodaqohAmount] = useState(0);
 
-    const syncAmount = (amount: number) => {
-        onChangeZakatAmont(amount);
-        syncTotal()
+    function onChangesCalc(values: any) {
+        console.log(values);
+        let totalZakat = 0;
+        let totalWealthAmount = 0;
+        let subtotal = 0;
+        if (values) {
+            for (const key in values) {
+                totalZakat += values[key].totalWithRate;
+                totalWealthAmount += values[key].total;
+            }
+        }
+        subtotal = totalZakat;
+        setSubtotal(subtotal);
+        setWealthAmount(totalWealthAmount);
+        setRoundAmount(subtotal)
     }
 
-    const syncTotal = () => {
-        const total = subTotal + zakatAmount + fidyahAmount + shodaqohAmount + roundUpAmount;
-        onChangeTotalAmount(total);
+    function onRoundUpChanges(val: number) {
+        setRoundAmount(val)
     }
+
+    function onFidyahAmountChanges(val: number) {
+        setFidyahAmount(val)
+    }
+
+    function onShodaqohAmountChanges(val: number) {
+        setShodaqohAmount(val)
+    }
+
+    function syncTotal() {
+        const total = ((roundUpAmount || subtotalAmount) + fidyahAmount + shodaqohAmount) - debtAmount;
+        setTotalAmount(total);
+    }
+
+    useEffect(() => {
+        syncTotal();
+    }, [subtotalAmount, totalAmount, roundUpAmount, fidyahAmount, shodaqohAmount])
 
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
@@ -49,7 +73,6 @@ const ZakatFormSteps = () => {
         if ((windTop + mainFormHeight + 200) > footerTop) {
             document.getElementById('main-form-zakat')?.classList.remove('syur')
             document.getElementById('main-form-zakat')?.classList.add('solute')
-            console.log('1-solute');
 
         } else {
             document.getElementById('main-form-zakat')?.classList.add('syur');
@@ -88,21 +111,23 @@ const ZakatFormSteps = () => {
         loadZakat();
         window.onscroll = function () { scrollFunction() };
         const msgPriv: any = msgPrivacy.current;
-        msgPriv ? msgPriv.show({
-            sticky: true, content: (
-                <React.Fragment>
-                    <div className="d-flex flex-row privacy-alert text-left">
-                        <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
-                        <div className="pl-3 d-flex flex-column">
-                            <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
-                            <Link href="#">
-                                <a className="desc">Pelajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
-                            </Link>
+        if (msgPriv) {
+            msgPriv.show({
+                sticky: true, content: (
+                    <React.Fragment>
+                        <div className="d-flex flex-row privacy-alert text-left">
+                            <img alt="logo" src="/images/icons/privacy.svg" onError={(e: any) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} className="align-self-start" />
+                            <div className="pl-3 d-flex flex-column">
+                                <div className="title">Privasi informasi yang Anda berikan telah terlindungi oleh sistem kami</div>
+                                <Link href="#">
+                                    <a className="desc">Pelajari lebih lanjut <span className="ml-2"><img src="/images/icons/ArrowRight.svg" alt="" /></span></a>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                </React.Fragment>
-            )
-        }) : '';
+                    </React.Fragment>
+                )
+            });
+        }
     }, [])
 
     const StepNav = () => (
@@ -153,31 +178,25 @@ const ZakatFormSteps = () => {
                             <div className="container-lg container-fluid form-section">
                                 <div className="row" style={{ minHeight: '95vh' }}>
                                     {
-                                        step >= 4 ? <ZakatPaymentDetail total={totalAmount} /> :
+                                        step >= 4 ? <ZakatPaymentDetail total={0} /> :
                                             <>
                                                 <div className="col-lg-7 col-12">
                                                     <div className={step !== 1 ? 'd-none' : ''}>
                                                         <CalculateZakat
                                                             zakatList={zakatList}
-                                                            zakatAmount={zakatAmount}
-                                                            onChangeZakatAmount={syncAmount}
                                                             step={step}
                                                             stepChanges={onStepChange}
+                                                            onChangesForm={onChangesCalc}
                                                         />
                                                     </div>
                                                     <div className={step !== 2 ? 'd-none' : ''}>
                                                         <GiveZakat
+                                                            subtotalAmount={subtotalAmount}
                                                             step={step}
                                                             stepChanges={onStepChange}
-                                                            fidyahChanges={(a) => { onChangeFidyahAmont(a); syncTotal() }}
-                                                            shodaqohChanges={(a) => {
-                                                                onChangeShodaqohAmont(a);
-                                                                syncTotal()
-                                                            }}
-                                                            roundUpChanges={(a) => {
-                                                                onChangeRoundUpAmont(a);
-                                                                syncTotal()
-                                                            }}
+                                                            roundUpChanges={onRoundUpChanges}
+                                                            onFidyahChanges={onFidyahAmountChanges}
+                                                            onShodaqohChanges={onShodaqohAmountChanges}
                                                         />
                                                     </div>
                                                     <div className={step !== 3 ? 'd-none' : ''}>
@@ -215,7 +234,7 @@ const ZakatFormSteps = () => {
                                                                             Hutang saya
                                                                     </div>
                                                                         <div className="amount danger">
-                                                                            Rp {debAmount ? (debAmount).toLocaleString() : 0}
+                                                                            Rp {0 ? (0).toLocaleString() : 0}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -226,7 +245,7 @@ const ZakatFormSteps = () => {
                                                                             Harga emas
                                                                     </div>
                                                                         <div className="amount warn">
-                                                                            Rp {goldPrice ? (goldPrice).toLocaleString() : 0}
+                                                                            Rp {0 ? (0).toLocaleString() : 0}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -241,7 +260,7 @@ const ZakatFormSteps = () => {
                                                                             </Popover>
                                                                         </div>
                                                                         <div className="amount warn">
-                                                                            Rp {nisabAmount ? (nisabAmount).toLocaleString() : 0}
+                                                                            Rp {0 ? (0).toLocaleString() : 0}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -249,22 +268,14 @@ const ZakatFormSteps = () => {
                                                             <div className="row py-3">
                                                                 <div className="col-12">
                                                                     <div className="the-lines">
-                                                                        <div className="label sub">Subtotal Zakat (2.5%)</div>
+                                                                        <div className="label sub">Subtotal Zakat</div>
                                                                         <div className="amount">
-                                                                            Rp {subTotal ? (subTotal).toLocaleString() : 0}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="col-12">
-                                                                    <div className="the-lines">
-                                                                        <div className="label">Zakat</div>
-                                                                        <div className="amount">
-                                                                            Rp {zakatAmount ? (zakatAmount).toLocaleString() : 0}
+                                                                            Rp {subtotalAmount ? (subtotalAmount).toLocaleString() : 0}
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 {
-                                                                    (roundUpAmount > 0) && (
+                                                                    (roundUpAmount > 0 && step > 1) && (
                                                                         <div className="col-12">
                                                                             <div className="the-lines">
                                                                                 <div className="label">Round Up Zakat</div>
@@ -304,7 +315,7 @@ const ZakatFormSteps = () => {
                                                         <div className="row py-3">
                                                             <div className="col-12">
                                                                 <div className="the-total">
-                                                                    <div className="label">Total Zakat</div>
+                                                                    <div className="label">Total</div>
                                                                     <div className="amount">
                                                                         Rp {totalAmount ? (totalAmount).toLocaleString() : 0}
                                                                     </div>

@@ -6,8 +6,7 @@ import { Form, Input, InputNumber } from "antd";
 const CalculateZakat = (props: {
     step: number,
     stepChanges?: (to: number) => void,
-    zakatAmount: number,
-    onChangeZakatAmount?: (amount: number) => void,
+    onChangesForm?: (form: any) => void,
     zakatList?: {
         description?: string;
         checked?: boolean;
@@ -23,38 +22,82 @@ const CalculateZakat = (props: {
 }) => {
     const { step } = props;
     const [zakatList, setZakatList] = useState(props.zakatList || []);
+    const [checkList, setChecklist] = useState<any>([]);
     const [errorInfos, setErrorInfos] = useState<any>([]);
     const [forms, setForms] = useState<any>({});
+    const [form] = Form.useForm();
+    const [currentStepForm, setCurrent] = useState(0)
     const onChangeCheck = (obj: any, val: boolean, i: number) => {
-        if (zakatList.length) {
-            let newState = [...zakatList]
-            newState[i].checked = val;
-            setZakatList(newState);
+        if (currentStepForm > i) {
+            setCurrent(i);
         }
+
+        let newZakatList = [...zakatList]
+        const theKey = _.camelCase(newZakatList[i].name);
+        const newForm = { ...forms };
+
+        newZakatList[i].checked = val;
+        setZakatList(newZakatList);
+
+        if (!val) {
+            form.setFieldsValue({
+                [theKey]: [
+                    {
+
+                    }
+                ]
+            });
+            delete newForm[theKey];
+        }
+
+        setForms(newForm);
+
     };
 
     const onStepChange = (to: number) => {
         props.stepChanges ? props.stepChanges(to) : null;
     }
 
+    function onSubmitStep(key: string, form: any, isLast: boolean, i: number) {
+        setForms({ ...forms, [_.camelCase(key)]: form });
+        !isLast ? scrollTo(i, 'next') : scrollTo(0, 'skip');
+    }
+
+
     const scrollTo = (i: number, type: string) => {
         let el;
-        if (type == 'back') {
-            el = document.getElementById(`vvvv${i - 1}`) || document.getElementById(`vvvv${i - 2}`) || document.getElementById(`vvvv${i - 3}`) || document.getElementById(`vvvv${i - 4}`) || document.getElementById(`vvvv${i - 5}`) || document.getElementById(`vvvv${i - 6}`) || onStepChange(step - 1);
+        if (type !== 'skip') {
+            setCurrent(i + 1)
+            if (type == 'back') {
+                el = document.getElementById(`vvvv${i - 1}`) || document.getElementById(`vvvv${i - 2}`) || document.getElementById(`vvvv${i - 3}`) || document.getElementById(`vvvv${i - 4}`) || document.getElementById(`vvvv${i - 5}`) || document.getElementById(`vvvv${i - 6}`) || onStepChange(step - 1);
+            } else {
+                el = document.getElementById(`vvvv${i + 1}`) || document.getElementById(`vvvv${i + 2}`) || document.getElementById(`vvvv${i + 3}`) || document.getElementById(`vvvv${i + 4}`) || document.getElementById(`vvvv${i + 5}`) || document.getElementById(`vvvv${i + 6}`) || onStepChange(step + 1);
+            }
+            if (el) {
+                window.scrollTo(0, (el.offsetTop));
+            }
         } else {
-            el = document.getElementById(`vvvv${i + 1}`) || document.getElementById(`vvvv${i + 2}`) || document.getElementById(`vvvv${i + 3}`) || document.getElementById(`vvvv${i + 4}`) || document.getElementById(`vvvv${i + 5}`) || document.getElementById(`vvvv${i + 6}`) || onStepChange(step + 1);
-        }
-        if (el) {
-            window.scrollTo(0, (el.offsetTop));
+            onStepChange(step + 1)
         }
     }
 
     useEffect(() => {
         window.scrollTo(0, 0);
+    }, [step]);
+
+    useEffect(() => {
+        setChecklist(_.filter(zakatList, function (list) { return list.checked; }));
+    }, [zakatList])
+
+    useEffect(() => {
         if (props.zakatList && !zakatList.length) {
             setZakatList(props.zakatList);
         }
-    }, [props])
+    }, [props]);
+
+    useEffect(() => {
+        (forms && props.onChangesForm) ? props.onChangesForm(forms) : '';
+    }, [forms]);
 
     return (
         <div className="calculate-zakat-form py-2">
@@ -88,55 +131,32 @@ const CalculateZakat = (props: {
                     <button className="btn btn-dh-primary" onClick={() => scrollTo(-1, 'next')}>MULAI HITUNG</button>
                 </div>
             </div>
-            <Form.Provider
-                onFormFinish={(name, info) => {
-                    let errs: any = [...errorInfos];
-                    for (const key in info.forms) {
-                        let fail: boolean = false;
-                        info.forms[key].validateFields()
-                            .then(val => {
-                                const form = {
-                                    name,
-                                    values: val,
-                                    total: 0
-                                };
-                                for (const key in val) {
-                                    form.total += val[key];
-                                }
-                                setForms({ ...forms, [_.camelCase(name)]: form });
-                            }).catch(errorInfo => {
-                                fail = true;
-                                console.log('error', key);
-                                errs = [...errs, key];
-                                setErrorInfos(errs);
-                            }).finally(() => {
-                                if (!fail) {
-                                    console.log('final', key);
-                                    errs = [...errs]
-                                    _.remove(errs, function (err) {
-                                        return err == key;
-                                    });
-                                    setErrorInfos(errs);
-                                }
-                            })
-                    }
-
-                    if (!errs.length) {
-                        const last: any = _.last(_.filter(zakatList, function (list) { return list.checked; }));
-                        if (last && (last.name == name)) {
-                            scrollTo(100, 'next');
-                        }
-                    }
-                }}
-            >
+            <Form.Provider>
                 {
-                    zakatList.map((list, i: number) => {
+                    checkList.map((list: any, i: number) => {
                         const first = i == 0 ? true : false;
-                        const isLast = i == (_.filter(zakatList, function (list) { return list.checked; }).length - 1) ? true : false;
-
-                        return list.checked && (
+                        const isLast = i == (checkList.length - 1) ? true : false;
+                        return (
                             <Form
-                                onFinish={(values) => !isLast ? scrollTo(i, 'next') : ''}
+                                scrollToFirstError
+                                onFinish={(values) => {
+                                    const form = {
+                                        id: list?._id,
+                                        rate: list?.rate,
+                                        name: list?.name,
+                                        values,
+                                        total: 0,
+                                        totalWithRate: 0,
+                                    };
+                                    for (const key in values) {
+                                        const notKey = ['id', 'rate'];
+                                        if (!notKey.includes(key)) {
+                                            form.total += values[key];
+                                        }
+                                    }
+                                    form.totalWithRate = form.total * (form.rate || 1);
+                                    onSubmitStep(list?.name, form, isLast, i)
+                                }}
                                 name={list.name}
                                 className={"the-card my-3 -v animate__animated animate__bounceIn "}
                                 id={`vvvv${i}`}
@@ -163,7 +183,7 @@ const CalculateZakat = (props: {
                                                 first &&
                                                 <button className="btn color-back" onClick={() => scrollTo(i, 'back')} type="button">Kembali</button>
                                             }
-                                            <button className="btn btn-dh-basic color-next" type="submit">
+                                            <button title={((currentStepForm < i) && list.checked) ? 'Harap Selesaikan langkah sebelumnya' : ''} className="btn btn-dh-basic color-next" type="submit" disabled={((currentStepForm < i) && list.checked)} >
                                                 Selanjutnya
                                             {
                                                     isLast ?
@@ -201,7 +221,6 @@ interface PropsFormSection {
 
 const FormSection = (props: PropsFormSection) => {
     const { lines } = props;
-
     return (
         <div className="row px-3">
             {

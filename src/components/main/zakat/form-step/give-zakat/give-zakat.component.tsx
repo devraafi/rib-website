@@ -4,41 +4,25 @@ import { InputText } from 'primereact/inputtext';
 import React, { useEffect, useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
+import { isFormat } from './math.service';
 
-const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, shodaqohChanges?: (amount: number) => void, fidyahChanges?: (amount: number) => void, roundUpChanges?: (amount: number) => void }) => {
-    const { step } = props;
-    const [checkList, onSetChecklist] = useState({
-        1: false,
-        2: false,
-        3: false,
-        4: true
-    });
+const GiveZakat = (props: {
+    step: number,
+    subtotalAmount: number,
+    stepChanges?: (to: number) => void,
+    onFidyahChanges?: (amount: number) => void,
+    onShodaqohChanges?: (amount: number) => void,
+    roundUpChanges?: (amount: number) => void,
+}) => {
+    const { step, subtotalAmount } = props;
     const sodaqohValueList = [25000, 40000, 100000, 250000, 500000];
-    const [fidyahAmount, onChangeFidyah] = useState(0);
-    const [shodaqohAmount, onChangeSodaqoh] = useState(0);
     const [fidyah, setFidyah] = useState(false);
     const [sodaqoh, setSodaqoh] = useState(false);
-    const [roundValue, setRoundVal] = useState(5425300);
-
-    const valueRoundUps = [
-        0, 5500000, 5400000, 5600000
-    ];
-
+    const [roundValue, setRoundVal] = useState(0);
+    const [valuesRoundUp, setValuesRoundUp] = useState([0, 0, 0])
+    const [fidyahAmount, setFidyahAmount] = useState(0);
+    const [shodaqohAmount, setShodaqohAmount] = useState(0)
     const onChangesCheck = (i: number) => {
-        const forLoop = [1, 2, 3, 4]
-        const newCheck: any = checkList;
-        newCheck[i] = !newCheck[i];
-        _.forEach(forLoop, function (lop, key) {
-            if (lop !== i) {
-                newCheck[lop] = false;
-            }
-            if (newCheck[lop]) {
-                setRoundVal(valueRoundUps[lop]);
-                props.roundUpChanges ? props.roundUpChanges(valueRoundUps[lop]) : '';
-            }
-        });
-
-        onSetChecklist(newCheck)
     }
 
     function onStepChange(to: number) {
@@ -57,9 +41,29 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
     }
 
     useEffect(() => {
-        props.roundUpChanges ? props.roundUpChanges(roundValue) : '';
         window.scrollTo(0, 0);
-    }, [])
+    }, [step])
+
+    useEffect(() => {
+        props.roundUpChanges ? props.roundUpChanges(roundValue) : '';
+    }, [roundValue]);
+
+    useEffect(() => {
+        props.onFidyahChanges ? props.onFidyahChanges(fidyahAmount) : '';
+    }, [fidyahAmount]);
+
+    useEffect(() => {
+        props.onShodaqohChanges ? props.onShodaqohChanges(shodaqohAmount) : '';
+    }, [shodaqohAmount]);
+
+    useEffect(() => {
+        const newVal: any = [];
+        setRoundVal(subtotalAmount);
+        const log = _.round(isFormat(subtotalAmount));
+        newVal.push(_.ceil(subtotalAmount, -(log - 2)));
+        newVal.push(_.floor(subtotalAmount, -(log - 2)));
+        setValuesRoundUp(newVal);
+    }, [subtotalAmount])
 
     return (
         <div className="give-zakat-form py-2">
@@ -69,7 +73,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                     <div className="col-12 px-0">
                         <div className="the-total">
                             <div className="label">Total Zakat</div>
-                            <div className="amount">Rp 5.320.000</div>
+                            <div className="amount">Rp {(subtotalAmount).toLocaleString()}</div>
                         </div>
                     </div>
                 </div>
@@ -82,64 +86,43 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                     </div>
                 </div>
 
-                <div className="row pb-3">
-                    <div className="col-12 py-2">
-                        <div className="p-inputgroup input-group-dh">
-                            <span className="p-inputgroup-addon py-3">
-                                <Checkbox className="checkbox-dh" checked={checkList[1]} onChange={() => onChangesCheck(1)} />
-                            </span>
-                            <InputNumber
-                                readonly
-                                className="w-100"
-                                inputClassName="py-3"
-                                value={valueRoundUps[1]}
-                                locale="id-ID"
-                                placeholder="Rp 0"
-                                currency="IDR"
-                            />
+                <div className="row pb-3 w-100">
+                    {valuesRoundUp && valuesRoundUp.map((val, i: number) => (
+                        <div className="col-12 py-2">
+                            <div className="p-inputgroup input-group-dh">
+                                <span className="p-inputgroup-addon py-3">
+                                    <Checkbox className="checkbox-dh"
+                                        checked={roundValue == val}
+                                        onChange={() => {
+                                            setRoundVal(val);
+                                        }} />
+                                </span>
+                                <InputNumber
+                                    readonly
+                                    className="w-100"
+                                    inputClassName="py-3"
+                                    value={val}
+                                    locale="id-ID"
+                                    placeholder="Rp 0"
+                                    currency="IDR"
+                                />
+                            </div>
                         </div>
-                    </div>
+                    ))}
                     <div className="col-12 py-2">
                         <div className="p-inputgroup input-group-dh">
                             <span className="p-inputgroup-addon py-3">
-                                <Checkbox className="checkbox-dh" checked={checkList[2]} onChange={() => onChangesCheck(2)} />
-                            </span>
-                            <InputNumber
-                                readonly
-                                className="w-100"
-                                inputClassName="py-3"
-                                value={valueRoundUps[2]}
-                                locale="id-ID"
-                                placeholder="Rp 0"
-                                currency="IDR"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-12 py-2">
-                        <div className="p-inputgroup input-group-dh">
-                            <span className="p-inputgroup-addon py-3">
-                                <Checkbox className="checkbox-dh" checked={checkList[3]} onChange={() => onChangesCheck(3)} />
-                            </span>
-                            <InputNumber
-                                readonly
-                                className="w-100"
-                                inputClassName="py-3"
-                                value={valueRoundUps[3]}
-                                locale="id-ID"
-                                placeholder="Rp 0"
-                                currency="IDR"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-12 py-2">
-                        <div className="p-inputgroup input-group-dh">
-                            <span className="p-inputgroup-addon py-3">
-                                <Checkbox className="checkbox-dh" checked={checkList[4]} onChange={() => onChangesCheck(4)} />
+                                <Checkbox
+                                    className="checkbox-dh"
+                                    checked={roundValue == subtotalAmount}
+                                    onChange={() =>
+                                        setRoundVal(subtotalAmount)
+                                    } />
                             </span>
                             <InputText
                                 readOnly
                                 className="w-100 py-3"
-                                value={`No, Keep my Zakat value as Rp 5,425,300`}
+                                value={`No, Keep my Zakat value as Rp ${(subtotalAmount).toLocaleString()}`}
                                 locale="id-ID"
                                 placeholder="Rp 0"
                                 currency="IDR"
@@ -177,11 +160,11 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                     <div className="align-self-center">
                         {
                             fidyah ? <InputNumber
-                                inputClassName="input-dh"
+                                inputClassName="input-dh text-right"
                                 readonly
                                 className="w-100"
                                 value={fidyahAmount}
-                                onChange={(e) => { onChangeFidyah(e.value); props.fidyahChanges ? props.fidyahChanges(e.value) : '' }}
+                                onChange={(e) => setFidyahAmount(e.value)}
                                 locale="id-ID"
                                 placeholder="Rp 0"
                                 currency="IDR"
@@ -193,7 +176,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                     </div>
                 </div>
 
-                <div className="text-left  px-2">
+                <div className="text-left  px-2 w-100">
                     <div className="header">
                         Sadaqah
                     </div>
@@ -208,7 +191,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                             {
                                 sodaqohValueList.map((val, key) => (
                                     <div className="px-2" key={key}>
-                                        <div onClick={() => { onChangeSodaqoh(val); props.shodaqohChanges ? props.shodaqohChanges(val) : ''; }} className={"card-sodaqoh " + (val == shodaqohAmount ? 'active' : '')}>
+                                        <div onClick={() => { setShodaqohAmount(val) }} className={"card-sodaqoh " + (val == shodaqohAmount ? 'active' : '')}>
                                             <div className="d-flex flex-column">
                                                 <div className="align-self-start mb-2">
                                                     <div className="circle-rp">Rp</div>
@@ -227,7 +210,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                                     readonly
                                     className="w-100"
                                     value={shodaqohAmount}
-                                    onChange={e => { onChangeSodaqoh(e.value); props.shodaqohChanges ? props.shodaqohChanges(e.value) : ''; }}
+                                    onChange={e => { setShodaqohAmount(e.value) }}
                                     locale="id-ID"
                                     placeholder="enter amount"
                                     currency="IDR"
@@ -248,7 +231,7 @@ const GiveZakat = (props: { step: number, stepChanges?: (to: number) => void, sh
                 }
 
                 <div className="the-card-footer d-flex justify-content-end flex-row">
-                    <button className="btn color-back" onClick={() => scrollTo(3, 'next')} type="button">Lewati</button>
+                    <button className="btn color-back" onClick={() => { scrollTo(3, 'next'); setFidyahAmount(0); setShodaqohAmount(0) }} type="button">Lewati</button>
                     <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
                         Selanjutnya
                     <span className="ml-2">

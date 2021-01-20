@@ -37,7 +37,7 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, [step])
 
     return (
 
