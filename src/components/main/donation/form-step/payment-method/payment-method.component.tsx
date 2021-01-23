@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
@@ -12,10 +13,9 @@ const PaymentMethodStep = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
+    let userInfo: any = localStorage.getItem('userinfo');
     const [step, onChangeStep] = useState(props.step);
-    const [anonim, setAnonim] = useState(false);
     const [paymentMethod, selectPayment] = useState('');
-    const [messagesDoa, onChangeMsgDoa] = useState('');
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -56,6 +56,15 @@ const PaymentMethodStep = (props: {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
+
+    useEffect(() => {
+        userInfo = JSON.parse(userInfo || '');
+        setCustomerInfo({
+            ...customerInfo,
+            fullName: (userInfo && userInfo.user) ? userInfo.user.fullName : '',
+            phoneOrEmail: (userInfo && userInfo.user) ? userInfo.user.email : ''
+        })
+    }, [userInfo])
 
     return (
 

@@ -1,12 +1,30 @@
+import _ from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
 
-const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => void }) => {
+const ZakatPaymetMethod = (props: {
+    step: number;
+    stepChanges?: (to: number) => void;
+    onChangeCustomerInfo?: (val: {
+        fullName: string,
+        notes: string,
+        phoneOrEmail: string,
+        showAsAnonymous: boolean
+    }) => void
+}) => {
+    let userInfo: any = localStorage.getItem('userinfo');
+
     const { step } = props;
-    const [anonim, setAnonim] = useState(false);
     const [paymentMethod, selectPayment] = useState('');
     const [messagesDoa, onChangeMsgDoa] = useState('');
+
+    const [customerInfo, setCustomerInfo] = useState({
+        fullName: _.get(localStorage.getItem('userinfo'), 'user.fullName'),
+        notes: '',
+        phoneOrEmail: _.get(localStorage.getItem('userinfo'), 'user.email'),
+        showAsAnonymous: false
+    });
 
     const scrollTo = (i: number, type: string) => {
         let el;
@@ -35,9 +53,23 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
         }
     ];
 
+    function onChangeCustomerInfo() {
+        props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [step])
+
+
+    useEffect(() => {
+        userInfo = JSON.parse(userInfo || '');
+        setCustomerInfo({
+            ...customerInfo,
+            fullName: (userInfo && userInfo.user) ? userInfo.user.fullName : '',
+            phoneOrEmail: (userInfo && userInfo.user) ? userInfo.user.email : ''
+        })
+    }, [userInfo])
 
     return (
 
@@ -52,16 +84,35 @@ const ZakatPaymetMethod = (props: { step: number, stepChanges?: (to: number) => 
                     </div>
                     <div className="d-flex flex-column py-3">
                         <div className="form-group">
-                            <input type="text" disabled={anonim} placeholder="Nama Lengkap" name="" id="" className="form-control" />
+                            <input
+                                type="text"
+                                disabled={customerInfo.showAsAnonymous}
+                                placeholder="Nama Lengkap"
+                                name=""
+                                id=""
+                                className="form-control"
+                                value={customerInfo.fullName}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }); onChangeCustomerInfo() }}
+                            />
                         </div>
                         <div className="form-group">
-                            <input type="text" disabled={anonim} placeholder="Nomor ponsel atau email" name="" id="" className="form-control" />
+                            <input
+                                type="text" disabled={customerInfo.showAsAnonymous}
+                                placeholder="Nomor ponsel atau email"
+                                name="" id=""
+                                className="form-control"
+                                value={customerInfo.phoneOrEmail}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }); onChangeCustomerInfo() }}
+                            />
                         </div>
                         {/* <div className="form-group">
                             <div className="d-flex flex-row justify-content-between">
                                 <label className="label-input">Sembunyikan nama saya (Anonim)</label>
                                 <div className="">
-                                    <InputSwitch className="dh-switch" checked={anonim} onChange={(e) => setAnonim(e.value)} />
+                                    <InputSwitch className="dh-switch"
+                                        checked={customerInfo.showAsAnonymous}
+                                        onChange={(e: any) => { setCustomerInfo({ ...customerInfo, showAsAnonymous: e.target.value }); onChangeCustomerInfo() }}
+                                    />
                                 </div>
                             </div>
                         </div> */}
