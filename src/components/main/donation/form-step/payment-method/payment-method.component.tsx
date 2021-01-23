@@ -87,7 +87,7 @@ const PaymentMethodStep = (props: {
                                 id=""
                                 className="form-control"
                                 value={customerInfo.fullName}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }); onChangeCustomerInfo() }}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
@@ -97,7 +97,7 @@ const PaymentMethodStep = (props: {
                                 name="" id=""
                                 className="form-control"
                                 value={customerInfo.phoneOrEmail}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }); onChangeCustomerInfo() }}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
@@ -106,7 +106,7 @@ const PaymentMethodStep = (props: {
                                 <div className="">
                                     <InputSwitch className="dh-switch"
                                         checked={customerInfo.showAsAnonymous}
-                                        onChange={(e: any) => { setCustomerInfo({ ...customerInfo, showAsAnonymous: e.target.value }); onChangeCustomerInfo() }}
+                                        onChange={(e: any) => { setCustomerInfo({ ...customerInfo, showAsAnonymous: e.target.value }) }}
                                     />
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ const PaymentMethodStep = (props: {
                         <div className="col-12 py-2">
                             <InputTextarea placeholder="Tulis pesan, harapan atau do’a disini jika ada" className="input-dh w-100" rows={5} cols={30}
                                 value={customerInfo.notes}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, notes: e.target.value }); onChangeCustomerInfo() }}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, notes: e.target.value }) }}
                             />
                         </div>
                     </div>
