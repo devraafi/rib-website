@@ -13,7 +13,7 @@ const PaymentMethodStep = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    let userInfo: any = localStorage.getItem('userinfo');
+    let userInfo: any = typeof window !== 'undefined' ? localStorage.getItem('userinfo') : null;
     const [step, onChangeStep] = useState(props.step);
     const [paymentMethod, selectPayment] = useState('');
     const [customerInfo, setCustomerInfo] = useState({

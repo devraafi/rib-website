@@ -129,7 +129,7 @@ const DonationList = () => {
                                                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="donatur-amount px-2">
-                                                                    {(list.donaturAmount || 0).toLocaleString() || 0}
+                                                                    {list.collectedAmount || 0}
                                                                 </div>
                                                                 <div className="donasi">
                                                                     Donasi
@@ -140,7 +140,7 @@ const DonationList = () => {
                                                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="days-amount px-2">
-                                                                    {list.dayAmount || 0}
+                                                                    {list.remainingDays || 0}
                                                                 </div>
                                                                 <div className="days">
                                                                     Hari

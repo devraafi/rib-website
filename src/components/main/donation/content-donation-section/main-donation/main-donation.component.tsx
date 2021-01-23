@@ -97,7 +97,7 @@ const MainDonation = (props: any) => {
                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
                                 <div className="donatur-amount px-2">
-                                    {(data.donaturAmount || 0).toLocaleString() || 0}
+                                    {data.collectedAmount || 0}
                                 </div>
                                 <div className="donasi">
                                     Donasi
@@ -108,7 +108,7 @@ const MainDonation = (props: any) => {
                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
                                 <div className="days-amount px-2">
-                                    {data.dayAmount || 0}
+                                    {data.remainingDays || 0}
                                 </div>
                                 <div className="days">
                                     Hari

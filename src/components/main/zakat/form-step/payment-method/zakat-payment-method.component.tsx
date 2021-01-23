@@ -13,7 +13,7 @@ const ZakatPaymetMethod = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    let userInfo: any = localStorage.getItem('userinfo');
+    let userInfo: any =  typeof window !== 'undefined' ? localStorage.getItem('userinfo') : null;
 
     const { step } = props;
     const [paymentMethod, selectPayment] = useState('');
