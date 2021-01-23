@@ -13,8 +13,16 @@ const PaymentMethodStep = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    const local = localStorage;
-    let userInfo: any = (typeof window !== 'undefined') ? local.getItem('userinfo') : null;
+    function getItem() {
+        const local = localStorage;
+        const userInfo = local.getItem('userinfo');
+        if (userInfo) {
+            return JSON.parse(userInfo)
+        } else {
+            return null
+        }
+    }
+    let userInfo: any = (typeof window !== 'undefined') ? getItem : null;
     const [step, onChangeStep] = useState(props.step);
     const [paymentMethod, selectPayment] = useState('');
     const [customerInfo, setCustomerInfo] = useState({
@@ -59,7 +67,6 @@ const PaymentMethodStep = (props: {
     }, [])
 
     useEffect(() => {
-        userInfo = JSON.parse(userInfo || '');
         setCustomerInfo({
             ...customerInfo,
             fullName: (userInfo && userInfo.user) ? userInfo.user.fullName : '',
