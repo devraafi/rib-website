@@ -13,8 +13,8 @@ const ZakatPaymetMethod = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
+    const local = localStorage;
     function getItem() {
-        const local = localStorage;
         const userInfo = local.getItem('userinfo');
         if (userInfo) {
             return JSON.parse(userInfo)
@@ -22,7 +22,6 @@ const ZakatPaymetMethod = (props: {
             return null
         }
     }
-    let userInfo: any = (typeof window !== 'undefined') ? getItem : null;
 
     const { step } = props;
     const [paymentMethod, selectPayment] = useState('');
@@ -74,10 +73,10 @@ const ZakatPaymetMethod = (props: {
     useEffect(() => {
         setCustomerInfo({
             ...customerInfo,
-            fullName: (userInfo && userInfo.user) ? userInfo.user.fullName : '',
-            phoneOrEmail: (userInfo && userInfo.user) ? userInfo.user.email : ''
+            fullName: (getItem() && getItem().user) ? getItem().user.fullName : '',
+            phoneOrEmail: (getItem() && getItem().user) ? getItem().user.email : ''
         })
-    }, [userInfo])
+    }, [local])
 
     return (
 
