@@ -13,7 +13,7 @@ const ZakatPaymetMethod = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    let userInfo: any =  typeof window !== 'undefined' ? localStorage.getItem('userinfo') : null;
+    let userInfo: any = typeof window !== 'undefined' ? localStorage.getItem('userinfo') : null;
 
     const { step } = props;
     const [paymentMethod, selectPayment] = useState('');
@@ -53,9 +53,9 @@ const ZakatPaymetMethod = (props: {
         }
     ];
 
-    function onChangeCustomerInfo() {
+    useEffect(() => {
         props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
-    }
+    }, [customerInfo])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -92,7 +92,7 @@ const ZakatPaymetMethod = (props: {
                                 id=""
                                 className="form-control"
                                 value={customerInfo.fullName}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }); onChangeCustomerInfo() }}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }); }}
                             />
                         </div>
                         <div className="form-group">
@@ -102,7 +102,7 @@ const ZakatPaymetMethod = (props: {
                                 name="" id=""
                                 className="form-control"
                                 value={customerInfo.phoneOrEmail}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }); onChangeCustomerInfo() }}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }); }}
                             />
                         </div>
                         {/* <div className="form-group">

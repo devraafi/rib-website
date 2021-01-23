@@ -28,6 +28,13 @@ const ZakatFormSteps = () => {
     const [fidyahAmount, setFidyahAmount] = useState(0);
     const [shodaqohAmount, setShodaqohAmount] = useState(0);
 
+    const [customerInfo, setCustomerInfo] = useState({
+        fullName: '',
+        notes: '',
+        phoneOrEmail: '',
+        showAsAnonymous: false
+    });
+
     function onChangesCalc(values: any) {
         console.log(values);
         let totalZakat = 0;
@@ -106,6 +113,10 @@ const ZakatFormSteps = () => {
                 setZakatList(data)
             }
         })
+    }
+
+    function onChangeCustomerInfo(val: any) {
+        setCustomerInfo(val);
     }
 
     useEffect(() => {
@@ -201,6 +212,7 @@ const ZakatFormSteps = () => {
                                                     <ZakatPaymetMethod
                                                         step={step}
                                                         stepChanges={onStepChange}
+                                                        onChangeCustomerInfo={onChangeCustomerInfo}
                                                     />
                                                 </div>
                                             </div>

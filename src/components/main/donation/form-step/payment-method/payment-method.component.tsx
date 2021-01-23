@@ -49,9 +49,9 @@ const PaymentMethodStep = (props: {
         }
     ];
 
-    function onChangeCustomerInfo() {
+    useEffect(() => {
         props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
-    }
+    }, [customerInfo])
 
     useEffect(() => {
         window.scrollTo(0, 0);
