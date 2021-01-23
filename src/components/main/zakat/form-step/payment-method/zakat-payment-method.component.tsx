@@ -13,16 +13,17 @@ const ZakatPaymetMethod = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    let userInfo: any = typeof window !== 'undefined' ? localStorage.getItem('userinfo') : null;
+    const local = localStorage;
+    let userInfo: any = (typeof window !== 'undefined') ? local.getItem('userinfo') : null;
 
     const { step } = props;
     const [paymentMethod, selectPayment] = useState('');
     const [messagesDoa, onChangeMsgDoa] = useState('');
 
     const [customerInfo, setCustomerInfo] = useState({
-        fullName: _.get(localStorage.getItem('userinfo'), 'user.fullName'),
+        fullName: '',
         notes: '',
-        phoneOrEmail: _.get(localStorage.getItem('userinfo'), 'user.email'),
+        phoneOrEmail: '',
         showAsAnonymous: false
     });
 
