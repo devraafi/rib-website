@@ -27,6 +27,7 @@ const CalculateZakat = (props: {
     const [form] = Form.useForm();
     const [currentStepForm, setCurrent] = useState(0)
     const onChangeCheck = (obj: any, val: boolean, i: number) => {
+        console.log(val);
         if (currentStepForm > i) {
             setCurrent(i);
         }
