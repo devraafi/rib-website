@@ -117,6 +117,7 @@ const CalculateZakat = (props: {
                                 <Checkbox
                                     id={i + 'checkboxxxx'}
                                     checked={list.checked}
+                                    value={list}
                                     onChange={(e) => onChangeCheck(list, e.target.checked, i)}
                                     className="checkbox-dh text">
                                     {list.name}

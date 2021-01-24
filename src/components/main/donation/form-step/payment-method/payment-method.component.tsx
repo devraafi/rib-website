@@ -13,7 +13,7 @@ const PaymentMethodStep = (props: {
         showAsAnonymous: boolean
     }) => void
 }) => {
-    const local = localStorage || null;
+    const local:any = (typeof window !== 'undefined') ?  localStorage : null;
     function getItem() {
         const userInfo = local.getItem('userinfo');
         if (userInfo) {
