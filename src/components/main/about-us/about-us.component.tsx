@@ -117,7 +117,7 @@ const MapsSection = () => {
     const [zoom, setZoom] = useState(13);
 
     return <GoogleMapReact
-        bootstrapURLKeys={{ key: '' }}
+        bootstrapURLKeys={{ key: 'AIzaSyCrTfNq4x3ndCh4nx7jkljL0NmfIUsB96M' }}
         defaultCenter={center}
         defaultZoom={zoom}
     >
