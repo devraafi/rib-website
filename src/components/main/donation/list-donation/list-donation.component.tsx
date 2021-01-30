@@ -81,8 +81,8 @@ const DonationList = () => {
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
                                                     {
-                                                        list.imageUrl &&
-                                                        <img src={list.imageUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                        list.fileUrl &&
+                                                        <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
                                                     }
                                                 </div>
                                                 <div className="program-info p-3">

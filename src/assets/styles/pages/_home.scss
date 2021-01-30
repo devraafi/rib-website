@@ -47,6 +47,15 @@
                     border-radius: 20px;
                     object-fit: cover;
                 }
+                .imooge {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 20px;
+                    background: #a7cf7d;
+                }
             }
         }
     }
@@ -234,7 +243,7 @@
                 width: 100%;
                 height: 50%;
                 min-height: 150px;
-                background: #E9F3DF;
+                background: #e9f3df;
                 .imooge {
                     border-top-right-radius: 15px;
                     border-top-left-radius: 15px;
@@ -447,6 +456,15 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+                .imooge {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 35px;
+                    width: 100%;
+                    height: 100%;
+                    background: #a7cf7d;
                 }
             }
         }

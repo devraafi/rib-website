@@ -14,7 +14,14 @@ const ContactUs = () => {
 
     function onSubmit() {
         if (form.name && form.email && form.notes) {
-            message.success('Pesan terkirim');
+            const text = `
+            Nama: ${form.name}
+            Email: ${form.notes}
+            ${form.notes}
+            `;
+
+            document.location.href = `https://api.whatsapp.com/send?phone=081234567890&text=${text}`
+
         } else {
             message.error('Lengkapi formulir');
         }

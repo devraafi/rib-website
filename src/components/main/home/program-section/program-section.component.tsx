@@ -6,21 +6,19 @@ import { DonationRestServices } from '@Components/main/donation/donation-rest.se
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Skeleton, Spin } from 'antd';
-import { Loading } from '@Components/basics/loading/loading.component';
 
 const donationRestService: DonationRestServices = new DonationRestServices;
 
-const ProgramSection = () => {
+const ProgramSection = (props: {
+    data: any
+}) => {
     const loading = [1, 2, 3];
-    const [response, setResponse] = useState<any>(null)
+    const [list, setResponse] = useState<any>(null)
     useEffect(() => {
-        donationRestService.loadProgram().pipe(
-            catchError(err => {
-                return throwError(err);
-            })).subscribe((res: any) => {
-                setResponse(res)
-            })
-    }, [])
+        if (props.data) {
+            setResponse(props.data)
+        }
+    }, [props.data])
     return <div className="container program-section py-5">
         <div className="col-lg-6 m-auto header">
             Mari bantu dan ringankan beban mereka yang membutuhkan
@@ -30,7 +28,7 @@ const ProgramSection = () => {
         </div>
         <div className="row justify-content-center">
             {
-                (response && response.data) ? response.data.map((list: any, i: number) => {
+                (list && list) ? list.map((list: any, i: number) => {
                     return (
 
                         <div className="col-lg-4 col-12 px-3 py-3" key={i}>
@@ -39,8 +37,8 @@ const ProgramSection = () => {
                                     <div className="d-flex flex-column">
                                         <div className="program-image">
                                             {
-                                                list.imageUrl ?
-                                                    <img src={list.imageUrl} alt="" className='lazyload blur-up lazyloaded imooge' />
+                                                list.fileUrl ?
+                                                    <img src={list.fileUrl || ''} alt="" className='lazyload blur-up lazyloaded imooge' />
                                                     : <div className="imooge"></div>
                                             }
                                         </div>
