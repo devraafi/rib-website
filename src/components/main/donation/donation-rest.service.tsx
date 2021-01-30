@@ -18,7 +18,8 @@ export class DonationRestServices {
         customerInfo: {
             fullName: string,
             notes: string,
-            phoneOrEmail: string,
+            phone: string,
+            email: string,
             showAsAnonymous: boolean
         }
     }) {

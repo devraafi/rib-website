@@ -15,13 +15,15 @@ const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices;
 
 const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any }) => {
-    const [step, onStepChange] = useState(props.step);
+    const [step, onStepChange] = useState(1);
     const [spin, setSpin] = useState(false);
-    const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Detail Pembayaran'];
+    const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Bayar'];
+    const [paymentMethod, setpayment] = useState<any>(null);
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
-        phoneOrEmail: '',
+        phone: '',
+        email: '',
         showAsAnonymous: false
     });
 
@@ -106,84 +108,84 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
             title="Donasi Lazis Darul Hikam"
             description="Donasi Darul Hikam"
             pageId="donasi-step-page-dh"
-        // customNav={<StepNav />}
+            customNav={<StepNav />}
         >
             <Spin indicator={<Loading />} spinning={spin}>
                 <div className="container-fluid p-0 donasi-form-steps">
                     <div className="container-lg container-fluid py-5 header-section">
                         <div className="container-lg container-fluid form-section">
                             {
-                                step == (1 || 2) ?
-                                    <div className="row" style={{ minHeight: '95vh' }}>
-                                        <div className="col-lg-7 col-12">
-                                            <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} />
-                                        </div>
+                                // step == 1 || 2) ?
+                                <div className="row" style={{ minHeight: '95vh' }}>
+                                    <div className="col-lg-7 col-12">
+                                        <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} done={() => onSubmit()} selectPayment={setpayment} />
+                                    </div>
 
-                                        <div className="col-lg-5 col-12 position-relative">
-                                            <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
-                                                <div className="header pb-3 pt-1">
-                                                    Ringkasan Donasi
+                                    <div className="col-lg-5 col-12 position-relative">
+                                        <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
+                                            <div className="header pb-3 pt-1">
+                                                Ringkasan Donasi
                                         </div>
-                                                <div className="title py-1">
-                                                    {props.data ? props.data.name : 'Program'}
-                                                </div>
-                                                <div className="profile-info py-3">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <div className="d-flex flex-row">
-                                                            <div className="profile-img">
-                                                                <img src={(props.data && props.data.user) ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
-                                                            </div>
-                                                            <div className="ml-3 profile-name">
-                                                                {(props.data && props.data.user) ? props.data.user.name : 'Anonim'}
-                                                            </div>
+                                            <div className="title py-1">
+                                                {props.data ? props.data.name : 'Program'}
+                                            </div>
+                                            <div className="profile-info py-3">
+                                                <div className="d-flex flex-row justify-content-between">
+                                                    {/* <div className="d-flex flex-row">
+                                                        <div className="profile-img">
+                                                            <img src={(props.data && props.data.user) ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                         </div>
-                                                        <div className="is-certified">
-                                                            {
-                                                                ((props.data && props.data.user) && props.data.user.isCertified) && (
-                                                                    <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                                                )
-                                                            }
+                                                        <div className="ml-3 profile-name">
+                                                            {(props.data && props.data.user) ? props.data.user.name : 'Anonim'}
                                                         </div>
+                                                    </div> */}
+                                                    <div className="is-certified">
+                                                        {
+                                                            ((props.data && props.data.user) && props.data.user.isCertified) && (
+                                                                <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                                            )
+                                                        }
                                                     </div>
                                                 </div>
-                                                <div className="total-info py-3">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <div>Total Donasi</div>
-                                                        <div className="amount">
-                                                            Rp. {(props.total ? props.total : 0).toLocaleString()}
-                                                        </div>
+                                            </div>
+                                            <div className="total-info py-3">
+                                                <div className="d-flex flex-row justify-content-between">
+                                                    <div>Total Donasi</div>
+                                                    <div className="amount">
+                                                        Rp. {(props.total ? props.total : 0).toLocaleString()}
                                                     </div>
                                                 </div>
-                                                <div className="py-3">
-                                                    <button className="btn btn-dh-secondary w-100 rounded" onClick={() => onSubmit()}>Bayar</button>
-                                                </div>
-                                                <div className="row py-3 donate-price">
-                                                    <div className="col-12 pt-4 share">
-                                                        <div className="text-center py-2">Sebarkan Program Melalui</div>
-                                                        <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
-                                                            <div className="d-flex">
-                                                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
-                                                            </div>
-                                                            <div className="d-flex">
-                                                                <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
-                                                            </div>
+                                            </div>
+                                            <div className="py-3">
+                                                <button className="btn btn-dh-secondary w-100 rounded" disabled={!paymentMethod} onClick={() => onSubmit()}>Bayar</button>
+                                            </div>
+                                            <div className="row py-3 donate-price">
+                                                <div className="col-12 pt-4 share">
+                                                    <div className="text-center py-2">Sebarkan Program Melalui</div>
+                                                    <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
+                                                        <div className="d-flex">
+                                                            <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    :
-                                    <DonasiPaymentDetail total={100000} />
+                                </div>
+                                // :
+                                // <DonasiPaymentDetail total={100000} />
                             }
                         </div>
                     </div>

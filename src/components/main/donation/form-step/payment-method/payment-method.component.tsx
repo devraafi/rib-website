@@ -9,11 +9,14 @@ const PaymentMethodStep = (props: {
     onChangeCustomerInfo?: (val: {
         fullName: string,
         notes: string,
-        phoneOrEmail: string,
+        phone: string,
+        email: string,
         showAsAnonymous: boolean
-    }) => void
+    }) => void;
+    done?: () => void;
+    selectPayment?: (paymentMethod: any) => void
 }) => {
-    const local:any = (typeof window !== 'undefined') ?  localStorage : null;
+    const local: any = (typeof window !== 'undefined') ? localStorage : null;
     function getItem() {
         const userInfo = local.getItem('userinfo');
         if (userInfo) {
@@ -27,7 +30,8 @@ const PaymentMethodStep = (props: {
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
-        phoneOrEmail: '',
+        phone: '',
+        email: '',
         showAsAnonymous: false
     });
     const scrollTo = (i: number, type: string) => {
@@ -63,13 +67,17 @@ const PaymentMethodStep = (props: {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        props.selectPayment ? props.selectPayment(paymentMethod) : '';
+    }, [paymentMethod])
 
     useEffect(() => {
         setCustomerInfo({
             ...customerInfo,
             fullName: (getItem() && getItem().user) ? getItem().user.fullName : '',
-            phoneOrEmail: (getItem() && getItem().user) ? getItem().user.email : ''
+            email: (getItem() && getItem().user) ? getItem().user.email : ''
         })
     }, [local])
 
@@ -99,12 +107,22 @@ const PaymentMethodStep = (props: {
                         </div>
                         <div className="form-group">
                             <input
-                                type="text" disabled={customerInfo.showAsAnonymous}
-                                placeholder="Nomor ponsel atau email"
+                                type="tel" disabled={customerInfo.showAsAnonymous}
+                                placeholder="Nomor ponsel"
                                 name="" id=""
                                 className="form-control"
-                                value={customerInfo.phoneOrEmail}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }) }}
+                                value={customerInfo.phone}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phone: e.target.value }) }}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="email" disabled={customerInfo.showAsAnonymous}
+                                placeholder="Email"
+                                name="" id=""
+                                className="form-control"
+                                value={customerInfo.email}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, email: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
@@ -136,18 +154,18 @@ const PaymentMethodStep = (props: {
                     </div>
                 </div>
 
-                {/* <div className="the-card-footer d-flex justify-content-between flex-row">
+                <div className="the-card-footer d-flex justify-content-between flex-row">
                     <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
-                    <button className="btn btn-dh-basic color-next" onClick={() => { scrollTo(2, 'next'); onChangeStep(step + 1) }} type="submit">
+                    <button disabled={customerInfo.phone || customerInfo.email ? false : true} className="btn btn-dh-basic color-next" onClick={() => { scrollTo(2, 'next'); onStepChange(2) }} type="submit">
                         Selanjutnya
                     <span className="ml-2">
                             <img src="/images/icons/down.svg" alt="" />
                         </span>
                     </button>
-                </div> */}
+                </div>
             </div>
 
-            {/* <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Pilih metode pembayaran
@@ -164,7 +182,7 @@ const PaymentMethodStep = (props: {
                                     {
                                         pm.list.map((l, i) => {
                                             return (
-                                                <div key={i} className="col-lg-4 col-6 p-2" onClick={() => selectPayment(l)}>
+                                                <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                                     <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                                         <img src={`/images/logos/payment/${l.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
                                                     </div>
@@ -178,11 +196,11 @@ const PaymentMethodStep = (props: {
                     }
                 </div>
                 <div className="the-card-footer border-0">
-                    <button className="btn btn-dh-secondary rounded btn-block" onClick={() => scrollTo(3, 'next')}>
+                    <button disabled={!paymentMethod} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done ? props.done() : ''}>
                         Lanjut ke pembayaran
                     </button>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
