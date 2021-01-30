@@ -64,6 +64,8 @@
                     height: 200px;
                     background: #e9f3df;
                     img {
+                        background: linear-gradient(360deg, #797979 0%, rgba(91, 91, 91, 0) 66.15%);
+                        background-blend-mode: multiply, normal;
                         border-top-right-radius: 15px;
                         border-top-left-radius: 15px;
                         width: 100%;
