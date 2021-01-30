@@ -115,17 +115,17 @@ const DonationList = () => {
 
                                                     <div className="target-info p-2">
                                                         <div className="py-2">
-                                                            <Slider disabled className="slider-program-dh" value={list.amount || 0} max={list.targetAmount || 0} />
+                                                            <Slider disabled className="slider-program-dh" value={list.collectedAmount || 0} max={list.targetAmount || 0} />
                                                         </div>
                                                         <div className="d-flex flex-row justify-content-between py-2">
-                                                            <div className="amount">{'Rp. ' + (list.amount || 0).toLocaleString()}</div>
+                                                            <div className="amount">{'Rp. ' + (list.collectedAmount || 0).toLocaleString()}</div>
                                                             <div className="target-amount">{`Target Rp. ${(list.targetAmount || 0).toLocaleString()}`}</div>
                                                         </div>
                                                     </div>
 
                                                     <div className="donation-info p-2">
                                                         <div className="d-flex flex-row justify-content-between">
-                                                            <div className="d-flex flex-row justify-content-arround">
+                                                            {/* <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="donatur-icon">
                                                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
@@ -135,7 +135,7 @@ const DonationList = () => {
                                                                 <div className="donasi">
                                                                     Donasi
                                                                 </div>
-                                                            </div>
+                                                            </div> */}
                                                             <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="cart">
                                                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />

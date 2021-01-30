@@ -61,11 +61,11 @@ const MainDonation = (props: any) => {
                 <div className="program-info p-3">
                     <div className="target-info p-2">
                         <div className="py-2">
-                            <Slider disabled className="slider-program-dh" value={data.currentAmount} max={data.targetAmount} />
+                            <Slider disabled className="slider-program-dh" value={data.collectedAmount} max={data.targetAmount} />
                         </div>
                         <div className="d-flex flex-row justify-content-between py-2">
-                            <div className="amount text-left">{'Rp. ' + (data.currentAmount).toLocaleString()}</div>
-                            <div className="target-amount">{`Target Rp. ${(data.targetAmount).toLocaleString()}`}</div>
+                            <div className="amount text-left">{'Rp. ' + (data.collectedAmount || 0).toLocaleString()}</div>
+                            <div className="target-amount">{`Target Rp. ${(data.targetAmount || 0).toLocaleString()}`}</div>
                         </div>
                     </div>
                     <div className="profile-info py-3 px-2">
@@ -92,7 +92,7 @@ const MainDonation = (props: any) => {
 
                     <div className="donation-info p-2">
                         <div className="d-flex flex-row justify-content-between">
-                            <div className="d-flex flex-row justify-content-arround">
+                            {/* <div className="d-flex flex-row justify-content-arround">
                                 <div className="donatur-icon">
                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
@@ -102,7 +102,7 @@ const MainDonation = (props: any) => {
                                 <div className="donasi">
                                     Donasi
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="d-flex flex-row justify-content-arround">
                                 <div className="cart">
                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
