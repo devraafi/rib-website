@@ -39,16 +39,19 @@ const ZakatFormSteps = () => {
         console.log(values);
         let totalZakat = 0;
         let totalWealthAmount = 0;
+        let totalDebtAmount = 0;
         let subtotal = 0;
         if (values) {
             for (const key in values) {
                 totalZakat += values[key].totalWithRate;
-                totalWealthAmount += values[key].total;
+                totalWealthAmount += values[key].totalDebit;
+                totalDebtAmount += values[key].totalCredit;
             }
         }
         subtotal = totalZakat;
         setSubtotal(subtotal);
         setWealthAmount(totalWealthAmount);
+        setDebAmount(totalDebtAmount);
         setRoundAmount(subtotal)
     }
 
@@ -65,7 +68,7 @@ const ZakatFormSteps = () => {
     }
 
     function syncTotal() {
-        const total = ((roundUpAmount || subtotalAmount) + fidyahAmount + shodaqohAmount) - debtAmount;
+        const total = (subtotalAmount + fidyahAmount + shodaqohAmount);
         setTotalAmount(total);
     }
 
@@ -244,7 +247,7 @@ const ZakatFormSteps = () => {
                                                                         Hutang saya
                                                                     </div>
                                                                     <div className="amount danger">
-                                                                        Rp {0 ? (0).toLocaleString() : 0}
+                                                                        Rp {debtAmount ? (debtAmount).toLocaleString() : 0}
                                                                     </div>
                                                                 </div>
                                                             </div>

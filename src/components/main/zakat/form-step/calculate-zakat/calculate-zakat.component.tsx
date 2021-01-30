@@ -110,7 +110,7 @@ const CalculateZakat = (props: {
                         Pilih jenis zakat yang ingin ditunaikan atau dibayarkan (dapat memilih lebih dari satu).
                     </div>
                 </div>
-                <div className="row">
+                <div className="row w-100">
                     {
                         zakatList && zakatList.map((list, i) => (
                             <div className="col-lg-6 col-12" key={i}>
@@ -146,13 +146,21 @@ const CalculateZakat = (props: {
                                         values,
                                         total: 0,
                                         totalWithRate: 0,
+                                        totalDebit: 0,
+                                        totalCredit: 0,
                                     };
                                     for (const key in values) {
                                         const notKey = ['id', 'rate'];
                                         if (!notKey.includes(key)) {
-                                            form.total += values[key];
+                                            if (key.includes('CREDIT')) {
+                                                form.totalCredit += values[key];
+                                            }
+                                            if (key.includes('DEBIT')) {
+                                                form.totalDebit += values[key];
+                                            }
                                         }
                                     }
+                                    form.total = form.totalDebit - form.totalCredit;
                                     form.totalWithRate = form.total * (form.rate || 1);
                                     onSubmitStep(list?.name, form, isLast, i)
                                 }}
@@ -220,6 +228,7 @@ interface PropsFormSection {
 
 const FormSection = (props: PropsFormSection) => {
     const { lines } = props;
+
     return (
         <div className="row px-3">
             {
@@ -231,7 +240,7 @@ const FormSection = (props: PropsFormSection) => {
                         <div className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3' : 'col-lg-6')}>
                             <Form.Item
                                 className="m-0"
-                                name={_.camelCase(line.itemName)}
+                                name={_.camelCase(line.itemName) + line.type}
                                 rules={[{
                                     required: line.isRequired || false,
                                     message: 'Kolom ini wajib diisi!'
