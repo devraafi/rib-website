@@ -2,11 +2,12 @@
     background: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0) 0%,
-            #ffffff 30%,
+            #ffffff 20%,
             #ffffff 50%,
             rgba(255, 255, 255, 0) 100%
         ),
         url("/images/backgrounds/islamic-full.svg");
+        &::before {}
 
     .header-about-us {
         .title-about-us {

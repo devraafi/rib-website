@@ -13,10 +13,8 @@ const DonationSection = () => {
                     return (
                         <div className="col-12 col-lg-4 py-2" key={i}>
                             <div className="card-donation">
-                                <div className="d-flex">
-                                    <div className="card-child">
-                                        <img src="/images/icons/infaq.svg" alt="" className="lazyload blur-up lazyloaded" />
-                                    </div>
+                                <div className="d-flex flex-row">
+                                    <img src="/images/icons/card-donate.svg" alt="" className="img-fluid align-self-center" />
                                     <div className="d-flex flex-column ml-4">
                                         <div className="value">{data.amount}
                                             <span className="currency ml-2">{data.currency || ''}</span>

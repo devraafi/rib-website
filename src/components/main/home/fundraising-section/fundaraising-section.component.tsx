@@ -9,7 +9,7 @@ export const FundaraisingSection = (props: { data: any }) => {
         }
     }, [props.data])
     const settings = {
-        infinite: true,
+        infinite: false,
         speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -18,7 +18,7 @@ export const FundaraisingSection = (props: { data: any }) => {
     };
 
     const fundaraisingList = () => (
-        <Slider className="slider-fundaraising" {...settings}>
+        <Slider key={'asd'} className="slider-fundaraising" {...settings}>
             {
                 data && data.map((list: any, i: number) => {
                     return (

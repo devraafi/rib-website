@@ -2,17 +2,17 @@
     "menu": [
         {
             "title": "Tunaikan Zakat",
-            "imgUrl": "/images/icons/infaq.svg",
+            "imgUrl": "/images/icons/card-donate.svg",
             "link": "/zakat"
         },
         {
             "title": "Kalkulator Zakat",
-            "imgUrl": "/images/icons/money.svg",
+            "imgUrl": "/images/icons/card-donate.svg",
             "link": "/"
         },
         {
             "title": "Galang dana",
-            "imgUrl": "/images/icons/gift.svg",
+            "imgUrl": "/images/icons/card-donate.svg",
             "link": "/"
         }
     ]

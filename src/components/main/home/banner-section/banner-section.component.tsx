@@ -11,13 +11,12 @@ export const BannerSection = (props: {
     const [list, setList] = useState<any>(null);
     const arrayTest = [1, 2, 3]
     const settings = {
-        infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
         vertical: true,
         verticalSwiping: true,
         autoplay: true,
-        speed: 2000,
+        speed: 3000,
     };
 
     useEffect(() => {
@@ -28,9 +27,9 @@ export const BannerSection = (props: {
 
     const threeSlider = () => (
         <div className="banner-slider container d-none d-lg-block" >
-            {
-                < div className="d-flex flex-row justify-content-center justify-content-lg-end" >
-                    {
+
+            < div className="d-flex flex-row justify-content-center justify-content-lg-end" >
+                {/* {
                         arrayTest.map((test, i) => {
                             return (
                                 <div className={'banner-list ' + (i == 0 ? 'one' : i == 2 ? 'three' : 'two')} key={i}>
@@ -40,7 +39,7 @@ export const BannerSection = (props: {
                                                 return <div className="col-auto px-1 m-ato" key={i}>
                                                     <div className="banner-item">
                                                         {li.fileUrl ?
-                                                            <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
+                                                            <img src={li.fileurl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                                             : <div className="imooge"></div>
                                                         }
                                                         <div className="title p-4">{li.name}</div>
@@ -52,9 +51,63 @@ export const BannerSection = (props: {
                                 </div>
                             )
                         })
-                    }
-                </div >
-            }
+                    } */}
+
+                <div className={'banner-list one'}>
+                    <Slider infinite={list.length > 3} key={'wou'} {...settings} autoplaySpeed={3000} className="slide-index">
+                        {
+                            list && list.map((li: any, i: number) => {
+                                return <div className="col-auto px-1 m-ato" key={i}>
+                                    <div className="banner-item">
+                                        {li.fileUrl ?
+                                            <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
+                                            : <div className="imooge"></div>
+                                        }
+                                        <div className="title p-4">{li.name}</div>
+                                    </div>
+                                </div>
+                            })
+                        }
+                    </Slider>
+                </div>
+
+                <div className={'banner-list two'}>
+                    <Slider infinite={list.length > 3} key={'wou-1'} {...settings} autoplaySpeed={3100} className="slide-index">
+                        {
+                            list && _.reverse(list).map((li: any, i: number) => {
+                                return <div className="col-auto px-1 m-ato" key={i}>
+                                    <div className="banner-item">
+                                        {li.fileUrl ?
+                                            <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
+                                            : <div className="imooge"></div>
+                                        }
+                                        <div className="title p-4">{li.name}</div>
+                                    </div>
+                                </div>
+                            })
+                        }
+                    </Slider>
+                </div>
+
+                <div className={'banner-list three'}>
+                    <Slider infinite={list.length > 3} key={'wou-2'} {...settings} autoplaySpeed={2900} className="slide-index">
+                        {
+                            list && list.map((li: any, i: number) => {
+                                return <div className="col-auto px-1 m-ato" key={i}>
+                                    <div className="banner-item">
+                                        {li.fileUrl ?
+                                            <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
+                                            : <div className="imooge"></div>
+                                        }
+                                        <div className="title p-4">{li.name}</div>
+                                    </div>
+                                </div>
+                            })
+                        }
+                    </Slider>
+                </div>
+            </div >
+
         </div>
     )
 

@@ -17,10 +17,10 @@ export default class FooterComponent extends React.Component {
                                 </div>
                             </div>
                             <div className="row justify-content-center py-2">
-                                <div className="col-lg-auto text-center">
+                                <div className="col-auto text-center">
                                     <img className="lazyload blur-up lazyloaded img-fluid lazyload blur-up lazyloaded" src="/images/footer/appstore.svg" alt="" />
                                 </div>
-                                <div className="col-lg-auto text-center">
+                                <div className="col-auto text-center">
                                     <img className="lazyload blur-up lazyloaded img-fluid" src="/images/footer/playstore.svg" alt="" />
                                 </div>
                             </div>
@@ -165,11 +165,11 @@ export default class FooterComponent extends React.Component {
                                 <div className="separator-dh mx-5"></div>
                             </div>
                             <div className="container-fluid container-lg py-3 px-md-4">
-                                <div className="row justify-content-between">
+                                <div className="row justify-content-between mx-4">
                                     <div className="col-6 text-copyright">
                                         Copyright © 2020. Darul Hikam. All rights reserved.
                                     </div>
-                                    <div className="col-6 text-copyright text-right">
+                                    <div className="col-6 text-copyright text-right priv">
                                         Terms & Conditions <span className="ml-3">Privacy Policy</span>
                                     </div>
                                 </div>

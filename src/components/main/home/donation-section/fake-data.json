@@ -3,16 +3,16 @@
         {
             "amount": "331",
             "currency": "",
-            "title": "Jumlah mustahiq/bulan Desember 2020"
+            "title": "Jumlah mustahiq / bulan Desember 2020"
         },
         {
             "amount": "23.030",
             "currency": "",
-            "title": " Jumlah mustahiq/tahun 2020 "
+            "title": " Jumlah mustahiq / tahun 2020 "
         },
         {
             "amount": "3,8",
-            "currency": "M",
+            "currency": "Miliar",
             "title": "Total Donasi Terkumpul tahun 2020"
         }
     ]

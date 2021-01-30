@@ -17,8 +17,8 @@ const AboutUsComponent = () => (
     >
         <div className="container-fluid p-0 about-us-page">
             <div className="p-lg-5 p-3 container ">
-                <div className="header-about-us">
-                    <div className="title-about-us mb-4 col-lg-8 col-12 p-0">
+                <div className="header-about-us container-lg p-lg-4">
+                    <div className="title-about-us mb-4 col-12 p-0">
                         {data.title || ''}
                     </div>
                     <div className="description-about-us">
@@ -169,13 +169,13 @@ const MeetTheBoardSlide = (props: { data: [] }) => {
         </div>
         <div className="right d-flex align-item-center justify-content-center align-items-center">
             {
-                <Slider infinite {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
+                <Slider lazyLoad="progressive" key={'lladjksd'} infinite={false} {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
                     {
                         props.data.map((list: any, i: any) => (
-                            <>
+                            <React.Fragment key={i}>
                                 <div className="position text-left">{list.position}</div>
                                 <div className="name text-left">{list.name}</div>
-                            </>
+                            </React.Fragment>
                         ))
                     }
                 </Slider>
