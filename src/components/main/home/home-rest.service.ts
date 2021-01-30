@@ -13,6 +13,6 @@ export class HomeRestService {
     }
 
     loadProgram() {
-        return this.request.get(`program`);
+        return this.request.get(`home`);
     }
 }

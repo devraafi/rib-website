@@ -39,11 +39,11 @@ export const HomePage = () => {
         pageId="home-page-dh"
     >
         <Spin spinning={loading} indicator={<Loading />} >
-            <BannerSection data={response ? response.data : []} />
+            <BannerSection data={response ? response.program : []} />
             <ZakatSection />
             <DonationSection />
-            <ProgramSection data={response ? response.data : []} />
-            <FundaraisingSection data={response ? response.data : []} />
+            <ProgramSection data={response ? response.program : []} />
+            <FundaraisingSection data={response ? response.program : []} />
             {/* <UnnamedSection /> */}
             <FeatureSection />
             <NewsSection />

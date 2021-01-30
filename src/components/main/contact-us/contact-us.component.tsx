@@ -15,8 +15,8 @@ const ContactUs = () => {
     function onSubmit() {
         if (form.name && form.email && form.notes) {
             const text = `
-            Nama: ${form.name}
-            Email: ${form.notes}
+            Nama: ${form.name} \n
+            Email: ${form.email} \n
             ${form.notes}
             `;
 

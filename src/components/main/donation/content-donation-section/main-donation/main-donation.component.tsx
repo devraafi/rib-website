@@ -70,7 +70,7 @@ const MainDonation = (props: any) => {
                     </div>
                     <div className="profile-info py-3 px-2">
                         <div className="d-flex flex-row justify-content-between">
-                            <div className="d-flex flex-row">
+                            {/* <div className="d-flex flex-row">
                                 <div className="profile-img">
                                     {
                                         <img src={data.user ? data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
@@ -79,7 +79,7 @@ const MainDonation = (props: any) => {
                                 <div className="ml-3 profile-name">
                                     {data.user ? data.user.name : 'Anonim'}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="is-certified">
                                 {
                                     data.isPartnerProgram && (

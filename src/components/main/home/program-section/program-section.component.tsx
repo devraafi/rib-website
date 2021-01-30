@@ -49,14 +49,14 @@ const ProgramSection = (props: {
 
                                             <div className="profile-info py-3 px-2">
                                                 <div className="d-flex flex-row justify-content-between">
-                                                    <div className="d-flex flex-row">
+                                                    {/* <div className="d-flex flex-row">
                                                         <div className="profile-img">
                                                             <img src={list.userInfo ? list.userInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                         </div>
                                                         <div className="ml-3 profile-name">
                                                             {list.userInfo ? list.userInfo.name : 'Anonim'}
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="is-certified">
                                                         {
                                                             list.isCertified && (

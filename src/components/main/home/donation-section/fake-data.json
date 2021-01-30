@@ -1,18 +1,18 @@
 {
     "donationSummary": [
         {
-            "amount": "3+",
-            "currency": "ratus",
+            "amount": "331",
+            "currency": "",
             "title": "Jumlah mustahiq/bulan Desember 2020"
         },
         {
-            "amount": "23+",
-            "currency": "ribu",
+            "amount": "23.030",
+            "currency": "",
             "title": " Jumlah mustahiq/tahun 2020 "
         },
         {
-            "amount": "265",
-            "currency": "ribu",
+            "amount": "3,8",
+            "currency": "M",
             "title": "Total Donasi Terkumpul tahun 2020"
         }
     ]

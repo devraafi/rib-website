@@ -19,7 +19,7 @@ const DonationSection = () => {
                                     </div>
                                     <div className="d-flex flex-column ml-4">
                                         <div className="value">{data.amount}
-                                            <span className="currency ml-2">{data.currency}</span>
+                                            <span className="currency ml-2">{data.currency || ''}</span>
                                         </div>
                                         <div className="value-label">
                                             {data.title}

@@ -81,8 +81,9 @@ const DonationList = () => {
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
                                                     {
-                                                        list.fileUrl &&
+                                                        list.fileUrl ?
                                                         <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                        : <div className="imooge"></div>
                                                     }
                                                 </div>
                                                 <div className="program-info p-3">
@@ -92,7 +93,7 @@ const DonationList = () => {
 
                                                     <div className="profile-info py-3 px-2">
                                                         <div className="d-flex flex-row justify-content-between">
-                                                            <div className="d-flex flex-row">
+                                                            {/* <div className="d-flex flex-row">
                                                                 <div className="profile-img">
                                                                     {
                                                                         <img src={list.profileInfo ? list.profileInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
@@ -101,7 +102,7 @@ const DonationList = () => {
                                                                 <div className="ml-3 profile-name">
                                                                     {list.profileInfo ? list.profileInfo.name : 'Anonim'}
                                                                 </div>
-                                                            </div>
+                                                            </div> */}
                                                             <div className="is-certified">
                                                                 {
                                                                     list.isPartnerProgram && (
