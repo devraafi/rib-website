@@ -54,7 +54,7 @@ export const BannerSection = (props: {
                     } */}
 
                 <div className={'banner-list one'}>
-                    <Slider infinite={list.length > 3} key={'wou'} {...settings} autoplaySpeed={3000} className="slide-index">
+                    <Slider infinite={true} key={'wou'} {...settings} autoplaySpeed={3000} className="slide-index">
                         {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
@@ -72,7 +72,7 @@ export const BannerSection = (props: {
                 </div>
 
                 <div className={'banner-list two'}>
-                    <Slider infinite={list.length > 3} key={'wou-1'} {...settings} autoplaySpeed={3100} className="slide-index">
+                    <Slider infinite={true} key={'wou-1'} {...settings} autoplaySpeed={3100} className="slide-index">
                         {
                             list && _.reverse(list).map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
@@ -90,7 +90,7 @@ export const BannerSection = (props: {
                 </div>
 
                 <div className={'banner-list three'}>
-                    <Slider infinite={list.length > 3} key={'wou-2'} {...settings} autoplaySpeed={2900} className="slide-index">
+                    <Slider infinite={true} key={'wou-2'} {...settings} autoplaySpeed={2900} className="slide-index">
                         {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
