@@ -43,7 +43,7 @@ export default class NavbarComponent extends React.Component<any, any> {
     render() {
         return (
             <div className="container-fluid dhv p-0" ref={a => this.navbarRef = a}>
-                <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-2" ref={el => this.dhvRef = el}>
+                <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-1" ref={el => this.dhvRef = el}>
                     <div className="text-1 px-2">WA</div>
                     <div className="text-2 px-2">0812 3456 7890</div>
                     <div className="text-1 px-2">Phone</div>
@@ -66,7 +66,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                 </button>
 
                                 <div className="collapse navbar-collapse navbar-collapse-dh" id="customNavbar">
-                                    <ul className="m-auto navbar-nav py-3 text-right">
+                                    <ul className="m-auto navbar-nav py-1 text-right">
 
                                         {
                                             dataMenu.menus.map((menu, i) => {
