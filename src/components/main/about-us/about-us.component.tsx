@@ -169,7 +169,7 @@ const MeetTheBoardSlide = (props: { data: [] }) => {
         </div>
         <div className="right d-flex align-item-center justify-content-center align-items-center">
             {
-                <Slider lazyLoad="progressive" key={'lladjksd'} infinite={false} {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
+                <Slider lazyLoad="progressive" key={'lladjksd'} infinite={true} {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
                     {
                         props.data.map((list: any, i: any) => (
                             <React.Fragment key={i}>

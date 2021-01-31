@@ -178,7 +178,7 @@ const PaymentMethodStep = (props: {
                                         {pm.type}
                                     </div> */}
                             {
-                                paymentMethodList && paymentMethodList.map((l, i) => {
+                                paymentMethodList ? paymentMethodList.map((l, i) => {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
@@ -186,7 +186,10 @@ const PaymentMethodStep = (props: {
                                             </div>
                                         </div>
                                     )
-                                })
+                                }) :
+                                    <div className="col-12 p-3 text-center">
+                                        Maaf, belum ada pilihan metode pembayaran
+                                    </div>
                             }
                         </div>
                         //     )

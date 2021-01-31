@@ -19,10 +19,12 @@ export default class NavbarComponent extends React.Component<any, any> {
     }
 
     handleScroll() {
-        if (window.pageYOffset > (this.navbarRef.offsetHeight * (50 / 100))) {
+        if (window.pageYOffset > this.navbarRef.offsetHeight * (50 / 100)) {
             this.navbarRef.classList.add('fixed-top')
+            this.navbarRef.classList.add('animate__fadeInDown')
         } else {
             this.navbarRef.classList.remove('fixed-top')
+            this.navbarRef.classList.remove('animate__fadeInDown')
         }
     }
 
@@ -42,7 +44,7 @@ export default class NavbarComponent extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="container-fluid dhv p-0" ref={a => this.navbarRef = a}>
+            <div className="container-fluid dhv p-0 animated" ref={a => this.navbarRef = a}>
                 <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-1" ref={el => this.dhvRef = el}>
                     <div className="text-1 px-2">WA</div>
                     <div className="text-2 px-2">0812 3456 7890</div>
