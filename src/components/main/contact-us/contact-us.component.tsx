@@ -20,7 +20,7 @@ const ContactUs = () => {
             ${form.notes}
             `;
 
-            document.location.href = `https://api.whatsapp.com/send?phone=081234567890&text=${text}`
+            document.location.href = `https://api.whatsapp.com/send?phone=+6281234567890&text=${text}`
 
         } else {
             message.error('Lengkapi formulir');

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const ZakatKnowledgeSection = () => (
@@ -13,9 +14,11 @@ const ZakatKnowledgeSection = () => (
                             Yuk, kenali jenis dan macam-macam Zakat bagi umat Muslim disini!
                             </div>
                         <div className="action text-center text-lg-left d-flex flex-row justify-content-center justify-content-lg-start">
-                            <button className="btn btn-dh-outline-4 px-5">
-                                Baca Selengkapnya
+                            <Link href="/zakat/about">
+                                <button className="btn btn-dh-outline-4 px-5">
+                                    Baca Selengkapnya
                                 </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

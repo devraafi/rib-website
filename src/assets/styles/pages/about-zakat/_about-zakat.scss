@@ -1,0 +1,31 @@
+.about-zakat-page {
+    min-height: 55vh;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            #ffffff 20%,
+            #ffffff 50%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        url("/images/backgrounds/islamic-full.svg");
+
+    .header-about-zakat {
+        .title-about-zakat {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: bold;
+            font-size: 42px;
+            line-height: 120%;
+            color: #7bb142;
+        }
+
+        .description-about-zakat {
+            font-family: "FiraSans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            color: #62717d;
+        }
+    }
+}
