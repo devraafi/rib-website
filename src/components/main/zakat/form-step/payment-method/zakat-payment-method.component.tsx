@@ -1,7 +1,12 @@
+import { IPaymentMethod } from "interfaces/payment-method";
 import _ from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
+const paymentRest: PaymentMethodRest = new PaymentMethodRest;
 
 const ZakatPaymetMethod = (props: {
     step: number;
@@ -9,11 +14,14 @@ const ZakatPaymetMethod = (props: {
     onChangeCustomerInfo?: (val: {
         fullName: string,
         notes: string,
-        phoneOrEmail: string,
+        phone: string,
+        email: string,
         showAsAnonymous: boolean
-    }) => void
+    }) => void;
+    done?: () => void;
+    selectPayment?: (paymentMethod: IPaymentMethod) => void
 }) => {
-    const local:any = (typeof window !== 'undefined') ?  localStorage : null;
+    const local: any = (typeof window !== 'undefined') ? localStorage : null;
     function getItem() {
         const userInfo = local.getItem('userinfo');
         if (userInfo) {
@@ -24,13 +32,14 @@ const ZakatPaymetMethod = (props: {
     }
 
     const { step } = props;
-    const [paymentMethod, selectPayment] = useState('');
     const [messagesDoa, onChangeMsgDoa] = useState('');
-
+    const [paymentMethod, selectPayment] = useState<IPaymentMethod>();
+    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>()
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
-        phoneOrEmail: '',
+        phone: '',
+        email: '',
         showAsAnonymous: false
     });
 
@@ -50,33 +59,30 @@ const ZakatPaymetMethod = (props: {
         props.stepChanges ? props.stepChanges(to) : null;
     }
 
-    const paymentMethods = [
-        {
-            type: 'Bank Virtual Account',
-            list: ['BCA', 'Mandiri', 'BNI', 'BRI']
-        },
-        {
-            type: 'e-Wallet',
-            list: ['OVO', 'gopay', 'dana', 'shopeepay', 'linkaja']
-        }
-    ];
-
     useEffect(() => {
         props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
     }, [customerInfo])
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [step])
+        paymentRest.loadPayment().pipe(
+            catchError((err) => throwError(err))
+        )
+            .subscribe((response: any) => setListPaymentMethods(response.data));
+    }, [step]);
 
+
+    useEffect(() => {
+        paymentMethod && props.selectPayment ? props.selectPayment(paymentMethod) : '';
+    }, [paymentMethod]);
 
     useEffect(() => {
         setCustomerInfo({
             ...customerInfo,
             fullName: (getItem() && getItem().user) ? getItem().user.fullName : '',
-            phoneOrEmail: (getItem() && getItem().user) ? getItem().user.email : ''
+            email: (getItem() && getItem().user) ? getItem().user.email : ''
         })
-    }, [local])
+    }, [local]);
 
     return (
 
@@ -105,11 +111,21 @@ const ZakatPaymetMethod = (props: {
                         <div className="form-group">
                             <input
                                 type="text" disabled={customerInfo.showAsAnonymous}
-                                placeholder="Nomor ponsel atau email"
+                                placeholder="Nomor ponsel"
                                 name="" id=""
                                 className="form-control"
-                                value={customerInfo.phoneOrEmail}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phoneOrEmail: e.target.value }); }}
+                                value={customerInfo.phone}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phone: e.target.value }); }}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text" disabled={customerInfo.showAsAnonymous}
+                                placeholder="Email"
+                                name="" id=""
+                                className="form-control"
+                                value={customerInfo.email}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, email: e.target.value }); }}
                             />
                         </div>
                         {/* <div className="form-group">
@@ -140,7 +156,7 @@ const ZakatPaymetMethod = (props: {
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
                     <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
-                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(2, 'next')} type="submit">
+                    <button className="btn btn-dh-basic color-next" disabled={(customerInfo.phone || customerInfo.email) ? false : true} onClick={() => scrollTo(2, 'next')} type="submit">
                         Selanjutnya
                     <span className="ml-2">
                             <img src="/images/icons/down.svg" alt="" />
@@ -149,42 +165,42 @@ const ZakatPaymetMethod = (props: {
                 </div>
             </div>
 
-            {/* <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-2">
                 <div className="text-left px-2">
                     <div className="header">
                         Pilih metode pembayaran
                     </div>
                 </div>
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column w-100">
                     {
-                        paymentMethods.map((pm, i) => {
-                            return (
-                                <div className="row" key={i}>
-                                    <div className="col-12 sub-header py-2">
+                        // paymentMethods.map((pm, i) => {
+                        //     return (
+                        <div className="row" >
+                            {/* <div className="col-12 sub-header py-2">
                                         {pm.type}
-                                    </div>
-                                    {
-                                        pm.list.map((l, i) => {
-                                            return (
-                                                <div key={i} className="col-lg-4 col-6 p-2" onClick={() => selectPayment(l)}>
-                                                    <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                        <img src={`/images/logos/payment/${l.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        })
+                                    </div> */}
+                            {
+                                paymentMethodList && paymentMethodList.map((l, i) => {
+                                    return (
+                                        <div key={i} className="col-lg-4 col-6 p-2" onClick={() => selectPayment(l)}>
+                                            <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
+                                                <img src={`/images/logos/payment/${l.code.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        //     )
+                        // })
                     }
                 </div>
                 <div className="the-card-footer border-0">
-                    <button className="btn btn-dh-secondary rounded btn-block" onClick={() => scrollTo(3, 'next')}>
+                    <button disabled={!paymentMethod} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done && props.done()}>
                         Lanjut ke pembayaran
                     </button>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }

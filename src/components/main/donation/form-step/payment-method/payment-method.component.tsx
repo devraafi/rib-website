@@ -1,8 +1,12 @@
-import _ from "lodash";
+import { IPaymentMethod } from "interfaces/payment-method";
+import _, { tap } from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
-
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
+const paymentRest: PaymentMethodRest = new PaymentMethodRest;
 const PaymentMethodStep = (props: {
     step: number,
     stepChanges?: (to: number) => void,
@@ -14,7 +18,7 @@ const PaymentMethodStep = (props: {
         showAsAnonymous: boolean
     }) => void;
     done?: () => void;
-    selectPayment?: (paymentMethod: any) => void
+    selectPayment?: (paymentMethod: IPaymentMethod) => void
 }) => {
     const local: any = (typeof window !== 'undefined') ? localStorage : null;
     function getItem() {
@@ -26,7 +30,8 @@ const PaymentMethodStep = (props: {
         }
     }
     const [step, onChangeStep] = useState(props.step);
-    const [paymentMethod, selectPayment] = useState('');
+    const [paymentMethod, selectPayment] = useState<IPaymentMethod>();
+    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>()
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -50,28 +55,21 @@ const PaymentMethodStep = (props: {
         props.stepChanges ? props.stepChanges(to) : null;
     }
 
-    const paymentMethods = [
-        {
-            type: 'Bank Virtual Account',
-            list: ['BCA', 'Mandiri', 'BNI', 'BRI']
-        },
-        {
-            type: 'e-Wallet',
-            list: ['OVO', 'gopay', 'dana', 'shopeepay', 'linkaja']
-        }
-    ];
-
     useEffect(() => {
         props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
     }, [customerInfo])
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        paymentRest.loadPayment().pipe(
+            catchError((err) => throwError(err))
+        )
+            .subscribe((response: any) => setListPaymentMethods(response.data));
     }, []);
 
     useEffect(() => {
-        props.selectPayment ? props.selectPayment(paymentMethod) : '';
-    }, [paymentMethod])
+        paymentMethod && props.selectPayment ? props.selectPayment(paymentMethod) : '';
+    }, [paymentMethod]);
 
     useEffect(() => {
         setCustomerInfo({
@@ -171,28 +169,28 @@ const PaymentMethodStep = (props: {
                         Pilih metode pembayaran
                     </div>
                 </div>
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column w-100">
                     {
-                        paymentMethods.map((pm, i) => {
-                            return (
-                                <div className="row" key={i}>
-                                    <div className="col-12 sub-header py-2">
+                        // paymentMethods.map((pm, i) => {
+                        //     return (
+                        <div className="row">
+                            {/* <div className="col-12 sub-header py-2">
                                         {pm.type}
-                                    </div>
-                                    {
-                                        pm.list.map((l, i) => {
-                                            return (
-                                                <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
-                                                    <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                        <img src={`/images/logos/payment/${l.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        })
+                                    </div> */}
+                            {
+                                paymentMethodList && paymentMethodList.map((l, i) => {
+                                    return (
+                                        <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                            <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
+                                                <img src={`/images/logos/payment/${l.code.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        //     )
+                        // })
                     }
                 </div>
                 <div className="the-card-footer border-0">

@@ -11,6 +11,7 @@ import { ZakatRestServices } from "../zakat-rest.service";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
+import { IPaymentMethod } from "interfaces/payment-method";
 const zakatRestService: ZakatRestServices = new ZakatRestServices;
 const ZakatFormSteps = () => {
     const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran'];
@@ -28,10 +29,13 @@ const ZakatFormSteps = () => {
     const [fidyahAmount, setFidyahAmount] = useState(0);
     const [shodaqohAmount, setShodaqohAmount] = useState(0);
 
+    const [paymentMethod, setpayment] = useState<IPaymentMethod>();
+
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
-        phoneOrEmail: '',
+        phone: '',
+        email: '',
         showAsAnonymous: false
     });
 
@@ -120,7 +124,25 @@ const ZakatFormSteps = () => {
 
     function onChangeCustomerInfo(val: any) {
         setCustomerInfo(val);
-    }
+    };
+
+    function onSubmit() {
+        setSpin(true);
+        const payload = {
+            customerInfo: customerInfo,
+            paymentMethodId: paymentMethod && paymentMethod._id
+        }
+
+        zakatRestService.createTransaction(payload).pipe(
+            catchError(err => {
+                setSpin(false);
+                return throwError(err);
+            })
+        ).subscribe((res: any) => {
+            setSpin(false);
+            document.location.href = res.redirect_url;
+        });
+    };
 
     useEffect(() => {
         loadZakat();
@@ -216,6 +238,7 @@ const ZakatFormSteps = () => {
                                                         step={step}
                                                         stepChanges={onStepChange}
                                                         onChangeCustomerInfo={onChangeCustomerInfo}
+                                                        done={() => onSubmit()} selectPayment={setpayment}
                                                     />
                                                 </div>
                                             </div>

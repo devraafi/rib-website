@@ -2,6 +2,7 @@ import { Loading } from '@Components/basics/loading/loading.component';
 import MainComponent from '@Components/layout/main/main-layout.component';
 import { Spin, Steps } from 'antd';
 import Link from 'antd/lib/typography/Link';
+import { IPaymentMethod } from 'interfaces/payment-method';
 import { Step } from 'rc-steps';
 import React, { useEffect, useState } from 'react';
 import { throwError } from 'rxjs';
@@ -18,7 +19,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
     const [step, onStepChange] = useState(1);
     const [spin, setSpin] = useState(false);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Bayar'];
-    const [paymentMethod, setpayment] = useState<any>(null);
+    const [paymentMethod, setpayment] = useState<IPaymentMethod>();
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -81,11 +82,11 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
 
     function onSubmit() {
         setSpin(true);
-        const wind: any = window;
         const payload = {
             programId: props.id,
             amount: props.total || 0,
-            customerInfo: customerInfo
+            customerInfo: customerInfo,
+            paymentMethodId: paymentMethod && paymentMethod._id
         }
 
         donationRestService.transactionMidtransSnap(payload).pipe(
@@ -97,7 +98,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
             setSpin(false);
             document.location.href = res.redirect_url;
         });
-    }
+    };
 
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
