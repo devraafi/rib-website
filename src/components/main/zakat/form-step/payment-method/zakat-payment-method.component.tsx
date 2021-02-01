@@ -199,7 +199,7 @@ const ZakatPaymetMethod = (props: {
                     }
                 </div>
                 <div className="the-card-footer border-0">
-                    <button  className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done && props.done()}>
+                    <button disabled={!paymentMethod} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done && props.done()}>
                         Lanjut ke pembayaran
                     </button>
                 </div>
