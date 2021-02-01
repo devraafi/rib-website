@@ -119,7 +119,7 @@ export const BannerSection = (props: {
                     {moment(new Date).format('MMMM YYYY')}
                 </div>
                 <div className="title col-12 text-center text-lg-left">
-                    Ambil tindakan, <br /> bantu sesama
+                    Ambil tindakan, <br className="d-none d-lg-block" /> bantu sesama
             </div>
                 <div className="description col-lg-9 col-12 text-center text-lg-left py-3">
                     Dengan kemurahan hati Anda, Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
