@@ -14,6 +14,7 @@ const GiveZakat = (props: {
     onShodaqohChanges?: (amount: number) => void;
     roundUpChanges?: (amount: number) => void;
     onChangesTotal: (amount: number) => void;
+    manualReset: (manual: boolean) => void;
     isManual: boolean;
     checkList: any;
 }) => {
@@ -35,7 +36,7 @@ const GiveZakat = (props: {
     const scrollTo = (i: number, type: string) => {
         let el;
         if (type == 'back') {
-            el = document.getElementById(`zzzz-${i}`) || onStepChange(step - 1);
+            el = document.getElementById(`zzzz-${i}`) || onStepChange(step - 1); props.manualReset && props.manualReset(false);
         } else {
             el = document.getElementById(`zzzz-${i}`) || onStepChange(step + 1);
         }

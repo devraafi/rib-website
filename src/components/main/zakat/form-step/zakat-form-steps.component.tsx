@@ -24,6 +24,7 @@ const ZakatFormSteps = () => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [wealthAmount, setWealthAmount] = useState(0);
     const [subtotalAmount, setSubtotal] = useState(0);
+    const [subtotalManualAmount, setManualSubtotal] = useState(0);
     const [debtAmount, setDebAmount] = useState(0);
     const [roundUpAmount, setRoundAmount] = useState(0);
     const [fidyahAmount, setFidyahAmount] = useState(0);
@@ -74,18 +75,24 @@ const ZakatFormSteps = () => {
     }
 
     function syncTotal() {
-        const total = (subtotalAmount + fidyahAmount + shodaqohAmount);
+        const sub = isManual ? subtotalManualAmount : subtotalAmount
+        const total = (sub + fidyahAmount + shodaqohAmount);
         setTotalAmount(total);
     }
 
     useEffect(() => {
         syncTotal();
-    }, [subtotalAmount, totalAmount, fidyahAmount, shodaqohAmount])
+    }, [subtotalAmount, totalAmount, fidyahAmount, shodaqohAmount, subtotalManualAmount, isManual])
 
 
     useEffect(() => {
         console.log(checkList);
-    }, [checkList])
+    }, [checkList]);
+
+
+    useEffect(() => {
+
+    }, [isManual]);
 
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
@@ -235,7 +242,8 @@ const ZakatFormSteps = () => {
                                                 </div>
                                                 <div className={step !== 2 ? 'd-none' : ''}>
                                                     <GiveZakat
-                                                        onChangesTotal={setSubtotal}
+                                                        manualReset={setIsManual}
+                                                        onChangesTotal={setManualSubtotal}
                                                         checkList={checkList}
                                                         isManual={isManual}
                                                         subtotalAmount={subtotalAmount}
@@ -318,9 +326,16 @@ const ZakatFormSteps = () => {
                                                             <div className="col-12">
                                                                 <div className="the-lines">
                                                                     <div className="label sub">Subtotal Zakat</div>
-                                                                    <div className="amount">
-                                                                        Rp {subtotalAmount ? (subtotalAmount).toLocaleString() : 0}
-                                                                    </div>
+                                                                    {
+                                                                        isManual ?
+                                                                            <div className="amount">
+                                                                                Rp {subtotalManualAmount ? (subtotalManualAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                            :
+                                                                            <div className="amount">
+                                                                                Rp {subtotalAmount ? (subtotalAmount).toLocaleString() : 0}
+                                                                            </div>
+                                                                    }
                                                                 </div>
                                                             </div>
                                                             {
