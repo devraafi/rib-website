@@ -144,8 +144,8 @@ const CalculateZakat = (props: {
                     }
                 </div>
                 <div className="the-card-footer text-center">
-                    <button className="btn btn-dh-primary mr-2" onClick={() => { scrollTo(-1, 'next'); setStart(true) }}>MULAI HITUNG</button>
-                    <button className="btn btn-dh-outline" onClick={() => { scrollTo((checkList.length - 1), 'next'); setIsManual(true); setStart(false) }}>LANGSUNG BAYAR</button>
+                    <button className="btn btn-dh-primary mr-2" disabled={!checkList.length} onClick={() => { scrollTo(-1, 'next'); setStart(true) }}>MULAI HITUNG</button>
+                    <button className="btn btn-dh-outline" disabled={!checkList.length} onClick={() => { scrollTo((checkList.length - 1), 'next'); setIsManual(true); setStart(false) }}>LANGSUNG BAYAR</button>
                 </div>
             </div>
             <Form.Provider>
@@ -187,9 +187,9 @@ const CalculateZakat = (props: {
                                     onSubmitStep(list?.name, form, isLast, i)
                                 }}
                                 name={list.name}
-                                className={"the-card my-3 -v animate__animated animate__bounceIn " + (!start ? 'd-none' : '')}
                                 id={`vvvv${i}`}
                                 key={i}
+                                className={"the-card my-3 -v animate__animated animate__bounceIn " + (!start ? 'd-none' : '')}
                             >
                                 <div className="text-left w-100 py-3 px-2">
                                     <div className="header">

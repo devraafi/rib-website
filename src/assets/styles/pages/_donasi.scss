@@ -193,7 +193,7 @@
         @media (min-width: 992px) {
             .flyover {
                 overflow: auto;
-                max-height: 35vh;
+                // max-height: 35vh;
                 padding-left: 1rem !important;
                 padding-right: 1rem !important;
             }
@@ -239,7 +239,7 @@
             color: #0c3543;
         }
         .program-wrapper {
-            max-height: 50vh;
+            // max-height: 50vh;
             overflow: auto;
             .program-info {
                 text-align: center;

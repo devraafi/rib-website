@@ -249,11 +249,11 @@ const GiveZakat = (props: {
                     </div>
                 </div>
 
-                <div className="d-flex flex-row justify-content-between w-100 px-2 py-3  my-3 fidyah-section">
-                    <div className="align-self-center">
+                <div className="d-flex flex-row justify-content-between flex-wrap w-100 px-2 py-3  my-3 fidyah-section">
+                    <div className="align-self-center py-2">
                         Fidyah/Kaffarah
                     </div>
-                    <div className="align-self-center">
+                    <div className="align-self-center py-2">
                         {
                             fidyah ? <InputNumber
                                 className="w-100 input-number-dh"
@@ -282,10 +282,10 @@ const GiveZakat = (props: {
 
                 {
                     sodaqoh ?
-                        <div className="d-flex flex-row flex-wrap justify-content-between w-100 my-3 px-2 py-2">
+                        <div className="d-flex flex-row flex-wrap justify-content-center w-100 my-3 px-2 py-2">
                             {
                                 sodaqohValueList.map((val, key) => (
-                                    <div className="px-2" key={key}>
+                                    <div className="p-2" key={key}>
                                         <div onClick={() => { setShodaqohAmount(val) }} className={"card-sodaqoh " + (val == shodaqohAmount ? 'active' : '')}>
                                             <div className="d-flex flex-column">
                                                 <div className="align-self-start mb-2">
@@ -326,10 +326,10 @@ const GiveZakat = (props: {
                 }
 
                 <div className={"the-card-footer d-flex flex-row " + (!props.isManual ? 'justify-content-between' : 'justify-content-end')}>
-                    {!props.isManual && <div >
+                    {!props.isManual && <div className="align-self-center">
                         <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
                     </div>}
-                    <div>
+                    <div className="align-self-center">
                         <button className="btn color-back" onClick={() => { scrollTo(3, 'next'); setFidyahAmount(0); setShodaqohAmount(0) }} type="button">Lewati</button>
                         <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
                             Selanjutnya

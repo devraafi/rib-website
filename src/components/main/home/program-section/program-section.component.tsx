@@ -33,7 +33,7 @@ const ProgramSection = (props: {
 
                         <div className="col-lg-4 col-12 px-3 py-3" key={i}>
                             <Link href={`/donasi/detail?id=${list._id}`}>
-                                <div className="card-program">
+                                <div className="card-program animate__animated animate__bounceIn">
                                     <div className="d-flex flex-column">
                                         <div className="program-image">
                                             {

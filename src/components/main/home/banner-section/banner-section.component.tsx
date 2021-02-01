@@ -37,7 +37,7 @@ export const BannerSection = (props: {
                                         {
                                             list && list.map((li: any, i: number) => {
                                                 return <div className="col-auto px-1 m-ato" key={i}>
-                                                    <div className="banner-item">
+                                                    <div className="banner-item animate__animated animate__bounceIn">
                                                         {li.fileUrl ?
                                                             <img src={li.fileurl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                                             : <div className="imooge"></div>
@@ -58,7 +58,7 @@ export const BannerSection = (props: {
                         {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
-                                    <div className="banner-item">
+                                    <div className="banner-item animate__animated animate__bounceIn">
                                         {li.fileUrl ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
@@ -76,7 +76,7 @@ export const BannerSection = (props: {
                         {
                             list && _.reverse(list).map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
-                                    <div className="banner-item">
+                                    <div className="banner-item animate__animated animate__bounceIn">
                                         {li.fileUrl ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
@@ -94,7 +94,7 @@ export const BannerSection = (props: {
                         {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
-                                    <div className="banner-item">
+                                    <div className="banner-item animate__animated animate__bounceIn">
                                         {li.fileUrl ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
