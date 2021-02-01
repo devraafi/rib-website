@@ -102,6 +102,7 @@ const CalculateZakat = (props: {
     }, [props]);
 
     useEffect(() => {
+        console.log(forms);
         (forms && props.onChangesForm) ? props.onChangesForm(forms) : '';
     }, [forms]);
 
@@ -261,7 +262,7 @@ const FormSection = (props: PropsFormSection) => {
                         <div className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3' : 'col-lg-6')}>
                             <Form.Item
                                 className="m-0"
-                                name={_.camelCase(line.itemName) + line.type}
+                                name={line.itemName + line.type}
                                 rules={[{
                                     required: line.isRequired || false,
                                     message: 'Kolom ini wajib diisi!'

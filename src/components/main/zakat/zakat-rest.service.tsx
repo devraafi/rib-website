@@ -17,6 +17,6 @@ export class ZakatRestServices {
     }
 
     createTransaction(payload: any) {
-        return this.request.get(`transaction/create/zakat/midtrans-snap`, payload);
+        return this.request.post(`transaction/create/zakat/midtrans-snap`, payload);
     }
 }

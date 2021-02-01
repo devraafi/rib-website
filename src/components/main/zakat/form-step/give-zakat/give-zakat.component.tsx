@@ -5,6 +5,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
 import { isFormat } from './math.service';
 import { Checkbox, Form, InputNumber } from 'antd';
+import { IZakat } from '../../zakat';
 
 const GiveZakat = (props: {
     step: number;
@@ -14,6 +15,7 @@ const GiveZakat = (props: {
     onShodaqohChanges?: (amount: number) => void;
     roundUpChanges?: (amount: number) => void;
     onChangesTotal: (amount: number) => void;
+    onChangesZakatManuals: (zakatManuals: IZakat[]) => void;
     manualReset: (manual: boolean) => void;
     isManual: boolean;
     checkList: any;
@@ -27,6 +29,7 @@ const GiveZakat = (props: {
     const [fidyahAmount, setFidyahAmount] = useState(0);
     const [shodaqohAmount, setShodaqohAmount] = useState(0);
     const [total, setTotal] = useState<number>(0);
+    const [zakatManuals, setZakatManuals] = useState<IZakat[]>()
     const onChangesCheck = (i: number) => {
     }
 
@@ -71,18 +74,32 @@ const GiveZakat = (props: {
     }, [subtotalAmount]);
 
     function onChangeAllFields(field: any, fields: any[]) {
+        const zakatManuals: IZakat[] = [];
         let total = 0;
-        fields.forEach(fields => {
-            if (_.isNumber(fields.value)) {
-                total = total + fields.value;
+        fields.forEach(field => {
+            if (_.isNumber(field.value)) {
+                total = total + field.value;
+            } else {
+                total = 0;
             }
+            let zakatManual: IZakat = {
+                zakatId: field.name[0],
+                amount: _.isNumber(field.value) ? field.value : 0,
+                items: []
+            }
+            zakatManuals.push(zakatManual);
         });
+        setZakatManuals(zakatManuals);
         setTotal(total);
     }
 
     useEffect(() => {
         props.onChangesTotal && props.onChangesTotal(total)
     }, [total]);
+
+    useEffect(() => {
+        props.onChangesZakatManuals && props.onChangesZakatManuals(zakatManuals || [])
+    }, [zakatManuals])
 
     return (
         <div className="give-zakat-form py-2">

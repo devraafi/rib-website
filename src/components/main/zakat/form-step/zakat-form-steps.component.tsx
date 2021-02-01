@@ -12,6 +12,8 @@ import { Loading } from "@Components/basics/loading/loading.component";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
 import { IPaymentMethod } from "interfaces/payment-method";
+import { IItem, IZakat, IZakatPayload } from "../zakat";
+import _ from "lodash";
 const zakatRestService: ZakatRestServices = new ZakatRestServices;
 const ZakatFormSteps = () => {
     const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran'];
@@ -33,6 +35,8 @@ const ZakatFormSteps = () => {
     const [checkList, setCheckList] = useState<any>(null);
 
     const [paymentMethod, setpayment] = useState<IPaymentMethod>();
+    const [zakats, setZakats] = useState<any>();
+    const [zakatManuals, setZakatManuals] = useState<IZakat[]>();
 
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
@@ -43,7 +47,6 @@ const ZakatFormSteps = () => {
     });
 
     function onChangesCalc(values: any) {
-        console.log(values);
         let totalZakat = 0;
         let totalWealthAmount = 0;
         let totalDebtAmount = 0;
@@ -53,6 +56,9 @@ const ZakatFormSteps = () => {
                 totalZakat += values[key].totalWithRate;
                 totalWealthAmount += values[key].totalDebit;
                 totalDebtAmount += values[key].totalCredit;
+                const zakat = normalizeZakat(values[key]);
+                console.log(zakat);
+                setZakats({ ...zakats, [key]: zakat })
             }
         }
         subtotal = totalZakat;
@@ -84,15 +90,54 @@ const ZakatFormSteps = () => {
         syncTotal();
     }, [subtotalAmount, totalAmount, fidyahAmount, shodaqohAmount, subtotalManualAmount, isManual])
 
+    function normalizeZakat(values: any) {
+        let zakat: IZakat = {
+            zakatId: values.id,
+            amount: values.totalWithRate,
+            items: []
+        };
 
-    useEffect(() => {
-        console.log(checkList);
-    }, [checkList]);
+        if (values.values) {
+            for (const key in values.values) {
 
+                let item: IItem = {
+                    zakatItemName: '',
+                    isCredit: false,
+                    amount: 0
+                };
 
-    useEffect(() => {
+                console.log(key);
+                item.isCredit = key.includes('CREDIT');
+                item.zakatItemName = key.includes('CREDIT') ? key.replace('CREDIT', '') : key.replace('DEBIT', '');
+                item.amount = values.values[key];
 
-    }, [isManual]);
+                zakat.items.push(item)
+            }
+        }
+        return zakat;
+    }
+
+    function onDone() {
+        setSpin(true);
+
+        const payload: IZakatPayload = {
+            paymentMethodId: paymentMethod ? paymentMethod?._id : '',
+            zakats: isManual ? (zakatManuals || []) : _.values(zakats),
+            customerInfo: customerInfo,
+            amount: isManual ? subtotalManualAmount : subtotalAmount,
+            shadaqahAmount: shodaqohAmount || 0,
+            fidyahAmount: fidyahAmount || 0
+        };
+        zakatRestService.createTransaction(payload).pipe(
+            catchError(err => {
+                setSpin(false);
+                return throwError(err);
+            })
+        ).subscribe((res: any) => {
+            setSpin(false);
+            document.location.href = res.redirect_url;
+        });
+    }
 
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
@@ -140,23 +185,6 @@ const ZakatFormSteps = () => {
         setCustomerInfo(val);
     };
 
-    function onSubmit() {
-        setSpin(true);
-        const payload = {
-            customerInfo: customerInfo,
-            paymentMethodId: paymentMethod && paymentMethod._id
-        }
-
-        zakatRestService.createTransaction(payload).pipe(
-            catchError(err => {
-                setSpin(false);
-                return throwError(err);
-            })
-        ).subscribe((res: any) => {
-            setSpin(false);
-            document.location.href = res.redirect_url;
-        });
-    };
 
     useEffect(() => {
         loadZakat();
@@ -242,6 +270,7 @@ const ZakatFormSteps = () => {
                                                 </div>
                                                 <div className={step !== 2 ? 'd-none' : ''}>
                                                     <GiveZakat
+                                                        onChangesZakatManuals={setZakatManuals}
                                                         manualReset={setIsManual}
                                                         onChangesTotal={setManualSubtotal}
                                                         checkList={checkList}
@@ -259,7 +288,8 @@ const ZakatFormSteps = () => {
                                                         step={step}
                                                         stepChanges={onStepChange}
                                                         onChangeCustomerInfo={onChangeCustomerInfo}
-                                                        done={() => onSubmit()} selectPayment={setpayment}
+                                                        selectPayment={setpayment}
+                                                        done={() => onDone()}
                                                     />
                                                 </div>
                                             </div>
