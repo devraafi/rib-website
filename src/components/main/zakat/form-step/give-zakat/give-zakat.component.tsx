@@ -245,7 +245,6 @@ const GiveZakat = (props: {
                                 size="large"
                                 value={fidyahAmount}
                                 onChange={(e: any) => setFidyahAmount(e)}
-                                readOnly
                             /> :
                                 <div className="add-plus" onClick={() => setFidyah(!fidyah)}>
                                     Add +
