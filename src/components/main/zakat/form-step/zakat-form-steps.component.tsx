@@ -28,6 +28,8 @@ const ZakatFormSteps = () => {
     const [roundUpAmount, setRoundAmount] = useState(0);
     const [fidyahAmount, setFidyahAmount] = useState(0);
     const [shodaqohAmount, setShodaqohAmount] = useState(0);
+    const [isManual, setIsManual] = useState(false);
+    const [checkList, setCheckList] = useState<any>(null);
 
     const [paymentMethod, setpayment] = useState<IPaymentMethod>();
 
@@ -56,7 +58,7 @@ const ZakatFormSteps = () => {
         setSubtotal(subtotal);
         setWealthAmount(totalWealthAmount);
         setDebAmount(totalDebtAmount);
-        setRoundAmount(subtotal)
+        // setRoundAmount(subtotal)
     }
 
     function onRoundUpChanges(val: number) {
@@ -78,7 +80,12 @@ const ZakatFormSteps = () => {
 
     useEffect(() => {
         syncTotal();
-    }, [subtotalAmount, totalAmount, roundUpAmount, fidyahAmount, shodaqohAmount])
+    }, [subtotalAmount, totalAmount, fidyahAmount, shodaqohAmount])
+
+
+    useEffect(() => {
+        console.log(checkList);
+    }, [checkList])
 
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
@@ -217,6 +224,9 @@ const ZakatFormSteps = () => {
                                             <div className="col-lg-7 col-12">
                                                 <div className={step !== 1 ? 'd-none' : ''}>
                                                     <CalculateZakat
+                                                        checkListChange={setCheckList}
+                                                        manualChange={setIsManual}
+                                                        isManual={isManual}
                                                         zakatList={zakatList}
                                                         step={step}
                                                         stepChanges={onStepChange}
@@ -225,6 +235,9 @@ const ZakatFormSteps = () => {
                                                 </div>
                                                 <div className={step !== 2 ? 'd-none' : ''}>
                                                     <GiveZakat
+                                                        onChangesTotal={setSubtotal}
+                                                        checkList={checkList}
+                                                        isManual={isManual}
                                                         subtotalAmount={subtotalAmount}
                                                         step={step}
                                                         stepChanges={onStepChange}

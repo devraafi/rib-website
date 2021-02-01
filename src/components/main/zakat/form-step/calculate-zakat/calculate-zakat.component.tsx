@@ -6,6 +6,7 @@ const CalculateZakat = (props: {
     step: number,
     stepChanges?: (to: number) => void,
     onChangesForm?: (form: any) => void,
+    manualChange: (isManual: boolean) => void
     zakatList?: {
         description?: string;
         checked?: boolean;
@@ -17,13 +18,17 @@ const CalculateZakat = (props: {
             isRequired?: string;
             itemName?: string;
         }[]
-    }[]
+    }[];
+    isManual: boolean;
+    checkListChange: (val: any) => void
 }) => {
     const { step } = props;
     const [zakatList, setZakatList] = useState(props.zakatList || []);
     const [checkList, setChecklist] = useState<any>([]);
     const [errorInfos, setErrorInfos] = useState<any>([]);
     const [forms, setForms] = useState<any>({});
+    const [isManual, setIsManual] = useState(false);
+    const [start, setStart] = useState(false);
     const [form] = Form.useForm();
     const [currentStepForm, setCurrent] = useState(0)
     const onChangeCheck = (obj: any, val: boolean, i: number) => {
@@ -64,6 +69,7 @@ const CalculateZakat = (props: {
     }
 
 
+
     const scrollTo = (i: number, type: string) => {
         let el;
         if (type !== 'skip') {
@@ -99,6 +105,16 @@ const CalculateZakat = (props: {
         (forms && props.onChangesForm) ? props.onChangesForm(forms) : '';
     }, [forms]);
 
+
+    useEffect(() => {
+        props.manualChange && props.manualChange(isManual)
+    }, [isManual]);
+
+
+    useEffect(() => {
+        props.checkListChange && props.checkListChange(checkList)
+    }, [checkList])
+
     return (
         <div className="calculate-zakat-form py-2">
             <div className="the-card mb-3 animate__animated animate__bounceIn" id="vvvv-1">
@@ -127,7 +143,8 @@ const CalculateZakat = (props: {
                     }
                 </div>
                 <div className="the-card-footer text-center">
-                    <button className="btn btn-dh-primary" onClick={() => scrollTo(-1, 'next')}>MULAI HITUNG</button>
+                    <button className="btn btn-dh-primary mr-2" onClick={() => { scrollTo(-1, 'next'); setStart(true) }}>MULAI HITUNG</button>
+                    <button className="btn btn-dh-outline" onClick={() => { scrollTo((checkList.length - 1), 'next'); setIsManual(true); setStart(false) }}>LANGSUNG BAYAR</button>
                 </div>
             </div>
             <Form.Provider>
@@ -165,7 +182,7 @@ const CalculateZakat = (props: {
                                     onSubmitStep(list?.name, form, isLast, i)
                                 }}
                                 name={list.name}
-                                className={"the-card my-3 -v animate__animated animate__bounceIn "}
+                                className={"the-card my-3 -v animate__animated animate__bounceIn " + (!start ? 'd-none' : '')}
                                 id={`vvvv${i}`}
                                 key={i}
                             >

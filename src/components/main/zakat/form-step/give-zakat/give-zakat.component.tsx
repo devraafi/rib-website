@@ -1,27 +1,31 @@
-import { InputNumber } from 'primereact/inputnumber';
+
 import { InputText } from 'primereact/inputtext';
 import React, { useEffect, useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
 import _ from 'lodash';
 import { isFormat } from './math.service';
-import { Checkbox } from 'antd';
+import { Checkbox, Form, InputNumber } from 'antd';
 
 const GiveZakat = (props: {
-    step: number,
-    subtotalAmount: number,
-    stepChanges?: (to: number) => void,
-    onFidyahChanges?: (amount: number) => void,
-    onShodaqohChanges?: (amount: number) => void,
-    roundUpChanges?: (amount: number) => void,
+    step: number;
+    subtotalAmount: number;
+    stepChanges?: (to: number) => void;
+    onFidyahChanges?: (amount: number) => void;
+    onShodaqohChanges?: (amount: number) => void;
+    roundUpChanges?: (amount: number) => void;
+    onChangesTotal: (amount:number) => void;
+    isManual: boolean;
+    checkList: any;
 }) => {
-    const { step, subtotalAmount } = props;
+    const { step, subtotalAmount, checkList } = props;
     const sodaqohValueList = [25000, 40000, 100000, 250000, 500000];
     const [fidyah, setFidyah] = useState(false);
     const [sodaqoh, setSodaqoh] = useState(false);
     const [roundValue, setRoundVal] = useState(0);
     const [valuesRoundUp, setValuesRoundUp] = useState([0, 0, 0])
     const [fidyahAmount, setFidyahAmount] = useState(0);
-    const [shodaqohAmount, setShodaqohAmount] = useState(0)
+    const [shodaqohAmount, setShodaqohAmount] = useState(0);
+    const [total, setTotal] = useState<number>(0);
     const onChangesCheck = (i: number) => {
     }
 
@@ -45,7 +49,7 @@ const GiveZakat = (props: {
     }, [step])
 
     useEffect(() => {
-        props.roundUpChanges ? props.roundUpChanges(roundValue) : '';
+        // props.roundUpChanges ? props.roundUpChanges(roundValue) : '';
     }, [roundValue]);
 
     useEffect(() => {
@@ -63,12 +67,26 @@ const GiveZakat = (props: {
         newVal.push(_.ceil(subtotalAmount, -(log - 2)));
         newVal.push(_.floor(subtotalAmount, -(log - 2)));
         setValuesRoundUp(newVal);
-    }, [subtotalAmount])
+    }, [subtotalAmount]);
+
+    function onChangeAllFields(field: any, fields: any[]) {
+        let total = 0;
+        fields.forEach(fields => {
+            if (_.isNumber(fields.value)) {
+                total = total + fields.value;
+            }
+        });
+        setTotal(total);
+    }
+
+    useEffect(() => {
+        props.onChangesTotal && props.onChangesTotal(total)
+    }, [total])
 
     return (
         <div className="give-zakat-form py-2">
 
-            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-1">
+            {/* <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-1">
                 <div className="row w-100 py-3">
                     <div className="col-12 px-0">
                         <div className="the-total">
@@ -142,10 +160,68 @@ const GiveZakat = (props: {
                         </span>
                     </button>
                 </div>
-            </div>
+            </div> */}
+
+            {props.isManual && <Form
+                className="the-card mb-3 -v animate__animated animate__bounceIn"
+                id="zzzz-1"
+                onFieldsChange={(field, fields) => onChangeAllFields(field, fields)}
+            >
+                <div className="row w-100 py-3">
+
+                    {
+                        (checkList && _.isLength(checkList.length)) && checkList.map((list: any, i: number) => {
+
+                            return <React.Fragment key={i}>
+                                <div className={"px-2 py-2 align-self-center col-lg-6"}>
+                                    <label className={"input-label w-100 field-required"}>
+                                        {list.name}
+                                    </label>
+                                </div>
+                                <div className={"px-2 py-2 align-self-center col-lg-6"}>
+                                    <Form.Item
+                                        className="m-0"
+                                        name={_.camelCase(list._id)}
+                                        rules={[{
+                                            required: true,
+                                            message: 'Kolom ini wajib diisi!'
+                                        }]}
+                                    >
+                                        <InputNumber
+                                            className="w-100 input-number-dh"
+                                            formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                                            parser={value => value ? value.replace(/\$\s?|(\.*)/g, '') : ''}
+                                            id={_.camelCase(list._id)}
+                                            placeholder="Rp 0"
+                                            size="large"
+                                        />
+                                    </Form.Item>
+                                </div>
+                            </React.Fragment>
+                        })
+                    }
+                </div>
+                <div className="row w-100 py-3">
+                    <div className="col-12 px-0">
+                        <div className="the-total">
+                            <div className="label">Total Zakat</div>
+                            <div className="amount">Rp {(total).toLocaleString()}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="the-card-footer d-flex justify-content-between flex-row">
+                    <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
+                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(2, 'next')} type="submit">
+                        Selanjutnya
+                    <span className="ml-2">
+                            <img src="/images/icons/down.svg" alt="" />
+                        </span>
+                    </button>
+                </div>
+            </Form>}
 
 
-            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="zzzz-2">
+            <div className="the-card mb-3 -v animate__animated animate__bounceIn" id={"zzzz-" + (props.isManual ? 2 : 1)}>
                 <div className="text-left px-2 w-100">
                     <div className="header">
                         Fidyah/Kaffarah
@@ -162,14 +238,14 @@ const GiveZakat = (props: {
                     <div className="align-self-center">
                         {
                             fidyah ? <InputNumber
-                                inputClassName="input-dh text-right"
-                                readonly
-                                className="w-100"
-                                value={fidyahAmount}
-                                onChange={(e) => setFidyahAmount(e.value)}
-                                locale="id-ID"
+                                className="w-100 input-number-dh"
+                                formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                                parser={value => value ? value.replace(/\$\s?|(\.*)/g, '') : ''}
                                 placeholder="Rp 0"
-                                currency="IDR"
+                                size="large"
+                                value={fidyahAmount}
+                                onChange={(e: any) => setFidyahAmount(e)}
+                                readOnly
                             /> :
                                 <div className="add-plus" onClick={() => setFidyah(!fidyah)}>
                                     Add +
@@ -208,14 +284,14 @@ const GiveZakat = (props: {
                             }
                             <div className="w-100 mt-3">
                                 <InputNumber
-                                    inputClassName="input-dh input-dh-sodaqoh py-3 text-right"
-                                    readonly
-                                    className="w-100"
+                                    className="w-100 input-number-dh"
+                                    formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                                    parser={value => value ? value.replace(/\$\s?|(\.*)/g, '') : ''}
+                                    placeholder="Rp 0"
+                                    size="large"
                                     value={shodaqohAmount}
-                                    onChange={e => { setShodaqohAmount(e.value) }}
-                                    locale="id-ID"
-                                    placeholder="enter amount"
-                                    currency="IDR"
+                                    onChange={(e: any) => { setShodaqohAmount(e) }}
+                                    readOnly
                                 />
                             </div>
                         </div>
@@ -244,7 +320,7 @@ const GiveZakat = (props: {
             </div>
 
 
-        </div>
+        </div >
     )
 }
 

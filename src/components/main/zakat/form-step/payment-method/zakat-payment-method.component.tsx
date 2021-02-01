@@ -19,7 +19,7 @@ const ZakatPaymetMethod = (props: {
         showAsAnonymous: boolean
     }) => void;
     done?: () => void;
-    selectPayment?: (paymentMethod: IPaymentMethod) => void
+    selectPayment?: (paymentMethod: IPaymentMethod) => void;
 }) => {
     const local: any = (typeof window !== 'undefined') ? localStorage : null;
     function getItem() {
@@ -180,7 +180,7 @@ const ZakatPaymetMethod = (props: {
                                         {pm.type}
                                     </div> */}
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length))  ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => selectPayment(l)}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
