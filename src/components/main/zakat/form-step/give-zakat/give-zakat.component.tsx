@@ -13,7 +13,7 @@ const GiveZakat = (props: {
     onFidyahChanges?: (amount: number) => void;
     onShodaqohChanges?: (amount: number) => void;
     roundUpChanges?: (amount: number) => void;
-    onChangesTotal: (amount:number) => void;
+    onChangesTotal: (amount: number) => void;
     isManual: boolean;
     checkList: any;
 }) => {
@@ -81,7 +81,7 @@ const GiveZakat = (props: {
 
     useEffect(() => {
         props.onChangesTotal && props.onChangesTotal(total)
-    }, [total])
+    }, [total]);
 
     return (
         <div className="give-zakat-form py-2">
@@ -307,14 +307,19 @@ const GiveZakat = (props: {
                         </div>
                 }
 
-                <div className="the-card-footer d-flex justify-content-end flex-row">
-                    <button className="btn color-back" onClick={() => { scrollTo(3, 'next'); setFidyahAmount(0); setShodaqohAmount(0) }} type="button">Lewati</button>
-                    <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
-                        Selanjutnya
+                <div className={"the-card-footer d-flex flex-row " + (!props.isManual ? 'justify-content-between' : 'justify-content-end')}>
+                    {!props.isManual && <div >
+                        <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
+                    </div>}
+                    <div>
+                        <button className="btn color-back" onClick={() => { scrollTo(3, 'next'); setFidyahAmount(0); setShodaqohAmount(0) }} type="button">Lewati</button>
+                        <button className="btn btn-dh-basic color-next" onClick={() => scrollTo(3, 'next')} type="submit">
+                            Selanjutnya
                     <span className="ml-2">
-                            <img src="/images/icons/forward-2.svg" alt="" />
-                        </span>
-                    </button>
+                                <img src="/images/icons/forward-2.svg" alt="" />
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
 

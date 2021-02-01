@@ -170,10 +170,14 @@ const CalculateZakat = (props: {
                                         const notKey = ['id', 'rate'];
                                         if (!notKey.includes(key)) {
                                             if (key.includes('CREDIT')) {
-                                                form.totalCredit += values[key];
+                                                if (_.isNumber(values[key])) {
+                                                    form.totalCredit += values[key];
+                                                }
                                             }
                                             if (key.includes('DEBIT')) {
-                                                form.totalDebit += values[key];
+                                                if (_.isNumber(values[key])) {
+                                                    form.totalDebit += values[key];
+                                                }
                                             }
                                         }
                                     }
