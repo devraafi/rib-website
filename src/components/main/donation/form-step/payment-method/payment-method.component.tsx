@@ -99,7 +99,7 @@ const PaymentMethodStep = (props: {
                     </div>
                     <div className="description">
                         {
-                            (!_.get(getItem(), 'user')) &&
+                            (getItem() && !_.get(getItem(), 'user')) &&
                             <span className="mr-1">
                                 <a className="mr-1" onClick={() => setmodalLogin(true)}>
                                     Masuk
