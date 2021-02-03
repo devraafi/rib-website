@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
+import { Modal } from 'antd';
+import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
 const paymentRest: PaymentMethodRest = new PaymentMethodRest;
 const PaymentMethodStep = (props: {
     step: number,
@@ -27,6 +29,7 @@ const PaymentMethodStep = (props: {
     const [step, onChangeStep] = useState(props.step);
     const [paymentMethod, selectPayment] = useState<IPaymentMethod>();
     const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>();
+    const [modalLogin, setmodalLogin] = useState<boolean>();
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -75,16 +78,19 @@ const PaymentMethodStep = (props: {
         paymentMethod && props.selectPayment ? props.selectPayment(paymentMethod) : '';
     }, [paymentMethod]);
 
-    useEffect(() => {
+    function patchFormLocal() {
         setCustomerInfo({
             ...customerInfo,
             fullName: (getItem() && getItem().user) ? getItem().user.fullName : '',
             email: (getItem() && getItem().user) ? getItem().user.email : ''
-        })
+        });
+    }
+
+    useEffect(() => {
+        patchFormLocal();
     }, [local])
 
     return (
-
         <div className="payment-method-donasi-form">
             <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-1">
                 <div className="personal-data text-center py-3 px-2 w-100">
@@ -92,12 +98,15 @@ const PaymentMethodStep = (props: {
                         Isi data diri
                     </div>
                     <div className="description">
-                        <span className="mr-1">
-                            <a className="mr-1">
-                                Masuk
-                            </a>
+                        {
+                            (!_.get(getItem(), 'user')) &&
+                            <span className="mr-1">
+                                <a className="mr-1" onClick={() => setmodalLogin(true)}>
+                                    Masuk
+                                </a>
                              atau
                         </span>
+                        }
                         Lengkapi data di bawah ini
                     </div>
                     <div className="d-flex flex-column py-3">
@@ -212,6 +221,19 @@ const PaymentMethodStep = (props: {
                     </button>
                 </div>
             </div>
+            <Modal
+                title=""
+                footer={null}
+                visible={modalLogin}
+                className="modal-login"
+                width="fit-content"
+                onCancel={() => setmodalLogin(false)}
+                closeIcon={<div className="close-circle">
+                    <img src="/images/icons/close.svg" alt="" />
+                </div>}
+            >
+                <AccontManagementsComponent className="m-h-auto" page="login" onSuccess={() => { patchFormLocal(); setmodalLogin(false) }} />
+            </Modal>
         </div>
     )
 }

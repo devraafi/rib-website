@@ -1,3 +1,5 @@
+import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
+import { Modal } from "antd";
 import { IPaymentMethod } from "interfaces/payment-method";
 import _ from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
@@ -34,7 +36,8 @@ const ZakatPaymetMethod = (props: {
     const { step } = props;
     const [messagesDoa, onChangeMsgDoa] = useState('');
     const [paymentMethod, selectPayment] = useState<IPaymentMethod>();
-    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>()
+    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>();
+    const [modalLogin, setmodalLogin] = useState<boolean>();
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -76,12 +79,16 @@ const ZakatPaymetMethod = (props: {
         paymentMethod && props.selectPayment ? props.selectPayment(paymentMethod) : '';
     }, [paymentMethod]);
 
-    useEffect(() => {
+    function patchFormLocal() {
         setCustomerInfo({
             ...customerInfo,
             fullName: (getItem() && getItem().user) ? getItem().user.fullName : '',
             email: (getItem() && getItem().user) ? getItem().user.email : ''
-        })
+        });
+    }
+
+    useEffect(() => {
+        patchFormLocal();
     }, [local]);
 
     return (
@@ -93,12 +100,15 @@ const ZakatPaymetMethod = (props: {
                         Isi data diri
                     </div>
                     <div className="description">
-                        <span className="mr-1">
-                            <a className="mr-1">
-                                Masuk
-                            </a>
+                        {
+                            (!_.get(getItem(), 'user')) &&
+                            <span className="mr-1">
+                                <a className="mr-1" onClick={() => setmodalLogin(true)}>
+                                    Masuk
+                                </a>
                              atau
                         </span>
+                        }
                         Lengkapi data di bawah ini
                     </div>
                     <div className="d-flex flex-column py-3">
@@ -210,6 +220,19 @@ const ZakatPaymetMethod = (props: {
                     </button>
                 </div>
             </div>
+            <Modal
+                title=""
+                footer={null}
+                visible={modalLogin}
+                className="modal-login"
+                width="fit-content"
+                onCancel={() => setmodalLogin(false)}
+                closeIcon={<div className="close-circle">
+                    <img src="/images/icons/close.svg" alt="" />
+                </div>}
+            >
+                <AccontManagementsComponent className="m-h-auto" page="login" onSuccess={() => { patchFormLocal(); setmodalLogin(false) }} />
+            </Modal>
         </div>
     )
 }

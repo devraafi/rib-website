@@ -18,6 +18,10 @@ body {
     color: #a6b0b9 !important;
 }
 
+.m-h-auto {
+    min-height: auto !important;
+}
+
 * {
     transition: all 300ms ease;
     scroll-behavior: smooth;

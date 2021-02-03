@@ -27,8 +27,11 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
                 console.log(res);
                 localStorage.setItem('userinfo', JSON.stringify(res));
                 SetLoading(false);
-                
-                router.push('/home');
+                if (props.onSuccess) {
+                    props.onSuccess()
+                } else {
+                    router.push('/home');
+                }
             })
         ).subscribe();
     };
@@ -52,7 +55,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
 
     return <div id="account-manage-page">
         <div className="container">
-            <div className="main-login-register">
+            <div className={"main-login-register " + (props.className || '')}>
                 <Spin spinning={loading} indicator={<Loading />} >
                     <div className="page-wrapper">
                         {

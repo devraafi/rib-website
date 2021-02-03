@@ -24,7 +24,7 @@ const ReportZakatSection = () => {
                 <div className="row justify-content-center">
                     {
                         summary.map((sum, i) => (
-                            <div className="col-lg-3 px-3 col-6 py-2">
+                            <div className="col-lg-3 px-3 col-6 py-2" key={i}>
                                 <div className="card-report-zakat">
                                     <div className="d-flex flex-column justify-content-center align-items-center text-center">
                                         <img src="/images/icons/card-donate.svg" alt="" className="img-fluid mb-3" />
