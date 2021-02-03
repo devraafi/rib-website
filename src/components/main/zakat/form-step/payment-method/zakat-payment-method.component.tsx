@@ -101,7 +101,7 @@ const ZakatPaymetMethod = (props: {
                     </div>
                     <div className="description">
                         {
-                            ((getItem() && !getItem().user)) &&
+                            !_.get(getItem(), 'user') &&
                             <span className="mr-1">
                                 <a className="mr-1" onClick={() => setmodalLogin(true)}>
                                     Masuk
