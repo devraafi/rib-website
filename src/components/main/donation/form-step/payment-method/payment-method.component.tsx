@@ -54,7 +54,7 @@ const PaymentMethodStep = (props: {
     }
 
     function getItem() {
-        const userInfo = local.getItem('userinfo');
+        const userInfo = local && local.getItem('userinfo');
         if (userInfo) {
             return JSON.parse(userInfo)
         } else {
