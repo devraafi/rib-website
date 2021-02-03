@@ -1,5 +1,7 @@
 import { IPaymentMethod } from "interfaces/payment-method";
 import _, { tap } from "lodash";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
@@ -9,6 +11,7 @@ import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
 const paymentRest: PaymentMethodRest = new PaymentMethodRest;
 const PaymentMethodStep = (props: {
     step: number,
+    total: any;
     stepChanges?: (to: number) => void,
     onChangeCustomerInfo?: (val: {
         fullName: string,
@@ -21,17 +24,9 @@ const PaymentMethodStep = (props: {
     selectPayment?: (paymentMethod: IPaymentMethod) => void
 }) => {
     const local: any = (typeof window !== 'undefined') ? localStorage : null;
-    function getItem() {
-        const userInfo = local.getItem('userinfo');
-        if (userInfo) {
-            return JSON.parse(userInfo)
-        } else {
-            return null
-        }
-    }
     const [step, onChangeStep] = useState(props.step);
     const [paymentMethod, selectPayment] = useState<IPaymentMethod>();
-    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>()
+    const [paymentMethodList, setListPaymentMethods] = useState<IPaymentMethod[]>();
     const [customerInfo, setCustomerInfo] = useState({
         fullName: '',
         notes: '',
@@ -53,6 +48,15 @@ const PaymentMethodStep = (props: {
 
     const onStepChange = (to: number) => {
         props.stepChanges ? props.stepChanges(to) : null;
+    }
+
+    function getItem() {
+        const userInfo = local.getItem('userinfo');
+        if (userInfo) {
+            return JSON.parse(userInfo)
+        } else {
+            return null
+        }
     }
 
     useEffect(() => {
@@ -88,7 +92,13 @@ const PaymentMethodStep = (props: {
                         Isi data diri
                     </div>
                     <div className="description">
-                        Masuk atau lengkapi data di bawah ini
+                        <span className="mr-1">
+                            <a className="mr-1">
+                                Masuk
+                            </a>
+                             atau
+                        </span>
+                        Lengkapi data di bawah ini
                     </div>
                     <div className="d-flex flex-column py-3">
                         <div className="form-group">

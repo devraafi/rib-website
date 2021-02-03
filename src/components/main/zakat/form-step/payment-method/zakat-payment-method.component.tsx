@@ -93,7 +93,13 @@ const ZakatPaymetMethod = (props: {
                         Isi data diri
                     </div>
                     <div className="description">
-                        Masuk atau lengkapi data di bawah ini
+                        <span className="mr-1">
+                            <a className="mr-1">
+                                Masuk
+                            </a>
+                             atau
+                        </span>
+                        Lengkapi data di bawah ini
                     </div>
                     <div className="d-flex flex-column py-3">
                         <div className="form-group">

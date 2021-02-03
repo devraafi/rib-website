@@ -25,6 +25,10 @@ const DonationPage = (props: any) => {
     }
 
     useEffect(() => {
+        localStorage && localStorage.setItem('lastTotalDonasi', total.toString());
+    }, [total]);
+
+    useEffect(() => {
         setLoading(true);
         console.log(query);
         if (query.id) {

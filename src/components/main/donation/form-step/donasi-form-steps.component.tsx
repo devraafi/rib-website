@@ -119,7 +119,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                 // step == 1 || 2) ?
                                 <div className="row" style={{ minHeight: '95vh' }}>
                                     <div className="col-lg-7 col-12">
-                                        <PaymentMethodStep step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} done={() => onSubmit()} selectPayment={setpayment} />
+                                        <PaymentMethodStep total={props.total} step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} done={() => onSubmit()} selectPayment={setpayment} />
                                     </div>
 
                                     <div className="col-lg-5 col-12 position-relative">

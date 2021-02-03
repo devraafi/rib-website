@@ -65,7 +65,7 @@ const AboutUsComponent = () => (
                         <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                             {meetTheBoard.label || ''}
                         </div>
-                        <div className="meet-the-board-slider">
+                        <div className="meet-the-board-slider container-md">
                             <MeetTheBoardSlide data={meetTheBoard.list} />
                         </div>
                     </div>
@@ -157,19 +157,28 @@ const PrevArrow = (props: any) => {
 }
 
 const MeetTheBoardSlide = (props: { data: [] }) => {
+
     const settings = {
-        speed: 1000,
+        speed: 1500,
         slidesToShow: 1,
         slidesToScroll: 1,
     };
 
+    const [src, setSrc] = useState(`${0}.png`);
+
+    function afterChange(i: number) {
+        setSrc(`${i}.png`);
+    }
+
     return <div className="card-meet-the-board w-100 d-flex flex-row mt-5">
-        <div className="left">
-            <img src="/images/user/yow.png" alt="" />
+        <div className="left animate__animated animate__fadeIn"
+            style={{
+                backgroundImage: `url('images/about-us/meet-the-board/${src}')`
+            }}>
         </div>
-        <div className="right d-flex align-item-center justify-content-center align-items-center">
+        <div className="right d-flex flex-lg-row flex-column align-item-center justify-content-center align-items-center">
             {
-                <Slider lazyLoad="progressive" key={'lladjksd'} infinite={true} {...settings} autoplay autoplaySpeed={2000} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
+                <Slider lazyLoad="progressive" afterChange={afterChange} key={'lladjksd'} {...settings} nextArrow={<NextArrow />} prevArrow={<PrevArrow />} className="w-100 p-5">
                     {
                         props.data.map((list: any, i: any) => (
                             <React.Fragment key={i}>

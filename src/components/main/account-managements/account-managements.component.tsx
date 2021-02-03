@@ -27,6 +27,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
                 console.log(res);
                 localStorage.setItem('userinfo', JSON.stringify(res));
                 SetLoading(false);
+                
                 router.push('/home');
             })
         ).subscribe();
