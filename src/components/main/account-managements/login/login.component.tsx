@@ -20,7 +20,7 @@ const LoginComponent = (props: {
 
     return <div id="login-page-dh">
         <NextSeo
-            title="Login | Lazih Darul Hikam"
+            title="Login | Lazis Darul Hikam"
         />
         <div className="login-wrapper">
             <div className="header-section">
