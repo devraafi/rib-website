@@ -32,6 +32,9 @@ export class DonationRestServices {
     loadProgramById(id: any) {
         return this.request.get(`program/${id}`);
     }
+    loadProgramDetail(id: any) {
+        return this.request.get<IDonor[]>(`program/${id}/detail`);
+    }
 
 
 }
