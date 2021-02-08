@@ -86,7 +86,9 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn btn-dh-primary btn-block" onClick={() => loadData()}>Cek Status Pembayaran</button>
+                        <div className="m-3 w-100">
+                            <button className="btn btn-dh-primary btn-block" onClick={() => loadData()}>Cek Status Pembayaran</button>
+                        </div>
                     </div>
                 </div>
             </div>
