@@ -14,16 +14,21 @@ const transactionRest: TransactionRestService = new TransactionRestService;
 const TransactionDetailComponent = (props: WithRouterProps) => {
     const query: any = props.router.query;
     const [data, setData] = useState<ITransactionDetail>();
-    function loadData(transactionID: string) {
-        transactionRest.loadData(transactionID).pipe(
+    const [transactionID, setTransactionID] = useState<string>();
+    function loadData() {
+        transactionRest.loadData(transactionID || '').pipe(
             catchError(err => {
                 return throwError(err);
             })).subscribe(setData);
     }
     useEffect(() => {
-        const transactionID: string = query ? query.order_id : null;
-        transactionID && loadData(transactionID);
+        const newtransactionID: string = query ? query.order_id : null;
+        setTransactionID(newtransactionID);
     }, [query]);
+
+    useEffect(() => {
+        transactionID && loadData();
+    }, [transactionID])
 
     return <MainComponent
         title="Detail Transaksi"
@@ -45,7 +50,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                         </div>
                                         <div className="field">
                                             <div className="label">Nama</div>
-                                            <div className="value">{line.donorName  || '-'}</div>
+                                            <div className="value">{line.donorName || '-'}</div>
                                         </div>
                                         <div className="field">
                                             <div className="label">ID Transaksi</div>
@@ -81,6 +86,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                             </div>
                         </div>
+                        <button className="btn btn-dh-prinary btn-block" onClick={() => loadData()}>Cek Status Pembayaran</button>
                     </div>
                 </div>
             </div>
