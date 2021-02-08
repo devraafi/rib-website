@@ -66,7 +66,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                         }
                     </div>
                     <div className="col-lg-4 col-12 align-self-start">
-                        <div className="card-transaction m-3">
+                        <div className="card-transaction m-3 w-100">
                             <div className="d-flex flex-column w-100">
                                 <div className="field">
                                     <div className="label">Metode Pembayaran</div>
@@ -82,7 +82,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                                 <div className="field">
                                     <div className="label">Status</div>
-                                    <div className={"value " + (data?.status === 'PENDING' ? 'pending' : '')}>{_.capitalize(data?.status) || '-'}</div>
+                                    <div className={"value " + (data?.status === 'PENDING' ? 'pending' : 'status')}>{_.capitalize(data?.status) || '-'}</div>
                                 </div>
                             </div>
                         </div>
