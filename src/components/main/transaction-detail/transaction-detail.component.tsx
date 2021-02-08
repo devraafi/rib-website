@@ -45,7 +45,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                         </div>
                                         <div className="field">
                                             <div className="label">Nama</div>
-                                            <div className="value">{'-'}</div>
+                                            <div className="value">{line.donorName  || '-'}</div>
                                         </div>
                                         <div className="field">
                                             <div className="label">ID Transaksi</div>

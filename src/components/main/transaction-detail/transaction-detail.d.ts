@@ -12,4 +12,5 @@ declare interface ILineTransaction {
     transactionId: string;
     transactionDate: string;
     amount: string;
+    donorName: string;
 }
