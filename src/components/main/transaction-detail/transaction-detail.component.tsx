@@ -21,7 +21,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
             })).subscribe(setData);
     }
     useEffect(() => {
-        const transactionID: string = query ? query.id : null;
+        const transactionID: string = query ? query.order_id : null;
         transactionID && loadData(transactionID);
     }, [query]);
 
