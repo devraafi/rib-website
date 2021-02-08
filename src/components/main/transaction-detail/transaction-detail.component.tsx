@@ -15,11 +15,13 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
     const query: any = props.router.query;
     const [data, setData] = useState<ITransactionDetail>();
     const [transactionID, setTransactionID] = useState<string>();
+    const [loading, setLoading] = useState<boolean>();
     function loadData() {
+        setLoading(true);
         transactionRest.loadData(transactionID || '').pipe(
             catchError(err => {
                 return throwError(err);
-            })).subscribe(setData);
+            })).subscribe((res) => { setData(res); setLoading(false); });
     }
     useEffect(() => {
         const newtransactionID: string = query ? query.order_id : null;
@@ -35,7 +37,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
         description="Detail Transaksi Darul Hikam"
         pageId="transaction-detail-page-dh"
     >
-        <Spin spinning={!data} indicator={<Loading />} >
+        <Spin spinning={loading} indicator={<Loading />} >
             <div className="container transaction-detail-page my-5">
                 <div className="title-detail m-3 text-center text-lg-left ">Detail Transaksi</div>
                 <div className="row mb-3">
