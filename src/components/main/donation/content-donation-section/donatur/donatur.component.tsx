@@ -7,9 +7,10 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { withRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
+import { AuthenticationService } from 'services/auth/aut.service';
 
-
-const donationRestService: DonationRestServices = new DonationRestServices;
+const auth: AuthenticationService = new AuthenticationService;
+const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const DonorListComponent = (props: WithRouterProps) => {
     const { query } = props.router;
     const [list, setList] = useState<IDonor[]>();

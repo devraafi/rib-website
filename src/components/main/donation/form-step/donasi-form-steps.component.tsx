@@ -7,13 +7,15 @@ import { Step } from 'rc-steps';
 import React, { useEffect, useState } from 'react';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AuthenticationService } from 'services/auth/aut.service';
 import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
 import DonasiPaymentDetail from './payment-detail/payment-detail.component';
 import PaymentMethodStep from './payment-method/payment-method.component';
 
+const auth: AuthenticationService = new AuthenticationService;
 const donationService: DonationService = new DonationService;
-const donationRestService: DonationRestServices = new DonationRestServices;
+const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 
 const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any }) => {
     const [step, onStepChange] = useState(1);

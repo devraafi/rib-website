@@ -14,7 +14,9 @@ import { throwError } from "rxjs";
 import { IPaymentMethod } from "interfaces/payment-method";
 import { IItem, IZakat, IZakatPayload } from "../zakat";
 import _ from "lodash";
-const zakatRestService: ZakatRestServices = new ZakatRestServices;
+import { AuthenticationService } from "services/auth/aut.service";
+const auth: AuthenticationService = new AuthenticationService;
+const zakatRestService: ZakatRestServices = new ZakatRestServices(process.env.staging || '', auth.axiosInterceptors);
 const ZakatFormSteps = () => {
     const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran'];
     // const steps = ['Hitung Zakat', 'Beri Zakat', 'Pembayaran', 'Selesai'];

@@ -7,8 +7,10 @@ import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AuthenticationService } from "services/auth/aut.service";
 import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
-const paymentRest: PaymentMethodRest = new PaymentMethodRest;
+const auth: AuthenticationService = new AuthenticationService;
+const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
 
 const ZakatPaymetMethod = (props: {
     step: number;

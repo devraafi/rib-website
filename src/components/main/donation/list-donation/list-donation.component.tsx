@@ -8,12 +8,13 @@ import { DonationRestServices } from '../donation-rest.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Skeleton } from 'antd';
+import { AuthenticationService } from 'services/auth/aut.service';
 
 const filters = [
     'Bandung', 'Jakarta', 'Kesehatan', 'Pendidikan', 'Lingkungan', 'Umat', 'More Filters'
 ];
-
-const donationRestService: DonationRestServices = new DonationRestServices;
+const auth: AuthenticationService = new AuthenticationService;
+const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 
 const DonationList = () => {
     const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];

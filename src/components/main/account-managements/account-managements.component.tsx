@@ -9,7 +9,10 @@ import { useRouter } from 'next/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import SignUpComponent from './signup/sign-up.component';
+import { TokenRestServices } from 'services/rest/token-rest.service';
+import { AuthenticationService } from 'services/auth/aut.service';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices(process.env.staging || '');
+const auth: AuthenticationService = new AuthenticationService();
 
 const AccontManagementsComponent = (props: AccountManagementProps) => {
     const [loading, SetLoading] = useState(false);
@@ -17,14 +20,13 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
 
     function onLogin(val: any) {
         SetLoading(true);
-        accountManageRestService.login(val).pipe(
+        auth.login(val).pipe(
             catchError((err) => {
                 SetLoading(false);
                 message.error('Gagal Login');
                 return throwError(err);
             }),
             tap((res) => {
-                console.log(res);
                 localStorage.setItem('userinfo', JSON.stringify(res));
                 SetLoading(false);
                 if (props.onSuccess) {

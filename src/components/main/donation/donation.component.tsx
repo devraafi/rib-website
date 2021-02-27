@@ -11,7 +11,9 @@ import { throwError } from "rxjs";
 import { DonationRestServices } from "./donation-rest.service";
 import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
-const donationRestService: DonationRestServices = new DonationRestServices;
+import { AuthenticationService } from "services/auth/aut.service";
+const auth: AuthenticationService = new AuthenticationService;
+const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 
 const DonationPage = (props: any) => {
     const { query } = props.router;

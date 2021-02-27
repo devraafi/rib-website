@@ -1,9 +1,12 @@
 import _ from 'lodash';
-import { from as observableFrom, Observable } from 'rxjs';
+import { from as observableFrom, Observable, throwError } from 'rxjs';
 import Axios, { AxiosInstance, AxiosRequestConfig, AxiosStatic, CancelTokenStatic } from 'axios';
 
 import { HttpExtsrvService } from './http-extsrv.service';
-
+import { catchError } from 'rxjs/operators';
+import { IHandleRequest } from './service';
+import { NotifService } from './feedback/notif.service';
+const notif: NotifService = new NotifService;
 export class RequestService {
     axios!: AxiosInstance;
     cancelToken: CancelTokenStatic = Axios.CancelToken;
@@ -88,4 +91,26 @@ export class RequestService {
             return () => cancelSource.cancel();
         });
     }
+
+    handleRequest(params: IHandleRequest) {
+        return params.obs.pipe(
+            catchError((error) => {
+                notif.show({
+                    type: 'error',
+                    title: 'Error',
+                    description: error,
+                    useService: true
+                });
+                params.onError && params.onError(error)
+                return throwError(error);
+            })
+        ).subscribe((res) => {
+            params.successMessage && notif.show({
+                type: 'success',
+                title: 'Sukses',
+                description: params.successMessage,
+            });
+            params.onDone && params.onDone(res);
+        })
+    };
 }

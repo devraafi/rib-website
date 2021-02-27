@@ -4,6 +4,7 @@ import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AuthenticationService } from "services/auth/aut.service";
 import { DonationRestServices } from "../donation/donation-rest.service";
 import { BannerSection } from "./banner-section/banner-section.component";
 import DonationSection from "./donation-section/donation-section.component";
@@ -15,8 +16,8 @@ import OurPartnersSection from "./our-partner/our-partner.component";
 import ProgramSection from "./program-section/program-section.component";
 import UnnamedSection from "./unnamed-section/unnamed-section.component";
 import ZakatSection from "./zakat-section/zakat-section.component";
-
-const donationRestService: HomeRestService = new HomeRestService;
+const auth: AuthenticationService = new AuthenticationService;
+const donationRestService: HomeRestService = new HomeRestService(process.env.staging || '', auth.axiosInterceptors);
 
 export const HomePage = () => {
     const [loading, setLoading] = useState(false);

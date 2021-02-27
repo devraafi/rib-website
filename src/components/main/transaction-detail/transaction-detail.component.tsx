@@ -8,9 +8,10 @@ import { withRouter } from "next/router"
 import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AuthenticationService } from "services/auth/aut.service";
 import { TransactionRestService } from "./transaction-rest.service";
-
-const transactionRest: TransactionRestService = new TransactionRestService;
+const auth: AuthenticationService = new AuthenticationService;
+const transactionRest: TransactionRestService = new TransactionRestService(process.env.staging || '', auth.axiosInterceptors);
 const TransactionDetailComponent = (props: WithRouterProps) => {
     const query: any = props.router.query;
     const [data, setData] = useState<ITransactionDetail>();

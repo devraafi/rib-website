@@ -10,7 +10,10 @@ import { catchError } from "rxjs/operators";
 import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
 import { Modal } from 'antd';
 import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
-const paymentRest: PaymentMethodRest = new PaymentMethodRest;
+import { AuthenticationService } from "services/auth/aut.service";
+
+const auth: AuthenticationService = new AuthenticationService;
+const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
 const PaymentMethodStep = (props: {
     step: number,
     total: any;

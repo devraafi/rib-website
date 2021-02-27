@@ -33,4 +33,15 @@ export class AccountMangeRestServices {
         const newPayload = { ...payload, ...client };
         return this.request.post(`/oauth2/connect/token`, newPayload);
     }
+
+    refreshToken(refresh_token: string) {
+        const payload = {
+            client_id: 'lazis-dh',
+            client_secret: 'L4Z1SDH',
+            grant_type: 'refresh_token',
+            refresh_token: refresh_token
+
+        }
+        return this.request.post<IUserInfo>(`/oauth2/connect/token`, payload);
+    }
 }
