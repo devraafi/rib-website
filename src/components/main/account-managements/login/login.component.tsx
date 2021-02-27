@@ -36,8 +36,8 @@ const LoginComponent = (props: {
                 <Form
                     initialValues={{
                         remember: false,
-                        username: 'testing-user@user.id',
-                        password: 'testinguser'
+                        username: '',
+                        password: ''
                     }}
                     onFinish={onFinish}
                 >
