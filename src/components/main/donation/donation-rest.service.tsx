@@ -35,6 +35,8 @@ export class DonationRestServices {
     loadProgramDetail(id: any) {
         return this.request.get<IDonor[]>(`program/${id}/detail`);
     }
-
+    loadProgramByCategory() {
+        return this.request.get(`program/program-by-categories`);
+    }
 
 }
