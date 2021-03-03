@@ -2,18 +2,18 @@
     &.checkbox-dh {
         .p-checkbox-box {
             border-radius: 3px;
-            // border-color: #91c35d;
+            // border-color: #99E3FF;
             box-shadow: none;
             &:not(.p-checkbox-disabled) {
                 &:hover {
-                    border-color: #91c35d;
+                    border-color: #99E3FF;
                 }
                 &.p-highlight {
-                    border-color: #91c35d !important;
-                    background: #91c35d !important;
+                    border-color: #99E3FF !important;
+                    background: #99E3FF !important;
                 }
                 &.p-focus {
-                    border-color: #91c35d !important;
+                    border-color: #99E3FF !important;
                 }
             }
         }
@@ -24,7 +24,7 @@
     &.checkbox-dh {
         &:hover {
             .ant-checkbox-inner {
-                border-color: #91c35d !important;
+                border-color: #99E3FF !important;
             }
         }
         .ant-checkbox {
@@ -32,16 +32,16 @@
             box-shadow: none;
             &:hover {
                 .ant-checkbox-inner {
-                    border-color: #91c35d;
+                    border-color: #99E3FF;
                 }
             }
             &.ant-checkbox-checked {
                 .ant-checkbox-inner {
-                    border-color: #91c35d !important;
-                    background: #91c35d !important;
+                    border-color: #99E3FF !important;
+                    background: #99E3FF !important;
                 }
                 &::after {
-                    border-color: #91c35d !important;
+                    border-color: #99E3FF !important;
                     border-radius: 3px;
                 }
             }

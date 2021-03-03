@@ -57,7 +57,7 @@
                     top: 0;
                     right: 0;
                     border-radius: 20px;
-                    background: #a7cf7d;
+                    background: #12BFFF;
                 }
             }
         }
@@ -76,7 +76,7 @@
             font-style: normal;
             font-weight: 800;
             font-size: 30px;
-            color: #293b16;
+            color: #00415A;
             line-height: 120%;
             @media (min-width: 992px) {
                 font-size: 48px;
@@ -93,7 +93,7 @@
     }
 
     .donation-section {
-        background: #f7f9f4;
+        background: #F4FBFD;
         .header {
             text-align: center;
             font-family: "Poppins";
@@ -112,7 +112,7 @@
             .card-child {
                 width: 73px;
                 height: 73px;
-                background: rgba(233, 243, 223, 0.7);
+                background: #56D1FF;
                 border-radius: 20px;
                 display: flex;
                 justify-content: center;
@@ -146,7 +146,7 @@
     .zakat-section {
         position: relative;
         .bg {
-            background: #f7f9f4;
+            background: #F4FBFD;
             width: 100%;
             height: 30%;
             position: absolute;
@@ -155,7 +155,7 @@
         }
 
         .zakat-wrapper {
-            background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
+            background: linear-gradient(360deg, #99E3FF 0%, #DDF6FF 100%);
             border-radius: 30px;
             position: relative;
             .islamic-bg {
@@ -177,12 +177,12 @@
                 font-size: 24px;
                 line-height: 120%;
                 text-align: center;
-                color: #293b16;
+                color: #00415A;
             }
 
             .card-zakat {
                 cursor: pointer;
-                background: #e9f3df;
+                background: #DDF6FF;
                 box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px -5px 24px -4px rgba(24, 39, 75, 0.08);
                 backdrop-filter: blur(11px);
                 border-radius: 26px;
@@ -190,7 +190,7 @@
                 .card-child {
                     width: 73px;
                     height: 73px;
-                    background: #bddb9e;
+                    background: #56D1FF;
                     border-radius: 20px;
                     display: flex;
                     justify-content: center;
@@ -212,7 +212,7 @@
 
     .program-section {
         .program-footer {
-            border-bottom: 1px solid #bddb9e;
+            border-bottom: 1px solid #56D1FF;
         }
 
         .header {
@@ -246,12 +246,12 @@
                 width: 100%;
                 height: 200px;
                 min-height: 150px;
-                background: #e9f3df;
+                background: #DDF6FF;
                 .imooge {
                     border-top-right-radius: 15px;
                     border-top-left-radius: 15px;
                     width: 100%;
-                    background: #e9f3df;
+                    background: #DDF6FF;
                     height: 100%;
                 }
             }
@@ -390,7 +390,7 @@
     .fundaraising-section {
         position: relative;
         .bg {
-            background: #f7f9f4;
+            background: #F4FBFD;
             width: 100%;
             height: 30%;
             position: absolute;
@@ -423,7 +423,7 @@
                 z-index: 1;
                 width: 42px;
                 height: 42px;
-                background: #e9f3df;
+                background: #DDF6FF;
                 border-radius: 12px;
                 display: flex;
                 justify-content: center;
@@ -469,14 +469,14 @@
                     border-radius: 35px;
                     width: 100%;
                     height: 100%;
-                    background: #a7cf7d;
+                    background: #12BFFF;
                 }
             }
         }
     }
 
     .our-partner-section {
-        background: #f7f9f4;
+        background: #F4FBFD;
         .header {
             font-family: "Poppins";
             font-style: normal;
@@ -547,7 +547,7 @@
         }
 
         .unnamed-footer {
-            border-bottom: 1px solid #bddb9e;
+            border-bottom: 1px solid #56D1FF;
         }
     }
 
@@ -659,12 +659,12 @@
             }
         }
         .news-footer {
-            border-bottom: 1px solid #bddb9e;
+            border-bottom: 1px solid #56D1FF;
         }
     }
 
     .feature-section {
-        background: #f7f9f4;
+        background: #F4FBFD;
         .feature-section-list {
             font-family: "Poppins";
             margin-top: 25px;
@@ -699,7 +699,7 @@
                 left: 0;
                 width: 0%;
                 height: 2px;
-                background: #a7cf7d;
+                background: #12BFFF;
             }
             &.__hovered::after {
                 width: 100%;

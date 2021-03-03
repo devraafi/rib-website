@@ -11,11 +11,11 @@
         &.p-inputswitch-checked,
         &.p-inputswitch-checked:not(.p-disabled):hover {
             .p-inputswitch-slider {
-                background: #91c35d88;
+                background: #99E3FF88;
                 mix-blend-mode: normal;
                 &::before {
                     left: 0.25em;
-                    background: #91c35d;
+                    background: #99E3FF;
                 }
             }
         }

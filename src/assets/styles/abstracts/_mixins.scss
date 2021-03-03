@@ -15,44 +15,44 @@
     max-height: 50px;
     padding: 5px 15px;
     @if $type == "primary" {
-        background: #7bb142;
+        background: #00AEEF;
         color: #ffffff;
         &:hover {
             color: #ffffff;
-            background: #7bb142;
+            background: #00AEEF;
         }
         &:active,
         &:focus {
             color: #ffffff;
-            background: #7bb142;
+            background: #00AEEF;
         }
     } @else if $type == "outline" {
-        border: 1px solid #a7cf7d;
-        background: #e9f3df;
-        color: #52762c;
+        border: 1px solid #12BFFF;
+        background: #DDF6FF;
+        color: #0083B3;
         &:hover {
-            background: #e9f3df;
-            color: #52762c;
+            background: #DDF6FF;
+            color: #0083B3;
         }
         &:active,
         &:focus {
-            background: #e9f3df;
-            color: #52762c;
+            background: #DDF6FF;
+            color: #0083B3;
         }
     } @else if $type == "outline-2" {
-        border: 1px solid #91c35d;
+        border: 1px solid #99E3FF;
         background: #ffffff;
-        color: #91c35d;
+        color: #99E3FF;
         border-radius: 10px;
         font-weight: 500;
         &:hover {
-            background: #e9f3df;
-            color: #91c35d;
+            background: #DDF6FF;
+            color: #99E3FF;
         }
         &:active,
         &:focus {
-            background: #e9f3df;
-            color: #91c35d;
+            background: #DDF6FF;
+            color: #99E3FF;
         }
     } @else if $type == "outline-3" {
         border: 1px solid #89d1ea;
@@ -78,16 +78,16 @@
             color: #ffffff;
         }
     } @else if $type == "outline-4" {
-        border: 1px solid #a7cf7d;
+        border: 1px solid #12BFFF;
         background: #ffffff;
         font-weight: normal;
-        color: #52762c;
+        color: #0083B3;
         &:hover,
         &:active,
         &:focus,
         &.active {
-            background: #a7cf7d;
-            color: #52762c;
+            background: #12BFFF;
+            color: #0083B3;
         }
     } @else if $type == "basic" {
         font-weight: 500;
@@ -96,30 +96,30 @@
         &:hover,
         &:active,
         &:focus {
-            background: #e9f3df;
-            color: #52762c;
+            background: #DDF6FF;
+            color: #0083B3;
         }
     } @else if $type == "secondary" {
         font-weight: 600;
         color: #ffffff;
-        background: #a7cf7d;
+        background: #12BFFF;
         &:hover,
         &:active,
         &:focus {
-            background: #a7cf7d;
+            background: #12BFFF;
             color: #ffffff;
         }
     } @else if $type == "next" {
         padding: 12px 20px;
         font-weight: 600;
         border-radius: 24px;
-        background: #e9f3df;
-        color: #679437;
+        background: #DDF6FF;
+        color: #0083B3;
         &:hover,
         &:active,
         &:focus {
-            background: #e9f3df;
-            color: #679437;
+            background: #DDF6FF;
+            color: #0083B3;
         }
     } @else if $type == "g" {
         padding: 12px 14px 12px 16px;

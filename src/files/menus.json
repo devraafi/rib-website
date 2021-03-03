@@ -9,22 +9,27 @@
             "label": "Program",
             "link": "/program",
             "subMenu": []
+        },
+        {
+            "label": "Zakat",
+            "link": "/zakat",
+            "subMenu": []
         }
     ],
     "menus": [
         {
-            "label": "Zakat",
-            "link": "/zakat",
+            "label": "Donasi",
+            "link": "/donasi",
+            "subMenu": []
+        },
+        {
+            "label": "Infak",
+            "link": "/infak",
             "subMenu": []
         },
         {
             "label": "Tentang Kami",
             "link": "/tentang-kami",
-            "subMenu": []
-        },
-        {
-            "label": "Donasi",
-            "link": "/donasi",
             "subMenu": []
         },
         {

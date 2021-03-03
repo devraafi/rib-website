@@ -1,7 +1,7 @@
 #donasi-page-dh {
     .donation-section {
         position: relative;
-        background: linear-gradient(360deg, #bddb9e 0%, #d3e7be 100%), #d3e7be;
+        background: linear-gradient(360deg, #99E3FF 0%, #DDF6FF 100%);
         top: -53px;
         z-index: -4;
         height: calc(350px + 53px);
@@ -39,7 +39,7 @@
             margin: auto;
             .imooge {
                 filter: brightness(0.5);
-                background: #a7cf7d;
+                background: #12BFFF;
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -223,7 +223,7 @@
             border-top-left-radius: 15px;
             width: 100%;
             height: 50%;
-            background: #e9f3df;
+            background: #DDF6FF;
             img {
                 border-top-right-radius: 15px;
                 border-top-left-radius: 15px;
@@ -440,7 +440,7 @@
             max-width: 100%;
             height: 100px;
             &.active {
-                background: #e9f3df;
+                background: #DDF6FF;
             }
         }
 
@@ -508,7 +508,7 @@
                     font-size: 20px;
                     line-height: 110%;
                     text-align: right;
-                    color: #679437;
+                    color: #0083B3;
                 }
             }
             .share {
@@ -585,7 +585,7 @@
                     align-items: center;
                     text-align: right;
                     text-decoration-line: underline;
-                    color: #7bb142;
+                    color: #00AEEF;
                 }
             }
         }
