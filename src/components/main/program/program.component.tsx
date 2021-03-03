@@ -8,7 +8,7 @@ const ProgramComponent = () => {
     const { list } = router.query;
     
     return <MainComponent
-        title="Zakat Lazis Darul Hikam"
+        title="Zakat Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="program-page-dh"
     >

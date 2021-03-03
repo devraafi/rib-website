@@ -236,7 +236,7 @@ const ZakatFormSteps = () => {
     )
     return (
         <MainComponent
-            title="Zakat Lazis Darul Hikam"
+            title="Zakat Ruang Insan Berbagi"
             description="lazis Darul Hikam"
             pageId="zakat-page-dh"
             customNav={<StepNav />}
@@ -249,7 +249,7 @@ const ZakatFormSteps = () => {
                                 Percayakan Zakat Anda pada Kami
                             </div>
                             <div className="description py-3">
-                                Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
+                                Ruang Insan Berbagi hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
                             </div>
                             <Messages ref={msgPrivacy} className="messages-dh-privacy" />
                         </div>

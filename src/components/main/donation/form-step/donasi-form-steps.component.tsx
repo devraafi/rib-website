@@ -108,7 +108,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
 
     return (
         <MainComponent
-            title="Donasi Lazis Darul Hikam"
+            title="Donasi Ruang Insan Berbagi"
             description="Donasi Darul Hikam"
             pageId="donasi-step-page-dh"
             customNav={<StepNav />}

@@ -122,7 +122,7 @@ export const BannerSection = (props: {
                     Ambil tindakan, <br className="d-none d-lg-block" /> bantu sesama
             </div>
                 <div className="description col-lg-9 col-12 text-center text-lg-left py-3">
-                    Dengan kemurahan hati Anda, Lazis Darul Hikam hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
+                    Dengan kemurahan hati Anda, Ruang Insan Berbagi hadir untuk membantu menyalurkan bantuan bagi umat serta kelompok yang membutuhkan
                 </div>
                 <div className="to col-12 py-4 text-center text-lg-left">
                     <Link href="/donasi">

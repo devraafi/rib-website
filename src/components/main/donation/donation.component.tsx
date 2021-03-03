@@ -47,7 +47,7 @@ const DonationPage = (props: any) => {
 
     return (
         <MainComponent
-            title="Donasi Lazis Darul Hikam"
+            title="Donasi Ruang Insan Berbagi"
             description="lazis Darul Hikam"
             pageId="donasi-page-dh"
             hideNav={step > 0}

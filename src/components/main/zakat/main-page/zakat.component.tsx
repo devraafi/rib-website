@@ -9,7 +9,7 @@ import ZakatKnowledgeSection from './zakat-knowledge-section/zakat-knowledge.com
 const ZakatMainPage = () => {
     return (
         <MainComponent
-            title="Zakat Lazis Darul Hikam"
+            title="Zakat Ruang Insan Berbagi"
             description="lazis Darul Hikam"
             pageId="zakat-page-dh"
         >

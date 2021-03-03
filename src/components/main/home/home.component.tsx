@@ -35,7 +35,7 @@ export const HomePage = () => {
     }, []);
 
     return <MainComponent
-        title="Home Lazis Darul Hikam"
+        title="Home Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="home-page-dh"
     >

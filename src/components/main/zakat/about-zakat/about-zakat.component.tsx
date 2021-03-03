@@ -3,7 +3,7 @@ import React from "react"
 
 export const AboutZakatComponent = () => (
     <MainComponent
-        title="About zakat Lazis Darul Hikam"
+        title="About zakat Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="about-zakat-page-dh"
     >

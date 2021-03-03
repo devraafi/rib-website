@@ -28,7 +28,7 @@ const ContactUs = () => {
     }
 
     return <MainComponent
-        title="Contact Us Lazis Darul Hikam"
+        title="Contact Us Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="contact-page-dh"
     >

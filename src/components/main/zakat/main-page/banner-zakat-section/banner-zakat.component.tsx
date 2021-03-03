@@ -14,7 +14,7 @@ const BannerZakatSection = () => (
                         <div className="description-1 px-md-5 px-lg-0 px-0 px-md-5 px-lg-0 px-0 mb-5 text-center text-lg-left">
                             Ribuan Muslim hidup dalam situasi putus asa dan terhambat secara ekonomi. Karena itu Zakat Anda memiliki kekuatan untuk mengubah kehidupan Muslim di seluruh Indonesia.
                                 <br /> <br />
-                                Lazis Darul Hikam memiliki tujuan untuk mendistribusikan Zakat bagi umat yang membutuhkan. Dengan penyaluran yang terpercaya dan tepat, kami berharap dapat meringankan beban saudara-saudara kita yang membutuhkan.
+                                Ruang Insan Berbagi memiliki tujuan untuk mendistribusikan Zakat bagi umat yang membutuhkan. Dengan penyaluran yang terpercaya dan tepat, kami berharap dapat meringankan beban saudara-saudara kita yang membutuhkan.
                             </div>
                         <div className="action text-center text-lg-left">
                             <Link href="/zakat/form-steps">

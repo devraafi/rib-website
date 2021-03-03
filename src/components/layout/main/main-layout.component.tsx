@@ -10,8 +10,8 @@ const MainComponent = (props: MainProps) => (
         <div className="container-fluid p-0">
             <HeaderComponent />
             <NextSeo
-                title={props.title || 'Lazis Darul Hikam'}
-                description={props.description || 'Lazis Darul Hikam'}
+                title={props.title || 'Ruang Insan Berbagi'}
+                description={props.description || 'Ruang Insan Berbagi'}
             />
             {
                 !props.hideNav &&

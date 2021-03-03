@@ -11,7 +11,7 @@ const { mission } = data;
 const { meetTheBoard } = data;
 const AboutUsComponent = () => (
     <MainComponent
-        title="About Us Lazis Darul Hikam"
+        title="About Us Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="about-page-dh"
     >

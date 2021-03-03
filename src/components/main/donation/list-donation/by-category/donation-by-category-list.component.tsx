@@ -29,7 +29,7 @@ const DonationListByCategory = () => {
             })
     }, []);
     return <MainComponent
-        title="Donasi List Lazis Darul Hikam"
+        title="Donasi List Ruang Insan Berbagi"
         description="lazis Darul Hikam"
         pageId="donasi-page-dh"
     >

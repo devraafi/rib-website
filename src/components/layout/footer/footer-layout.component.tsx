@@ -33,7 +33,7 @@ export default class FooterComponent extends React.Component {
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                        Lazis Darul Hikam merupakan lembaga filantropi islam yang bergerak pada pengelolaan zakat infak dan sodaqah untuk pemberdayaan dan kemaslahatan umat
+                                        Ruang Insan Berbagi merupakan lembaga filantropi islam yang bergerak pada pengelolaan zakat infak dan sodaqah untuk pemberdayaan dan kemaslahatan umat
                                     </div>
                                     <div className="col-12 col-md py-2">
                                         <div className="dh-footer-title">Services</div>
@@ -118,7 +118,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <div className="dh-footer-item-link">
                                                     <span className="ml-4">
-                                                        An. Lazis Darul Hikam
+                                                        An. Ruang Insan Berbagi
                                                     </span>
                                                 </div>
                                             </li>
