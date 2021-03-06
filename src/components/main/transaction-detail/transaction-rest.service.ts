@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class TransactionRestService {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'https://staging-lazis-dh.herokuapp.com/public/';
+    urlDh: string = 'https://staging-rib.herokuapp.com/public/';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,

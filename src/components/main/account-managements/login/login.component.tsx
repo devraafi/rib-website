@@ -4,7 +4,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { EyeIcon } from '@Components/icons/icons';
 import { AccountMangeRestServices } from '../account-managements-rest.services';
 import { NextSeo } from 'next-seo';
-const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('https://staging-lazis-dh.herokuapp.com/');
+const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('https://staging-rib.herokuapp.com/');
 const LoginComponent = (props: {
     onLogin?: (val: any) => void;
 }) => {
