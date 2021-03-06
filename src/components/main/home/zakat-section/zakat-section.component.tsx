@@ -17,7 +17,7 @@ export default class ZakatSection extends React.Component<any, any> {
                 <div className="container-fluid zakat-section p-0">
                     <div className="bg"></div>
                     <div className="zakat-wrapper container p-2">
-                        <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" />
+                        {/* <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" /> */}
 
                         <div className="col-lg-6 col-12 m-auto header py-2">
                             Salurkan Zakat Anda Bersama Kami

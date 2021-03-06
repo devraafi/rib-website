@@ -41,7 +41,7 @@ export const HomePage = () => {
     >
         <Spin spinning={loading} indicator={<Loading />} >
             <BannerSection data={response ? response.program : []} />
-            <ZakatSection />
+            {/* <ZakatSection /> */}
             <DonationSection />
             <ProgramSection data={response ? response.program : []} />
             <FundaraisingSection data={response ? response.program : []} />

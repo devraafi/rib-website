@@ -165,9 +165,17 @@ export default class NavbarComponent extends React.Component<any, any> {
                                 }} className="z-index-yow form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
                                     {
                                         (typeof window !== 'undefined' && this.getItem()) ?
-                                            < Link href="/profile">
-                                                <a className="sign-up">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
-                                            </ Link>
+                                            <div className="dropdown">
+                                                <a className="sign-up dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                                <div className="dropdown-menu" aria-labelledby="UserDropdown">
+                                                    <Link href="/profile">
+                                                        <a className="dropdown-item bg-white">Profile</a>
+                                                    </Link>
+                                                    <Link href="/login">
+                                                        <a className="dropdown-item bg-white">Logout</a>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                             :
                                             < Link href="/signup">
                                                 <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
