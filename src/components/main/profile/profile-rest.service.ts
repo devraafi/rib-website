@@ -15,4 +15,8 @@ export class ProfileRestService {
     loadProfile() {
         return this.request.get(`profile`);
     }
+
+    loadProfileTransaction() {
+        return this.request.get(`profile/transaction`);
+    }
 }
