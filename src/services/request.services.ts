@@ -3,7 +3,7 @@ import { from as observableFrom, Observable, throwError } from 'rxjs';
 import Axios, { AxiosInstance, AxiosRequestConfig, AxiosStatic, CancelTokenStatic } from 'axios';
 
 import { HttpExtsrvService } from './http-extsrv.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { IHandleRequest } from './service';
 import { NotifService } from './feedback/notif.service';
 const notif: NotifService = new NotifService;
@@ -103,7 +103,8 @@ export class RequestService {
                 });
                 params.onError && params.onError(error)
                 return throwError(error);
-            })
+            }),
+            tap((res) => params.onTap && params.onTap(res))
         ).subscribe((res) => {
             params.successMessage && notif.show({
                 type: 'success',

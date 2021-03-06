@@ -5,4 +5,5 @@ declare interface IHandleRequest {
   errorMessage?: string;
   onDone?: (res: any) => void;
   onError?: (err: any) => void;
+  onTap?: (res: any) => void;
 }
