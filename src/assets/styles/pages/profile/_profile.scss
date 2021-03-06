@@ -36,4 +36,56 @@
             }
         }
     }
+    .profile-transaction {
+        .transaction-info {
+            background: #ffffff;
+            border: 0.5px solid #ededed;
+            box-shadow: 0px 4px 8px rgba(90, 122, 163, 0.14);
+            border-radius: 16px;
+            padding: 32px;
+            .total-donasi {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 30px;
+                color: #000000;
+                .rp {
+                    color: #151e0b;
+                    font-weight: 600;
+                    font-size: 24px;
+                }
+                .value {
+                    font-weight: 600;
+                    font-size: 40px;
+                    line-height: 48px;
+                    color: #7bb142;
+                }
+            }
+            .table-profile-transaction {
+                max-height: 45vh;
+                thead {
+                    font-family: "Poppins";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #a6b0b9;
+                    th {
+                        padding: 10px 16px;
+                        border: none;
+                    }
+                }
+                tbody {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 110%;
+                    color: #101315;
+                    td {
+                        padding: 20px 16px;
+                    }
+                }
+            }
+        }
+    }
 }
