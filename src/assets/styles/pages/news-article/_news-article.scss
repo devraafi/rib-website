@@ -1,4 +1,25 @@
 #news-article-page-dh {
+    .other-article {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        color: #31383f;
+    }
+    .news-page {
+        background: #d3e7be;
+        background: linear-gradient(180deg, #d3e7be 0%, #ffffff 39.75%, #ffffff 52.25%, rgba(255, 255, 255, 0) 100%);
+
+        .label-spec {
+            margin: 1rem 0;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 130%;
+            color: #52762c;
+        }
+    }
     .news-wrapper {
         padding: 10px;
         border-radius: 25px;
@@ -31,6 +52,7 @@
             &.sm {
                 min-height: 50px !important;
             }
+            min-height: 50px !important;
             margin: 1rem 0;
             font-family: "Poppins" !important;
             font-style: normal;
@@ -71,12 +93,11 @@
                 font-family: "FiraSans" !important;
             }
             p {
-                text-align: justify;
                 font-family: "FiraSans" !important;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 14px;
-                line-height: 120%;
+                line-height: 25px;
             }
             h1,
             h2,
@@ -108,6 +129,36 @@
             font-size: 10px;
             color: #a6b0b9;
             text-transform: capitalize;
+        }
+
+        .share-author {
+            color: #293b16;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            .author-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                position: relative;
+                .imooge {
+                    top: 0;
+                    right: 0;
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    // background: #a7cf7d;
+                }
+            }
+            .name {
+                color: #91c35d;
+            }
+            .sosmed-wrap {
+                width: 32px;
+                margin-right: 14px;
+            }
         }
     }
 }

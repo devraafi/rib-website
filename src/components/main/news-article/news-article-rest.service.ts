@@ -17,4 +17,8 @@ export class NewsArticleRestService {
             params
         });
     }
+
+    loadNewsByRoute(route: string) {
+        return this.request.get(`news/${route}`)
+    }
 }
