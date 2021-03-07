@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import data from './file.json'
+import Link from 'next/link';
 
 
 export const NewsSectionComponent = (props: INewsArticleProps) => {
@@ -26,9 +27,9 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
                                         <div className="d-flex flex-column">
                                             <div className="news-image">
                                                 {
-                                                    list.fileUrl ? 
-                                                <img src={list.fileUrl} alt="" className="lazyload blur-up lazyloaded" />
-                                                : <div className="imooge"></div>
+                                                    list.fileUrl ?
+                                                        <img src={list.fileUrl} alt="" className="lazyload blur-up lazyloaded" />
+                                                        : <div className="imooge"></div>
                                                 }
                                             </div>
                                             <div className="news-info p-3">
@@ -59,9 +60,11 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
                 </div>
                 <div className="row justify-content-center py-4 news-footer mx-5">
                     <div className="col-auto">
-                        <button className="btn btn-dh-outline">
-                            Lihat Semua
+                        <Link href="news-article">
+                            <button className="btn btn-dh-outline">
+                                Lihat Semua
                             </button>
+                        </Link>
                     </div>
                 </div>
             </div>
