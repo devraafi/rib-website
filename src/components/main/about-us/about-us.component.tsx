@@ -91,7 +91,7 @@ const AboutUsComponent = () => (
 
                         <div className="field">
                             <div className="sub-title">E-Mail</div>
-                            <div className="sub">lazisdarulhikam@gmail.com</div>
+                            <div className="sub">fund.ruanginsanberbagi@gmail.com</div>
                         </div>
 
                         <div className="field">

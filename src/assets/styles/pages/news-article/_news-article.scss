@@ -8,7 +8,13 @@
     }
     .news-page {
         background: #d3e7be;
-        background: linear-gradient(180deg, #d3e7be 0%, #ffffff 39.75%, #ffffff 52.25%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(
+            180deg,
+            rgb(221, 246, 255, 0.6) 0%,
+            #ffffff 39.75%,
+            #ffffff 52.25%,
+            rgba(255, 255, 255, 0) 100%
+        );
 
         .label-spec {
             margin: 1rem 0;
@@ -17,7 +23,7 @@
             font-weight: normal;
             font-size: 13px;
             line-height: 130%;
-            color: #52762c;
+            color: #0083b3;
         }
     }
     .news-wrapper {
@@ -38,7 +44,7 @@
             margin: auto;
             .imooge {
                 // filter: brightness(0.5);
-                background: #12BFFF;
+                background: #12bfff;
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -69,7 +75,7 @@
             font-family: "FiraSans" !important;
             font-style: normal;
             font-size: 10px;
-            color: #12BFFF;
+            color: #12bfff;
         }
         .caption {
             &.sm {
@@ -132,7 +138,7 @@
         }
 
         .share-author {
-            color: #293b16;
+            color: #00415a;
             font-family: "Inter";
             font-style: normal;
             font-weight: 600;
@@ -153,7 +159,7 @@
                 }
             }
             .name {
-                color: #91c35d;
+                color: #12bfff;
             }
             .sosmed-wrap {
                 width: 32px;

@@ -63,7 +63,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/mail.svg" alt="" />
                                                         <span className="ml-3">
-                                                            lazisdarulhikam@gmail.com
+                                                            fund.ruanginsanberbagi@gmail.com
                                                         </span>
                                                     </a>
                                                 </Link>
