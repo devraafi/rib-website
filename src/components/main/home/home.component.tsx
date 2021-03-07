@@ -5,16 +5,13 @@ import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { AuthenticationService } from "services/auth/aut.service";
-import { DonationRestServices } from "../donation/donation-rest.service";
 import { BannerSection } from "./banner-section/banner-section.component";
 import DonationSection from "./donation-section/donation-section.component";
 import FeatureSection from "./feature-section/feature-section.component";
 import { FundaraisingSection } from "./fundraising-section/fundaraising-section.component";
 import { HomeRestService } from "./home-rest.service";
-import NewsSection from "./news-and-stories-section/news-and-stories-section.component";
-import OurPartnersSection from "./our-partner/our-partner.component";
+import { NewsSectionComponent } from "./news-and-stories-section/news-and-stories-section.component";
 import ProgramSection from "./program-section/program-section.component";
-import UnnamedSection from "./unnamed-section/unnamed-section.component";
 import ZakatSection from "./zakat-section/zakat-section.component";
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: HomeRestService = new HomeRestService(process.env.staging || '', auth.axiosInterceptors);
@@ -47,7 +44,7 @@ export const HomePage = () => {
             <FundaraisingSection data={response ? response.program : []} />
             {/* <UnnamedSection /> */}
             <FeatureSection />
-            <NewsSection />
+            <NewsSectionComponent data={response ? response.news : []} />
         </Spin>
     </MainComponent>
 }

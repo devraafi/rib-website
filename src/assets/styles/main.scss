@@ -10,7 +10,7 @@ body {
     font-family: "FiraSans", "Poppins";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #F6F6F6;
+    background-color: #FFFFFF;
 }
 .color-next {
     color: #679437 !important;
@@ -137,4 +137,8 @@ input[type="number"] {
         right: 70px !important;
         left: auto !important;
     }
+}
+
+.pointer {
+    cursor: pointer;
 }
