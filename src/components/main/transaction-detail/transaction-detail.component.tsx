@@ -35,7 +35,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
 
     return <MainComponent
         title="Detail Transaksi"
-        description="Detail Transaksi Darul Hikam"
+        description="Detail Transaksi Ruang Insan Berbagi"
         pageId="transaction-detail-page-dh"
     >
         <Spin spinning={loading} indicator={<Loading />} >

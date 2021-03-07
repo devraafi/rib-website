@@ -12,7 +12,7 @@ const { meetTheBoard } = data;
 const AboutUsComponent = () => (
     <MainComponent
         title="About Us Ruang Insan Berbagi"
-        description="lazis Darul Hikam"
+        description="lazis Ruang Insan Berbagi"
         pageId="about-page-dh"
     >
         <div className="container-fluid p-0 about-us-page">

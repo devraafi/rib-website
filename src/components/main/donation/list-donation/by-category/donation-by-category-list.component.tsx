@@ -30,7 +30,7 @@ const DonationListByCategory = () => {
     }, []);
     return <MainComponent
         title="Donasi List Ruang Insan Berbagi"
-        description="lazis Darul Hikam"
+        description="lazis Ruang Insan Berbagi"
         pageId="donasi-page-dh"
     >
         <div className="container-fluid donasi-list-section p-0">

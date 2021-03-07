@@ -33,7 +33,7 @@ export const HomePage = () => {
 
     return <MainComponent
         title="Home Ruang Insan Berbagi"
-        description="lazis Darul Hikam"
+        description="lazis Ruang Insan Berbagi"
         pageId="home-page-dh"
     >
         <Spin spinning={loading} indicator={<Loading />} >

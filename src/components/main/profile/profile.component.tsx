@@ -42,7 +42,7 @@ export const ProfileComponent = () => {
 
     return <MainComponent
         title="Profile"
-        description="lazis Darul Hikam"
+        description="lazis Ruang Insan Berbagi"
         pageId="profile-page-dh"
     >
         <Spin spinning={loading} indicator={<Loading />}>

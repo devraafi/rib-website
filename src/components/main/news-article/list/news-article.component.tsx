@@ -54,7 +54,7 @@ export const NewsArticleListComponent = () => {
     return (
         <MainComponent
             title="Berita & Artikel"
-            description="lazis Darul Hikam"
+            description="lazis Ruang Insan Berbagi"
             pageId="news-article-page-dh"
         >
             <Spin spinning={!news} indicator={<Loading />}>

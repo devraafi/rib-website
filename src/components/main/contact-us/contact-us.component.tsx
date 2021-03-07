@@ -29,7 +29,7 @@ const ContactUs = () => {
 
     return <MainComponent
         title="Contact Us Ruang Insan Berbagi"
-        description="lazis Darul Hikam"
+        description="lazis Ruang Insan Berbagi"
         pageId="contact-page-dh"
     >
         <div className="container-fluid p-0 contact-us-page">

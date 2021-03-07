@@ -12,7 +12,7 @@ const SignUpComponent = (props: {
 
     return <div id="sign-up-page-dh">
         <NextSeo
-            title="Sign Up | Lazih Darul Hikam"
+            title="Sign Up | Lazih Ruang Insan Berbagi"
         />
         <div className="sign-up-wrapper">
             <div className="header-section text-center w-100">

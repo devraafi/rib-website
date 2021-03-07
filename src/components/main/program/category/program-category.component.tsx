@@ -5,7 +5,7 @@ const ProgramCategory = () => {
     const { categoryList } = data;
     return (
         <div className="container-lg container-fluid py-4" id="program-category">
-            <div className="title text-center">Program Darul Hikam</div>
+            <div className="title text-center">Program Ruang Insan Berbagi</div>
             <div className="description">
                 Nec, mi sit cras eget dictum habitasse ac accumsan arcu. Sit purus libero venenatis sit. Quis pellentesque purus eget vitae varius. Orci mauris velit nisi lorem hendrerit donec cursus eget pellentesque. Neque porta augue gravida tincidunt leo nec.
             </div>

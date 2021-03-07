@@ -167,7 +167,7 @@ export default class FooterComponent extends React.Component {
                             <div className="container-fluid container-lg py-3 px-md-4">
                                 <div className="row justify-content-between mx-4">
                                     <div className="col-6 text-copyright">
-                                        Copyright © 2020. Darul Hikam. All rights reserved.
+                                        Copyright © 2020. Ruang Insan Berbagi. All rights reserved.
                                     </div>
                                     <div className="col-6 text-copyright text-right priv">
                                         Terms & Conditions <span className="ml-3">Privacy Policy</span>
