@@ -23,36 +23,38 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
                         props.data && props.data.map((list, i: number) => {
                             return (
                                 <div className="col-lg-4 col-12 py-3 px-3" key={i}>
-                                    <div className="card-news">
-                                        <div className="d-flex flex-column">
-                                            <div className="news-image">
-                                                {
-                                                    list.fileUrl ?
-                                                        <img src={list.fileUrl} alt="" className="lazyload blur-up lazyloaded" />
-                                                        : <div className="imooge"></div>
-                                                }
-                                            </div>
-                                            <div className="news-info p-3">
-                                                <div className="d-flex flex-row justify-content-between py-2">
-                                                    <div className="news-date">{moment(list.createdAt).format('DD MMMM YYYY')}</div>
-                                                    <div className="category">{list.articleCategory.name}</div>
+                                    <Link href={`/news-article/detail?route=${list.route}&title=${list.title}`}>
+                                        <div className="card-news">
+                                            <div className="d-flex flex-column">
+                                                <div className="news-image">
+                                                    {
+                                                        list.fileUrl ?
+                                                            <img src={list.fileUrl} alt="" className="lazyload blur-up lazyloaded" />
+                                                            : <div className="imooge"></div>
+                                                    }
                                                 </div>
-                                                <div className="d-flex pt-1 pb-3">
-                                                    <div className="title">
-                                                        {list.title}
+                                                <div className="news-info p-3">
+                                                    <div className="d-flex flex-row justify-content-between py-2">
+                                                        <div className="news-date">{moment(list.createdAt).format('DD MMMM YYYY')}</div>
+                                                        <div className="category">{list.articleCategory.name}</div>
                                                     </div>
-                                                </div>
-                                                <div className="d-flex flex-row profile-info">
-                                                    <div className="profile-img">
-                                                        <img src={`/images/icons/people.svg`} alt="" className="lazyload blur-up lazyloaded" />
+                                                    <div className="d-flex pt-1 pb-3">
+                                                        <div className="title">
+                                                            {list.title}
+                                                        </div>
                                                     </div>
-                                                    <div className="ml-3 profile-name">
-                                                        {list.authorName}
+                                                    <div className="d-flex flex-row profile-info">
+                                                        <div className="profile-img">
+                                                            <img src={`/images/icons/people.svg`} alt="" className="lazyload blur-up lazyloaded" />
+                                                        </div>
+                                                        <div className="ml-3 profile-name">
+                                                            {list.authorName}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             )
                         })
