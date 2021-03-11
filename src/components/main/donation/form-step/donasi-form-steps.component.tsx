@@ -17,7 +17,7 @@ const auth: AuthenticationService = new AuthenticationService;
 const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 
-const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any, isInfaq: boolean }) => {
+const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any, isInfaq?: boolean }) => {
     const [step, onStepChange] = useState(1);
     const [spin, setSpin] = useState(false);
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Bayar'];

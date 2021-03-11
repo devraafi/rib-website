@@ -1,29 +1,31 @@
 {
     "title": "Get involved in making the dream a reality",
     "desc": [
-        "Yayasan Ruang Insan Berbagi hadir dengan harapan dapat menjadi wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi."
+        "Yayasan Ruang Insan Berbagi hadir dengan harapan dapat menjadi wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi.",
+        "Beranggotakan dari para profesional muda bersama dukungan dari anak muda (milenial) sebagai anggota aktif memberikan harapan atas rasa kepedulian masyarakat dapat terus meningkat selaras dengan pendayagunaan dapat lebih maksimal.",
+        "Hadirnya kami memberikan harapan agar kepercayaan masyarakat dapat bertahan untuk terus berbuat baik dan mampu memberikan pengaruh positif kebaikan sosial bagi yang lainnya."
     ],
     "vision": {
         "label": "Vision",
-        "list": "Menjadi lembaga pengelola ZIS bertaraf Internasional yang profesional dan amanah"
+        "list": "Menjadi NGO yang memberikan solusi permasalahan sosial masyarakat sebagai wujud kontribusi untuk Bangsa dan Negara"
     },
     "mission": {
         "label": " Mission",
         "list": [
             {
-                "mission": "Membangun sistem manajemen zakat terkini",
-                "image": "/images/icons/mission/charity.svg"
-            },
-            {
-                "mission": "Membuat program pemberdayaan masyarakat yang berkesinambungan",
+                "mission": "Berkontribusi aktif dalam membangun jaringan komunitas sosia",
                 "image": "/images/icons/mission/unite.svg"
             },
             {
-                "mission": "Membangun hubungan seluas luasnya",
+                "mission": "2.Hadirkan Fasilitas untuk Masyarakat yang Mandiri",
                 "image": "/images/icons/mission/muslim.svg"
             },
             {
-                "mission": "Meningkatkan kemampuan SDM lebih kompeten",
+                "mission": "Membangun Kepedulian untuk Masyarakat Lebih Baik",
+                "image": "/images/icons/mission/charity.svg"
+            },
+            {
+                "mission": "Meningkatkan Seluruh Sumber Daya Manusia dengan Baik dan Profesional",
                 "image": "/images/icons/mission/parents.svg"
             }
         ]

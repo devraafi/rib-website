@@ -140,7 +140,7 @@ const MainDonation = (props: any) => {
                                             Rp. {(price).toLocaleString()}
                                         </button>
                                     </div>
-                                )
+                                )g .k
                             })
                         }
                     </div>
