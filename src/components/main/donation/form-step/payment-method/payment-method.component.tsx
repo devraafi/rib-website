@@ -8,12 +8,15 @@ import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { PaymentMethodRest } from "services/rest/payment-method.rest.service";
-import { Modal } from 'antd';
+import { Image, Modal } from 'antd';
 import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
 import { AuthenticationService } from "services/auth/aut.service";
+import { CommonServices } from "services/common/common.service";
 
 const auth: AuthenticationService = new AuthenticationService;
 const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
+const { getPaymentImageSrc } = new CommonServices;
+
 const PaymentMethodStep = (props: {
     step: number,
     total: any;
@@ -204,7 +207,7 @@ const PaymentMethodStep = (props: {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                <img src={`/images/logos/payment/${l.code.toLocaleLowerCase()}.svg`} className="img-fluid" alt="" />
+                                                <Image className="img-fluid" src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
                                             </div>
                                         </div>
                                     )
