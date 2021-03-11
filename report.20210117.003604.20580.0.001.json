@@ -486,7 +486,7 @@
     "npm_package_devDependencies__types_node": "^14.14.6",
     "npm_package_devDependencies__types_react": "^16.9.56",
     "npm_package_gitHead": "566598ba8f83175b2e770ab90badced1f0472536",
-    "npm_package_name": "lazis-darul-hikam",
+    "npm_package_name": "ruang-insan-berbagi",
     "npm_package_private": "true",
     "npm_package_readmeFilename": "README.md",
     "npm_package_scripts_build": "next build && tsc --project tsconfig.json",

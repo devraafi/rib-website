@@ -9,7 +9,7 @@ const ProgramComponent = () => {
     
     return <MainComponent
         title="Zakat Ruang Insan Berbagi"
-        description="lazis Ruang Insan Berbagi"
+        description="Ruang Insan Berbagi"
         pageId="program-page-dh"
     >
 

@@ -10,7 +10,7 @@ const ZakatMainPage = () => {
     return (
         <MainComponent
             title="Zakat Ruang Insan Berbagi"
-            description="lazis Ruang Insan Berbagi"
+            description="Ruang Insan Berbagi"
             pageId="zakat-page-dh"
         >
 

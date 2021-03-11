@@ -12,7 +12,7 @@ export default class FooterComponent extends React.Component {
                             <div className="row justify-content-center">
                                 <div className="col-auto">
                                     <div className="text-download">
-                                        Download Aplikasi Lazis di
+                                        Download Aplikasi Ruang Insan Berbagi di
                                     </div>
                                 </div>
                             </div>

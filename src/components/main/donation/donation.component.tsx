@@ -60,7 +60,7 @@ const DonationPage = (props: any) => {
     return (
         <MainComponent
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
-            description="lazis Ruang Insan Berbagi"
+            description="Ruang Insan Berbagi"
             pageId="donasi-page-dh"
             hideNav={step > 0}
         >

@@ -4,7 +4,7 @@ import React from "react"
 export const AboutZakatComponent = () => (
     <MainComponent
         title="About zakat Ruang Insan Berbagi"
-        description="lazis Ruang Insan Berbagi"
+        description="Ruang Insan Berbagi"
         pageId="about-zakat-page-dh"
     >
         <div className="container-fluid p-0 about-zakat-page">
