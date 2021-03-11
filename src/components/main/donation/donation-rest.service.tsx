@@ -22,7 +22,7 @@ export class DonationRestServices {
             email: string,
             showAsAnonymous: boolean
         }
-    }, params) {
+    }, params: any) {
         return this.request.post(`transaction/create/program/midtrans-snap`, payload, { params });
     }
 
