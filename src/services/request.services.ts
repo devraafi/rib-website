@@ -98,8 +98,8 @@ export class RequestService {
                 notif.show({
                     type: 'error',
                     title: 'Error',
-                    description: error,
-                    useService: true
+                    description: params.errorMessage || error,
+                    useService: !_.isUndefined(params.useService) ? params.useService : true
                 });
                 params.onError && params.onError(error)
                 return throwError(error);

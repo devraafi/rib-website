@@ -91,7 +91,7 @@ export const NewsArticleListComponent = () => {
                         </div> */}
                     </div>
                     <div className="row my-4" style={{
-                        maxHeight: '80vh',
+                        maxHeight: '140vh',
                         overflow: 'auto'
                     }}>
                         {

@@ -4,24 +4,40 @@ import data from './file.json'
 import moment from 'moment';
 import { DonationRestServices } from '../../donation-rest.service';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { withRouter } from 'next/router';
 import { WithRouterProps } from 'next/dist/client/with-router';
 import { AuthenticationService } from 'services/auth/aut.service';
+import { RequestService } from 'services/request.services';
 
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
+const { handleRequest } = new RequestService;
+
 const DonorListComponent = (props: WithRouterProps) => {
-    const { query } = props.router;
+    const { router } = props;
+    const { query, pathname } = router;
     const [list, setList] = useState<IDonor[]>();
 
+    function loadData(obs: Observable<any>) {
+        handleRequest({
+            obs,
+            useService: false,
+            errorMessage: 'Kesalahan tidak terduga',
+            onDone: (res) => {
+                setList(res);
+            }
+        })
+    }
+
     useEffect(() => {
-        donationRestService.loadProgramDetail(query.id).pipe(
-            catchError(err => {
-                return throwError(err);
-            })).subscribe((res) => {
-                setList(res)
-            })
+
+        if (pathname === '/infak') {
+            loadData(donationRestService.loadInfaqDetail());
+        } else {
+            query.id && loadData(donationRestService.loadProgramDetail(query.id));
+        }
+
     }, [])
 
     return <div className="d-flex flex-column donatur">

@@ -33,6 +33,11 @@
             "subMenu": []
         },
         {
+            "label": "News & Article",
+            "link": "/news-article",
+            "subMenu": []
+        },
+        {
             "label": "Kontak",
             "link": "/kontak",
             "subMenu": []

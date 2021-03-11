@@ -5,45 +5,45 @@ import Link from 'next/link';
 
 const features = [
     {
-        title: 'Berbagi Untuk Pendidikan',
-        subtitle: 'Program untuk membantu pendidikan generasi-generasi penerus bangsa',
-        description: 'Bantuan dapat berupa uang pendidikan maupun alat penunjang pendidikan. Wilayah sebaran program pendidikan yaitu di seluruh Indonesia, terutama di daerah-daerah pelosok yang membutuhkan bantuan pendidikan. ',
+        title: 'Kepercayaan',
+        subtitle: 'Menjalankan aktivitas lembaga dengan profesional, transparan, dan terpercaya',
+        description: 'Menjalankan aktivitas lembaga dengan profesional, transparan, dan terpercaya.',
         img: '/images/feature/1.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Berbagi Untuk Lingkungan',
-        subtitle: 'Merupakan sebuah program kepedulian terhadap daerah/lingkungan sekitar',
-        description: 'Mebantu lungkungan yang membutuhkan baik manusia ataupun hewan. Dalam program berbagi lingkungan ini ada beberapa program yang telah dilakukan diantaranya siaga bencana, kerelawanan, dan lainnya.',
+        title: 'Kolaborasi Aktif',
+        subtitle: 'Bergotong royong saling membantu demi menciptakan kondisi masyarakat yang lebih baik',
+        description: 'Bergotong royong saling membantu demi menciptakan kondisi masyarakat yang lebih baik.',
         img: '/images/feature/2.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Berbagi Untuk Umat',
+        title: 'Pemberdayaan',
         subtitle: 'Program bentuk kepedulian terhadap seluruh umat, utamanya adalah umat muslim',
-        description: 'Wilayah sebarannya tidak hanya di Indonesia saja tapi di seluruh dunia termasuk di negara-negara konflik seperti Palestina, Suriah dan Rohingya.',
+        description: 'Memberikan akses kepada masyarakat untuk menciptakan dan meningkatkan kemandirian demi kehidupan lebih baik.',
         img: '/images/feature/3.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
     {
-        title: 'Berbagi Untuk Kesehatan',
-        subtitle: 'Program berbagi yang diberikan kepada para pejuang tangguh yang sedang di uji kesehatannya.',
-        description: 'Bentuk kepedulian yang diberikan beragam, disesuaikan dengan kebutuhan dan kondisi yang ada seperti pengobatan kesehatan dhuafa, program pengobatan gratis dan pelayanan ambulance.',
+        title: 'Universal dan Menyeluruh',
+        subtitle: 'Tidak membeda-bedakan latar belakang penerima maupun pemberi dan bergerak secara bebas tanpa terikat oleh organnisasi, komunitas tertentu maupun partai tertentu.  ',
+        description: 'Tidak membeda-bedakan latar belakang penerima maupun pemberi dan bergerak secara bebas tanpa terikat oleh organnisasi, komunitas tertentu maupun partai tertentu.  ',
         img: '/images/feature/4.svg',
         altImg: '',
         href: { link: '/', as: '/' }
     },
-    {
-        title: 'Berbagi Program Khusus',
-        subtitle: 'Program berbagi yang bersifat khusus tergantung waktu dan kebutuhan.',
-        description: 'Contoh program khusus adalah program khusus Ramadhan yang meliputi paket Lebaran yatim dan dhuafa, bingkisan untuk lansia dan ifthor Ramadhan; program khusus penanganan Covid-19, dan hari Raya Idul Adha.',
-        img: '/images/feature/5.svg',
-        altImg: '',
-        href: { link: '/', as: '/' }
-    },
+    // {
+    //     title: 'Berbagi Program Khusus',
+    //     subtitle: 'Program berbagi yang bersifat khusus tergantung waktu dan kebutuhan.',
+    //     description: 'Contoh program khusus adalah program khusus Ramadhan yang meliputi paket Lebaran yatim dan dhuafa, bingkisan untuk lansia dan ifthor Ramadhan; program khusus penanganan Covid-19, dan hari Raya Idul Adha.',
+    //     img: '/images/feature/5.svg',
+    //     altImg: '',
+    //     href: { link: '/', as: '/' }
+    // },
 ]
 
 class FeatureSection extends React.Component<any, any> {

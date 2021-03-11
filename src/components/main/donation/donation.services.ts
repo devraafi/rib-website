@@ -1,10 +1,16 @@
 export class DonationService {
     value = 0;
-    get total() {
-        return this.value;
+    isInfaq = false;
+    get payload() {
+        const payload = {
+            total: this.value,
+            isInfaq: this.isInfaq
+        }
+        return payload;
     }
 
-    setTotal(val: number) {
+    setPayload(val: number, infaq: boolean) {
         this.value = val;
+        this.isInfaq = infaq;
     }
 }

@@ -22,8 +22,8 @@ export class DonationRestServices {
             email: string,
             showAsAnonymous: boolean
         }
-    }) {
-        return this.request.post(`transaction/create/program/midtrans-snap`, payload);
+    }, params) {
+        return this.request.post(`transaction/create/program/midtrans-snap`, payload, { params });
     }
 
     loadProgram() {
@@ -37,6 +37,14 @@ export class DonationRestServices {
     }
     loadProgramByCategory() {
         return this.request.get(`program/program-by-categories`);
+    }
+
+    loadInfaq() {
+        return this.request.get(`infaq`);
+    }
+
+    loadInfaqDetail() {
+        return this.request.get(`infaq/detail`);
     }
 
 }

@@ -19,11 +19,11 @@ const danation = {
 const priceList = [20000, 50000, 100000, 250000, 500000, 1000000];
 const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
-    const { data } = props;
+    const { data, isInfaq } = props;
     const [donateAmount, setDonateAmount] = useState(0);
     function handleClick() {
-        donationService.setTotal(donateAmount);
-        props.onDone ? props.onDone(donateAmount) : '';
+        donationService.setPayload(donateAmount, isInfaq);
+        props.onDone ? props.onDone(donateAmount, isInfaq) : '';
     }
 
     const scrollFunction = () => {
@@ -55,22 +55,31 @@ const MainDonation = (props: any) => {
     return (
         <div className="main-donation m-auto p-3" id="main-donation">
             <div className="title-support px-2 py-3">
-                Dukung Program Ini
+                {
+                    isInfaq ? 'Infak' : 'Dukung Program Ini'
+                }
             </div>
             <div className="d-flex flex-column program-wrapper">
                 <div className="program-info p-3">
                     <div className="target-info p-2">
-                        <div className="py-2">
-                            <Slider disabled className="slider-program-dh" value={data.collectedAmount} max={data.targetAmount} />
-                        </div>
+                        {
+                            !isInfaq && <div className="py-2">
+                                <Slider disabled className="slider-program-dh" value={data.collectedAmount} max={data.targetAmount} />
+                            </div>
+                        }
                         <div className="d-flex flex-row justify-content-between py-2">
                             <div className="amount text-left">{'Rp. ' + (data.collectedAmount || 0).toLocaleString()}</div>
-                            <div className="target-amount">{`Target Rp. ${(data.targetAmount || 0).toLocaleString()}`}</div>
+                            {
+                                !isInfaq &&
+                                <div className="target-amount">{`Target Rp. ${(data.targetAmount || 0).toLocaleString()}`}</div>
+                            }
                         </div>
                     </div>
-                    <div className="profile-info py-3 px-2">
-                        <div className="d-flex flex-row justify-content-between">
-                            {/* <div className="d-flex flex-row">
+                    {
+                        !isInfaq &&
+                        <div className="profile-info py-3 px-2">
+                            <div className="d-flex flex-row justify-content-between">
+                                {/* <div className="d-flex flex-row">
                                 <div className="profile-img">
                                     {
                                         <img src={data.user ? data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
@@ -80,19 +89,22 @@ const MainDonation = (props: any) => {
                                     {data.user ? data.user.name : 'Anonim'}
                                 </div>
                             </div> */}
-                            <div className="is-certified">
-                                {
-                                    data.isPartnerProgram && (
-                                        <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                    )
-                                }
+                                <div className="is-certified">
+                                    {
+                                        data.isPartnerProgram && (
+                                            <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                        )
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
 
-                    <div className="donation-info p-2">
-                        <div className="d-flex flex-row justify-content-between">
-                            {/* <div className="d-flex flex-row justify-content-arround">
+                    {
+                        !isInfaq &&
+                        <div className="donation-info p-2">
+                            <div className="d-flex flex-row justify-content-between">
+                                {/* <div className="d-flex flex-row justify-content-arround">
                                 <div className="donatur-icon">
                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                 </div>
@@ -103,19 +115,20 @@ const MainDonation = (props: any) => {
                                     Donasi
                                 </div>
                             </div> */}
-                            <div className="d-flex flex-row justify-content-arround">
-                                <div className="cart">
-                                    <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                <div className="d-flex flex-row justify-content-arround">
+                                    <div className="cart">
+                                        <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                    </div>
+                                    <div className="days-amount px-2">
+                                        {data.remainingDays || 0}
+                                    </div>
+                                    <div className="days">
+                                        Hari
                                 </div>
-                                <div className="days-amount px-2">
-                                    {data.remainingDays || 0}
-                                </div>
-                                <div className="days">
-                                    Hari
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
                 <div className="donate-price px-3">
                     <div className="row justify-content-between">

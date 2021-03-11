@@ -78,6 +78,8 @@
             color: #12bfff;
         }
         .caption {
+            max-height: 80px;
+            overflow-y: auto;
             &.sm {
                 min-height: 100px !important;
             }
