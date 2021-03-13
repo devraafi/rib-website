@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class NewsArticleRestService {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'https://staging-rib.herokuapp.com/public/';
+    urlDh: string = 'http://rib-production.ruanginsanberbagi.org/public/';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,

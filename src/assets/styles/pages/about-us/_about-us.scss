@@ -157,4 +157,50 @@
             }
         }
     }
+
+    .our-team-aing {
+        .wrapper-section {
+            padding: 1rem 0;
+            .title {
+                border-bottom: 1px solid #56d1ff;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                text-align: center;
+                color: #00aeef;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+            .card-team {
+                margin: auto;
+                border-radius: 10px;
+                position: relative;
+                width: 155px;
+                height: 230px;
+                .imooge {
+                    width: 155px;
+                    height: 230px;
+                    border-radius: 10px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    // background: linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%);
+                }
+                .name {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    color: #ffffff;
+                    font-weight: 600;
+                    font-size: 14px;
+                    font-family: "Poppins";
+                    padding: 10px;
+                    .position {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
 }

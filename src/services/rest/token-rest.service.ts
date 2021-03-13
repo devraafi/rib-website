@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class TokenRestServices {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'https://staging-rib.herokuapp.com';
+    urlDh: string = 'http://rib-production.ruanginsanberbagi.org';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,

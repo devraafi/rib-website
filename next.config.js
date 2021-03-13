@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   env: {
-    staging: 'https://staging-rib.herokuapp.com/'
+    staging: 'http://rib-production.ruanginsanberbagi.org/'
   },
   externals: {
     'react': 'React'

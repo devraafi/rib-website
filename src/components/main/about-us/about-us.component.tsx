@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import aboutUsJson from './about-us.json';
 import GoogleMapReact from 'google-map-react';
+import our from './our-team.json';
 
 
 const data: any = aboutUsJson;
 const { vision } = data;
 const { mission } = data;
 const { meetTheBoard } = data;
+const { ourTeam } = our as any;
+
 const AboutUsComponent = () => (
     <MainComponent
         title="About Us Ruang Insan Berbagi"
@@ -61,17 +64,80 @@ const AboutUsComponent = () => (
                             }
                         </div>
                     </div>
-                    <div className="meet-the-board py-5">
+                    {/* <div className="meet-the-board py-5">
                         <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                             {meetTheBoard.label || ''}
                         </div>
                         <div className="meet-the-board-slider container-md">
                             <MeetTheBoardSlide data={meetTheBoard.list} />
                         </div>
-                    </div>
+                    </div> */}
+
+                    {ourTeam &&
+                        <div className="our-team-aing">
+                            <div className="d-flex flex-column">
+                                <div className="wrapper-section">
+                                    <div className="title col-lg-6 align-self-center mx-auto">Our Team</div>
+                                    <div className="description">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra eros mi gravida neque turpis hendrerit et. Aliquam sit consequat, odio porta tellus faucibus. Ornare neque at condimentum vitae pretium, risus sed. A nisi, bibendum aliquam, nulla aenean nisi, ornare. Faucibus fusce
+                                </div>
+                                </div>
+                                <div className="wrapper-section">
+                                    <div className="title col-lg-4 align-self-center mx-auto">{ourTeam.director.title}</div>
+                                    <div className="row justify-content-center">
+                                        {
+                                            ourTeam.director.data && ourTeam.director.data.map(data => {
+
+                                                return <div className="col-lg-auto p-2">
+                                                    <div className="card-team">
+                                                        <div className="imooge" style={{
+                                                            background: `linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%), url(${data.file})`
+                                                        }}></div>
+                                                        {/* <img src={data.file} alt="" className="imooge" /> */}
+                                                        <div className="name">
+                                                            {data.name}
+                                                            <div className="position">
+                                                                {data.position}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <div className="wrapper-section">
+                                    <div className="title col-lg-4 align-self-center mx-auto">{ourTeam.manager.title}</div>
+                                    <div className="row justify-content-center">
+                                        {
+                                            ourTeam.manager.data && ourTeam.manager.data.map(data => {
+
+                                                return <div className="col-lg-auto p-2">
+                                                    <div className="card-team">
+                                                        <div className="imooge" style={{
+                                                            background: `linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%), url(${data.file})`
+                                                        }}>
+
+                                                        </div>
+                                                        {/* <img src={data.file} alt="" className="imooge" /> */}
+                                                        <div className="name">
+                                                            {data.name}
+                                                            <div className="position">
+                                                                {data.position}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-            <div className="maps-section">
+            {/* <div className="maps-section">
                 <div className="card-connect">
                     <div className="body-connect p-4">
 
@@ -102,7 +168,7 @@ const AboutUsComponent = () => (
 
                 </div>
                 <MapsSection />
-            </div>
+            </div> */}
         </div>
     </MainComponent>
 
