@@ -61,14 +61,14 @@ const AboutUsComponent = () => (
                             }
                         </div>
                     </div>
-                    <div className="meet-the-board py-5">
+                    {/* <div className="meet-the-board py-5">
                         <div className="title pb-3 mb-3 col-lg-6 mx-auto">
                             {meetTheBoard.label || ''}
                         </div>
                         <div className="meet-the-board-slider container-md">
                             <MeetTheBoardSlide data={meetTheBoard.list} />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="maps-section">
