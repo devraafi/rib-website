@@ -207,7 +207,7 @@ const PaymentMethodStep = (props: {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                <Image className="img-fluid" src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                                <img className="img-fluid" src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
                                             </div>
                                         </div>
                                     )

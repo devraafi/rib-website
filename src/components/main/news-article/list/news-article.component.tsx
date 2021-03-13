@@ -58,27 +58,33 @@ export const NewsArticleListComponent = () => {
             pageId="news-article-page-dh"
         >
             <Spin spinning={!news} indicator={<Loading />}>
-                <div className="container-lg container-fluid py-4">
+                <div className="container-lg container-fluid py-4 news-page">
                     <div className="row">
                         <div className="col-lg-12 p-2">
                             <Link href={`/news-article/detail/?route=${mainNews?.route}&title=${mainNews?.title}`}>
                                 <div className="the-new pointer">
                                     <div className="news-wrapper">
-                                        <div className="news-img">
-                                            {
-                                                mainNews?.fileUrl ? <img src={mainNews.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
-                                            }
-                                        </div>
-                                        <div className="category-name">
-                                            {mainNews?.articleCategory?.name}
-                                        </div>
-                                        <div className="title lg">
-                                            {mainNews?.title}
-                                        </div>
-                                        <div className="caption">{mainNews?.caption || '...'}</div>
-                                        {/* <div className="description main" dangerouslySetInnerHTML={{ __html: mainNews?.description || '' }}></div> */}
-                                        <div className="time">
-                                            {checkingIsWithinWeek(maindate) ? (maindate).fromNow() : (maindate as any).format('MMM D, YYYY, H:mm:ss A')}
+                                        <div className="row">
+                                            <div className="col-lg-7">
+                                                <div className="news-img">
+                                                    {
+                                                        mainNews?.fileUrl ? <img src={mainNews.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-5">
+                                                <div className="category-name">
+                                                    {mainNews?.articleCategory?.name}
+                                                </div>
+                                                <div className="title lg">
+                                                    {mainNews?.title}
+                                                </div>
+                                                <div className="caption">{mainNews?.caption || '...'}</div>
+                                                {/* <div className="description main" dangerouslySetInnerHTML={{ __html: mainNews?.description || '' }}></div> */}
+                                                <div className="time">
+                                                    {checkingIsWithinWeek(maindate) ? (maindate).fromNow() : (maindate as any).format('MMM D, YYYY, H:mm:ss A')}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
