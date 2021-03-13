@@ -9,16 +9,57 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Skeleton } from 'antd';
 import { AuthenticationService } from 'services/auth/aut.service';
+import { RequestService } from 'services/request.services';
+import { NotifService } from 'services/feedback/notif.service';
 
 const filters = [
     'Bandung', 'Jakarta', 'Kesehatan', 'Pendidikan', 'Lingkungan', 'Umat', 'More Filters'
 ];
+const notif: NotifService = new NotifService;
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
-
+const { handleRequest } = new RequestService;
 const DonationList = () => {
     const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    const [response, setResponse] = useState<any>({})
+    const [response, setResponse] = useState<any>({});
+    const [skeleton, setSkeleton] = useState('');
+
+    function getItem() {
+        const local = localStorage;
+        const userInfo = local.getItem('userinfo');
+        if (userInfo) {
+            return JSON.parse(userInfo)
+        } else {
+            return null
+        }
+    }
+
+    function onBookMark(id: string, i: number) {
+        if ((typeof window !== 'undefined' && getItem())) {
+            setSkeleton(id);
+            const obs = donationRestService.onBookMarked(id);
+            handleRequest({
+                obs,
+                onError: () => setSkeleton(''),
+                onDone: (res) => {
+                    setSkeleton('');
+                    let data = response.data;
+                    data[i].bookmarked = res;
+                    setResponse({
+                        ...response,
+                        data
+                    })
+                }
+            })
+        } else {
+            notif.show({
+                type: 'error',
+                title: 'Error',
+                description: 'Harap Login terlebih dahulu',
+                // useService: !_.isUndefined(params.useService) ? params.useService : true
+            });
+        }
+    }
     useEffect(() => {
         donationRestService.loadProgram().pipe(
             catchError(err => {
@@ -77,24 +118,27 @@ const DonationList = () => {
                         {
                             (response && response.data) ? response.data.map((list: any, i: number) => (
                                 <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
-                                    <Link href={`/donasi/detail?id=${list._id}`}>
-                                        <div className="card-program animate__animated animate__bounceIn">
-                                            <div className="d-flex flex-column">
-                                                <div className="program-image">
-                                                    {
-                                                        list.fileUrl ?
-                                                            <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
-                                                            : <div className="imooge"></div>
-                                                    }
-                                                </div>
-                                                <div className="program-info p-3">
-                                                    <div className="title px-2">
-                                                        {list.name || 'Program Name'}
-                                                    </div>
+                                    {
+                                        skeleton == list._id ?
+                                            <Skeleton.Input active className="w-100 card-program h-100" /> :
+                                            <div className="card-program animate__animated animate__bounceIn">
+                                                <Link href={`/donasi/detail?id=${list._id}`}>
+                                                    <div className="d-flex flex-column">
+                                                        <div className="program-image">
+                                                            {
+                                                                list.fileUrl ?
+                                                                    <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                                    : <div className="imooge"></div>
+                                                            }
+                                                        </div>
+                                                        <div className="program-info p-3">
+                                                            <div className="title px-2">
+                                                                {list.name || 'Program Name'}
+                                                            </div>
 
-                                                    <div className="profile-info py-3 px-2">
-                                                        <div className="d-flex flex-row justify-content-between">
-                                                            {/* <div className="d-flex flex-row">
+                                                            <div className="profile-info py-3 px-2">
+                                                                <div className="d-flex flex-row justify-content-between">
+                                                                    {/* <div className="d-flex flex-row">
                                                                 <div className="profile-img">
                                                                     {
                                                                         <img src={list.profileInfo ? list.profileInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
@@ -104,56 +148,60 @@ const DonationList = () => {
                                                                     {list.profileInfo ? list.profileInfo.name : 'Anonim'}
                                                                 </div>
                                                             </div> */}
-                                                            <div className="is-certified">
-                                                                {
-                                                                    list.isPartnerProgram && (
-                                                                        <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                                                    )
-                                                                }
+                                                                    <div className="is-certified">
+                                                                        {
+                                                                            list.isPartnerProgram && (
+                                                                                <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                                                            )
+                                                                        }
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div className="target-info p-2">
-                                                        <div className="py-2">
-                                                            <Slider disabled className="slider-program-dh" value={list.collectedAmount || 0} max={list.targetAmount || 0} />
-                                                        </div>
-                                                        <div className="d-flex flex-row justify-content-between py-2">
-                                                            <div className="amount">{'Rp. ' + (list.collectedAmount || 0).toLocaleString()}</div>
-                                                            <div className="target-amount">{`Target Rp. ${(list.targetAmount || 0).toLocaleString()}`}</div>
-                                                        </div>
-                                                    </div>
+                                                            <div className="target-info p-2">
+                                                                <div className="py-2">
+                                                                    <Slider disabled className="slider-program-dh" value={list.collectedAmount || 0} max={list.targetAmount || 0} />
+                                                                </div>
+                                                                <div className="d-flex flex-row justify-content-between py-2">
+                                                                    <div className="amount">{'Rp. ' + (list.collectedAmount || 0).toLocaleString()}</div>
+                                                                    <div className="target-amount">{`Target Rp. ${(list.targetAmount || 0).toLocaleString()}`}</div>
+                                                                </div>
+                                                            </div>
 
-                                                    <div className="donation-info p-2">
-                                                        <div className="d-flex flex-row justify-content-between">
-                                                            <div className="d-flex flex-row justify-content-arround">
-                                                                <div className="donatur-icon">
-                                                                    <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                                            <div className="donation-info p-2">
+                                                                <div className="d-flex flex-row justify-content-between">
+                                                                    <div className="d-flex flex-row justify-content-arround">
+                                                                        <div className="donatur-icon">
+                                                                            <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                                                        </div>
+                                                                        <div className="donatur-amount px-2">
+                                                                            {list.donorAmount || 0}
+                                                                        </div>
+                                                                        <div className="donasi">
+                                                                            Donasi
                                                                 </div>
-                                                                <div className="donatur-amount px-2">
-                                                                    {list.donorAmount || 0}
-                                                                </div>
-                                                                <div className="donasi">
-                                                                    Donasi
-                                                                </div>
-                                                            </div>
-                                                            <div className="d-flex flex-row justify-content-arround">
-                                                                <div className="cart">
-                                                                    <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
-                                                                </div>
-                                                                <div className="days-amount px-2">
-                                                                    {list.remainingDays || 0}
-                                                                </div>
-                                                                <div className="days">
-                                                                    Hari
+                                                                    </div>
+                                                                    <div className="d-flex flex-row justify-content-arround">
+                                                                        <div className="cart">
+                                                                            <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                                                        </div>
+                                                                        <div className="days-amount px-2">
+                                                                            {list.remainingDays || 0}
+                                                                        </div>
+                                                                        <div className="days">
+                                                                            Hari
                                                         </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </Link>
+                                                <div className="love" onClick={() => onBookMark(list._id, i)}>
+                                                    <img src={`/images/icons/${list.bookmarked ? 'love-fill.svg' : 'love.svg'}`} className="img-fluid" alt="" srcSet="" />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </Link>
+                                    }
                                 </div>
                             ))
                                 :

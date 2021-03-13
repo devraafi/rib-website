@@ -42,7 +42,7 @@ const DonorListComponent = (props: WithRouterProps) => {
 
     return <div className="d-flex flex-column donatur">
         {
-            list && list.map((data, i: number) => {
+            (list && list.length) ? list.map((data, i: number) => {
                 return (
                     <div className="list justify-content-between">
                         <div className="d-flex flex-row">
@@ -66,7 +66,7 @@ const DonorListComponent = (props: WithRouterProps) => {
                         </div>
                     </div>
                 )
-            })
+            }) : <div className="p-2 text-center">Tidak Ada Data</div>
         }
     </div>
 }

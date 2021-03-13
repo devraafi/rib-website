@@ -39,7 +39,7 @@ export default class ContentDonationSection extends React.Component<any, any> {
                             <div className="detail-program-desc" dangerouslySetInnerHTML={{ __html: this.props.data ? this.props.data.description : '' }}></div>
                             :
                             this.state.active == 2 ?
-                                < NewInfoDonation />
+                                < NewInfoDonation id={this.props.data ? this.props.data._id : null} />
                                 :
                                 <DonaturListDonation />
                     }

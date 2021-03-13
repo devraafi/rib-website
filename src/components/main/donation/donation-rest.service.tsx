@@ -47,4 +47,8 @@ export class DonationRestServices {
         return this.request.get(`infaq/detail`);
     }
 
+    onBookMarked(id: string) {
+        return this.request.post(`program/${id}/bookmark`);
+    }
+
 }

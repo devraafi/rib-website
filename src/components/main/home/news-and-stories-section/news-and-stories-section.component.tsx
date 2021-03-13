@@ -36,7 +36,10 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
                                                 <div className="news-info p-3">
                                                     <div className="d-flex flex-row justify-content-between py-2">
                                                         <div className="news-date">{moment(list.createdAt).format('DD MMMM YYYY')}</div>
-                                                        <div className="category">{list.articleCategory.name}</div>
+                                                        {
+                                                            list.articleCategory &&
+                                                            <div className="category">{list.articleCategory.name}</div>
+                                                        }
                                                     </div>
                                                     <div className="d-flex pt-1 pb-3">
                                                         <div className="title">

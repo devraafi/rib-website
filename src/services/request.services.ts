@@ -95,11 +95,12 @@ export class RequestService {
     handleRequest(params: IHandleRequest) {
         return params.obs.pipe(
             catchError((error) => {
+                const { data } = error.response;
                 notif.show({
                     type: 'error',
                     title: 'Error',
-                    description: params.errorMessage || error,
-                    useService: !_.isUndefined(params.useService) ? params.useService : true
+                    description: params.errorMessage || data.message,
+                    // useService: !_.isUndefined(params.useService) ? params.useService : true
                 });
                 params.onError && params.onError(error)
                 return throwError(error);

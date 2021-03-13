@@ -6,6 +6,7 @@ declare interface IProfile {
     phoneNumber: string;
     phoneNumberConfirmed: boolean;
     _id: string;
+    bookmarkedPrograms: any[];
 }
 
 declare interface IProfileTransaction {
