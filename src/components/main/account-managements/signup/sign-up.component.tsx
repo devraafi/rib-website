@@ -16,10 +16,17 @@ const SignUpComponent = (props: {
         />
         <div className="sign-up-wrapper">
             <div className="header-section text-center w-100">
-                <div className="title">
-                    <p>Buat Akun</p>
-                    <div className="dh-text">
-                        Get involved in making the dream a reality
+                <div className="d-flex justify-content-between">
+                    <div className="welcome">
+                        <div className="title text-left mb-1">
+                            Daftar 
+                        </div>
+                        {/* <div className="account">
+                            Sudah memiliki akun? <Link href="/login"><a className="link">Masuk Disini</a></Link>
+                        </div> */}
+                    </div>
+                    <div className="logo-boi">
+                        <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
                     </div>
                 </div>
             </div>
@@ -41,7 +48,6 @@ const SignUpComponent = (props: {
                                 <Input
                                     placeholder="Nama Lengkap"
                                     className="input-account"
-                                    size="large"
                                     prefix={null}
                                 />
                             </Form.Item>
@@ -55,7 +61,6 @@ const SignUpComponent = (props: {
                                     placeholder="Nomor Telepon"
                                     className="input-account"
                                     type="tel"
-                                    size="large"
                                     prefix={<IconPhone />}
                                 />
                             </Form.Item>
@@ -74,7 +79,6 @@ const SignUpComponent = (props: {
                                     placeholder="Alamat E-mail"
                                     className="input-account"
                                     type="email"
-                                    size="large"
                                     suffix={<IconMail />}
                                 />
                             </Form.Item>
@@ -93,7 +97,6 @@ const SignUpComponent = (props: {
                                     placeholder="Kata sandi"
                                     className="input-account"
                                     type="password"
-                                    size="large"
                                     iconRender={visible =>
                                         visible ?
                                             <EyeIcon />
@@ -102,24 +105,23 @@ const SignUpComponent = (props: {
                                 />
                             </Form.Item>
                         </div>
-                        <div className="col-12 p-2 my-3">
+                        <div className="col-12 p-2 my-1">
                             <Form.Item
                                 name="agree"
                                 className="m-0"
                             >
                                 <div className="d-flex">
-                                    <Checkbox name="agree" id="agree" className="checkbox-dh text" />
-                                    <label htmlFor="agree" className="text ml-2">
+                                    <Checkbox name="agree" id="agree" className="checkbox-dh text mr-1" />
+                                    <label htmlFor="agree" className="text">
                                         Saya menyetujui
                                         <Link href="#">
-                                            <a href="" className="text link">
+                                            <a href="" className="text link ml-2">
                                                 Syarat Penggunaan
                                             </a>
                                         </Link>
                                         <span className="mx-2">
                                             dan
                                         </span>
-                                        <br />
                                         <Link href="#">
                                             <a href="" className="text link">
                                                 Kebijakan Privasi
@@ -135,7 +137,7 @@ const SignUpComponent = (props: {
                     </div>
                 </Form>
             </div>
-            <div className="text my-2">
+            <div className="text text-center">
                 Sudah memiliki akun?
                 <Link href="/login">
                     <a className="text link mr-2">

@@ -90,10 +90,7 @@ export const NewsArticleListComponent = () => {
                             </div>
                         </div> */}
                     </div>
-                    <div className="row my-4" style={{
-                        maxHeight: '140vh',
-                        overflow: 'auto'
-                    }}>
+                    <div className="row my-4">
                         {
                             news && news.map(nw => {
                                 const newsDate = nw.createdAt ? moment(convertUtctoLocalTimezone(new Date(nw.createdAt as any))) : moment(new Date);

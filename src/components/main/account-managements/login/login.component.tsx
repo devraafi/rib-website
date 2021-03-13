@@ -23,13 +23,19 @@ const LoginComponent = (props: {
             title="Login | Ruang Insan Berbagi"
         />
         <div className="login-wrapper">
-            <div className="header-section">
-                <img src="/images/logos/dh-logo.svg" alt="" className="img-fluid mb-2" />
-                <div className="title my-2">Selamat datang,</div>
-                <div className="text">Belum memiliki akun?
-                    <Link href="/signup">
-                        <a href="" className="text link"> Sign up</a>
-                    </Link>
+            <div className="header-section w-100">
+                <div className="d-flex justify-content-between">
+                    <div className="welcome">
+                        <div className="title text-left mb-1">
+                            Selamat Datang,
+                        </div>
+                        <div className="account">
+                            Belum memiliki akun? <Link href="/signup"><a className="link">Daftar Disini</a></Link>
+                        </div>
+                    </div>
+                    <div className="logo-boi">
+                        <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
+                    </div>
                 </div>
             </div>
             <div className="form-section mt-4">
@@ -92,9 +98,9 @@ const LoginComponent = (props: {
                             </Form.Item>
                         </div>
                         <div className="col-6 text text-right align-self-center">
-                            <Link href="#">
+                            {/* <Link href="#">
                                 <a href="" className="text link"> Lupa Password</a>
-                            </Link>
+                            </Link> */}
                         </div>
                         <div className="col-12 my-2">
                             <Button htmlType="submit" className="btn btn-dh-primary btn-block">
@@ -104,7 +110,7 @@ const LoginComponent = (props: {
                     </div>
                 </Form>
             </div>
-            <div className="footer-section w-100">
+            <div className="footer-section w-100 pt-3">
                 <div className="d-flex flex-row justify-content-between">
                     <div className="brd"></div>
                     <div className="text">Atau masuk dengan</div>

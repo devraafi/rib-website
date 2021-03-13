@@ -19,7 +19,7 @@ var TokenRestServices = /** @class */ (function () {
         if (withoutInterceptor === void 0) { withoutInterceptor = false; }
         if (auth === void 0) { auth = new aut_service_1.AuthenticationService; }
         this.requestService = new request_services_1.RequestService;
-        this.urlDh = 'https://staging-lazis-dh.herokuapp.com';
+        this.urlDh = 'https://staging-rib.herokuapp.com';
         this.request = this.requestService["new"](this.urlDh, useInterceptor, withoutInterceptor);
     }
     TokenRestServices.prototype.refreshToken = function (refresh_token) {

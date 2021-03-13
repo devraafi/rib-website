@@ -178,7 +178,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                             </div>
                                             :
                                             < Link href="/signup">
-                                                <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                                <a className="sign-up">DAFTAR <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
                                             </Link>
                                     }
                                 </div>
