@@ -79,9 +79,9 @@ export const NewsArticleListComponent = () => {
                                                     </div>
                                                     <div className="col-lg-5">
                                                         {
-                                                            mainNews?.articleCategory &&
+                                                            (mainNews && mainNews?.articleCategory) &&
                                                             <div className="category-name">
-                                                                {mainNews?.articleCategory?.name}
+                                                                {mainNews?.articleCategory?.name || ''}
                                                             </div>
                                                         }
                                                         <div className="title lg">
@@ -118,9 +118,9 @@ export const NewsArticleListComponent = () => {
                                                             }
                                                         </div>
                                                         {
-                                                            nw?.articleCategory &&
+                                                            (nw && nw?.articleCategory) &&
                                                             <div className="category-name sm">
-                                                                {nw?.articleCategory?.name}
+                                                                {nw?.articleCategory?.name || ''}
                                                             </div>
                                                         }
                                                         <div className="title sm">
