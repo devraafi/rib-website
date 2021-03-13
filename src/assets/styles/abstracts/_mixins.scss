@@ -152,6 +152,19 @@
             background: #65a5f5;
             color: #425fb1;
         }
+    } @else if $type == "edit" {
+        background: #99e3ff;
+        color: #006d95;
+        border-radius: 20px !important;
+        text-align: center;
+        // padding: 24px !important;
+        font-size: 18px;
+        &:hover,
+        &:active,
+        &:focus {
+            background: #99e3ff;
+            color: #006d95;
+        }
     }
 }
 

@@ -5,6 +5,7 @@ declare interface IProfile {
     joinDate: string;
     phoneNumber: string;
     phoneNumberConfirmed: boolean;
+    _id: string;
 }
 
 declare interface IProfileTransaction {

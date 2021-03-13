@@ -56,4 +56,7 @@
     &.btn-dh-fb {
         @include btn-dh("fb");
     }
+    &.btn-dh-edit {
+        @include btn-dh("edit");
+    }
 }

@@ -1,6 +1,6 @@
 import { Loading } from '@Components/basics/loading/loading.component';
 import MainComponent from '@Components/layout/main/main-layout.component';
-import { Spin } from 'antd';
+import { Input, Spin } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { AuthenticationService } from 'services/auth/aut.service';
@@ -12,8 +12,18 @@ const profileRest = new ProfileRestService(process.env.staging || '', auth.axios
 export const ProfileComponent = () => {
     const [loading, setLoading] = useState(false);
     const [profile, setProfile] = useState<IProfile>();
+    const [isUpdate, setisUpdate] = useState<boolean>(false);
     const [profileTransaction, setProfileTransaction] = useState<IProfileTransaction>();
-    const [page, setPage] = useState<'transaction' | ''>('transaction')
+    const [page, setPage] = useState<'transaction' | ''>('transaction');
+    const [formValue, setFormValue] = useState({
+        email: '',
+        fullName: '',
+        phoneNumber: '',
+        _id: '',
+        emailConfirmed: false,
+        joinDate: '',
+        phoneNumberConfirmed: false
+    })
     function loadProfileTransaction() {
         const obs = profileRest.loadProfileTransaction();
         handleRequest({
@@ -29,9 +39,11 @@ export const ProfileComponent = () => {
         handleRequest({
             obs,
             onTap: loadProfileTransaction,
+            onError: () => setLoading(false),
             onDone: (res: IProfile) => {
                 setLoading(false);
-                setProfile(res)
+                setProfile(res);
+                setFormValue(res);
             }
         })
     }
@@ -46,37 +58,94 @@ export const ProfileComponent = () => {
         pageId="profile-page-dh"
     >
         <Spin spinning={loading} indicator={<Loading />}>
-            <div className="container-lg my-3">
+            <div className="container-lg mb-3">
                 <div className="profile-wrapper">
-                    <div className="profile-info">
-                        <div className="d-flex">
-                            <div className="img-profile mr-3 align-self-center">
-                                <img src="/images/icons/people.svg" alt="" />
-                            </div>
-                            <div className="info align-self-center">
-                                <div className="name">
+                    {
+                        !isUpdate &&
+                        <div className="profile-info d-flex justify-content-around">
+                            <div className="d-flex">
+                                <div className="img-profile mr-4 align-self-center">
+                                    <img src="/images/icons/people.svg" alt="" />
+                                </div>
+                                <div className="name mr-4 pr-4 border-right align-self-center">
                                     {profile?.fullName}
                                 </div>
-                                <div className="phone my-2">
-                                    {profile?.phoneNumber}
+                                <div className="info align-self-center">
+                                    <div className="phone">
+                                        {profile?.phoneNumber}
+                                    </div>
+                                    <div className="email">
+                                        {profile?.email}
+                                    </div>
                                 </div>
-                                <div className="email">
-                                    {profile?.email}
+                            </div>
+                            <div className="d-flex flex-column align-self-center">
+                                <button className="btn btn-dh-edit" onClick={() => setisUpdate(!isUpdate)}>
+                                    <img src="/images/icons/Edit.svg" alt="" srcSet="" className="mr-2" />
+                                    Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    }
+                    {
+                        isUpdate &&
+                        <div className="profile-info row justify-content-center">
+                            <div className="col-lg-3">
+                                <div className="img-profile mx-auto">
+                                    <img src="/images/icons/people.svg" alt="" />
+                                    {/* <img src="/images/icons/img-up.svg" alt="" className="img-up" /> */}
+                                </div>
+                            </div>
+                            <div className="col-lg-6">
+                                <div className="form-group rib-profile">
+                                    <label htmlFor="">Nama Lengkap</label>
+                                    <Input value={formValue.fullName} onChange={(e) => setFormValue({
+                                        ...formValue,
+                                        fullName: e.target.value
+                                    })} size="large" type="text" className="input-profile" />
+                                </div>
+                                <div className="form-group rib-profile">
+                                    <label htmlFor="">Nomor Seluler</label>
+                                    <Input value={formValue.phoneNumber} onChange={(e) => setFormValue({
+                                        ...formValue,
+                                        phoneNumber: e.target.value
+                                    })} size="large" type="tel" className="input-profile" />
+                                </div>
+                                <div className="form-group rib-profile">
+                                    <label htmlFor="">Email</label>
+                                    <Input value={formValue.email} onChange={(e) => setFormValue({
+                                        ...formValue,
+                                        email: e.target.value
+                                    })} size="large" type="email" className="input-profile" />
+                                </div>
+                            </div>
+                            <div className="col-lg-3">
+                                <div className="pt-3">
+                                    <button className="btn btn-dh-edit" onClick={() => setisUpdate(!isUpdate)}>
+                                        Simpan
+                                </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    }
                     <div className="profile-transaction">
-                        <div className="d-flex my-3">
-                            <button className={`btn btn-dh-basic color-next border-0 rounded ${page === 'transaction' && 'active'}`}>
+                        <div className="d-flex my-4 justify-content-around">
+                            <button className={`btn btn-dh-basic color-next border-0  ${page === 'transaction' && 'active'}`}>
                                 Riwayat Transaction
+                            </button>
+                            <button className={`btn btn-dh-basic color-next border-0`} disabled>
+                                Program Tersimpan
+                            </button>
+                            <button className={`btn btn-dh-basic color-next border-0`} disabled>
+                                Galang Dana
                             </button>
                         </div>
                         <div className="transaction-info">
                             <div className="total-donasi">
                                 <p>Total Donasi</p>
                                 <div className="d-flex my-2">
-                                    <div className="rp mr-1">Rp </div>
+                                    <div className="rp mr-2">Rp </div>
                                     <div className="value">
                                         {profileTransaction?.totalAmount && (profileTransaction?.totalAmount).toLocaleString()}
                                     </div>

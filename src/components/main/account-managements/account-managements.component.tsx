@@ -22,6 +22,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         handleRequest({
             obs,
             errorMessage: 'Gagal Login',
+            onError: () => SetLoading(false),
             onTap: (res) => {
                 localStorage.setItem('userinfo', JSON.stringify(res));
                 SetLoading(false);
@@ -40,6 +41,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         handleRequest({
             obs,
             errorMessage: 'Gagal Daftar',
+            onError: () => SetLoading(false),
             onTap: (res) => {
                 localStorage.setItem('register-data', JSON.stringify(res));
                 SetLoading(false);
