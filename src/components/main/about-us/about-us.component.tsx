@@ -76,16 +76,16 @@ const AboutUsComponent = () => (
                     <div className="body-connect p-4">
 
                         <div className="title-connect mb-4">
-                            Let’s Connect
+                            Hubungi Kami
                             </div>
 
                         <div className="field">
-                            <div className="sub-title">Headquarter</div>
-                            <div className="sub">Jl. Ir. H. Juanda No.285, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 40135</div>
+                            <div className="sub-title">Alamat</div>
+                            <div className="sub">Jl. Karawitan No. 14A, Bandung</div>
                         </div>
 
                         <div className="field">
-                            <div className="sub-title">Phone</div>
+                            <div className="sub-title">Telepon</div>
                             <div className="sub">022 - 2505375</div>
                         </div>
 
@@ -94,15 +94,11 @@ const AboutUsComponent = () => (
                             <div className="sub">fund.ruanginsanberbagi@gmail.com</div>
                         </div>
 
-                        <div className="field">
-                            <div className="sub-title">Social</div>
-                            <div className="sub">-</div>
-                        </div>
                     </div>
 
                     <div className="footer-connect p-3">
                         Get Directions
-                            </div>
+                    </div>
 
                 </div>
                 <MapsSection />

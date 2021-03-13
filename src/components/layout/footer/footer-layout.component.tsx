@@ -36,7 +36,7 @@ export default class FooterComponent extends React.Component {
                                         Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi
                                     </div>
                                     <div className="col-12 col-md py-2">
-                                        <div className="dh-footer-title">Services</div>
+                                        <div className="dh-footer-title">Hubungi Kami</div>
                                         <ul className="list-unstyled">
                                             <li className="my-2">
                                                 <Link href="/">
@@ -125,7 +125,7 @@ export default class FooterComponent extends React.Component {
                                         </ul>
                                     </div> */}
                                     <div className="col-6 col-md py-2">
-                                        <div className="dh-footer-title">Follow Us</div>
+                                        <div className="dh-footer-title">Social Media</div>
                                         <ul className="list-unstyled">
                                             <li className="my-2">
                                                 <a className="dh-footer-item-link" href="https://www.facebook.com/Ruang-Insan-Berbagi-105321831513073/" target="_blank">
@@ -156,7 +156,7 @@ export default class FooterComponent extends React.Component {
                                         Copyright © 2020. Ruang Insan Berbagi. All rights reserved.
                                     </div>
                                     <div className="col-6 text-copyright text-right priv">
-                                        Terms & Conditions <span className="ml-3">Privacy Policy</span>
+                                        Syarat & Ketentuan <span className="ml-3">Kebijakan Privasi</span>
                                     </div>
                                 </div>
                             </div>

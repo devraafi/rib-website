@@ -105,7 +105,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                     </ul>
                                     <form className="form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
                                         <Link href="/signup">
-                                            <a className="sign-up">SIGN UP <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
+                                            <a className="sign-up">DAFTAR <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
                                         </Link>
                                     </form>
                                 </div>
