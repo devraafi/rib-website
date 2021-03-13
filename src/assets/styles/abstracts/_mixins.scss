@@ -15,44 +15,44 @@
     max-height: 50px;
     padding: 5px 15px;
     @if $type == "primary" {
-        background: #00AEEF;
+        background: #00aeef;
         color: #ffffff;
         &:hover {
             color: #ffffff;
-            background: #00AEEF;
+            background: #00aeef;
         }
         &:active,
         &:focus {
             color: #ffffff;
-            background: #00AEEF;
+            background: #00aeef;
         }
     } @else if $type == "outline" {
-        border: 1px solid #12BFFF;
-        background: #DDF6FF;
-        color: #0083B3;
+        border: 1px solid #12bfff;
+        background: #ddf6ff;
+        color: #0083b3;
         &:hover {
-            background: #DDF6FF;
-            color: #0083B3;
+            background: #ddf6ff;
+            color: #0083b3;
         }
         &:active,
         &:focus {
-            background: #DDF6FF;
-            color: #0083B3;
+            background: #ddf6ff;
+            color: #0083b3;
         }
     } @else if $type == "outline-2" {
-        border: 1px solid #99E3FF;
+        border: 1px solid #99e3ff;
         background: #ffffff;
-        color: #99E3FF;
+        color: #99e3ff;
         border-radius: 10px;
         font-weight: 500;
         &:hover {
-            background: #DDF6FF;
-            color: #99E3FF;
+            background: #ddf6ff;
+            color: #99e3ff;
         }
         &:active,
         &:focus {
-            background: #DDF6FF;
-            color: #99E3FF;
+            background: #ddf6ff;
+            color: #99e3ff;
         }
     } @else if $type == "outline-3" {
         border: 1px solid #89d1ea;
@@ -78,16 +78,16 @@
             color: #ffffff;
         }
     } @else if $type == "outline-4" {
-        border: 1px solid #12BFFF;
+        border: 1px solid #12bfff;
         background: #ffffff;
         font-weight: normal;
-        color: #0083B3;
+        color: #0083b3;
         &:hover,
         &:active,
         &:focus,
         &.active {
-            background: #12BFFF;
-            color: #0083B3;
+            background: #12bfff;
+            color: #0083b3;
         }
     } @else if $type == "basic" {
         font-weight: 500;
@@ -96,53 +96,52 @@
         &:hover,
         &:active,
         &:focus {
-            background: #DDF6FF;
-            color: #0083B3;
+            background: #ddf6ff;
+            color: #0083b3;
         }
     } @else if $type == "secondary" {
         font-weight: 600;
         color: #ffffff;
-        background: #12BFFF;
+        background: #12bfff;
         &:hover,
         &:active,
         &:focus {
-            background: #12BFFF;
+            background: #12bfff;
             color: #ffffff;
         }
     } @else if $type == "next" {
         padding: 12px 20px;
         font-weight: 600;
         border-radius: 24px;
-        background: #DDF6FF;
-        color: #0083B3;
+        background: #ddf6ff;
+        color: #0083b3;
         &:hover,
         &:active,
         &:focus {
-            background: #DDF6FF;
-            color: #0083B3;
+            background: #ddf6ff;
+            color: #0083b3;
         }
     } @else if $type == "g" {
         padding: 12px 14px 12px 16px;
-        border: 1px solid #f14336;
+        border: none;
         border-radius: 24px;
         text-align: center;
-        background: transparent;
-        color: #f14336;
+        background: #ef6262;
+        color: #ffffff;
         font-weight: 500;
         font-size: 12px;
         line-height: 24px;
         &:hover,
         &:active,
         &:focus {
-            background: transparent;
-            color: #f14336;
+            background: #ef6262;
+            color: #ffffff;
         }
     } @else if $type == "fb" {
         padding: 12px 14px 12px 16px;
-        border: 1px solid #425fb1;
         border-radius: 24px;
         text-align: center;
-        background: transparent;
+        background: #65a5f5;
         color: #425fb1;
         font-weight: 500;
         font-size: 12px;
@@ -150,7 +149,7 @@
         &:hover,
         &:active,
         &:focus {
-            background: transparent;
+            background: #65a5f5;
             color: #425fb1;
         }
     }

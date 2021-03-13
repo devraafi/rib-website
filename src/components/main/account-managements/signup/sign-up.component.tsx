@@ -19,15 +19,17 @@ const SignUpComponent = (props: {
                 <div className="d-flex justify-content-between">
                     <div className="welcome">
                         <div className="title text-left mb-1">
-                            Daftar 
+                            Daftar
                         </div>
                         {/* <div className="account">
                             Sudah memiliki akun? <Link href="/login"><a className="link">Masuk Disini</a></Link>
                         </div> */}
                     </div>
-                    <div className="logo-boi">
-                        <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
-                    </div>
+                    <Link href="/home">
+                        <div className="logo-boi">
+                            <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className="form-section my-2">
@@ -48,6 +50,7 @@ const SignUpComponent = (props: {
                                 <Input
                                     placeholder="Nama Lengkap"
                                     className="input-account"
+                                    size="large"
                                     prefix={null}
                                 />
                             </Form.Item>
@@ -58,6 +61,7 @@ const SignUpComponent = (props: {
                                 className="m-0"
                             >
                                 <Input
+                                size="large"
                                     placeholder="Nomor Telepon"
                                     className="input-account"
                                     type="tel"
@@ -76,6 +80,7 @@ const SignUpComponent = (props: {
                                 }
                             >
                                 <Input
+                                size="large"
                                     placeholder="Alamat E-mail"
                                     className="input-account"
                                     type="email"
@@ -94,14 +99,15 @@ const SignUpComponent = (props: {
                                 }
                             >
                                 <Input.Password
+                                size="large"
                                     placeholder="Kata sandi"
                                     className="input-account"
                                     type="password"
-                                    iconRender={visible =>
-                                        visible ?
-                                            <EyeIcon />
-                                            : <EyeIcon />
-                                    }
+                                    // iconRender={visible =>
+                                    //     visible ?
+                                    //         <EyeIcon />
+                                    //         : <EyeIcon />
+                                    // }
                                 />
                             </Form.Item>
                         </div>

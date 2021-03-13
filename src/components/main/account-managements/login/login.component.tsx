@@ -4,12 +4,14 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { EyeIcon } from '@Components/icons/icons';
 import { AccountMangeRestServices } from '../account-managements-rest.services';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('http://rib-production.ruanginsanberbagi.org/');
 const LoginComponent = (props: {
     onLogin?: (val: any) => void;
 }) => {
     const [registerData, setData] = useState<any>(null);
-
+    const router = useRouter();
+    const { query } = router;
     useEffect(() => {
         localStorage.clear();
     }, []);
@@ -25,17 +27,25 @@ const LoginComponent = (props: {
         <div className="login-wrapper">
             <div className="header-section w-100">
                 <div className="d-flex justify-content-between">
-                    <div className="welcome">
-                        <div className="title text-left mb-1">
-                            Selamat Datang,
-                        </div>
-                        <div className="account">
-                            Belum memiliki akun? <Link href="/signup"><a className="link">Daftar Disini</a></Link>
+                    <div className="d-flex">
+                        {
+                            query.register &&
+                            <img src="/images/add.svg" alt="" className="mr-2" />
+                        }
+                        <div className="welcome">
+                            <div className="title text-left mb-1">
+                                {query.register ? 'Registrasi berhasil' : 'Selamat Datang,'}
+                            </div>
+                            <div className="account">
+                                Belum memiliki akun? <Link href="/signup"><a className="link">Daftar Disini</a></Link>
+                            </div>
                         </div>
                     </div>
-                    <div className="logo-boi">
-                        <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
-                    </div>
+                    <Link href="/home">
+                        <div className="logo-boi">
+                            <img src="/images/logos/dh-logo.svg" alt="" width="100%" />
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className="form-section mt-4">
@@ -81,11 +91,11 @@ const LoginComponent = (props: {
                                     type="password"
                                     visibilityToggle={true}
                                     size="large"
-                                    iconRender={visible =>
-                                        visible ?
-                                            <EyeIcon />
-                                            : <EyeIcon />
-                                    }
+                                // iconRender={visible =>
+                                //     visible ?
+                                //         <EyeIcon />
+                                //         : <EyeIcon />
+                                // }
                                 />
                             </Form.Item>
                         </div>
@@ -117,12 +127,12 @@ const LoginComponent = (props: {
                     <div className="brd"></div>
                 </div>
                 <div className="action d-flex flex-row justify-content-between my-2">
-                    <button className="btn btn-dh-g mr-2 btn-block align-self-center">
+                    <button className="btn btn-dh-g mr-2 btn-block align-self-center mt-0">
                         <img src="/images/logos/g.svg" className="mr-2" alt="" />
                             Google
                         </button>
-                    <button className="btn btn-dh-fb btn-block align-self-center">
-                        <img src="/images/logos/fb.svg" className="mr-2" alt="" />
+                    <button className="btn btn-dh-fb btn-block align-self-center mt-0">
+                        <img src="/images/logos/fb.svg" alt="" />
                             Facebook
                     </button>
                 </div>

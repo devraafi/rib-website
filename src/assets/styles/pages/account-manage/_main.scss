@@ -20,7 +20,7 @@
             background: linear-gradient(360deg, #797979 0%, rgba(91, 91, 91, 0) 66.15%),
                 url("/images/backgrounds/account-manage.svg");
             background-blend-mode: multiply, normal;
-            background-size: contain;
+            background-size: auto;
             @import "./login";
             @import "./signup";
         }

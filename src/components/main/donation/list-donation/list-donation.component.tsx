@@ -126,17 +126,17 @@ const DonationList = () => {
 
                                                     <div className="donation-info p-2">
                                                         <div className="d-flex flex-row justify-content-between">
-                                                            {/* <div className="d-flex flex-row justify-content-arround">
+                                                            <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="donatur-icon">
                                                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="donatur-amount px-2">
-                                                                    {list.collectedAmount || 0}
+                                                                    {list.donorAmount || 0}
                                                                 </div>
                                                                 <div className="donasi">
                                                                     Donasi
                                                                 </div>
-                                                            </div> */}
+                                                            </div>
                                                             <div className="d-flex flex-row justify-content-arround">
                                                                 <div className="cart">
                                                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
