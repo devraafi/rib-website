@@ -49,7 +49,7 @@ const DonationListByCategory = () => {
                         {response?.length || 0} Program Donasi
                 </div>
                     <div className="header py-3">
-                        Bantu umat dan lingkungan sekitar yang membutuhkan
+                        Bantu individu, kelompok dan lingkungan sekitar yang membutuhkan
                 </div>
                     {/* <div className="d-flex flex-row flex-wrap">
                     {

@@ -19,7 +19,7 @@ const SignUpComponent = (props: {
                 <div className="title">
                     <p>Buat Akun</p>
                     <div className="dh-text">
-                        Ambil tindakan, bantu sesama.
+                        Get involved in making the dream a reality
                     </div>
                 </div>
             </div>

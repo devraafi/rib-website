@@ -56,11 +56,11 @@ const MainDonation = (props: any) => {
         <div className="main-donation m-auto p-3" id="main-donation">
             <div className="title-support px-2 py-3">
                 {
-                    isInfaq ? 'Infak' : 'Dukung Program Ini'
+                    isInfaq ? 'Percayakan infak mu dengan Ruang Insan Berbagi' : 'Dukung Program Ini'
                 }
             </div>
             <div className="d-flex flex-column program-wrapper">
-                <div className="program-info p-3">
+                <div className={`${isInfaq ? 'py-2' : 'p-3'} program-info`}>
                     <div className="target-info p-2">
                         {
                             !isInfaq && <div className="py-2">
@@ -68,12 +68,46 @@ const MainDonation = (props: any) => {
                             </div>
                         }
                         <div className="d-flex flex-row justify-content-between py-2">
-                            <div className="amount text-left">{'Rp. ' + (data.collectedAmount || 0).toLocaleString()}</div>
+                            <div className="amount text-left align-self-center">{'Rp. ' + (data.collectedAmount || 0).toLocaleString()}</div>
+                            {
+                                isInfaq && <div className="donation-info p-2">
+                                    <div className="d-flex flex-row justify-content-between">
+                                        <div className="d-flex flex-row justify-content-arround">
+                                            <div className="donatur-icon">
+                                                <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                            </div>
+                                            <div className="donatur-amount px-2">
+                                                {data.donorAmount || 0}
+                                            </div>
+                                            <div className="donasi">
+                                                Donasi
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                             {
                                 !isInfaq &&
                                 <div className="target-amount">{`Target Rp. ${(data.targetAmount || 0).toLocaleString()}`}</div>
                             }
                         </div>
+                        {
+                            isInfaq &&
+                            <div className="col-12 p-0 my-1">
+                                <div className="text-left " style={{ fontSize: '12px' }}>
+                                    Jumlah Donasi
+                                </div>
+                                <InputNumber locale="id-ID"
+                                    placeholder="Rp 0"
+                                    currency="IDR" onChange={(e) => setDonateAmount(e.value)}
+                                    name=""
+                                    id=""
+                                    value={donateAmount}
+                                    inputClassName="input-dh text-right w-100"
+                                    className="w-100"
+                                />
+                            </div>
+                        }
                     </div>
                     {
                         !isInfaq &&
@@ -104,17 +138,17 @@ const MainDonation = (props: any) => {
                         !isInfaq &&
                         <div className="donation-info p-2">
                             <div className="d-flex flex-row justify-content-between">
-                                {/* <div className="d-flex flex-row justify-content-arround">
-                                <div className="donatur-icon">
-                                    <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                <div className="d-flex flex-row justify-content-arround">
+                                    <div className="donatur-icon">
+                                        <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
+                                    </div>
+                                    <div className="donatur-amount px-2">
+                                        {data.donorAmount || 0}
+                                    </div>
+                                    <div className="donasi">
+                                        Donasi
+                                    </div>
                                 </div>
-                                <div className="donatur-amount px-2">
-                                    {data.collectedAmount || 0}
-                                </div>
-                                <div className="donasi">
-                                    Donasi
-                                </div>
-                            </div> */}
                                 <div className="d-flex flex-row justify-content-arround">
                                     <div className="cart">
                                         <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
@@ -145,17 +179,19 @@ const MainDonation = (props: any) => {
                         }
                     </div>
                     <div className="row py-3">
-                        <div className="col-12 my-1">
-                            <InputNumber locale="id-ID"
-                                placeholder="Rp 0"
-                                currency="IDR" onChange={(e) => setDonateAmount(e.value)}
-                                name=""
-                                id=""
-                                value={donateAmount}
-                                inputClassName="input-dh text-right w-100"
-                                className="w-100"
-                            />
-                        </div>
+                        {!isInfaq &&
+                            <div className="col-12 my-1">
+                                <InputNumber locale="id-ID"
+                                    placeholder="Rp 0"
+                                    currency="IDR" onChange={(e) => setDonateAmount(e.value)}
+                                    name=""
+                                    id=""
+                                    value={donateAmount}
+                                    inputClassName="input-dh text-right w-100"
+                                    className="w-100"
+                                />
+                            </div>
+                        }
                         <div className="col-12 my-1">
                             <button className="btn btn-dh-secondary w-100 rounded-lg" disabled={!donateAmount} onClick={() => handleClick()}>
                                 Donate

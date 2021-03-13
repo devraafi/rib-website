@@ -1,12 +1,5 @@
 .contact-us-page {
-    background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0) 0%,
-            #ffffff 30%,
-            #ffffff 50%,
-            rgba(255, 255, 255, 0) 100%
-        ),
-        url("/images/backgrounds/islamic-full.svg");
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
 
     .header-contact-us {
         .title-contact-us {
@@ -15,7 +8,7 @@
             font-weight: bold;
             font-size: 42px;
             line-height: 120%;
-            color: #00AEEF;
+            color: #00aeef;
         }
 
         .description-contact-us {
@@ -36,7 +29,7 @@
                 font-size: 17px;
                 line-height: 150%;
                 text-align: center;
-                color: #0083B3;
+                color: #0083b3;
             }
             input {
                 border: none;

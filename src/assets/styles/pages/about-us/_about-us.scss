@@ -1,12 +1,5 @@
 .about-us-page {
-    background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0) 0%,
-            #ffffff 20%,
-            #ffffff 50%,
-            rgba(255, 255, 255, 0) 100%
-        ),
-        url("/images/backgrounds/islamic-full.svg");
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
     &::before {
     }
 
@@ -17,7 +10,7 @@
             font-weight: bold;
             font-size: 42px;
             line-height: 120%;
-            color: #00AEEF;
+            color: #00aeef;
         }
 
         .description-about-us {
@@ -38,7 +31,7 @@
             font-size: 22px;
             line-height: 110%;
             color: #31383f;
-            border-bottom: 1px solid #56D1FF;
+            border-bottom: 1px solid #56d1ff;
         }
 
         .description {
@@ -89,7 +82,7 @@
                         font-weight: normal;
                         font-size: 13px;
                         line-height: 21px;
-                        color: #99E3FF;
+                        color: #99e3ff;
                     }
 
                     .sub {
@@ -108,7 +101,7 @@
                 cursor: pointer;
                 width: 100;
                 text-align: center;
-                background: #DDF6FF;
+                background: #ddf6ff;
                 font-weight: 500;
                 font-size: 12.2587px;
                 line-height: 21px;

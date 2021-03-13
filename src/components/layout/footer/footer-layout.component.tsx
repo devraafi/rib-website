@@ -29,11 +29,11 @@ export default class FooterComponent extends React.Component {
                             </div>
                             <div className="container-fluid container-lg py-3">
                                 <div className="row">
-                                    <div className="col-md-auto col-auto mix-blend-multi">
+                                    <div className="col-md-auto col-auto mix-blend-multi px-2 py-0">
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                        Ruang Insan Berbagi merupakan lembaga filantropi islam yang bergerak pada pengelolaan zakat infak dan sodaqah untuk pemberdayaan dan kemaslahatan umat
+                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi
                                     </div>
                                     <div className="col-12 col-md py-2">
                                         <div className="dh-footer-title">Services</div>
@@ -43,7 +43,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/location.svg" alt="" />
                                                         <span className="ml-3">
-                                                            Ir.H.Juanda No. 285 , Bandung
+                                                            Jl. Karawitan No. 14A, Bandung
                                                         </span>
                                                     </a>
                                                 </Link>
@@ -70,7 +70,7 @@ export default class FooterComponent extends React.Component {
                                             </li>
                                         </ul>
                                     </div>
-                                    <div className="col-6 col-md py-2">
+                                    {/* <div className="col-6 col-md py-2">
                                         <div className="dh-footer-title">Rekening Donasi</div>
                                         <ul className="list-unstyled">
                                             <li className="my-2">
@@ -123,39 +123,25 @@ export default class FooterComponent extends React.Component {
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> */}
                                     <div className="col-6 col-md py-2">
                                         <div className="dh-footer-title">Follow Us</div>
                                         <ul className="list-unstyled">
                                             <li className="my-2">
-                                                <Link href="/">
-                                                    <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/fb.svg" alt="" />
-                                                        <span className="ml-3">
-                                                            Facebook
-                                                        </span>
-                                                    </a>
-                                                </Link>
+                                                <a className="dh-footer-item-link" href="https://www.facebook.com/Ruang-Insan-Berbagi-105321831513073/" target="_blank">
+                                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/fb.svg" alt="" />
+                                                    <span className="ml-3">
+                                                        Ruang Insan Berbagi
+                                                    </span>
+                                                </a>
                                             </li>
                                             <li className="my-2">
-                                                <Link href="/">
-                                                    <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/twit.svg" alt="" />
-                                                        <span className="ml-3">
-                                                            Twitter
-                                                        </span>
-                                                    </a>
-                                                </Link>
-                                            </li>
-                                            <li className="my-2">
-                                                <Link href="/">
-                                                    <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/ig.svg" alt="" />
-                                                        <span className="ml-3">
-                                                            Instagram
-                                                        </span>
-                                                    </a>
-                                                </Link>
+                                                <a className="dh-footer-item-link" href="https://www.instagram.com/ruanginsanberbagi/" target="_blank">
+                                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/ig.svg" alt="" />
+                                                    <span className="ml-3">
+                                                        @ruanginsanberbagi
+                                                    </span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>

@@ -48,7 +48,7 @@ const DonationList = () => {
                         {response.total || 0} Program Donasi
                 </div>
                     <div className="header py-3">
-                        Bantu umat dan lingkungan sekitar yang membutuhkan
+                        Bantu individu, kelompok dan lingkungan sekitar yang membutuhkan
                 </div>
                     {/* <div className="d-flex flex-row flex-wrap">
                     {
@@ -83,8 +83,8 @@ const DonationList = () => {
                                                 <div className="program-image">
                                                     {
                                                         list.fileUrl ?
-                                                        <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
-                                                        : <div className="imooge"></div>
+                                                            <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
+                                                            : <div className="imooge"></div>
                                                     }
                                                 </div>
                                                 <div className="program-info p-3">
