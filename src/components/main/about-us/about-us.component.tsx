@@ -86,9 +86,9 @@ const AboutUsComponent = () => (
                                     <div className="title col-lg-4 align-self-center mx-auto">{ourTeam.director.title}</div>
                                     <div className="row justify-content-center">
                                         {
-                                            ourTeam.director.data && ourTeam.director.data.map(data => {
+                                            ourTeam.director.data && ourTeam.director.data.map((data: any, i: number) => {
 
-                                                return <div className="col-lg-auto p-2">
+                                                return <div className="col-lg-auto p-2" key={i}>
                                                     <div className="card-team">
                                                         <div className="imooge" style={{
                                                             background: `linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%), url(${data.file})`
@@ -110,9 +110,9 @@ const AboutUsComponent = () => (
                                     <div className="title col-lg-4 align-self-center mx-auto">{ourTeam.manager.title}</div>
                                     <div className="row justify-content-center">
                                         {
-                                            ourTeam.manager.data && ourTeam.manager.data.map(data => {
+                                            ourTeam.manager.data && ourTeam.manager.data.map((data:any, i:number) => {
 
-                                                return <div className="col-lg-auto p-2">
+                                                return <div className="col-lg-auto p-2" key={i}>
                                                     <div className="card-team">
                                                         <div className="imooge" style={{
                                                             background: `linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%), url(${data.file})`
