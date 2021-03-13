@@ -2,6 +2,7 @@ import MainComponent from "@Components/layout/main/main-layout.component"
 import { message } from "antd"
 import { InputText } from "primereact/inputtext"
 import React, { useState } from "react"
+import GoogleMapReact from 'google-map-react';
 
 const ContactUs = () => {
     const [form, setForm] = useState({
@@ -14,13 +15,12 @@ const ContactUs = () => {
 
     function onSubmit() {
         if (form.name && form.email && form.notes) {
-            const text = `
-            Nama: ${form.name} \n
-            Email: ${form.email} \n
-            ${form.notes}
-            `;
+            const text = `Nama: ${form.name} \r\nEmail: ${form.email} \r\n${form.notes}`;
 
-            document.location.href = `https://api.whatsapp.com/send?phone=+6282126855400&text=${text}`
+            window.open(
+                `https://api.whatsapp.com/send?phone=+6281212272444&text=${encodeURIComponent(text)}`,
+                '_blank'
+            )
 
         } else {
             message.error('Lengkapi formulir');
@@ -68,8 +68,62 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
+            <div className="maps-section">
+                <div className="card-connect">
+                    <div className="body-connect p-4">
+
+                        <div className="title-connect mb-4">
+                            Hubungi Kami
+                            </div>
+
+                        <div className="field">
+                            <div className="sub-title">Alamat</div>
+                            <div className="sub">Jl. Karawitan No. 14A, Bandung</div>
+                        </div>
+
+                        <div className="field">
+                            <div className="sub-title">Telepon</div>
+                            <div className="sub">022 - 2505375</div>
+                        </div>
+
+                        <div className="field">
+                            <div className="sub-title">E-Mail</div>
+                            <div className="sub">fund.ruanginsanberbagi@gmail.com</div>
+                        </div>
+
+                    </div>
+
+                    <div className="footer-connect p-3">
+                        <a href={`https://www.google.com/maps/place/Jl.+Karawitan+No.14a,+Turangga,+Kec.+Lengkong,+Kota+Bandung,+Jawa+Barat+40264/@-6.937426,107.6242484,17z/data=!3m1!4b1!4m5!3m4!1s0x2e68e87cb1186505:0x43659f706d71c43!8m2!3d-6.9374313!4d107.6264371`} target="_blank">
+                            Get Directions
+                        </a>
+                    </div>
+
+                </div>
+                <MapsSection />
+            </div>
         </div>
     </MainComponent>
 }
+
+const MapsSection = () => {
+    const [center, setCenter] = useState({ lat: -6.8796325, lng: 107.6138551 });
+    const [zoom, setZoom] = useState(13);
+
+    return <GoogleMapReact
+        bootstrapURLKeys={{ key: '' }}
+        defaultCenter={center}
+        defaultZoom={zoom}
+    >
+        <Pin
+            lat={-6.8796325}
+            lng={107.6138551}
+        />
+    </GoogleMapReact>
+}
+
+const Pin = ({ text }: any) => <div style={{ width: '80px' }}>
+    <img src="/images/icons/pin.svg" alt="" srcSet="" className="w-100" />
+</div>;
 
 export default ContactUs;
