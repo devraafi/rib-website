@@ -1,6 +1,7 @@
 import { Loading } from "@Components/basics/loading/loading.component";
 import MainComponent from "@Components/layout/main/main-layout.component";
 import { Spin } from "antd";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
@@ -19,7 +20,8 @@ const donationRestService: HomeRestService = new HomeRestService(process.env.sta
 export const HomePage = () => {
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState<any>(null)
-
+    const router = useRouter();
+    const { query } = router;
     useEffect(() => {
         setLoading(true);
         donationRestService.loadProgram().pipe(

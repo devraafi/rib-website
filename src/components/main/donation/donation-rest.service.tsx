@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class DonationRestServices {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'http://rib-production.ruanginsanberbagi.org/public/';
+    urlDh: string = 'https://rib-production.ruanginsanberbagi.org/public/';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,

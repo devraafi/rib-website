@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class TokenRestServices {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'http://rib-production.ruanginsanberbagi.org';
+    urlDh: string = 'https://rib-production.ruanginsanberbagi.org';
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,
