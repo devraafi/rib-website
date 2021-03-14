@@ -1,0 +1,40 @@
+#sk-page-dh {
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
+    .sk-wrapper {
+        .title {
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 110%;
+            color: #0098d1;
+        }
+        .separatore {
+            border-bottom: 1px solid #12bfff;
+        }
+        .content {
+            font-family: "FiraSans" !important;
+            ol {
+                li {
+                    font-size: 14px;
+                    line-height: 25px;
+                    color: #414b54;
+                }
+            }
+            ul {
+                li {
+                    &::marker {
+                        color: #0098d1;
+                        background: #0098d1;
+                    }
+                    font-size: 15px;
+                }
+            }
+            .subtitle {
+                font-family: "Poppins" !important;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 28px;
+                color: #00415a;
+            }
+        }
+    }
+}
