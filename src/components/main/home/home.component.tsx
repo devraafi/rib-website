@@ -26,6 +26,16 @@ export const HomePage = () => {
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState<any>(null);
 
+    function getItem() {
+        const local = localStorage;
+        const userInfo = local.getItem('userinfo');
+        if (userInfo) {
+            return JSON.parse(userInfo)
+        } else {
+            return null
+        }
+    }
+
     async function userInfo() {
         let userinfo: any = {
             access_token: query.token,
@@ -49,7 +59,7 @@ export const HomePage = () => {
     }
     useEffect(() => {
         setLoading(true);
-        if (query.token) {
+        if (query.token && (typeof window !== 'undefined' && getItem())) {
             userInfo()
         }
         donationRestService.loadProgram().pipe(
