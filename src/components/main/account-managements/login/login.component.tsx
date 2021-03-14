@@ -5,7 +5,7 @@ import { EyeIcon } from '@Components/icons/icons';
 import { AccountMangeRestServices } from '../account-managements-rest.services';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices('https://rib-production.ruanginsanberbagi.org/');
+const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices(process.env.staging || '');
 const LoginComponent = (props: {
     onLogin?: (val: any) => void;
 }) => {
@@ -127,15 +127,17 @@ const LoginComponent = (props: {
                     <div className="brd"></div>
                 </div>
                 <div className="action d-flex flex-row justify-content-between my-2">
-                    <button className="btn btn-dh-g mr-2 btn-block align-self-center mt-0">
-                        <img src="/images/logos/g.svg" className="mr-2" alt="" />
+                    <Link href={`${process.env.staging}strategy/google`}>
+                        <button className="btn btn-dh-g mr-2 btn-block align-self-center mt-0">
+                            <img src="/images/logos/g.svg" className="mr-2" alt="" />
                             Google
                         </button>
-                    <Link href={`https://staging-rib.herokuapp.com/facebook`}>
+                    </Link>
+                    <Link href={`${process.env.staging}facebook`}>
                         <button className="btn btn-dh-fb btn-block align-self-center mt-0">
                             <img src="/images/logos/fb.svg" alt="" />
                             Facebook
-                    </button>
+                        </button>
                     </Link>
                 </div>
             </div>

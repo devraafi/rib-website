@@ -24,7 +24,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
             errorMessage: 'Gagal Login',
             onError: () => SetLoading(false),
             onTap: (res) => {
-                localStorage.setItem('userinfo', JSON.stringify(res));
+                localStorage.setItem('userInfo', JSON.stringify(res));
                 SetLoading(false);
                 if (props.onSuccess) {
                     props.onSuccess()

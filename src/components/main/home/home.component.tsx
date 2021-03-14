@@ -6,6 +6,9 @@ import React, { useEffect, useState } from "react";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { AuthenticationService } from "services/auth/aut.service";
+import { RequestService } from "services/request.services";
+import { TokenRestServices } from "services/rest/token-rest.service";
+import { ProfileRestService } from "../profile/profile-rest.service";
 import { BannerSection } from "./banner-section/banner-section.component";
 import DonationSection from "./donation-section/donation-section.component";
 import FeatureSection from "./feature-section/feature-section.component";
@@ -16,14 +19,39 @@ import ProgramSection from "./program-section/program-section.component";
 import ZakatSection from "./zakat-section/zakat-section.component";
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: HomeRestService = new HomeRestService(process.env.staging || '', auth.axiosInterceptors);
-
+const { handleRequest } = new RequestService;
 export const HomePage = () => {
-    const [loading, setLoading] = useState(false);
-    const [response, setResponse] = useState<any>(null)
     const router = useRouter();
     const { query } = router;
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState<any>(null);
+
+    async function userInfo() {
+        let userinfo: any = {
+            access_token: query.token,
+            accessToken: query.token
+        };
+        await localStorage.setItem('userInfo', JSON.stringify(userinfo));
+        console.log(localStorage.getItem('userInfo'));
+
+        const profileRest = new ProfileRestService(process.env.staging || '', auth.axiosInterceptors);
+        const obs = profileRest.loadProfile();
+        handleRequest({
+            obs,
+            onDone: (res) => {
+                userinfo = {
+                    ...userinfo,
+                    user: res
+                }
+                localStorage.setItem('userInfo', JSON.stringify(userinfo));
+            }
+        })
+    }
     useEffect(() => {
         setLoading(true);
+        if (query.token) {
+            userInfo()
+        }
         donationRestService.loadProgram().pipe(
             catchError(err => {
                 return throwError(err);
@@ -31,7 +59,7 @@ export const HomePage = () => {
                 setResponse(res)
                 setLoading(false);
             })
-    }, []);
+    }, [query]);
 
     return <MainComponent
         title="Home Ruang Insan Berbagi"

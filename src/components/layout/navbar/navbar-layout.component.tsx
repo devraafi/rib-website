@@ -164,7 +164,7 @@ export default class NavbarComponent extends React.Component<any, any> {
                                     zIndex: 1
                                 }} className="z-index-yow form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
                                     {
-                                        (typeof window !== 'undefined' && this.getItem()) ?
+                                        (typeof window !== 'undefined' && (this.getItem() && this.getItem().user)) ?
                                             <div className="dropdown">
                                                 <a className="sign-up dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
                                                 <div className="dropdown-menu" aria-labelledby="UserDropdown">

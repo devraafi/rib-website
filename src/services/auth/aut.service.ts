@@ -27,7 +27,6 @@ export class AuthenticationService {
     }
 
     axiosInterceptors(axios: AxiosInstance | AxiosStatic, interceptRequest: boolean = true, interceptResponse: boolean = true) {
-        console.log(userInfo);
         axios.interceptors.request.use(request => {
             request.headers.common['Timezone-Offset'] = _.get(userInfo, 'timezone_offset') || (new Date).getTimezoneOffset();
             request.headers.common['Content-Type'] = 'application/json;charset=UTF-8';

@@ -3,7 +3,7 @@ import { RequestService } from 'services/request.services';
 export class HomeRestService {
     requestService = new RequestService;
     request: RequestService;
-    urlDh: string = 'https://rib-production.ruanginsanberbagi.org/public/';
+    urlDh: string = `${process.env.staging || ''}public/`;
     constructor(
         baseUrl?: string,
         useInterceptor: any = true,
