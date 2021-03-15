@@ -27,7 +27,7 @@ const ZakatPaymetMethod = (props: {
 }) => {
     const local: any = (typeof window !== 'undefined') ? localStorage : null;
     function getItem() {
-        const userInfo = local && local.getItem('userinfo');
+        const userInfo = local && local.getItem('userInfo');
         if (userInfo) {
             return JSON.parse(userInfo)
         } else {

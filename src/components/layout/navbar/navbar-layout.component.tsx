@@ -34,7 +34,7 @@ export default class NavbarComponent extends React.Component<any, any> {
 
     getItem() {
         const local = localStorage;
-        const userInfo = local.getItem('userinfo');
+        const userInfo = local.getItem('userInfo');
         if (userInfo) {
             return JSON.parse(userInfo)
         } else {

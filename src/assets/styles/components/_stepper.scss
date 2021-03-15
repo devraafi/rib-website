@@ -1,0 +1,80 @@
+.stepper-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  &.responsive {
+    flex-wrap: nowrap;
+    @media (max-width: 992px) {
+      button {
+        font-size: 10px;
+      }
+      .ant-input-number,
+      .ant-input-number-focused {
+        width: 50px;
+        padding: 0;
+        &-input-wrap {
+          .ant-input-number-input {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 992px) {
+    justify-content: start;
+  }
+  justify-content: center;
+  .ant-input-number,
+  .ant-input-number-focused {
+    align-self: center;
+    max-width: 120px;
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+    padding: 0.5rem 0.8rem;
+    background: #ffffff;
+    box-shadow: 0px 3px 6px rgba(155, 175, 200, 0.09);
+    border-radius: 6px;
+    border: none !important;
+    &-handler-wrap {
+      display: none;
+    }
+    &-input-wrap {
+      .ant-input-number-input {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        align-items: center;
+        text-align: center;
+        color: #147ee3;
+        outline: none !important;
+      }
+    }
+  }
+  &.cart {
+    .btn {
+      align-self: center;
+      &.step {
+        background: #ffffff;
+        box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+        border-radius: 6px;
+        .i-step {
+          color: #cdd7e3;
+        }
+      }
+    }
+  }
+  &.basic {
+    .btn {
+      align-self: center;
+      &.step {
+        background: #e5f3fe;
+        box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+        border-radius: 6px;
+        .i-step {
+          color: #147ee3;
+        }
+      }
+    }
+  }
+}

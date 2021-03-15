@@ -45,13 +45,13 @@ const NewInfoDonation = (props: { id: string }) => {
                     <div className="box-info my-3" key={i}>
                         <div className="date-info py-2">{moment(data.createdAt).format('DD MMM YYYY')}</div>
                         <div className="title py-2">{data.title}</div>
-                        <div className="image-wrap my-3">
+                        {/* <div className="image-wrap my-3">
                             {
                                 data.fileUrl ?
                                     <img className="imooge" src={data.fileUrl} alt="" /> :
                                     <div className="imooge"></div>
                             }
-                        </div>
+                        </div> */}
                         <div className="desc py-2">{data.caption}</div>
                         <div className="read-more py-2">
                             <Link href={`/news-article/detail/?route=${data?.route}&title=${data?.title}`}>

@@ -4,6 +4,7 @@ import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { InputNumber } from 'primereact/inputnumber';
 import { DonationService } from '../../donation.services';
+import { Stepper } from '@Components/basics/stepper/stepper.component';
 const danation = {
     amount: 1600000000,
     targetAmount: 2500000000,
@@ -21,6 +22,9 @@ const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
     const { data, isInfaq } = props;
     const [donateAmount, setDonateAmount] = useState(0);
+    const [activePkg, setActivePkg] = useState(0);
+    const [qty, setQty] = useState(1);
+    const [isPackage, setIsPackage] = useState(false);
     function handleClick() {
         donationService.setPayload(donateAmount, isInfaq);
         props.onDone ? props.onDone(donateAmount, isInfaq) : '';
@@ -48,9 +52,20 @@ const MainDonation = (props: any) => {
         }
     }
 
+    function onUpdateQty(val: number) {
+        setQty(val);
+        const newdonateAmount = activePkg * val;
+        setDonateAmount(newdonateAmount)
+    }
+
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
     });
+
+    useEffect(() => {
+        const pkg: boolean = data.donationAmountOption && data.donationAmountOption.length;
+        setIsPackage(pkg)
+    }, [data])
 
     return (
         <div className="main-donation m-auto p-3" id="main-donation">
@@ -167,7 +182,7 @@ const MainDonation = (props: any) => {
                 <div className="donate-price px-3">
                     <div className="row justify-content-between">
                         {
-                            priceList.map((price, i) => {
+                            !isPackage && priceList.map((price, i) => {
                                 return (
                                     <div className="col-4 px-1 text-center py-1" key={i}>
                                         <button onClick={() => setDonateAmount(price)} className={'btn btn-dh-outline-3 fixmen ' + (donateAmount == price ? 'active' : '')}>
@@ -177,11 +192,34 @@ const MainDonation = (props: any) => {
                                 )
                             })
                         }
+                        {
+                            isPackage && data.donationAmountOption.map((price: any, i: number) => (
+                                <div className="col-4 px-1 text-center py-1" key={i}>
+                                    <button onClick={() => { setDonateAmount(price); setActivePkg(price) }} className={'btn btn-dh-outline-3 fixmen ' + (activePkg == price ? 'active' : '')}>
+                                        Rp. {(price).toLocaleString()}
+                                    </button>
+                                </div>
+                            ))
+                        }
                     </div>
+                    {
+                        isPackage && <div className="row py-2">
+                            <div className="col-lg-12">
+                                <Stepper
+                                    className="justify-content-center"
+                                    min={1}
+                                    value={qty}
+                                    type="basic"
+                                    onChange={(val: any) => onUpdateQty(+val)}
+                                />
+                            </div>
+                        </div>
+                    }
                     <div className="row py-3">
                         {!isInfaq &&
                             <div className="col-12 my-1">
                                 <InputNumber locale="id-ID"
+                                    disabled={isPackage}
                                     placeholder="Rp 0"
                                     currency="IDR" onChange={(e) => setDonateAmount(e.value)}
                                     name=""

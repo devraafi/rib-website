@@ -37,7 +37,7 @@ export const ProfileComponent = () => {
 
     function getItem() {
         const local = localStorage;
-        const userInfo = local.getItem('userinfo');
+        const userInfo = local.getItem('userInfo');
         if (userInfo) {
             return JSON.parse(userInfo)
         } else {

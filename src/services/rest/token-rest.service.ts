@@ -12,6 +12,10 @@ export class TokenRestServices {
         this.request = this.requestService.new(this.urlDh, useInterceptor, withoutInterceptor);
     }
 
+    getUserByToken(payload: any) {
+        return this.request.post<IUserInfo>(`/user/token`, payload);
+    }
+
     refreshToken(refresh_token: string) {
         const payload = {
             client_id: 'lazis-dh',

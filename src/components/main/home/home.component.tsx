@@ -18,6 +18,7 @@ import { NewsSectionComponent } from "./news-and-stories-section/news-and-storie
 import ProgramSection from "./program-section/program-section.component";
 import ZakatSection from "./zakat-section/zakat-section.component";
 const auth: AuthenticationService = new AuthenticationService;
+const token: TokenRestServices = new TokenRestServices;
 const donationRestService: HomeRestService = new HomeRestService(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
 export const HomePage = () => {
@@ -26,41 +27,16 @@ export const HomePage = () => {
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState<any>(null);
 
-    function getItem() {
-        const local = localStorage;
-        const userInfo = local.getItem('userinfo');
-        if (userInfo) {
-            return JSON.parse(userInfo)
-        } else {
-            return null
-        }
+    function userInfo() {
+        token.getUserByToken({ accessToken: query.token }).subscribe((res) => {
+            localStorage.setItem('userInfo', JSON.stringify(res));
+        });
     }
 
-    async function userInfo() {
-        let userinfo: any = {
-            access_token: query.token,
-            accessToken: query.token
-        };
-        await localStorage.setItem('userInfo', JSON.stringify(userinfo));
-        console.log(localStorage.getItem('userInfo'));
-
-        const profileRest = new ProfileRestService(process.env.staging || '', auth.axiosInterceptors);
-        const obs = profileRest.loadProfile();
-        handleRequest({
-            obs,
-            onDone: (res) => {
-                userinfo = {
-                    ...userinfo,
-                    user: res
-                }
-                localStorage.setItem('userInfo', JSON.stringify(userinfo));
-            }
-        })
-    }
-    useEffect(() => {
+    async function onInit() {
         setLoading(true);
-        if (query.token && (typeof window !== 'undefined' && getItem())) {
-            userInfo()
+        if (query.token) {
+            await userInfo()
         }
         donationRestService.loadProgram().pipe(
             catchError(err => {
@@ -69,6 +45,9 @@ export const HomePage = () => {
                 setResponse(res)
                 setLoading(false);
             })
+    }
+    useEffect(() => {
+        onInit()
     }, [query]);
 
     return <MainComponent

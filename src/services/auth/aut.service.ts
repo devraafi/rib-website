@@ -19,7 +19,7 @@ export class AuthenticationService {
             console.log(e);
         }
 
-        if (theUser && _.has(theUser, 'access_token')) {
+        if (theUser && _.has(theUser, 'accessToken')) {
             userInfo = theUser;
         } else {
             userInfo = null as any;
@@ -39,7 +39,9 @@ export class AuthenticationService {
         if (interceptRequest) {
             axios.interceptors.request.use(request => {
                 if (userInfo) {
-                    request.headers.common['Authorization'] = `Bearer ${userInfo.access_token}`;
+                    console.log(userInfo);
+                    
+                    request.headers.common['Authorization'] = `Bearer ${userInfo.accessToken}`;
                 }
                 return request;
             });
