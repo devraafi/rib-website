@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { Component, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 
@@ -22,18 +23,20 @@ export const FundaraisingSection = (props: { data: any }) => {
             {
                 data && data.map((list: any, i: number) => {
                     return (
-                        <div className="col-12 p-0" key={i}>
-                            <div className="wrapper-img-fundaraising">
-                                {
-                                    list.fileUrl ?
-                                        <img src={list.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
-                                        : <div className="imooge"></div>
-                                }
-                                <div className="title col-lg-7 col-12 p-4">
-                                    {list.name}
+                        <Link href={`/donasi/detail?id=${list._id}`}>
+                            <div className="col-12 p-0" key={i}>
+                                <div className="wrapper-img-fundaraising">
+                                    {
+                                        list.fileUrl ?
+                                            <img src={list.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
+                                            : <div className="imooge"></div>
+                                    }
+                                    <div className="title col-lg-7 col-12 p-4">
+                                        {list.name}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     )
                 })
             }
