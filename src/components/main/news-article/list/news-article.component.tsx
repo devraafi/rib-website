@@ -73,7 +73,7 @@ export const NewsArticleListComponent = () => {
                                                     <div className="col-lg-7">
                                                         <div className="news-img">
                                                             {
-                                                                mainNews?.fileUrl ? <img src={mainNews.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
+                                                                mainNews?.fileUrl && (mainNews?.fileUrl !== '-') ? <img src={mainNews.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
                                                             }
                                                         </div>
                                                     </div>
@@ -114,7 +114,7 @@ export const NewsArticleListComponent = () => {
                                                     <div className="news-wrapper h-100 pointer">
                                                         <div className="news-img sm">
                                                             {
-                                                                nw?.fileUrl ? <img src={nw.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
+                                                                nw?.fileUrl && (nw?.fileUrl !== '-') ? <img src={nw.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
                                                             }
                                                         </div>
                                                         {

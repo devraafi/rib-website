@@ -119,31 +119,33 @@ const PaymentMethodStep = (props: {
                         <div className="form-group">
                             <input
                                 type="text"
-                                disabled={customerInfo.showAsAnonymous}
-                                placeholder="Nama Lengkap"
+                                // disabled={customerInfo.showAsAnonymous}
+                                placeholder="Nama Lengkap (Wajib Diisi)"
                                 name=""
                                 id=""
-                                className="form-control"
+                                className={`form-control sc ${!customerInfo.fullName && 'required-bro'}`}
                                 value={customerInfo.fullName}
                                 onChange={(e: any) => { setCustomerInfo({ ...customerInfo, fullName: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
                             <input
-                                type="tel" disabled={customerInfo.showAsAnonymous}
+                                type="tel"
+                                // disabled={customerInfo.showAsAnonymous}
                                 placeholder="Nomor ponsel"
                                 name="" id=""
-                                className="form-control"
+                                className="form-control sc"
                                 value={customerInfo.phone}
                                 onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phone: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
                             <input
-                                type="email" disabled={customerInfo.showAsAnonymous}
-                                placeholder="Email"
+                                type="email"
+                                // disabled={customerInfo.showAsAnonymous}
+                                placeholder="Email (Wajib Diisi)"
                                 name="" id=""
-                                className="form-control"
+                                className={`form-control sc ${customerInfo.email && 'required-bro'}`}
                                 value={customerInfo.email}
                                 onChange={(e: any) => { setCustomerInfo({ ...customerInfo, email: e.target.value }) }}
                             />
@@ -167,7 +169,7 @@ const PaymentMethodStep = (props: {
                     </div>
                     <div className="description text-left">
                     </div>
-                    <div className="row w-100">
+                    <div className="row">
                         <div className="col-12 py-2">
                             <InputTextarea placeholder="Tulis pesan, harapan atau do’a disini jika ada" className="input-dh w-100" rows={5} cols={30}
                                 value={customerInfo.notes}

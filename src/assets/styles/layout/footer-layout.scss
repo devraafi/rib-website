@@ -30,6 +30,17 @@
         color: #186d8b;
     }
     .text-copyright {
+        a {
+            font-family: "Poppins";
+            @media (min-width: 992px) {
+                font-size: 12px;
+            }
+            font-size: 10px;
+            line-height: 16px;
+            letter-spacing: -0.204545px;
+            color: #62717d;
+            mix-blend-mode: normal;
+        }
         font-family: "Poppins";
         @media (min-width: 992px) {
             font-size: 12px;

@@ -14,8 +14,11 @@ const newsRestService: NewsArticleRestService = new NewsArticleRestService(proce
 const { handleRequest } = new RequestService;
 
 export const NewsArticleDetailComponent = () => {
-    const { query }: any = useRouter();
+    const router = useRouter();
+    console.log(router);
+    const { query }: any = router;
     const [news, setNews] = useState<INews>();
+    const [hostname, setHostName] = useState<string>('');
     const [others, setothers] = useState<INews[]>();
     const [params, setParams] = useState({
         take: 4,
@@ -57,11 +60,18 @@ export const NewsArticleDetailComponent = () => {
     }
 
     useEffect(() => {
-        loadNewsByRoute()
-    }, [query])
+        (query && query.route) && loadNewsByRoute()
+    }, [query]);
+
+    useEffect(() => {
+        if ((typeof window !== 'undefined') && window.location.href) {
+            console.log(window.location);
+            setHostName(window.location.href)
+        }
+    })
     return (
         <MainComponent
-            title={`Berita & Artikel | ${news?.title}`}
+            title={`Berita & Artikel | ${news?.title || '-'}`}
             description={`${news?.title}`}
             pageId="news-article-page-dh"
         >
@@ -77,11 +87,11 @@ export const NewsArticleDetailComponent = () => {
                             </div>
                             <div className="label-spec">
                                 <span className="mr-3">By {news?.authorName}</span>
-                                <span>{news?.articleCategory.name}</span>
+                                <span>{news?.articleCategory?.name || '-'}</span>
                             </div>
                             <div className="news-img">
                                 {
-                                    news?.fileUrl ? <img src={news.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
+                                    news?.fileUrl && (news?.fileUrl !== '-') ? <img src={news.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
                                 }
                             </div>
                             <div className="description my-5" dangerouslySetInnerHTML={{ __html: news?.description || '' }}></div>
@@ -91,10 +101,14 @@ export const NewsArticleDetailComponent = () => {
                                 </span>
                                 <div className="d-flex pt-3">
                                     <div className="sosmed-wrap pointer">
-                                        <img src="/images/icons/sosmed/active/wa.svg" className="img-fluid" alt="" srcSet="" />
+                                        <a href={`https://web.whatsapp.com/share?url=${hostname}`} target="_blank">
+                                            <img src="/images/icons/sosmed/active/wa.svg" className="img-fluid" alt="" srcSet="" />
+                                        </a>
                                     </div>
                                     <div className="sosmed-wrap pointer">
-                                        <img src="/images/icons/sosmed/active/fb.svg" className="img-fluid" alt="" srcSet="" />
+                                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${hostname}`} target="_blank" rel="noopener noreferrer">
+                                            <img src="/images/icons/sosmed/active/fb.svg" className="img-fluid" alt="" srcSet="" />
+                                        </a>
                                     </div>
                                     <div className="sosmed-wrap pointer">
                                         <img src="/images/icons/sosmed/active/tw.svg" className="img-fluid" alt="" srcSet="" />
@@ -113,7 +127,7 @@ export const NewsArticleDetailComponent = () => {
                                 </div>
                                 <div className="d-flex">
                                     <div className="author-img align-self-center mr-3">
-                                        <img className="imooge" src="/images/icons/people.svg" alt=""/>
+                                        <img className="imooge" src="/images/icons/people.svg" alt="" />
                                         {/* <div className="imooge"></div> */}
                                     </div>
                                     <div className="align-self-center name">
@@ -135,7 +149,7 @@ export const NewsArticleDetailComponent = () => {
                                                 <div className="news-wrapper h-100 pointer">
                                                     <div className="news-img sm">
                                                         {
-                                                            other?.fileUrl ? <img src={other.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
+                                                            other?.fileUrl && (other?.fileUrl !== '-') ? <img src={other.fileUrl} alt="" className="imooge" /> : <div className="imooge"></div>
                                                         }
                                                     </div>
                                                     <div className="category-name sm">

@@ -33,7 +33,7 @@
                     font-style: normal;
                     font-weight: bold;
                     font-size: 11px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #ffffff;
                     position: absolute;
                     bottom: 0;
@@ -280,7 +280,7 @@
                     font-style: normal;
                     font-weight: bold;
                     font-size: 16px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #0c3543;
                     overflow: hidden;
                     white-space: nowrap;
@@ -450,6 +450,7 @@
                 }
             }
             .wrapper-img-fundaraising {
+                cursor: pointer;
                 .title {
                     font-family: "Poppins";
                     font-style: normal;
@@ -458,7 +459,7 @@
                         font-size: 36px;
                     }
                     font-size: 20px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #ffffff;
                     position: absolute;
                     bottom: 0;
@@ -541,7 +542,7 @@
                 font-style: normal;
                 font-weight: bold;
                 font-size: 18px;
-                line-height: 110%;
+                line-height: 120%;
                 color: #ffffff;
                 position: absolute;
                 bottom: 0;
@@ -603,10 +604,11 @@
                     height: 100%;
                 }
                 .imooge {
+                    height: 100%;
                     border-top-right-radius: 15px;
                     border-top-left-radius: 15px;
                     width: 100%;
-                    background: #e9f3df;
+                    background: #12bfff;
                 }
             }
 
@@ -646,7 +648,7 @@
                     font-style: normal;
                     font-weight: bold;
                     font-size: 16px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #0c3543;
                     overflow: hidden;
                     white-space: nowrap;
@@ -686,7 +688,7 @@
             }
         }
         .news-footer {
-            border-bottom: 1px solid #56d1ff;
+            // border-bottom: 1px solid #56d1ff;
         }
     }
 

@@ -14,9 +14,19 @@
             "label": "Zakat",
             "link": "/zakat",
             "subMenu": []
+        },
+        {
+            "label": "Kontak",
+            "link": "/kontak",
+            "subMenu": []
         }
     ],
     "menus": [
+        {
+            "label": "Beranda",
+            "link": "/",
+            "subMenu": []
+        },
         {
             "label": "Donasi",
             "link": "/donasi",
@@ -35,11 +45,6 @@
         {
             "label": "Berita & Artikel",
             "link": "/news-article",
-            "subMenu": []
-        },
-        {
-            "label": "Kontak",
-            "link": "/kontak",
             "subMenu": []
         }
     ]

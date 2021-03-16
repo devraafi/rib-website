@@ -94,3 +94,11 @@
 .plus62 {
     color: #c4cbd1;
 }
+
+.field-required {
+    &::after {
+        content: "*";
+        color: #ff5151;
+        margin-left: 1px;
+    }
+}

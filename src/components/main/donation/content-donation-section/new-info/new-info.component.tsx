@@ -54,7 +54,7 @@ const NewInfoDonation = (props: { id: string }) => {
                         </div> */}
                         <div className="desc py-2">{data.caption}</div>
                         <div className="read-more py-2">
-                            <Link href={`/news-article/detail/?route=${data?.route}&title=${data?.title}`}>
+                            <Link href={`/news-article/detail/?route=${data?.route}`}>
                                 <button className="btn btn-dh-outline-2">
                                     Read More
                                 </button>

@@ -57,7 +57,7 @@
             font-style: normal;
             font-weight: bold;
             font-size: 16px;
-            line-height: 110%;
+            line-height: 120%;
             color: #31383f;
             &.lg {
                 font-size: 24px;
@@ -71,7 +71,7 @@
             color: #12bfff;
         }
         .caption {
-            max-height: 80px;
+            max-height: 120px;
             overflow-y: auto;
             &.sm {
                 min-height: 100px !important;

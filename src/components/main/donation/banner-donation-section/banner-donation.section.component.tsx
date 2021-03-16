@@ -7,7 +7,7 @@ const BannerDonationSection = (props: any) => {
     return (
         <div className="container-fluid banner-section">
             <div className="banner-img-wrapper">
-                {(data && data.fileUrl) ?
+                {(data && (data.fileUrl && data.fileUrl !== '-')) ?
                     <img src={data ? data.fileUrl : ''} alt="" className="imooge" srcSet="" />
                     : <div className="imooge"></div>
                 }

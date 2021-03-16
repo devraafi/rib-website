@@ -60,7 +60,7 @@ export const HomePage = () => {
             {/* <ZakatSection /> */}
             <DonationSection />
             <ProgramSection data={response ? response.program : []} />
-            <FundaraisingSection data={response ? response.program : []} />
+            <FundaraisingSection data={response ? response.programPriority : []} />
             {/* <UnnamedSection /> */}
             <FeatureSection />
             <NewsSectionComponent data={response ? response.news : []} />

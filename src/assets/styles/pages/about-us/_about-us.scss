@@ -1,5 +1,6 @@
 .about-us-page {
-    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
+    background-color: #ffffff;
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.25) 0%, rgba(221, 246, 255, 0) 100%);
     &::before {
     }
 
@@ -29,8 +30,19 @@
             font-style: normal;
             font-weight: bold;
             font-size: 22px;
-            line-height: 110%;
+            line-height: 120%;
             color: #31383f;
+            // border-bottom: 1px solid #56d1ff;
+        }
+
+        .brd-lg {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-bottom: 2px solid #0098d1;
+        }
+        .brd-md {
+            margin-bottom: 20px;
+            padding-top: 20px;
             border-bottom: 1px solid #56d1ff;
         }
 
@@ -42,6 +54,10 @@
             line-height: 150%;
             text-align: center;
             color: #0c3543;
+            &.visi {
+                font-weight: 600;
+                font-size: 18px;
+            }
             .bit {
                 font-size: 17px;
             }
@@ -52,7 +68,7 @@
         width: 100%;
         height: 500px;
         position: relative;
-        box-shadow: inset 0px -4px 20px rgba(138, 138, 138, 0.25), inset 0px 4px 15px rgba(89, 89, 89, 0.25);
+        // box-shadow: inset 0px -4px 20px rgba(138, 138, 138, 0.25), inset 0px 4px 15px rgba(89, 89, 89, 0.25);
         .card-connect {
             position: absolute;
             background: #ffffff;
@@ -70,7 +86,7 @@
                     font-style: normal;
                     font-weight: bold;
                     font-size: 18px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #151e0b;
                 }
 
@@ -152,53 +168,67 @@
                 font-style: normal;
                 font-weight: bold;
                 font-size: 20px;
-                line-height: 110%;
+                line-height: 120%;
                 color: #000000;
             }
         }
     }
 
     .our-team-aing {
+        background: #F4FBFD;
         .wrapper-section {
             padding: 1rem 0;
             .title {
-                border-bottom: 1px solid #56d1ff;
                 font-family: "Poppins";
                 font-style: normal;
                 font-weight: bold;
-                font-size: 24px;
+                font-size: 32px;
                 text-align: center;
-                color: #00aeef;
+                color: #00415a;
+                &.gj {
+                    font-weight: 500;
+                    font-size: 18px;
+                }
+            }
+            .brd-lg {
                 margin-bottom: 20px;
-                padding-bottom: 20px;
+                padding-top: 20px;
+                border-bottom: 2px solid #0098d1;
+            }
+            .brd-md {
+                margin-bottom: 20px;
+                padding-top: 20px;
+                border-bottom: 1px solid #56d1ff;
             }
             .card-team {
                 margin: auto;
-                border-radius: 10px;
+                border-radius: 22px;
                 position: relative;
-                width: 155px;
-                height: 230px;
+                width: 200px;
+                height: 235px;
                 .imooge {
-                    width: 155px;
-                    height: 230px;
-                    border-radius: 10px;
+                    background: #12bfff;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 22px;
                     position: absolute;
                     top: 0;
                     left: 0;
+                    object-fit: cover;
                     // background: linear-gradient(179.96deg, rgba(0, 186, 255, 0) 0.03%, #00435b 136.07%);
                 }
-                .name {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    color: #ffffff;
-                    font-weight: 600;
-                    font-size: 14px;
-                    font-family: "Poppins";
-                    padding: 10px;
-                    .position {
-                        font-size: 10px;
-                    }
+            }
+            .name {
+                width: 100%;
+                padding: 12px;
+                color: #31383f;
+                font-weight: 600;
+                font-size: 14px;
+                font-family: "Poppins";
+                text-align: center;
+                .position {
+                    color: #62717d;
+                    font-size: 10px;
                 }
             }
         }

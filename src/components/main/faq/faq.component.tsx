@@ -1,16 +1,16 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
 import React from 'react';
-import sk from './sk.json';
-const { description } = sk;
-const SkComponent = () => (
+import kb from './faq.json';
+const { description } = kb;
+const FaqComponent = () => (
     <MainComponent
-        title="Syarat & Ketentuan | Ruang Insan Berbagi"
+        title="Kebijakan & Privasi | Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="sk-page-dh"
     >
         <div className="container-lg sk-wrapper py-lg-5 py-4">
             <div className="title col-lg-5 m-auto text-center">
-                Syarat & Ketentuan
+                FAQ
             </div>
             <div className="py-3 col-lg-3 m-auto">
                 <div className="separatore"></div>
@@ -21,4 +21,4 @@ const SkComponent = () => (
     </MainComponent>
 )
 
-export default SkComponent;
+export default FaqComponent;

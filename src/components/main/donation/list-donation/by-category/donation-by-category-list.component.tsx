@@ -85,7 +85,7 @@ const DonationListByCategory = () => {
                                                 <div className="d-flex flex-column">
                                                     <div className="program-image">
                                                         {
-                                                            list.fileUrl ?
+                                                            list.fileUrl && (list.fileUrl !== '-') ?
                                                                 <img src={list.fileUrl} alt="" className='lazyload blur-up lazyloaded' />
                                                                 : <div className="imooge"></div>
                                                         }

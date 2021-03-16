@@ -10,10 +10,10 @@ body {
     font-family: "FiraSans", "Poppins";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .color-next {
-    color: #0083B3 !important;
+    color: #0083b3 !important;
 }
 .color-back {
     color: #a6b0b9 !important;
@@ -54,10 +54,17 @@ body {
 }
 
 .form-control {
-    border: 0.792752px solid #d4d4d4;
-    border-radius: 6.34202px;
-    padding: 25px 15px;
+    border: 1px solid #d4d4d4;
+    border-radius: 7px;
+    // padding: 25px 15px;
     font-family: "Poppins";
+    &::after {
+        content: "*";
+        color: #e32a58;
+    }
+    &.sc {
+        height: calc(1.5em + 0.95rem + 2px);
+    }
     &::placeholder {
         color: #bdbdbd;
     }
@@ -67,6 +74,13 @@ body {
         font-weight: 600;
         &::placeholder {
             color: #a6b0b9;
+        }
+    }
+    &.required-bro {
+        position: relative;
+        ::after {
+            content: "*";
+            color: #e32a58;
         }
     }
 }
@@ -84,7 +98,7 @@ input[type="number"] {
 }
 
 .dh-theme {
-    color: #99E3FF !important;
+    color: #99e3ff !important;
 }
 
 .rounded-16 {
@@ -114,7 +128,7 @@ input[type="number"] {
     z-index: 1;
     width: 42px;
     height: 42px;
-    background: #DDF6FF;
+    background: #ddf6ff;
     border-radius: 12px;
     display: flex;
     justify-content: center;
@@ -130,7 +144,7 @@ input[type="number"] {
         right: 50px !important;
         left: auto !important;
     }
-    
+
     &.prev-about {
         bottom: 0 !important;
         top: auto !important;

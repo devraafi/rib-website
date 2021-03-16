@@ -1,39 +1,42 @@
 #sk-page-dh {
-    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.25) 0%, rgba(221, 246, 255, 0) 100%);
     .sk-wrapper {
         .title {
             font-weight: bold;
             font-size: 32px;
-            line-height: 110%;
+            line-height: 120%;
             color: #0098d1;
+            font-family: "Poppins" !important;
+
         }
         .separatore {
             border-bottom: 1px solid #12bfff;
         }
         .content {
-            font-family: "FiraSans" !important;
-            ol {
-                li {
-                    font-size: 14px;
-                    line-height: 25px;
-                    color: #414b54;
-                }
+            strong {
+                font-weight: bold !important;
             }
-            ul {
-                li {
-                    &::marker {
-                        color: #0098d1;
-                        background: #0098d1;
-                    }
-                    font-size: 15px;
+            p,
+            label,
+            span {
+                .span {
+                    background: transparent !important;
+                    font-family: "Poppins" !important;
                 }
-            }
-            .subtitle {
+                background: transparent !important;
                 font-family: "Poppins" !important;
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 28px;
-                color: #00415a;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                .span {
+                    font-family: "Poppins" !important;
+                    background: transparent !important;
+                }
+                font-family: "Poppins" !important;
+                background: transparent !important;
             }
         }
     }

@@ -1,14 +1,14 @@
 .contact-us-page {
-    background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
+    // background: linear-gradient(180deg, rgba(221, 246, 255, 0.53) 0%, rgba(221, 246, 255, 0) 100%);
 
     .header-contact-us {
         .title-contact-us {
             font-family: "Poppins";
             font-style: normal;
             font-weight: bold;
-            font-size: 42px;
+            font-size: 32px;
             line-height: 120%;
-            color: #00aeef;
+            color: #00415a;
         }
 
         .description-contact-us {
@@ -25,7 +25,7 @@
         width: 100%;
         height: 500px;
         position: relative;
-        box-shadow: inset 0px -4px 20px rgba(138, 138, 138, 0.25), inset 0px 4px 15px rgba(89, 89, 89, 0.25);
+        // box-shadow: inset 0px -4px 20px rgba(138, 138, 138, 0.25), inset 0px 4px 15px rgba(89, 89, 89, 0.25);
         .card-connect {
             position: absolute;
             background: #ffffff;
@@ -43,7 +43,7 @@
                     font-style: normal;
                     font-weight: bold;
                     font-size: 18px;
-                    line-height: 110%;
+                    line-height: 120%;
                     color: #151e0b;
                 }
 
@@ -84,6 +84,11 @@
     }
 
     .form-contact-us {
+        box-shadow: 0px 4.78369px 9.56738px -4.78369px rgb(24 39 75 / 12%),
+            0px 6.37826px 19.1348px -3.18913px rgb(24 39 75 / 8%);
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px 50px;
         .floating-input-dh {
             .label-contact-us {
                 font-family: "Poppins";

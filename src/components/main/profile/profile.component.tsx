@@ -240,7 +240,7 @@ export const ProfileComponent = () => {
                                                                 <div className="d-flex flex-column">
                                                                     <div className="program-image">
                                                                         {
-                                                                            list.fileUrl ?
+                                                                            list.fileUrl && (list.fileUrl !== '') ?
                                                                                 <img src={list.fileUrl || ''} alt="" className='lazyload blur-up lazyloaded imooge' />
                                                                                 : <div className="imooge"></div>
                                                                         }

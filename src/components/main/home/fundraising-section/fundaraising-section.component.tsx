@@ -27,7 +27,7 @@ export const FundaraisingSection = (props: { data: any }) => {
                             <div className="col-12 p-0" key={i}>
                                 <div className="wrapper-img-fundaraising">
                                     {
-                                        list.fileUrl ?
+                                        list.fileUrl && (list.fileUrl !== '-') ?
                                             <img src={list.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
                                     }

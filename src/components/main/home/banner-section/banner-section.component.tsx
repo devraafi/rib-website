@@ -59,7 +59,7 @@ export const BannerSection = (props: {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
                                     <div className="banner-item animate__animated animate__bounceIn">
-                                        {li.fileUrl ?
+                                        {li.fileUrl && (li.fileUrl !== '-') ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
                                         }
@@ -77,7 +77,7 @@ export const BannerSection = (props: {
                             list && _.reverse(list).map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
                                     <div className="banner-item animate__animated animate__bounceIn">
-                                        {li.fileUrl ?
+                                        {li.fileUrl && (list.fileUrl !== '-') ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
                                         }
@@ -95,7 +95,7 @@ export const BannerSection = (props: {
                             list && list.map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
                                     <div className="banner-item animate__animated animate__bounceIn">
-                                        {li.fileUrl ?
+                                        {li.fileUrl && (li.fileUrl !== '-') ?
                                             <img src={li.fileUrl || ''} alt="" className="lazyload blur-up lazyloaded" />
                                             : <div className="imooge"></div>
                                         }
@@ -114,7 +114,7 @@ export const BannerSection = (props: {
     return <>
         { threeSlider()}
         < div className="container banner-section py-5 px-4" >
-            <div className="row justify-content-center justify-content-lg-start col-lg-7 px-0">
+            <div className="row justify-content-center justify-content-lg-start col-lg-7 px-0 py-lg-5 my-lg-3">
                 <div className="text-date col-12 text-center text-lg-left">
                     {moment(new Date).format('MMMM YYYY')}
                 </div>

@@ -156,7 +156,15 @@ export default class FooterComponent extends React.Component {
                                         Copyright © 2020. Ruang Insan Berbagi. All rights reserved.
                                     </div>
                                     <div className="col-6 text-copyright text-right priv">
-                                        Syarat & Ketentuan <span className="ml-3">Kebijakan Privasi</span>
+                                        <Link href="/syarat-dan-ketentuan">
+                                            <a>Syarat & Ketentuan</a>
+                                        </Link>
+                                        <Link href="/kebijakan-privasi">
+                                            <a className="ml-3">Kebijakan Privasi</a>
+                                        </Link>
+                                        <Link href="/faq">
+                                            <a className="ml-3">FAQ</a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,7 @@ const SignUpComponent = (props: {
                                 className="m-0"
                             >
                                 <Input
-                                size="large"
+                                    size="large"
                                     placeholder="Nomor Telepon"
                                     className="input-account"
                                     type="tel"
@@ -80,7 +80,7 @@ const SignUpComponent = (props: {
                                 }
                             >
                                 <Input
-                                size="large"
+                                    size="large"
                                     placeholder="Alamat E-mail"
                                     className="input-account"
                                     type="email"
@@ -99,15 +99,15 @@ const SignUpComponent = (props: {
                                 }
                             >
                                 <Input.Password
-                                size="large"
+                                    size="large"
                                     placeholder="Kata sandi"
                                     className="input-account"
                                     type="password"
-                                    // iconRender={visible =>
-                                    //     visible ?
-                                    //         <EyeIcon />
-                                    //         : <EyeIcon />
-                                    // }
+                                // iconRender={visible =>
+                                //     visible ?
+                                //         <EyeIcon />
+                                //         : <EyeIcon />
+                                // }
                                 />
                             </Form.Item>
                         </div>
@@ -120,19 +120,15 @@ const SignUpComponent = (props: {
                                     <Checkbox name="agree" id="agree" className="checkbox-dh text mr-1" />
                                     <label htmlFor="agree" className="text">
                                         Saya menyetujui
-                                        <Link href="#">
-                                            <a href="" className="text link ml-2">
-                                                Syarat Penggunaan
+                                            <a className="text link ml-2" href="/syarat-dan-ketentuan" target="_blank">
+                                            Syarat Penggunaan
                                             </a>
-                                        </Link>
                                         <span className="mx-2">
                                             dan
                                         </span>
-                                        <Link href="#">
-                                            <a href="" className="text link">
-                                                Kebijakan Privasi
-                                            </a>
-                                        </Link>
+                                        <a className="text link" href="/kebijakan-privasi" target="_blank">
+                                            Kebijakan Privasi
+                                        </a>
                                     </label>
                                 </div>
                             </Form.Item>

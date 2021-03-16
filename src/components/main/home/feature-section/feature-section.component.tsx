@@ -175,7 +175,7 @@ class FeatureSection extends React.Component<any, any> {
         return (
             <div className="wrapper-img p-2 row" id="wrapper-img-ft" data-aos="zoom-in"
                 onClick={() => { this.setState((state: any) => ({ pauseTransition: !state.pauseTransition })) }}>
-                <div className="feature-img align-self-start col-lg-auto col-12">
+                <div className="feature-img align-self-start col-12">
                     <img
                         key={this.state.currentImageSrc}
                         className="p-3 img lazyload blur-up lazyloaded"
@@ -183,11 +183,11 @@ class FeatureSection extends React.Component<any, any> {
                         alt={this.state.currentImageAlt}
                     />
                 </div>
-                <div className="desc align-self-center align-self-lg-start col-lg-auto col-12">
+                {/* <div className="desc align-self-center align-self-lg-start col-lg-auto col-12">
                     <div className="p-3">
                         {this.state.currentDesc}
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }
