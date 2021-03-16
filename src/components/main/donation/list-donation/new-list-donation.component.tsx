@@ -7,10 +7,11 @@ import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { Skeleton } from 'antd';
+import { Input, Skeleton } from 'antd';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { RequestService } from 'services/request.services';
 import { NotifService } from 'services/feedback/notif.service';
+import { useRouter } from 'next/router';
 
 const filters = [
     'Bandung', 'Jakarta', 'Kesehatan', 'Pendidikan', 'Lingkungan', 'Umat', 'More Filters'
@@ -19,15 +20,19 @@ const notif: NotifService = new NotifService;
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
-const DonationList = () => {
+const NewDonationList = () => {
     const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const [response, setResponse] = useState<any>({});
+    const [categories, setCategories] = useState<any[]>();
+    const [category, setCategory] = useState<any>();
     const [skeleton, setSkeleton] = useState('');
     const [loading, setLoading] = useState(false);
     const [params, setParams] = useState({
         programCategoryId: '',
         keyword: ''
-    })
+    });
+    const router = useRouter();
+    const { query }: any = router;
     function getItem() {
         const local = localStorage;
         const userInfo = local.getItem('userInfo');
@@ -60,7 +65,6 @@ const DonationList = () => {
                 type: 'error',
                 title: 'Error',
                 description: 'Harap Login terlebih dahulu',
-                // useService: !_.isUndefined(params.useService) ? params.useService : true
             });
         }
     }
@@ -76,45 +80,115 @@ const DonationList = () => {
             }
         })
     }
+
+    function loadCategory() {
+        setResponse(null);
+        const obs = donationRestService.loadCategory();
+        handleRequest({
+            obs,
+            onDone: (res) => res.data && setCategories(res.data)
+        });
+    }
+
     useEffect(() => {
-        loadDonation()
-    }, []);
+        loadDonation();
+        if (!params.programCategoryId) {
+            loadCategory();
+        } else {
+            const category = _.find(categories, { '_id': params.programCategoryId });
+            setCategory(category);
+        }
+    }, [params.programCategoryId])
+
+    useEffect(() => {
+        if (query && query.category) {
+            setParams({
+                ...params,
+                programCategoryId: query.category
+            })
+        } else {
+            setParams({
+                ...params,
+                programCategoryId: ''
+            })
+        }
+    }, [query]);
     return <MainComponent
         title="Donasi List Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="donasi-page-dh"
     >
-        <div className="container-fluid donasi-list-section p-0">
-            <div className="bg-wrapper">
-                <img src="/images/backgrounds/islamic.svg" alt="" className="islamic-bg" />
+        <div className="container-fluid donasi-list-section new p-0">
+            <div className="new-img-wrapper container position-relative">
+                <img src="/images/backgrounds/donation-list.svg" className="img-fluid" alt="" />
+                <div className="new-search col-lg-7 mx-auto">
+                    <Input onChange={(e) => setParams({
+                        ...params,
+                        keyword: e.target.value
+                    })} onPressEnter={() => loadDonation()} className="input-donation-list" placeholder="Cari yang ingin kamu bantu" suffix={
+                        <div className="pointer" onClick={() => loadDonation()}>
+                            <img src="/images/icons/search-suff.svg" className="img-fluid" alt="" srcSet="" />
+                        </div>
+                    } />
+                </div>
             </div>
-            <div className="conatiner-fluid container-list">
-                <div className="col-7 col-lg-7 col-md-6 col-12 m-auto py-4">
-                    <span className="p-input-icon-right w-100">
-                        <i className="pi pi pi-search dh-theme pr-2" />
-                        <InputText className="input-dh-search w-100" placeholder="Cari yang ingin kamu bantu" />
-                    </span>
+            {
+                (params.programCategoryId && category) ?
+                    <div className="new-title py-4">
+                        Program {category?.name}
+                    </div>
+                    :
+                    <>
+                        <div className="new-title py-4">
+                            Get involved in making the dream a reality
+                        </div>
+                        <div className="container container-list px-0">
+                            <div className="py-2 new-subtitle">
+                                Kategori Donasi
                 </div>
-                <div className="d-flex flex-column filter">
-                    <div className="header-small">
-                        {response.total || 0} Program Donasi
+                            <div className="row row-cols-5">
+                                {
+                                    categories && categories?.map((ctg) => (
+                                        <Link href={`/donasi?category=${ctg._id}`}>
+                                            <div className="col-lg-auto p-2 pointer">
+                                                <div className="img-categori">
+                                                    {
+                                                        ctg.fileUrl ? <img src={ctg.fileUrl} alt="" srcSet="" className="imooge" /> : <div className="imooge">
+                                                            {/* <div className="tit">
+                                                {ctg?.name[0]}
+                                            </div> */}
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div className="new-subtitle sm text-center">
+                                                    {ctg?.name}
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </>
+            }
+            <div className="container container-list px-0">
+                {
+                    (params.programCategoryId && category) &&
+                    <div className="py-2 new-subtitle">
+                        Program Ruang Insan Berbagi
                 </div>
-                    <div className="header py-3">
-                        Bantu individu, kelompok dan lingkungan sekitar yang membutuhkan
-                </div>
-                </div>
+                }
                 <div className="list-wrapper">
                     <div className="row">
                         {
                             loading ?
                                 fakeLoading.map((li: any, i: number) => (
-                                    <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
+                                    <div className="col-lg-4 col-sm-6 col-12 col-md-4 py-2" key={i}>
                                         <Skeleton.Input active className="w-100 card-program" />
                                     </div>
-                                ))
-                                :
+                                )) :
                                 (response && response.data) ? response.data.map((list: any, i: number) => (
-                                    <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
+                                    <div className="col-lg-4 col-sm-6 col-12 col-md-4 py-2" key={i}>
                                         {
                                             skeleton == list._id ?
                                                 <Skeleton.Input active className="w-100 card-program h-100" /> :
@@ -135,16 +209,6 @@ const DonationList = () => {
 
                                                                 <div className="profile-info py-3 px-2">
                                                                     <div className="d-flex flex-row justify-content-between">
-                                                                        {/* <div className="d-flex flex-row">
-                                                                <div className="profile-img">
-                                                                    {
-                                                                        <img src={list.profileInfo ? list.profileInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
-                                                                    }
-                                                                </div>
-                                                                <div className="ml-3 profile-name">
-                                                                    {list.profileInfo ? list.profileInfo.name : 'Anonim'}
-                                                                </div>
-                                                            </div> */}
                                                                         <div className="is-certified">
                                                                             {
                                                                                 list.isPartnerProgram && (
@@ -176,7 +240,7 @@ const DonationList = () => {
                                                                             </div>
                                                                             <div className="donasi">
                                                                                 Donasi
-                                                                </div>
+                                                                        </div>
                                                                         </div>
                                                                         <div className="d-flex flex-row justify-content-arround">
                                                                             <div className="cart">
@@ -187,7 +251,7 @@ const DonationList = () => {
                                                                             </div>
                                                                             <div className="days">
                                                                                 Hari
-                                                        </div>
+                                                                        </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -204,7 +268,7 @@ const DonationList = () => {
                                     :
                                     <div className="p-3 text-center">
                                         Tidak Ada Data
-                                </div>
+                                    </div>
                         }
                     </div>
                 </div>
@@ -213,4 +277,4 @@ const DonationList = () => {
     </MainComponent>
 }
 
-export default DonationList;
+export default NewDonationList;

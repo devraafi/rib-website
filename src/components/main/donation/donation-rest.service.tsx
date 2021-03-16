@@ -26,8 +26,10 @@ export class DonationRestServices {
         return this.request.post(`transaction/create/program/midtrans-snap`, payload, { params });
     }
 
-    loadProgram() {
-        return this.request.get(`program`);
+    loadProgram(params: any) {
+        return this.request.get(`program`, {
+            params
+        });
     }
     loadProgramById(id: any) {
         return this.request.get(`program/${id}`);
@@ -49,6 +51,10 @@ export class DonationRestServices {
 
     onBookMarked(id: string) {
         return this.request.post(`program/${id}/bookmark`);
+    }
+
+    loadCategory() {
+        return this.request.get(`program-category`);
     }
 
 }
