@@ -17,7 +17,7 @@ const danation = {
     dayAmount: 65
 };
 
-const priceList = [20000, 50000, 100000, 250000, 500000, 1000000];
+const priceList = [10000, 20000, 50000, 100000, 200000, 500000];
 const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
     const { data, isInfaq } = props;
