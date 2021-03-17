@@ -25,6 +25,8 @@ const MainDonation = (props: any) => {
     const [activePkg, setActivePkg] = useState(0);
     const [qty, setQty] = useState(1);
     const [isPackage, setIsPackage] = useState(false);
+    const baseUrl: any = process.env.baseUrl;
+
     function handleClick() {
         donationService.setPayload(donateAmount, isInfaq);
         props.onDone ? props.onDone(donateAmount, isInfaq) : '';
@@ -56,6 +58,24 @@ const MainDonation = (props: any) => {
         setQty(val);
         const newdonateAmount = activePkg * val;
         setDonateAmount(newdonateAmount)
+    }
+
+    function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
+        let url;
+
+        switch (target) {
+            case 'whatsapp':
+                url = "https://wa.me/?text="+ data.name + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'twitter':
+                url = "https://twitter.com/intent/tweet?text=" + data.name + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'facebook':
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=Kuring kurang artos";
+                break;
+        }
+
+        window.open(url, "Popup", "toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")
     }
 
     useEffect(() => {
@@ -245,19 +265,19 @@ const MainDonation = (props: any) => {
                         <div className="text-center py-2">Sebarkan Program Melalui</div>
                         <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
                             <div className="d-flex">
-                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                <a onClick={() => shareCampaign(data, 'whatsapp')}>
+                                    <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                </a>
                             </div>
                             <div className="d-flex">
-                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                <a onClick={() => shareCampaign(data, 'facebook')}>
+                                    <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                </a>
                             </div>
                             <div className="d-flex">
-                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                            </div>
-                            <div className="d-flex">
-                                <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
-                            </div>
-                            <div className="d-flex">
-                                <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
+                                <a onClick={() => shareCampaign(data, 'twitter')}>
+                                    <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,7 @@ export const NewsArticleDetailComponent = () => {
         take: 4,
         skip: 0
     });
+    const baseUrl: any = process.env.baseUrl;
 
     function loadNews() {
         const obs = newsRestService.loadNews(params)
@@ -47,6 +48,7 @@ export const NewsArticleDetailComponent = () => {
             onDone: setNews
         })
     }
+
     function convertUtctoLocalTimezone(dateUtc: any) {
         const offset = (new Date().getTimezoneOffset() * -1);
         dateUtc.setMinutes(dateUtc.getMinutes() + offset);
@@ -57,6 +59,24 @@ export const NewsArticleDetailComponent = () => {
         const aWeekOld = moment().clone().subtract(8, 'days').startOf('day');
 
         return moment(date).isAfter(aWeekOld);
+    }
+
+    function shareNews(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
+        let url;
+
+        switch (target) {
+            case 'whatsapp':
+                url = "https://wa.me/?text=" + data.title + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'twitter':
+                url = "https://twitter.com/intent/tweet?text=" + data.title + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'facebook':
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=Kuring kurang artos";
+                break;
+        }
+
+        window.open(url, "Popup", "toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")
     }
 
     useEffect(() => {
@@ -100,24 +120,20 @@ export const NewsArticleDetailComponent = () => {
                                     Share
                                 </span>
                                 <div className="d-flex pt-3">
-                                    <div className="sosmed-wrap pointer">
-                                        <a href={`https://web.whatsapp.com/share?url=${hostname}`} target="_blank">
-                                            <img src="/images/icons/sosmed/active/wa.svg" className="img-fluid" alt="" srcSet="" />
+                                    <div className="d-flex sosmed-wrap">
+                                        <a onClick={() => shareNews(news, 'whatsapp')}>
+                                            <img src="/images/icons/sosmed/active/wa.svg" alt="" className="img-fluid" />
                                         </a>
                                     </div>
-                                    <div className="sosmed-wrap pointer">
-                                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${hostname}`} target="_blank" rel="noopener noreferrer">
-                                            <img src="/images/icons/sosmed/active/fb.svg" className="img-fluid" alt="" srcSet="" />
+                                    <div className="d-flex sosmed-wrap">
+                                        <a onClick={() => shareNews(news, 'facebook')}>
+                                            <img src="/images/icons/sosmed/active/fb.svg" alt="" className="img-fluid" />
                                         </a>
                                     </div>
-                                    <div className="sosmed-wrap pointer">
-                                        <img src="/images/icons/sosmed/active/tw.svg" className="img-fluid" alt="" srcSet="" />
-                                    </div>
-                                    <div className="sosmed-wrap pointer">
-                                        <img src="/images/icons/sosmed/active/wf.svg" className="img-fluid" alt="" srcSet="" />
-                                    </div>
-                                    <div className="sosmed-wrap pointer">
-                                        <img src="/images/icons/sosmed/active/mail.svg" className="img-fluid" alt="" srcSet="" />
+                                    <div className="d-flex sosmed-wrap">
+                                        <a onClick={() => shareNews(news, 'twitter')}>
+                                            <img src="/images/icons/sosmed/active/tw.svg" alt="" className="img-fluid" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
