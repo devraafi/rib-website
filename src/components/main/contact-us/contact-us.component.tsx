@@ -18,7 +18,7 @@ const ContactUs = () => {
             const text = `Nama: ${form.name} \r\nEmail: ${form.email} \r\n${form.notes}`;
 
             window.open(
-                `https://api.whatsapp.com/send?phone=+6281212272444&text=${encodeURIComponent(text)}`,
+                `https://api.whatsapp.com/send?phone=+6282126855400&text=${encodeURIComponent(text)}`,
                 '_blank'
             )
 
@@ -111,7 +111,7 @@ const MapsSection = () => {
     const [zoom, setZoom] = useState(13);
 
     return <GoogleMapReact
-        bootstrapURLKeys={{ key: '' }}
+        bootstrapURLKeys={{ key: 'AIzaSyC2eaRA55-MdPttUMK0WckhxVlMVrNDPWQ' }}
         defaultCenter={center}
         defaultZoom={zoom}
     >
