@@ -12,10 +12,12 @@ import { Image, Modal } from 'antd';
 import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
 import { AuthenticationService } from "services/auth/aut.service";
 import { CommonServices } from "services/common/common.service";
+import { NotifService } from "services/feedback/notif.service";
 
 const auth: AuthenticationService = new AuthenticationService;
 const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
 const { getPaymentImageSrc } = new CommonServices;
+const notif: NotifService = new NotifService;
 
 const PaymentMethodStep = (props: {
     step: number,
@@ -55,7 +57,20 @@ const PaymentMethodStep = (props: {
         }
     }
 
+    function validForm() {
+        if (!customerInfo.fullName || !customerInfo.email) {
+            notif.show({
+                type: 'warning',
+                title: 'Peringatan',
+                description: 'Harap melengkapi data diri',
+            });
+        } else {
+            scrollTo(2, 'next'); onStepChange(2)
+        }
+    }
+
     const onStepChange = (to: number) => {
+
         props.stepChanges ? props.stepChanges(to) : null;
     }
 
@@ -69,7 +84,7 @@ const PaymentMethodStep = (props: {
     }
 
     useEffect(() => {
-        props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null
+        props.onChangeCustomerInfo ? props.onChangeCustomerInfo(customerInfo) : null;
     }, [customerInfo])
 
     useEffect(() => {
@@ -130,17 +145,6 @@ const PaymentMethodStep = (props: {
                         </div>
                         <div className="form-group">
                             <input
-                                type="tel"
-                                // disabled={customerInfo.showAsAnonymous}
-                                placeholder="Nomor ponsel"
-                                name="" id=""
-                                className="form-control sc"
-                                value={customerInfo.phone}
-                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phone: e.target.value }) }}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input
                                 type="email"
                                 // disabled={customerInfo.showAsAnonymous}
                                 placeholder="Email (Wajib Diisi)"
@@ -148,6 +152,17 @@ const PaymentMethodStep = (props: {
                                 className={`form-control sc ${customerInfo.email && 'required-bro'}`}
                                 value={customerInfo.email}
                                 onChange={(e: any) => { setCustomerInfo({ ...customerInfo, email: e.target.value }) }}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="tel"
+                                // disabled={customerInfo.showAsAnonymous}
+                                placeholder="Nomor ponsel"
+                                name="" id=""
+                                className="form-control sc"
+                                value={customerInfo.phone}
+                                onChange={(e: any) => { setCustomerInfo({ ...customerInfo, phone: e.target.value }) }}
                             />
                         </div>
                         <div className="form-group">
@@ -181,7 +196,11 @@ const PaymentMethodStep = (props: {
 
                 <div className="the-card-footer d-flex justify-content-between flex-row">
                     <button className="btn color-back" onClick={() => scrollTo(0, 'back')} type="button">Kembali</button>
-                    <button disabled={customerInfo.phone || customerInfo.email ? false : true} className="btn btn-dh-basic color-next" onClick={() => { scrollTo(2, 'next'); onStepChange(2) }} type="submit">
+                    <button
+                        // disabled={customerInfo.phone || customerInfo.email ? false : true} 
+                        className="btn btn-dh-basic color-next" onClick={() => {
+                            validForm()
+                        }} type="submit">
                         Selanjutnya
                     <span className="ml-2">
                             <img src="/images/icons/down.svg" alt="" />
@@ -209,7 +228,9 @@ const PaymentMethodStep = (props: {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                <img className="img-fluid" src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                                <img style={{
+                                                    maxWidth: '80%'
+                                                }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
                                             </div>
                                         </div>
                                     )

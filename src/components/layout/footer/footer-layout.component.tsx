@@ -33,7 +33,7 @@ export default class FooterComponent extends React.Component {
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi. <br />
+                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi. 
                                         Hadirnya kami memberikan harapan agar kepercayaan masyarakat dapat bertahan untuk terus berbuat baik dan mampu memberikan pengaruh positif kebaikan sosial bagi yang lainnya.
                                     </div>
                                     <div className="col-12 col-md py-2">

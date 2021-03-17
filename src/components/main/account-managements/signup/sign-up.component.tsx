@@ -2,10 +2,11 @@ import { EyeIcon } from '@Components/icons/icons';
 import { Checkbox, Form, Input } from 'antd';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 const SignUpComponent = (props: {
     onSignUp?: (val: any) => void;
 }) => {
+    const [isAggree, setIsAgree] = useState(false);
     function onFinish(values: any) {
         props.onSignUp ? props.onSignUp(values) : null
     }
@@ -117,7 +118,7 @@ const SignUpComponent = (props: {
                                 className="m-0"
                             >
                                 <div className="d-flex">
-                                    <Checkbox name="agree" id="agree" className="checkbox-dh text mr-1" />
+                                    <Checkbox checked={isAggree} onChange={(e) => setIsAgree(e.target.checked)} name="agree" id="agree" className="checkbox-dh text mr-1" />
                                     <label htmlFor="agree" className="text">
                                         Saya menyetujui
                                             <a className="text link ml-2" href="/syarat-dan-ketentuan" target="_blank">
@@ -134,7 +135,7 @@ const SignUpComponent = (props: {
                             </Form.Item>
                         </div>
                         <div className="col-12 p-2">
-                            <button type="submit" className="btn btn-dh-primary btn-block">Buat Akun</button>
+                            <button disabled={!isAggree} type="submit" className="btn btn-dh-primary btn-block">Buat Akun</button>
                         </div>
                     </div>
                 </Form>
@@ -142,7 +143,7 @@ const SignUpComponent = (props: {
             <div className="text text-center">
                 Sudah memiliki akun?
                 <Link href="/login">
-                    <a className="text link mr-2">
+                    <a className="text link ml-2">
                         Masuk
                     </a>
                 </Link>

@@ -4,7 +4,7 @@ import kb from './faq.json';
 const { description } = kb;
 const FaqComponent = () => (
     <MainComponent
-        title="Kebijakan & Privasi | Ruang Insan Berbagi"
+        title="FAQ | Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="sk-page-dh"
     >

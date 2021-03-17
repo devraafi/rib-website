@@ -108,12 +108,30 @@
                 }
 
                 .desc {
-                    font-family: "FiraSans";
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 13px;
-                    line-height: 150%;
-                    color: #414b54;
+                    margin: 1rem 0;
+                    img {
+                        max-width: 95%;
+                        margin: auto;
+                        border-radius: 25px;
+                    }
+                    color: #31383f;
+                    strong {
+                        font-family: "FiraSans" !important;
+                    }
+                    p {
+                        font-family: "FiraSans" !important;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 25px;
+                    }
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5 {
+                        font-family: "Poppins" !important;
+                    }
                 }
             }
         }

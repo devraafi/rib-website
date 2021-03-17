@@ -34,7 +34,7 @@ const NewInfoDonation = (props: { id: string }) => {
 
     useEffect(() => {
         console.log(props);
-        
+
         (props.id) && loadNews(props.id);
     }, [props])
 
@@ -52,14 +52,14 @@ const NewInfoDonation = (props: { id: string }) => {
                                     <div className="imooge"></div>
                             }
                         </div> */}
-                        <div className="desc py-2">{data.caption}</div>
-                        <div className="read-more py-2">
+                        <div className="desc" dangerouslySetInnerHTML={{ __html: data?.description || '' }}></div>
+                        {/* <div className="read-more py-2">
                             <Link href={`/news-article/detail/?route=${data?.route}`}>
                                 <button className="btn btn-dh-outline-2">
                                     Read More
                                 </button>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 )
             }) : <div className="p-2 text-center">Tidak Ada Data</div>
