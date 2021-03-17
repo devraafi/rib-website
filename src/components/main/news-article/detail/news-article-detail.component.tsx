@@ -92,7 +92,7 @@ export const NewsArticleDetailComponent = () => {
     return (
         <MainComponent
             title={`Berita & Artikel | ${news?.title || '-'}`}
-            description={`${news?.title}`}
+            description={`${news?.title || 'Berita & Artikel'}`}
             pageId="news-article-page-dh"
         >
             <Spin spinning={!news} indicator={<Loading />}>
