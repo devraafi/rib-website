@@ -54,7 +54,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         <div className="container">
             <div className={"main-login-register " + (props.className || '')}>
                 <Spin spinning={loading} indicator={<Loading />} >
-                    <div className="page-wrapper">
+                    <div className={`page-wrapper ${props.page || ''}`}>
                         {
                             props.page === 'login' ? <LoginComponent onLogin={onLogin} />
                                 : <SignUpComponent onSignUp={onSignUp} />

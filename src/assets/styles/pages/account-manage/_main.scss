@@ -8,6 +8,9 @@
         .page-wrapper {
             @media (min-width: 992px) {
                 max-width: 95%;
+                &.login {
+                    min-height: 520px;
+                }
                 min-height: 630px;
                 height: auto;
             }

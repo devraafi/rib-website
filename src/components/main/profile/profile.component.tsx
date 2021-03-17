@@ -93,6 +93,21 @@ export const ProfileComponent = () => {
         })
     }
 
+    function updateProfile() {
+        setLoading(true);
+        const obs = profileRest.updateProfile(formValue);
+
+        handleRequest({
+            obs,
+            onError: () => setLoading(false),
+            onDone: (res: IProfile) => {
+                setLoading(false);
+                setFormValue(res);
+                setisUpdate(!isUpdate);
+            }
+        })
+    }
+
     useEffect(() => {
         loadProfile()
     }, [])
@@ -113,14 +128,14 @@ export const ProfileComponent = () => {
                                     <img src="/images/icons/people.svg" alt="" />
                                 </div>
                                 <div className="name mr-4 pr-4 border-right align-self-center">
-                                    {profile?.fullName}
+                                    {formValue?.fullName}
                                 </div>
                                 <div className="info align-self-center">
                                     <div className="phone">
-                                        {profile?.phoneNumber}
+                                        {formValue?.phoneNumber}
                                     </div>
                                     <div className="email">
-                                        {profile?.email}
+                                        {formValue?.email}
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +181,7 @@ export const ProfileComponent = () => {
                             </div>
                             <div className="col-lg-3">
                                 <div className="pt-3">
-                                    <button className="btn btn-dh-edit" onClick={() => setisUpdate(!isUpdate)}>
+                                    <button className="btn btn-dh-edit" onClick={() => updateProfile()}>
                                         Simpan
                                 </button>
                                 </div>
@@ -187,42 +202,50 @@ export const ProfileComponent = () => {
                             </button>
                         </div>
                         {
-                            page === 'transaction' &&
-                            <div className="transaction-info">
-                                <div className="total-donasi">
-                                    <p>Total Donasi</p>
-                                    <div className="d-flex my-2">
-                                        <div className="rp mr-2">Rp </div>
-                                        <div className="value">
-                                            {profileTransaction?.totalAmount && (profileTransaction?.totalAmount).toLocaleString()}
-                                        </div>
-                                    </div>
+                            page === 'transaction' && (
+
+                                <div className="transaction-info">
+                                    {
+                                        profileTransaction ? <>
+                                            <div className="total-donasi">
+                                                <p>Total Donasi</p>
+                                                <div className="d-flex my-2">
+                                                    <div className="rp mr-2">Rp </div>
+                                                    <div className="value">
+                                                        {profileTransaction?.totalAmount && (profileTransaction?.totalAmount).toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="table-profile-transaction  table-responsive">
+                                                <table className="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Program</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Jumlah</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {
+                                                            profileTransaction?.items && profileTransaction.items.map((item, i) => (
+                                                                <tr>
+                                                                    <td>{i + 1}</td>
+                                                                    <td>{item.name}</td>
+                                                                    <td>{item.transactionDate && moment(item.transactionDate).format('DD MMM YYYY')}</td>
+                                                                    <td>Rp {item.amount && (item.amount).toLocaleString()}</td>
+                                                                </tr>
+                                                            ))
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </> :
+
+                                            <div className="p-3 text-center">Tidak Ada Data</div>
+                                    }
                                 </div>
-                                <div className="table-profile-transaction  table-responsive">
-                                    <table className="table">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Program</th>
-                                                <th>Tanggal</th>
-                                                <th>Jumlah</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                profileTransaction?.items && profileTransaction.items.map((item, i) => (
-                                                    <tr>
-                                                        <td>{i + 1}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.transactionDate && moment(item.transactionDate).format('DD MMM YYYY')}</td>
-                                                        <td>Rp {item.amount && (item.amount).toLocaleString()}</td>
-                                                    </tr>
-                                                ))
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            )
                         }
                         {
                             page === 'bookmark' &&

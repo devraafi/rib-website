@@ -16,6 +16,10 @@ export class ProfileRestService {
         return this.request.get(`profile`);
     }
 
+    updateProfile(payload: any) {
+        return this.request.put(`profile`, payload);
+    }
+
     loadProfileTransaction() {
         return this.request.get(`profile/transaction`);
     }
