@@ -16,7 +16,7 @@ const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
 const NewDonationList = () => {
-    const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const fakeLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const [response, setResponse] = useState<any>({});
     const [categories, setCategories] = useState<any[]>();
     const [category, setCategory] = useState<any>();
@@ -24,14 +24,30 @@ const NewDonationList = () => {
     const [loading, setLoading] = useState(false);
     const [params, setParams] = useState({
         programCategoryId: '',
-        keyword: ''
+        keyword: '',
+        take: 9,
+        skip: 0,
+        current: 1
     });
     const router = useRouter();
     const { query }: any = router;
 
-    function onPageChange(page: number, pageSize: number) {
-        console.log(page, pageSize);
-        
+    function onPageChange(page: number, pageSize: number | undefined) {
+        setParams({
+            ...params,
+            current: page,
+            skip: (page - 1) * (params.take)
+        })
+    }
+
+    function itemRender(current: number, type: any, originalElement: any) {
+        if (type === 'prev') {
+            return <img src="/images/icons/arrow-page-left.svg" alt="" srcSet="" />;
+        }
+        if (type === 'next') {
+            return <img src="/images/icons/arrow-page-right.svg" alt="" srcSet="" />;
+        }
+        return originalElement;
     }
 
     function getItem() {
@@ -83,7 +99,6 @@ const NewDonationList = () => {
     }
 
     function loadCategory() {
-        setResponse(null);
         const obs = donationRestService.loadCategory();
         handleRequest({
             obs,
@@ -99,7 +114,7 @@ const NewDonationList = () => {
             const category = _.find(categories, { '_id': params.programCategoryId });
             setCategory(category);
         }
-    }, [params.programCategoryId])
+    }, [params])
 
     useEffect(() => {
         if (query && query.category) {
@@ -144,9 +159,9 @@ const NewDonationList = () => {
                             Hadirkan Cerita Kebaikan Setiap Hari, Wujud Nyata Berbagi untuk Ringankan Duka
                         </div>
                         <div className="container container-list px-0">
-                            <div className="py-2 new-subtitle">
+                            <div className="py-2 new-subtitle mt-4 mb-1">
                                 Kategori Donasi
-                </div>
+                            </div>
                             <div className="row row-cols-5">
                                 {
                                     categories && categories?.map((ctg) => (
@@ -273,10 +288,10 @@ const NewDonationList = () => {
                         }
                     </div>
                     {
-                        response &&
-                        <div className="row">
+                        // response &&
+                        <div className="row mt-3">
                             <div className="col-lg-6">
-                                <Pagination className="pagination-rib" defaultCurrent={1} total={response.total} pageSize={10} onChange={onPageChange} />
+                                <Pagination itemRender={itemRender} className="pagination-rib" defaultCurrent={1} current={params.current} total={response ? response.total : 0} pageSize={params.take} onChange={onPageChange} />
                             </div>
                         </div>
                     }

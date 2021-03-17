@@ -1,0 +1,15 @@
+.ant-pagination {
+    &.pagination-rib {
+        .ant-pagination-item {
+            border: none;
+            background: transparent;
+            color: #8896a2;
+            &-active {
+                background: #ddf6ff;
+                border: 1px solid #56d1ff;
+                border-radius: 50%;
+                color: #12bfff;
+            }
+        }
+    }
+}
