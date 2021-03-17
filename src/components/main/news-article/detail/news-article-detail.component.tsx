@@ -72,7 +72,7 @@ export const NewsArticleDetailComponent = () => {
                 url = "https://twitter.com/intent/tweet?text=" + data.title + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=Kuring kurang artos";
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + data.title;
                 break;
         }
 
