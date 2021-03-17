@@ -64,7 +64,7 @@ const LoginComponent = (props: {
                                 className="m-0"
                                 rules={
                                     [{
-                                        required: true, message: 'Harap ini username atau email!'
+                                        required: true, message: 'Harap isi email!'
                                     }]
                                 }
                             >
@@ -82,7 +82,7 @@ const LoginComponent = (props: {
                                 className="m-0"
                                 rules={
                                     [{
-                                        required: true, message: 'Harap ini password!'
+                                        required: true, message: 'Harap isi password!'
                                     }]
                                 }
                             >
