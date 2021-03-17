@@ -34,7 +34,7 @@ const LoginComponent = (props: {
                         }
                         <div className="welcome">
                             <div className="title text-left mb-1">
-                                {query.register ? 'Registrasi berhasil' : 'Selamat Datang,'}
+                                {query.register ? 'Registrasi berhasil, silakan Login untuk melanjutkan' : 'Selamat Datang,'}
                             </div>
                             <div className="account">
                                 Belum memiliki akun? <Link href="/signup"><a className="link">Daftar Disini</a></Link>
