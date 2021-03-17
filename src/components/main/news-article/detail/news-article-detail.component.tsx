@@ -66,13 +66,13 @@ export const NewsArticleDetailComponent = () => {
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text=" + data.title + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://wa.me/?text=" + data.title + '%0a%0a' + baseUrl + "news-article/detail?route=" + data.route;
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + data.title + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://twitter.com/intent/tweet?text=" + data.title + '%0a%0a' + baseUrl + "news-article/detail?route=" + data.route;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + data.title;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "news-article/detail?route=" + data.route + "&quote=" + data.title;
                 break;
         }
 
