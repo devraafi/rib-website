@@ -11,7 +11,7 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
             <div className="container news-section py-5">
                 <div className="col-lg-6 col-auto m-auto">
                     <div className="header">
-                        Artikel dan Cerita
+                        Berita & Artikel
                         </div>
                 </div>
                 <div className="col-auto py-3 m-auto">

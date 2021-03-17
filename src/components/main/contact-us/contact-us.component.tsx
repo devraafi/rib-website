@@ -88,7 +88,7 @@ const ContactUs = () => {
 
                         <div className="field">
                             <div className="sub-title">E-Mail</div>
-                            <div className="sub">fund.ruanginsanberbagi@gmail.com</div>
+                            <div className="sub">info@ruanginsanberbagi.org</div>
                         </div>
 
                     </div>

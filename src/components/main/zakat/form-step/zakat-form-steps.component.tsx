@@ -421,7 +421,7 @@ const ZakatFormSteps = () => {
                                                     <div className="row py-3">
                                                         <div className="col-12">
                                                             <div className="the-footer">
-                                                                Masih memiliki pertanyaan? Hubungi kami di fund.ruanginsanberbagi@gmail.com
+                                                                Masih memiliki pertanyaan? Hubungi kami di info@ruanginsanberbagi.org
                                                             </div>
                                                         </div>
                                                     </div>

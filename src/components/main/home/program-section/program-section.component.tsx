@@ -62,7 +62,7 @@ const ProgramSection = (props: {
     }, [props.data])
     return <div className="container program-section py-5">
         <div className="col-lg-6 m-auto header">
-            Mari bantu dan ringankan beban mereka yang membutuhkan
+            Pilihan Program Kebaikan untuk Kamu, Siap Berbagi Hari ini
     </div>
         <div className="col-lg-6 m-auto desc py-3">
             Temukan dan bantu mereka yang sedang berjuang bertahan hidup untuk makan, mendapatkan perawatan kesehatan/pengobatan dan mendapatkan pendidikan.

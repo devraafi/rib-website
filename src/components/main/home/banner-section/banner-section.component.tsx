@@ -120,7 +120,7 @@ export const BannerSection = (props: {
                 </div>
                 <div className="title col-12 text-center text-lg-left">
                     {/* Ambil tindakan, <br className="d-none d-lg-block" /> bantu sesama */}
-                    Get involved in making the dream a reality
+                    Hadirkan Cerita Kebaikan Setiap Hari, Wujud Nyata Berbagi untuk Ringankan Duka
             </div>
                 <div className="description col-lg-9 col-12 text-center text-lg-left py-3">
                     Serahkan donasi atau ciptakan pengalangan dana untuk membantu lebih banyak orang di sekitar kita menjadi lebih baik.

@@ -33,7 +33,8 @@ export default class FooterComponent extends React.Component {
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi
+                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi. <br />
+                                        Hadirnya kami memberikan harapan agar kepercayaan masyarakat dapat bertahan untuk terus berbuat baik dan mampu memberikan pengaruh positif kebaikan sosial bagi yang lainnya.
                                     </div>
                                     <div className="col-12 col-md py-2">
                                         <div className="dh-footer-title">Hubungi Kami</div>
@@ -53,7 +54,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/call.svg" alt="" />
                                                         <span className="ml-3">
-                                                            022 - 2505375
+                                                            +62 82126855400
                                                         </span>
                                                     </a>
                                                 </Link>
@@ -63,7 +64,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/mail.svg" alt="" />
                                                         <span className="ml-3">
-                                                            fund.ruanginsanberbagi@gmail.com
+                                                            info@ruanginsanberbagi.org
                                                         </span>
                                                     </a>
                                                 </Link>

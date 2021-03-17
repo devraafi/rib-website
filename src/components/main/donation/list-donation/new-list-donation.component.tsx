@@ -140,7 +140,7 @@ const NewDonationList = () => {
                     :
                     <>
                         <div className="new-title py-4">
-                            Get involved in making the dream a reality
+                            Hadirkan Cerita Kebaikan Setiap Hari, Wujud Nyata Berbagi untuk Ringankan Duka
                         </div>
                         <div className="container container-list px-0">
                             <div className="py-2 new-subtitle">

@@ -47,11 +47,11 @@ export default class NavbarComponent extends React.Component<any, any> {
             <div className="container-fluid dhv p-0 animated" ref={a => this.navbarRef = a}>
                 <div className="d-lg-flex d-none flex-row justify-content-center dhv-child p-1" ref={el => this.dhvRef = el}>
                     <div className="text-1 px-2">WA</div>
-                    <div className="text-2 px-2">+62 821-2685-5400</div>
-                    <div className="text-1 px-2">Phone</div>
-                    <div className="text-2 px-2">022 - 2505375</div>
+                    <div className="text-2 px-2">+62 82126855400</div>
+                    {/* <div className="text-1 px-2">Phone</div>
+                    <div className="text-2 px-2">022 - 2505375</div> */}
                     <div className="text-1 px-2">Email</div>
-                    <div className="text-2 px-2">fund.ruanginsanberbagi@gmail.com</div>
+                    <div className="text-2 px-2">info@ruanginsanberbagi.org</div>
                 </div>
                 { (this.props && this.props.customNav) ?
                     <>
