@@ -2,7 +2,7 @@ import _ from 'lodash';
 export class CommonServices {
 
     getPaymentImageSrc(val: string): string {
-        const list = ['bca', 'bni', 'bri', 'dana', 'gopay', 'link', 'mandiri', 'ovo', 'shopee'];
+        const list = ['bca', 'bni', 'bri', 'dana', 'gopay', 'link', 'mandiri', 'ovo', 'shopee', 'permata'];
         let name: string = '';
         list.forEach(l => {
             if (val.includes(l)) {
