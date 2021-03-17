@@ -65,10 +65,10 @@ const MainDonation = (props: any) => {
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text="+ data.name + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://wa.me/?text="+ data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + data.name + '%0D' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://twitter.com/intent/tweet?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'facebook':
                 url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + data.name;
