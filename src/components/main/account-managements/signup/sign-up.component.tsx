@@ -7,8 +7,22 @@ const SignUpComponent = (props: {
     onSignUp?: (val: any) => void;
 }) => {
     const [isAggree, setIsAgree] = useState(false);
+    const [form] = Form.useForm()
     function onFinish(values: any) {
         props.onSignUp ? props.onSignUp(values) : null
+    }
+
+    function ConfirmPassword() {
+        let validator = {}
+        if (form.getFieldValue('confirmPassword') && (form.getFieldValue('password') && form.getFieldValue('confirmPassword'))) {
+            validator = {
+                validateStatus: 'error',
+                help: "Kata sandi tidak valid."
+            }
+        } else {
+            validator = {}
+        }
+        return validator
     }
 
     return <div id="sign-up-page-dh">
@@ -35,6 +49,7 @@ const SignUpComponent = (props: {
             </div>
             <div className="form-section my-2">
                 <Form
+                    form={form}
                     onFinish={onFinish}
                 >
                     <div className="row">
@@ -112,6 +127,33 @@ const SignUpComponent = (props: {
                                 />
                             </Form.Item>
                         </div>
+                        <div className="col-12 p-2">
+                            <Form.Item
+                                name="confirmPassword"
+                                className="m-0"
+                                rules={[
+                                    {
+                                        validator: async (_, names) => {
+                                            if (names !== form.getFieldValue('password')) {
+                                                return Promise.reject(new Error('Kata sandi tidak valid.'));
+                                            }
+                                        },
+                                    },
+                                ]}
+                            >
+                                <Input.Password
+                                    size="large"
+                                    placeholder="Konfrimasi Kata sandi"
+                                    className="input-account"
+                                    type="password"
+                                // iconRender={visible =>
+                                //     visible ?
+                                //         <EyeIcon />
+                                //         : <EyeIcon />
+                                // }
+                                />
+                            </Form.Item>
+                        </div>
                         <div className="col-12 p-2 my-1">
                             <Form.Item
                                 name="agree"
@@ -149,7 +191,7 @@ const SignUpComponent = (props: {
                 </Link>
             </div>
         </div>
-    </div>
+    </div >
 }
 
 const IconMail = () => {

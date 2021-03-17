@@ -8,4 +8,5 @@ export interface MainProps {
     pageId?: string;
     customNav?: ReactNode;
     hideNav?: boolean;
+    hideFooter?: boolean;
 }

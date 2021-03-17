@@ -134,6 +134,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
             description="Donasi Ruang Insan Berbagi"
             pageId="donasi-step-page-dh"
             customNav={<StepNav />}
+            hideFooter
         >
             <Spin indicator={<Loading />} spinning={spin}>
                 <div className="container-fluid p-0 donasi-form-steps">

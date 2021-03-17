@@ -23,7 +23,8 @@ const NewInfoDonation = (props: { id: string }) => {
     function loadNews(programId: string) {
         const prm = {
             ...params,
-            programId
+            programId,
+            take: 5
         }
         const obs = newRestService.loadNews(prm)
         handleRequest({
