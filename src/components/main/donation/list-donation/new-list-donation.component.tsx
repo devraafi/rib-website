@@ -1,21 +1,16 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
 import React, { Component, useEffect, useState } from 'react';
-import { InputText } from 'primereact/inputtext';
 import _ from 'lodash';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { Input, Skeleton } from 'antd';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { RequestService } from 'services/request.services';
 import { NotifService } from 'services/feedback/notif.service';
 import { useRouter } from 'next/router';
+import { Pagination } from 'antd';
 
-const filters = [
-    'Bandung', 'Jakarta', 'Kesehatan', 'Pendidikan', 'Lingkungan', 'Umat', 'More Filters'
-];
 const notif: NotifService = new NotifService;
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
@@ -33,6 +28,12 @@ const NewDonationList = () => {
     });
     const router = useRouter();
     const { query }: any = router;
+
+    function onPageChange(page: number, pageSize: number) {
+        console.log(page, pageSize);
+        
+    }
+
     function getItem() {
         const local = localStorage;
         const userInfo = local.getItem('userInfo');
@@ -271,6 +272,14 @@ const NewDonationList = () => {
                                     </div>
                         }
                     </div>
+                    {
+                        response &&
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <Pagination className="pagination-rib" defaultCurrent={1} total={response.total} pageSize={10} onChange={onPageChange} />
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
