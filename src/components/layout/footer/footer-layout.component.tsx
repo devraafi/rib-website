@@ -9,7 +9,7 @@ export default class FooterComponent extends React.Component {
                 <footer className="container-fluid pt-5 pb-2" id="footer-dh">
                     <div className="row">
                         <div className="col-12">
-                            <div className="row justify-content-center">
+                            {/* <div className="row justify-content-center">
                                 <div className="col-auto">
                                     <div className="text-download">
                                         Download Aplikasi Ruang Insan Berbagi di
@@ -26,7 +26,7 @@ export default class FooterComponent extends React.Component {
                             </div>
                             <div className="container py-5">
                                 <div className="separator-dh mx-5"></div>
-                            </div>
+                            </div> */}
                             <div className="container-fluid container-lg py-3">
                                 <div className="row">
                                     <div className="col-md-auto col-auto mix-blend-multi px-2 py-0">
