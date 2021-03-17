@@ -177,7 +177,7 @@ export const ProfileComponent = () => {
                     <div className="profile-transaction">
                         <div className="d-flex my-4 justify-content-around">
                             <button className={`btn btn-dh-basic color-next border-0  ${page === 'transaction' && 'active'}`} onClick={() => setPage('transaction')}>
-                                Riwayat Transaction
+                                Riwayat Transaksi
                             </button>
                             <button className={`btn btn-dh-basic color-next border-0 ${page === 'bookmark' && 'active'}`} onClick={() => setPage('bookmark')}>
                                 Program Tersimpan

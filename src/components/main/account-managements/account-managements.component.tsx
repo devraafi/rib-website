@@ -21,7 +21,7 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         const obs = auth.login(val);
         handleRequest({
             obs,
-            errorMessage: 'Gagal Login',
+            errorMessage: 'Password tidak sesuai, silakan cek kembali e-mail dan password Anda',
             onError: () => SetLoading(false),
             onTap: (res) => {
                 localStorage.setItem('userInfo', JSON.stringify(res));
