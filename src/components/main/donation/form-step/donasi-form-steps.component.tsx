@@ -29,6 +29,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
         email: '',
         showAsAnonymous: false
     });
+    const baseUrl: any = process.env.baseUrl;
 
     const StepNav = () => (
         <div id="navbar-dh" className="d-none d-md-flex">
@@ -105,6 +106,24 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
         });
     };
 
+    function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
+        let url;
+
+        switch (target) {
+            case 'whatsapp':
+                url = "https://wa.me/?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'twitter':
+                url = "https://twitter.com/intent/tweet?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                break;
+            case 'facebook':
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + data.name;
+                break;
+        }
+
+        window.open(url, "Popup", "toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")
+    }
+
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
     });
@@ -170,19 +189,19 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                                     <div className="text-center py-2">Sebarkan Program Melalui</div>
                                                     <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
                                                         <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                                            <a onClick={() => shareCampaign(props.data, 'whatsapp')}>
+                                                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                                            </a>
                                                         </div>
                                                         <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                                            <a onClick={() => shareCampaign(props.data, 'facebook')}>
+                                                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                                            </a>
                                                         </div>
                                                         <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/wf.svg" alt="" className="img-fluid" />
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <img src="/images/icons/sosmed/inactive/mail.svg" alt="" className="img-fluid" />
+                                                            <a onClick={() => shareCampaign(props.data, 'twitter')}>
+                                                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
