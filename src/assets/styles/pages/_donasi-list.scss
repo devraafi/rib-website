@@ -34,8 +34,12 @@
         }
     }
     .img-categori {
-        width: 218px;
-        height: 120px;
+        @media (min-width: 992px) {
+            width: 218px;
+            height: 120px;
+        }
+        width: auto;
+        height: auto;
         border-radius: 8px;
         .imooge {
             border-radius: 8px;

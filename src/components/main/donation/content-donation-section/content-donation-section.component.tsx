@@ -16,13 +16,13 @@ export default class ContentDonationSection extends React.Component<any, any> {
     render() {
         return (
             <div className="container-fluid py-2 content-section">
-                <div className="d-flex flex-row my-4">
+                <div className="d-flex flex-row my-4 justify-content-around">
                     <div className="d-flex">
                         <button onClick={() => this.setState({ active: 1 })} className={'btn btn-dh-basic ' + (this.state.active == 1 ? 'active' : '')}>
                             Detail
                         </button>
                     </div>
-                    <div className="d-flex px-4">
+                    <div className="d-flex mx-2">
                         <button onClick={() => this.setState({ active: 2 })} className={'btn btn-dh-basic ' + (this.state.active == 2 ? 'active' : '')}>
                             Info Terbaru
                         </button>

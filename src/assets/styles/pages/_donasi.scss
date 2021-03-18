@@ -26,13 +26,20 @@
                 font-family: "Poppins";
                 font-style: normal;
                 font-weight: bold;
-                font-size: 30px;
                 line-height: 120%;
                 color: #ffffff;
                 position: absolute;
-                bottom: 0;
+                @media (min-width: 992px) {
+                    font-size: 30px;
+                    bottom: 0;
+                }
+                font-size: 25px;
+                bottom: auto;
             }
-            height: 400px;
+            @media (min-width: 992px) {
+                height: 400px;
+            }
+            height: 300px;
             width: 100%;
             border-radius: 35px;
             position: relative;
@@ -45,7 +52,10 @@
                 right: 0;
                 border-radius: 35px;
                 width: 100%;
-                height: 100%;
+                @media (min-width: 992px) {
+                    height: 100%;
+                }
+                height: 170px;
                 object-fit: cover;
             }
         }
@@ -255,7 +265,7 @@
             font-family: "Poppins";
             font-style: normal;
             font-weight: bold;
-            font-size: 19px;
+            font-size: 16px;
             line-height: 120%;
             color: #0c3543;
         }

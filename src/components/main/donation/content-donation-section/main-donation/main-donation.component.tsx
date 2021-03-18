@@ -65,7 +65,7 @@ const MainDonation = (props: any) => {
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text="+ data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://wa.me/?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'twitter':
                 url = "https://twitter.com/intent/tweet?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
@@ -89,13 +89,13 @@ const MainDonation = (props: any) => {
 
     return (
         <div className="main-donation m-auto p-3" id="main-donation">
-            <div className="title-support px-2 py-3">
+            <div className="title-support px-2 py-1">
                 {
                     isInfaq ? 'Percayakan infak mu dengan Ruang Insan Berbagi' : 'Dukung Program Ini'
                 }
             </div>
             <div className="d-flex flex-column program-wrapper">
-                <div className={`${isInfaq ? 'py-2' : 'p-3'} program-info`}>
+                <div className={`${isInfaq ? 'py-2' : 'px-3 py-1'} program-info`}>
                     <div className="target-info p-2">
                         {
                             !isInfaq && <div className="py-2">
@@ -128,7 +128,7 @@ const MainDonation = (props: any) => {
                         </div>
                         {
                             isInfaq &&
-                            <div className="col-12 p-0 my-1">
+                            <div className="col-12 p-0 mt-1">
                                 <div className="text-left " style={{ fontSize: '12px' }}>
                                     Jumlah Donasi
                                 </div>
@@ -146,7 +146,7 @@ const MainDonation = (props: any) => {
                     </div>
                     {
                         !isInfaq &&
-                        <div className="profile-info py-3 px-2">
+                        <div className="profile-info py-1 px-2 d-none">
                             <div className="d-flex flex-row justify-content-between">
                                 {/* <div className="d-flex flex-row">
                                 <div className="profile-img">
@@ -199,12 +199,12 @@ const MainDonation = (props: any) => {
                         </div>
                     }
                 </div>
-                <div className="donate-price px-3">
-                    <div className="row justify-content-between">
+                <div className="donate-price px-3 overflow-hidden">
+                    <div className="row justify-content-lg-between justify-content-center px-lg-2 py-2">
                         {
                             !isPackage && priceList.map((price, i) => {
                                 return (
-                                    <div className="col-4 px-1 text-center py-1" key={i}>
+                                    <div className="col-lg-4 col-auto px-1 text-center py-1" key={i}>
                                         <button onClick={() => setDonateAmount(price)} className={'btn btn-dh-outline-3 fixmen ' + (donateAmount == price ? 'active' : '')}>
                                             Rp. {(price).toLocaleString()}
                                         </button>
@@ -235,7 +235,7 @@ const MainDonation = (props: any) => {
                             </div>
                         </div>
                     }
-                    <div className="row py-3">
+                    <div className="row py-1">
                         {!isInfaq &&
                             <div className="col-12 my-1">
                                 <InputNumber locale="id-ID"
@@ -261,7 +261,7 @@ const MainDonation = (props: any) => {
             </div>
             <div className="sharepx-3">
                 <div className="row">
-                    <div className="col-12 pt-4 share">
+                    <div className="col-12 pt-1 share">
                         <div className="text-center py-2">Sebarkan Program Melalui</div>
                         <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
                             <div className="d-flex">

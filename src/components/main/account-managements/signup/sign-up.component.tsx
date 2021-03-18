@@ -143,7 +143,7 @@ const SignUpComponent = (props: {
                             >
                                 <Input.Password
                                     size="large"
-                                    placeholder="Konfrimasi Kata sandi"
+                                    placeholder="Konfirmasi Kata sandi"
                                     className="input-account"
                                     type="password"
                                 // iconRender={visible =>
