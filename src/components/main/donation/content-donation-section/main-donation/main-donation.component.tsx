@@ -5,17 +5,6 @@ import Link from 'next/link';
 import { InputNumber } from 'primereact/inputnumber';
 import { DonationService } from '../../donation.services';
 import { Stepper } from '@Components/basics/stepper/stepper.component';
-const danation = {
-    amount: 1600000000,
-    targetAmount: 2500000000,
-    user: {
-        name: 'Jon Snow Foundation',
-        imageUrl: '/images/user/exp/1.svg',
-        isCertified: true
-    },
-    donaturAmount: 1020,
-    dayAmount: 65
-};
 
 const priceList = [10000, 20000, 50000, 100000, 200000, 500000];
 const donationService: DonationService = new DonationService;
@@ -103,7 +92,7 @@ const MainDonation = (props: any) => {
                             </div>
                         }
                         <div className="d-flex flex-row justify-content-between py-2">
-                            <div className="amount text-left align-self-center">{'Rp. ' + (data.collectedAmount || 0).toLocaleString()}</div>
+                            <div className="amount text-left align-self-center">{'Rp' + (data.collectedAmount || 0).toLocaleString()}</div>
                             {
                                 isInfaq && <div className="donation-info p-2">
                                     <div className="d-flex flex-row justify-content-between">
@@ -123,7 +112,7 @@ const MainDonation = (props: any) => {
                             }
                             {
                                 !isInfaq &&
-                                <div className="target-amount">{`Target Rp. ${(data.targetAmount || 0).toLocaleString()}`}</div>
+                                <div className="target-amount">{`Target Rp${(data.targetAmount || 0).toLocaleString()}`}</div>
                             }
                         </div>
                         {
@@ -206,7 +195,7 @@ const MainDonation = (props: any) => {
                                 return (
                                     <div className="col-lg-4 col-auto px-1 text-center py-1" key={i}>
                                         <button onClick={() => setDonateAmount(price)} className={'btn btn-dh-outline-3 fixmen ' + (donateAmount == price ? 'active' : '')}>
-                                            Rp. {(price).toLocaleString()}
+                                            Rp{(price).toLocaleString()}
                                         </button>
                                     </div>
                                 )
@@ -216,7 +205,7 @@ const MainDonation = (props: any) => {
                             isPackage && data.donationAmountOption.map((price: any, i: number) => (
                                 <div className="col-4 px-1 text-center py-1" key={i}>
                                     <button onClick={() => { setDonateAmount(price); setActivePkg(price) }} className={'btn btn-dh-outline-3 fixmen ' + (activePkg == price ? 'active' : '')}>
-                                        Rp. {(price).toLocaleString()}
+                                        Rp{(price).toLocaleString()}
                                     </button>
                                 </div>
                             ))
