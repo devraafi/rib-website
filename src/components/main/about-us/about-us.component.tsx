@@ -158,6 +158,30 @@ const AboutUsComponent = () => {
                                         }
                                     </div>
                                 </div>
+                                <div className="wrapper-section">
+                                    <div className="title col-lg-4 align-self-center mx-auto gj">{ourTeam.cs.title}</div>
+                                    <div className="col-lg-1 brd-md mx-auto"></div>
+                                    <div className="row justify-content-center">
+                                        {
+                                            ourTeam.cs.data && ourTeam.cs.data.map((data: any, i: number) => {
+
+                                                return <div className="col-lg-auto p-2 text-center" key={i}>
+                                                    <div className="card-team">
+                                                        {
+                                                            data.file ? <img src={data.file} alt="" srcSet="" className="imooge" /> : <div className="imooge"></div>
+                                                        }
+                                                    </div>
+                                                    <div className="name">
+                                                        {data.name}
+                                                        <div className="position">
+                                                            {data.position || ''}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     }

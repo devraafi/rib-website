@@ -4,49 +4,49 @@
             "title": "Direktur",
             "data": [
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
-                },
-                {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
-                },
-                {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Yadi Mulyadi",
+                    "position": "Dir. Marketing",
+                    "file": "/images/about-us/RIB_Yadi Mulyadi.jpg"
                 }
             ]
         },
         "manager": {
-            "title": "Manager",
+            "title": "Staff",
             "data": [
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Nurlianto Aldi",
+                    "position": "Program & Marketing Support",
+                    "file": "/images/about-us/RIB_Nurlianto Aldi Program & Marketing Support 2.jpg"
                 },
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Muhammad Ridwan Khoerudin",
+                    "position": "Marketing Support ",
+                    "file": "/images/about-us/RIB_Muhammad Ridwan Khoerudin Desain & Multimedia 2.jpg"
+                }
+            ]
+        },
+        "cs": {
+            "title": "Customer Relationship Officer",
+            "data": [
+                {
+                    "name": "Ayu Vidyasari",
+                    "position": "",
+                    "file": "/images/about-us/RIB_Ayu Vidyasari Customer Relationship Officer.jpg"
                 },
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Osin Hendrawan",
+                    "position": "",
+                    "file": "/images/about-us/RIB_Osin Hendrawan Customer Relationship Officer.jpg"
                 },
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Aulia Putri Agnia Gani",
+                    "position": "",
+                    "file": "/images/about-us/RIB_Aulia Putri Agnia Gani Customer Relationship Officer.jpg"
                 },
                 {
-                    "name": "Alfonso",
-                    "position": "Vel ornare sit.",
-                    "file": "/images/1.png"
+                    "name": "Dilla Octavia",
+                    "position": "",
+                    "file": "/images/about-us/RIB_Dilla Octavia Customer Relationship Officer.jpg"
                 }
             ]
         }
