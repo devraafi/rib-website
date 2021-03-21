@@ -1,7 +1,9 @@
 #donasi-page-dh {
+    background-color: #ffffff;
+    background: linear-gradient(180deg, rgba(221, 246, 255, 0.25) 0%, rgba(221, 246, 255, 0) 100%);
     .donation-section {
         position: relative;
-        background: linear-gradient(360deg, #99e3ff 0%, #ddf6ff 100%);
+        // background: linear-gradient(360deg, #99e3ff 0%, #ddf6ff 100%);
         top: -53px;
         z-index: -4;
         height: calc(350px + 53px);
@@ -22,6 +24,8 @@
     }
     .banner-section {
         .banner-img-wrapper {
+            background-blend-mode: multiply, normal;
+            background-size: cover !important;
             .title {
                 font-family: "Poppins";
                 font-style: normal;
@@ -39,13 +43,13 @@
             @media (min-width: 992px) {
                 height: 400px;
             }
-            height: 300px;
+            height: 200px;
             width: 100%;
             border-radius: 35px;
             position: relative;
             margin: auto;
             .imooge {
-                filter: brightness(0.7);
+                // filter: brightness(0.7);
                 background: #12bfff;
                 position: absolute;
                 top: 0;
