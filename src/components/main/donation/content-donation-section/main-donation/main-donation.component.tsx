@@ -242,7 +242,7 @@ const MainDonation = (props: any) => {
                         }
                         <div className="col-12 my-1">
                             <button className="btn btn-dh-secondary w-100 rounded-lg" disabled={!donateAmount} onClick={() => handleClick()}>
-                                Donate
+                                Donasi
                             </button>
 
                         </div>
