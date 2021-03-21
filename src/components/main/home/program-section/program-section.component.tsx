@@ -116,8 +116,8 @@ const ProgramSection = (props: {
                                                             <Slider disabled className="slider-program-dh" value={list.collectedAmount} max={list.targetAmount} />
                                                         </div>
                                                         <div className="d-flex flex-row justify-content-between py-2">
-                                                            <div className="amount">{'Rp. ' + (list.collectedAmount || 0).toLocaleString()}</div>
-                                                            <div className="target-amount">{`Target Rp. ${(list.targetAmount || 0).toLocaleString()}`}</div>
+                                                            <div className="amount">{'Rp ' + (list.collectedAmount || 0).toLocaleString()}</div>
+                                                            <div className="target-amount">{`Target Rp ${(list.targetAmount || 0).toLocaleString()}`}</div>
                                                         </div>
                                                     </div>
 

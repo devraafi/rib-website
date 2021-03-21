@@ -167,7 +167,7 @@ const NewDonationList = () => {
                                     {
                                         categories && categories?.map((ctg) => (
                                             <Link href={`/donasi?category=${ctg._id}`}>
-                                                <div className="col-lg-auto col-lg-4 p-2 pointer">
+                                                <div className="col-lg-auto col-4 p-2 pointer">
                                                     <div className="img-categori">
                                                         {
                                                             ctg.fileUrl ? <img src={ctg.fileUrl} alt="" srcSet="" className="imooge" /> : <div className="imooge">
@@ -241,8 +241,8 @@ const NewDonationList = () => {
                                                                             <Slider disabled className="slider-program-dh" value={list.collectedAmount || 0} max={list.targetAmount || 0} />
                                                                         </div>
                                                                         <div className="d-flex flex-row justify-content-between py-2">
-                                                                            <div className="amount">{'Rp. ' + (list.collectedAmount || 0).toLocaleString()}</div>
-                                                                            <div className="target-amount">{`Target Rp. ${(list.targetAmount || 0).toLocaleString()}`}</div>
+                                                                            <div className="amount">{'Rp ' + (list.collectedAmount || 0).toLocaleString()}</div>
+                                                                            <div className="target-amount">{`Target Rp ${(list.targetAmount || 0).toLocaleString()}`}</div>
                                                                         </div>
                                                                     </div>
 

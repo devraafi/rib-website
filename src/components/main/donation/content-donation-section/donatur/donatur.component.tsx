@@ -62,7 +62,7 @@ const DonorListComponent = (props: WithRouterProps) => {
                             </div>
                         </div>
                         <div className="amount">
-                            Rp. {(data.amount).toLocaleString()}
+                            Rp {(data.amount).toLocaleString()}
                         </div>
                     </div>
                 )

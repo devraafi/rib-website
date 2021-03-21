@@ -107,7 +107,7 @@ const AboutUsComponent = () => {
                                     <div className="title col-lg-6 align-self-center mx-auto">Our Team</div>
                                     <div className="col-lg-1 brd-lg mx-auto"></div>
                                     <div className="description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra eros mi gravida neque turpis hendrerit et. Aliquam sit consequat, odio porta tellus faucibus. Ornare neque at condimentum vitae pretium, risus sed. A nisi, bibendum aliquam, nulla aenean nisi, ornare. Faucibus fusce
+                                        Kami hadir dan bekerja keras untuk mengakomodasi seluruh donatur agar dapat memberikan pengaruh positif dan menyalurkan donasi bagi kebaikan sosial
                                     </div>
                                 </div>
                                 <div className="wrapper-section">

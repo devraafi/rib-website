@@ -51,16 +51,17 @@ const MainDonation = (props: any) => {
 
     function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
         let url;
+        const templateTitle = `Sahabat+Insan+Berbagi%2C+yuk bantu ${data.name} %0D%0A%23RuangInsanBerbagi%0D%0A`;
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://wa.me/?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + data.name + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
+                url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + data.name;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "&quote=" + templateTitle;
                 break;
         }
 

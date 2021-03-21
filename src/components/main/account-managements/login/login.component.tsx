@@ -108,9 +108,9 @@ const LoginComponent = (props: {
                             </Form.Item>
                         </div>
                         <div className="col-6 text text-right align-self-center">
-                            {/* <Link href="#">
-                                <a href="" className="text link"> Lupa Password</a>
-                            </Link> */}
+                            <Link href="/forgot-password">
+                                <a className="text link"> Lupa Password</a>
+                            </Link>
                         </div>
                         <div className="col-12 my-2">
                             <Button htmlType="submit" className="btn btn-dh-primary btn-block">

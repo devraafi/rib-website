@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import SignUpComponent from './signup/sign-up.component';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { RequestService } from 'services/request.services';
+import ForgotPasswordComponent from './forgot-password/forgot-password.component';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices(process.env.staging || '');
 const auth: AuthenticationService = new AuthenticationService();
 const { handleRequest } = new RequestService;
@@ -50,14 +51,26 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         })
     };
 
+    function viewPage() {
+        switch (props.page) {
+            case 'login':
+                return <LoginComponent onLogin={onLogin} />;
+            case 'signup':
+                return <SignUpComponent onSignUp={onSignUp} />;
+            case 'forgot-password':
+                return <ForgotPasswordComponent />;
+            default:
+                return <LoginComponent onLogin={onLogin} />;
+        }
+    }
+
     return <div id="account-manage-page">
         <div className="container">
             <div className={"main-login-register " + (props.className || '')}>
                 <Spin spinning={loading} indicator={<Loading />} >
                     <div className={`page-wrapper ${props.page || ''}`}>
                         {
-                            props.page === 'login' ? <LoginComponent onLogin={onLogin} />
-                                : <SignUpComponent onSignUp={onSignUp} />
+                            viewPage()
                         }
                     </div>
                 </Spin>
