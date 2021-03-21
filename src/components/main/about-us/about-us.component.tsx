@@ -213,8 +213,8 @@ const AboutUsComponent = () => {
                                     </div>
 
                                     <div className="field">
-                                        <div className="sub-title">Telepon</div>
-                                        <div className="sub">022 - 2505375</div>
+                                        <div className="sub-title">WhatsApp</div>
+                                        <div className="sub">+62 82126855400</div>
                                     </div>
 
                                     <div className="field">
@@ -278,7 +278,7 @@ const MapsSection = () => {
     const [zoom, setZoom] = useState(13);
 
     return <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyCrTfNq4x3ndCh4nx7jkljL0NmfIUsB96M' }}
+        bootstrapURLKeys={{ key: 'AIzaSyC2eaRA55-MdPttUMK0WckhxVlMVrNDPWQ' }}
         defaultCenter={center}
         defaultZoom={zoom}
     >
