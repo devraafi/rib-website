@@ -69,7 +69,7 @@ const DonationPage = (props: any) => {
 
                     <div className="container-fluid p-0">
                         <div className="donation-section">
-                            <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" />
+                            {/* <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" /> */}
                         </div>
                         <div className="container-lg content">
                             <div className="row">
