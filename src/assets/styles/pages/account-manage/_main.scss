@@ -11,6 +11,10 @@
                 &.login {
                     min-height: 520px;
                 }
+                &.forgot-password {
+                    min-height: 415px;
+                    background-size: contain !important;
+                }
                 min-height: 630px;
                 height: auto;
             }
@@ -26,6 +30,7 @@
             background-size: auto;
             @import "./login";
             @import "./signup";
+            @import "./forgot-password";
         }
     }
 }

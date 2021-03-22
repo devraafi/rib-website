@@ -125,9 +125,9 @@ const AboutUsComponent = () => {
                                                     </div>
                                                     <div className="name">
                                                         {data.name}
-                                                        <div className="position">
+                                                        {/* <div className="position">
                                                             {data.position}
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             })
