@@ -109,6 +109,9 @@
             background: #12bfff;
             color: #ffffff;
         }
+        &:disabled {
+            background: gray;
+        }
     } @else if $type == "next" {
         padding: 12px 20px;
         font-weight: 600;
