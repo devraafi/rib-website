@@ -6,4 +6,6 @@ export interface IPaymentMethod {
     name: boolean;
     type: string;
     code: string;
+    integratedPaymentMethod: boolean;
+    accountNumber?: string;
 }

@@ -222,33 +222,50 @@ const PaymentMethodStep = (props: {
                     </div>
                 </div>
                 <div className="d-flex flex-column w-100">
-                    {
-                        // paymentMethods.map((pm, i) => {
-                        //     return (
-                        <div className="row">
-                            {/* <div className="col-12 sub-header py-2">
-                                        {pm.type}
-                                    </div> */}
-                            {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
-                                    return (
-                                        <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
-                                            <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
-                                                <img style={{
-                                                    maxWidth: '80%'
-                                                }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
-                                            </div>
-                                        </div>
-                                    )
-                                }) :
-                                    <div className="col-12 p-3 text-center">
-                                        Maaf, belum ada pilihan metode pembayaran
-                                    </div>
-                            }
+                    <div className="row">
+                        <div className="col-12 sub-header py-2">
+                            E-Wallet
                         </div>
-                        //     )
-                        // })
-                    }
+                        {
+                            (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                return (
+                                    l.integratedPaymentMethod && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                        <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
+                                            <img style={{
+                                                maxWidth: '80%'
+                                            }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                        </div>
+                                    </div>
+                                )
+                            }) :
+                                <div className="col-12 p-3 text-center">
+                                    Maaf, belum ada pilihan metode pembayaran
+                                </div>
+                        }
+                    </div>
+                </div>
+                <div className="d-flex flex-column w-100">
+                    <div className="row">
+                        <div className="col-12 sub-header py-2">
+                            Manual
+                        </div>
+                        {
+                            (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                return (
+                                    !l.integratedPaymentMethod && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                        <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
+                                            <img style={{
+                                                maxWidth: '80%'
+                                            }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                        </div>
+                                    </div>
+                                )
+                            }) :
+                                <div className="col-12 p-3 text-center">
+                                    Maaf, belum ada pilihan metode pembayaran
+                                </div>
+                        }
+                    </div>
                 </div>
                 <div className="the-card-footer border-0">
                     <button disabled={!paymentMethod || !customerInfo.email || !customerInfo.fullName || !isEmail(customerInfo.email)} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done ? props.done() : ''}>

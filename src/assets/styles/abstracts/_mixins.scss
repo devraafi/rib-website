@@ -60,6 +60,9 @@
         background: #ffffff;
         font-weight: 500;
         color: #239cc6;
+        &.o {
+            font-weight: bold;
+        }
         &:hover {
             background: #4ebae0;
             color: #ffffff;
@@ -159,9 +162,17 @@
         background: #99e3ff;
         color: #006d95;
         border-radius: 20px !important;
+        &.o {
+            border-radius: 8px !important;
+            font-weight: bold;
+            font-size: 13px;
+        }
         text-align: center;
         // padding: 24px !important;
-        font-size: 18px;
+        @media (min-width: 992px) {
+            font-size: 18px;
+        }
+        font-size: 13px;
         &:hover,
         &:active,
         &:focus {

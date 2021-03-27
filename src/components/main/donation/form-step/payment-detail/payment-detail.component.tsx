@@ -2,101 +2,110 @@ import _ from "lodash";
 import Link from "next/link"
 import React, { useEffect } from "react"
 import payment_step from './payment-data.json';
-import { Accordion, AccordionTab } from 'primereact/accordion';
+import { IPaymentDetail } from "interfaces/payment-detail";
+import moment from "moment";
+import { message, Spin } from "antd";
+import { Loading } from "@Components/basics/loading/loading.component";
+import { CommonServices } from "services/common/common.service";
 
-
-const getPaymentStep = (id: string) => {
-    const stepData = payment_step;
-    const paymentStep: any = _.find(_.get(stepData, 'data'), ['id', id]);
-    return paymentStep.steps;
-}
-
-
-const DonasiPaymentDetail = (props: { total: number }) => {
+const { getPaymentImageSrc } = new CommonServices;
+export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
+    const { res } = props;
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+    function transactionDates(date: any) {
+        const newDate = moment(date);
+        const endDate = moment(date).add(1, "day");
+        const diff = moment(endDate.diff(newDate));
+
+        let countDown;
+        const transactionDate = {
+            deadLine: endDate.format('dddd, DD MMMM YYYY HH:MM'),
+            countDown
+        }
+        return transactionDate
+    };
+
+    function copy(text: string) {
+        navigator && navigator.clipboard.writeText(text);
+        message.success('Copied')
+    }
 
     return (
-        <div className="donasi-payment-detail donasi-payment-detail-v container step p-5">
-            <div className="header">Detail Pembayaran</div>
-            <div className="sub-header detail py-2">
-                Selesaikan Pembayaran dalam
+        <Spin spinning={!res} indicator={<Loading />}>
+            <div className="container py-3" id="donation-payment-detail">
+                <div className="text-center py-2 title">
+                    Instruksi pembayaran
             </div>
-            <div className="timer text-center py-2">
-                23:59:59
-            </div>
-            <div className="sub-header text-center py-2">
-                Batas akhir pembayaran
-            </div>
-            <div className="sub-header day py-2 text-center">
-                Minggu, 6 Desember 2020 17:32
-            </div>
-            <div className="py-4">
-                <div className="card card-payment-info">
-                    <div className="card-header">
-                        <div className="d-flex flex-row justify-content-between py-1 px-2">
-                            <div className="name align-self-center">BCA Virtual Account</div>
-                            <div className="align-self-center">
-                                <img src="/images/logos/payment/bca.svg" className="img-fluid" alt="" />
+                <div className="card-section-1 mb-2">
+                    {/* <div className="row w-100 justify-content-between m-auto">
+                        <div className="col-lg-auto col-12 p-2 field align-self-center">
+                            Selesaikan pembayaran dalam
+                        </div>
+                        <div className="counter col-lg-auto col-12 p-2">
+                            <div className="value">
+                                {transactionDates(res.transactionDate) ? transactionDates(res.transactionDate)?.countDown : '-'}
                             </div>
                         </div>
+                    </div> */}
+                    <div className="row w-100 justify-content-between m-auto">
+                        <div className="field col-lg-auto col-12 p-2 align-self-center">
+                            Batas akhir pembayaran
                     </div>
-                    <div className="card-body">
-                        <div className="d-flex flex-row justify-content-between py-1 px-2">
-                            <div className="d-flex flex-column">
-                                <div className="rek-info pb-2">
-                                    <div className="header mb-1">
-                                        Nomor virtual account
-                                                </div>
-                                    <div className="value">
-                                        806661234567890
-                                                </div>
-                                </div>
-                                <div className="total-info pt-1">
-                                    <div className="header mb-1">
-                                        Total pembayaran
-                                                </div>
-                                    <div className="value">
-                                        Rp {(props.total).toLocaleString()}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="align-self-center copy">
-                                Salin
-                                        </div>
+                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2 align-self-center">
+                            {transactionDates(res.transactionDate) ? transactionDates(res.transactionDate)?.deadLine : '-'}
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="row py-3">
-                <div className="col-lg-6 py-2">
-                    <Link href="/donasi">
-                        <button type="button" className="btn btn-dh-outline rounded w-100 shadow">Selesai</button>
-                    </Link>
+                <div className="card-section-2">
+                    <div className="p-2">
+                        Pembayaran
+                    </div>
+                    <div className="row w-100 justify-content-between m-auto mb-2">
+                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                            Nomor Rekening
+                        </div>
+                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2">
+                            {res?.paymentMethod?.accountNumber || '-'} <span className="copy" onClick={() => copy(res?.paymentMethod?.accountNumber || '')}>
+                                <img src="/images/icons/copy.svg" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                    <div className="row w-100 justify-content-between m-auto mb-2">
+                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                            Total Pembayaran
+                        </div>
+                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2 total">
+                            Rp{res?.total || 0} <span className="copy" onClick={() => copy((res?.total).toString() || '')}>
+                                <img src="/images/icons/copy.svg" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                    <div className="row w-100 justify-content-between m-auto mb-2">
+                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                            {res?.paymentMethod?.name}
+                        </div>
+                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2">
+                            <img style={{
+                                maxWidth: '80%'
+                            }} src={`/images/logos/payment/${getPaymentImageSrc(res?.paymentMethod?.code)}.svg`} />
+                        </div>
+                    </div>
+                    <div className="row w-100 justify-content-between m-auto mb-2 py-3">
+                        <div className="col-lg-6 p-2">
+                            <Link href="/donasi">
+                                <button className="btn btn-dh-outline-3 o btn-block">Donasi Lagi</button>
+                            </Link>
+                        </div>
+                        <div className="col-lg-6 p-2">
+                            <Link href={`/detail-transaksi?order_id=${res?._id}`}>
+                                <button className="btn btn-dh-edit o btn-block">Cek Status Pembayaran</button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-lg-6 py-2">
-                    <button className="btn btn-dh-secondary w-100 shadow rounded">Cek status pembayaran</button>
-                </div>
             </div>
-            <div className="py-3 how-to">Cara pembayaran</div>
-            <Accordion multiple activeIndex={[0]} className="accordion-step-payment">
-                {
-                    getPaymentStep('bca').map((step: any, i: number) => (
-                        <AccordionTab header={step.title}>
-                            <ol className="list bottom px-3 px-3 pb-3 border-bottom">
-                                {
-                                    step.list.map((li: string, i: number) => (
-                                        <li key={i} className="py-1">{li}</li>
-                                    ))
-                                }
-                            </ol>
-                        </AccordionTab>
-                    ))
-                }
-            </Accordion>
-        </div>
+        </Spin>
     )
 }
-
-export default DonasiPaymentDetail;

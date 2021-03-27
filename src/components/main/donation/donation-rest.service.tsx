@@ -26,6 +26,20 @@ export class DonationRestServices {
         return this.request.post(`transaction/create/program/midtrans-snap`, payload, { params });
     }
 
+    transactionManual(payload: {
+        programId: string,
+        amount: number,
+        customerInfo: {
+            fullName: string,
+            notes: string,
+            phone: string,
+            email: string,
+            showAsAnonymous: boolean
+        }
+    }, params: any) {
+        return this.request.post(`transaction/create/program/manual`, payload, { params });
+    }
+
     loadProgram(params: any) {
         return this.request.get(`program`, {
             params

@@ -9,19 +9,22 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { CommonServices } from 'services/common/common.service';
+import { RequestService } from 'services/request.services';
 import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
-import DonasiPaymentDetail from './payment-detail/payment-detail.component';
+import { DonasiPaymentDetail } from './payment-detail/payment-detail.component';
 import PaymentMethodStep from './payment-method/payment-method.component';
 
 const auth: AuthenticationService = new AuthenticationService;
 const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
+const { handleRequest } = new RequestService;
 const { isEmail } = new CommonServices;
 
 const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any, isInfaq?: boolean }) => {
     const [step, onStepChange] = useState(1);
     const [spin, setSpin] = useState(false);
+    const [res, setRes] = useState<any>();
     const steps = ['Isi Data Diri', 'Metode Pembayaran', 'Bayar'];
     const [paymentMethod, setpayment] = useState<IPaymentMethod>();
     const [customerInfo, setCustomerInfo] = useState({
@@ -97,15 +100,20 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
             isInfaq: props.isInfaq || false
         }
 
-        donationRestService.transactionMidtransSnap(payload, params).pipe(
-            catchError(err => {
+        const obs = paymentMethod?.integratedPaymentMethod ? donationRestService.transactionMidtransSnap(payload, params) : donationRestService.transactionManual(payload, params)
+        handleRequest({
+            obs,
+            onError: () => setSpin(false),
+            onDone: ((res: any) => {
                 setSpin(false);
-                return throwError(err);
+                if (paymentMethod?.integratedPaymentMethod) {
+                    document.location.href = res.redirect_url;
+                } else {
+                    setRes(res);
+                    onStepChange(4)
+                }
             })
-        ).subscribe((res: any) => {
-            setSpin(false);
-            document.location.href = res.redirect_url;
-        });
+        })
     };
 
     function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
@@ -144,23 +152,23 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                     <div className="container-lg container-fluid py-5 header-section">
                         <div className="container-lg container-fluid form-section">
                             {
-                                // step == 1 || 2) ?
-                                <div className="row" style={{ minHeight: '95vh' }}>
-                                    <div className="col-lg-7 col-12">
-                                        <PaymentMethodStep total={props.total} step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} done={() => onSubmit()} selectPayment={setpayment} />
-                                    </div>
+                                step <= 3 ?
+                                    <div className="row" style={{ minHeight: '95vh' }}>
+                                        <div className="col-lg-7 col-12">
+                                            <PaymentMethodStep total={props.total} step={step} stepChanges={onStepChange} onChangeCustomerInfo={onChangeCustomerInfo} done={() => onSubmit()} selectPayment={setpayment} />
+                                        </div>
 
-                                    <div className="col-lg-5 col-12 position-relative">
-                                        <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
-                                            <div className="header pb-3 pt-1 text-center">
-                                                Ringkasan Donasi
+                                        <div className="col-lg-5 col-12 position-relative">
+                                            <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
+                                                <div className="header pb-3 pt-1 text-center">
+                                                    Ringkasan Donasi
                                             </div>
-                                            <div className="title py-1">
-                                                {props.data ? props.data.name : 'Program'}
-                                            </div>
-                                            <div className="profile-info py-3">
-                                                <div className="d-flex flex-row justify-content-between">
-                                                    {/* <div className="d-flex flex-row">
+                                                <div className="title py-1">
+                                                    {props.data ? props.data.name : 'Program'}
+                                                </div>
+                                                <div className="profile-info py-3">
+                                                    <div className="d-flex flex-row justify-content-between">
+                                                        {/* <div className="d-flex flex-row">
                                                         <div className="profile-img">
                                                             <img src={(props.data && props.data.user) ? props.data.user.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                         </div>
@@ -168,53 +176,53 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                                             {(props.data && props.data.user) ? props.data.user.name : 'Anonim'}
                                                         </div>
                                                     </div> */}
-                                                    <div className="is-certified">
-                                                        {
-                                                            ((props.data && props.data.user) && props.data.user.isCertified) && (
-                                                                <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
-                                                            )
-                                                        }
+                                                        <div className="is-certified">
+                                                            {
+                                                                ((props.data && props.data.user) && props.data.user.isCertified) && (
+                                                                    <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
+                                                                )
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="total-info py-3">
-                                                <div className="d-flex flex-row justify-content-between">
-                                                    <div>Total Donasi</div>
-                                                    <div className="amount">
-                                                        Rp {(props.total ? props.total : 0).toLocaleString()}
+                                                <div className="total-info py-3">
+                                                    <div className="d-flex flex-row justify-content-between">
+                                                        <div>Total Donasi</div>
+                                                        <div className="amount">
+                                                            Rp {(props.total ? props.total : 0).toLocaleString()}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="py-3">
-                                                <button className="btn btn-dh-secondary w-100 rounded" disabled={!paymentMethod || !customerInfo.fullName || !customerInfo.email || !isEmail(customerInfo.email)} onClick={() => onSubmit()}>Bayar</button>
-                                            </div>
-                                            <div className="row py-3 donate-price">
-                                                <div className="col-12 pt-4 share">
-                                                    <div className="text-center py-2">Sebarkan Program Melalui</div>
-                                                    <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
-                                                        <div className="d-flex">
-                                                            <a onClick={() => shareCampaign(props.data, 'whatsapp')}>
-                                                                <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <a onClick={() => shareCampaign(props.data, 'facebook')}>
-                                                                <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="d-flex">
-                                                            <a onClick={() => shareCampaign(props.data, 'twitter')}>
-                                                                <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
-                                                            </a>
+                                                <div className="py-3">
+                                                    <button className="btn btn-dh-secondary w-100 rounded" disabled={!paymentMethod || !customerInfo.fullName || !customerInfo.email || !isEmail(customerInfo.email)} onClick={() => onSubmit()}>Bayar</button>
+                                                </div>
+                                                <div className="row py-3 donate-price">
+                                                    <div className="col-12 pt-4 share">
+                                                        <div className="text-center py-2">Sebarkan Program Melalui</div>
+                                                        <div className="d-flex flex-row justify-content-between px-lg-5 px-3">
+                                                            <div className="d-flex">
+                                                                <a onClick={() => shareCampaign(props.data, 'whatsapp')}>
+                                                                    <img src="/images/icons/sosmed/inactive/wa.svg" alt="" className="img-fluid" />
+                                                                </a>
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <a onClick={() => shareCampaign(props.data, 'facebook')}>
+                                                                    <img src="/images/icons/sosmed/inactive/fb.svg" alt="" className="img-fluid" />
+                                                                </a>
+                                                            </div>
+                                                            <div className="d-flex">
+                                                                <a onClick={() => shareCampaign(props.data, 'twitter')}>
+                                                                    <img src="/images/icons/sosmed/inactive/tw.svg" alt="" className="img-fluid" />
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                // :
-                                // <DonasiPaymentDetail total={100000} />
+                                    :
+                                    <DonasiPaymentDetail res={res} />
                             }
                         </div>
                     </div>
