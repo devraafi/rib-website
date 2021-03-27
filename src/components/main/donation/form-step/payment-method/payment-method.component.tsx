@@ -18,7 +18,7 @@ const auth: AuthenticationService = new AuthenticationService;
 const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
 const { getPaymentImageSrc } = new CommonServices;
 const notif: NotifService = new NotifService;
-
+const { isEmail } = new CommonServices;
 const PaymentMethodStep = (props: {
     step: number,
     total: any;
@@ -63,6 +63,12 @@ const PaymentMethodStep = (props: {
                 type: 'warning',
                 title: 'Peringatan',
                 description: 'Harap melengkapi data diri',
+            });
+        } else if (!isEmail(customerInfo.email)) {
+            notif.show({
+                type: 'warning',
+                title: 'Peringatan',
+                description: 'Email tidak valid',
             });
         } else {
             scrollTo(2, 'next'); onStepChange(2)
@@ -245,7 +251,7 @@ const PaymentMethodStep = (props: {
                     }
                 </div>
                 <div className="the-card-footer border-0">
-                    <button disabled={!paymentMethod} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done ? props.done() : ''}>
+                    <button disabled={!paymentMethod || !customerInfo.email || !customerInfo.fullName || !isEmail(customerInfo.email)} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done ? props.done() : ''}>
                         Lanjut ke pembayaran
                     </button>
                 </div>

@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from 'services/auth/aut.service';
+import { CommonServices } from 'services/common/common.service';
 import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
 import DonasiPaymentDetail from './payment-detail/payment-detail.component';
@@ -16,6 +17,7 @@ import PaymentMethodStep from './payment-method/payment-method.component';
 const auth: AuthenticationService = new AuthenticationService;
 const donationService: DonationService = new DonationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
+const { isEmail } = new CommonServices;
 
 const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: any, isInfaq?: boolean }) => {
     const [step, onStepChange] = useState(1);
@@ -184,7 +186,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                                                 </div>
                                             </div>
                                             <div className="py-3">
-                                                <button className="btn btn-dh-secondary w-100 rounded" disabled={!paymentMethod} onClick={() => onSubmit()}>Bayar</button>
+                                                <button className="btn btn-dh-secondary w-100 rounded" disabled={!paymentMethod || !customerInfo.fullName || !customerInfo.email || !isEmail(customerInfo.email)} onClick={() => onSubmit()}>Bayar</button>
                                             </div>
                                             <div className="row py-3 donate-price">
                                                 <div className="col-12 pt-4 share">

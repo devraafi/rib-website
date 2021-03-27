@@ -41,7 +41,7 @@ const NewInfoDonation = (props: { id: string }) => {
 
     return <div className="d-flex flex-column new-info">
         {
-            news ? news.map((data, i: number) => {
+            (news && (news.length > 0)) ? news.map((data, i: number) => {
                 return (
                     <div className="box-info my-3" key={i}>
                         <div className="date-info py-2">{moment(data.createdAt).format('DD MMM YYYY')}</div>
@@ -63,7 +63,7 @@ const NewInfoDonation = (props: { id: string }) => {
                         </div> */}
                     </div>
                 )
-            }) : <div className="p-2 text-center">Tidak Ada Data</div>
+            }) : <div className="p-2 text-center">Saat ini belum ada kabar terbaru dari program ini. Silakan untuk kembali mengakses halaman ini setelah beberapa waktu untuk melihat kabar terbaru.</div>
         }
     </div>
 }
