@@ -2,7 +2,8 @@ declare interface ITransactionDetail {
     lines: ILineTransaction[];
     paymentName: string;
     accountNumber: string;
-    amount: string;
+    amount: number;
+    total: number;
     status: string;
 }
 

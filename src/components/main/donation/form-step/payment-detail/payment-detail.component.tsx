@@ -21,7 +21,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
 
         let countDown;
         const transactionDate = {
-            deadLine: endDate.format('dddd, DD MMMM YYYY HH:MM'),
+            deadLine: endDate.format('dddd, DD MMMM YYYY  HH:mm'),
             countDown
         }
         return transactionDate
@@ -57,7 +57,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                             Batas akhir pembayaran
                     </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2 align-self-center">
-                            {transactionDates(res.transactionDate) ? transactionDates(res.transactionDate)?.deadLine : '-'}
+                            {transactionDates(res.createdAt) ? transactionDates(res.createdAt)?.deadLine : '-'}
                         </div>
                     </div>
                 </div>
@@ -88,11 +88,8 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                         <div className="value text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
                             {formatMoney(res?.uniqCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
                         </div>
-                        <div className="align-self-center col-lg-6 col-12 p-2">
-
-                        </div>
-                        <div className="text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
-                            *{(res?.uniqCode || 0).toString().length} angka terakhir didonasikan
+                        <div className="text-lg-right text-center align-self-center col-12 p-2">
+                            Mohon transfer tepat sampai {(res?.uniqCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
                         </div>
                     </div>
                 </div>
@@ -131,7 +128,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                         <div className="value col-lg-auto align-self-center col-auto p-2 mr-2">
                             <img src="/images/icons/WarningCircle.svg" alt="" />
                         </div>
-                        <div className="col-lg-auto align-self-center col-auto p-2">
+                        <div className="col-auto align-self-center p-2">
                             Kirim Bukti Pembayaran via WhatsApp Ruang Insan Berbagi: <span className="v">+62 82126855400</span>
                         </div>
                     </div>

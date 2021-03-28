@@ -82,7 +82,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                                 <div className="field">
                                     <div className="label">Jumlah</div>
-                                    <div className="value total">{'Rp ' + (data?.amount || 0).toLocaleString() || 0}</div>
+                                    <div className="value total">{'Rp ' + (data?.total || 0).toLocaleString() || 0}</div>
                                 </div>
                                 <div className="field">
                                     <div className="label">Status</div>
