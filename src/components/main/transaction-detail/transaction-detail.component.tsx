@@ -25,7 +25,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
             })).subscribe((res) => { setData(res); setLoading(false); });
     }
     useEffect(() => {
-        const newtransactionID: string = query ? query.order_id : null;
+        const newtransactionID: string = query ? query.id : null;
         setTransactionID(newtransactionID);
     }, [query]);
 
