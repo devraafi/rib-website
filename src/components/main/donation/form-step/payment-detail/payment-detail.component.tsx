@@ -7,7 +7,7 @@ import moment from "moment";
 import { message, Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { CommonServices } from "services/common/common.service";
-import { formatMoney } from 'accounting-js';
+import { formatMoney } from 'accounting';
 const { getPaymentImageSrc } = new CommonServices;
 export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
     const { res } = props;
