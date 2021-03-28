@@ -94,7 +94,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                                 {formatMoney(res?.uniqueCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
                             </div>
                             <div className="text-lg-right text-center align-self-center col-12 p-2">
-                                * Mohon transfer tepat sampai {(res?.uniqueCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
+                                * Mohon transfer tepat dengan nominal yang telah ditambahkan kode unik
                         </div>
                         </div>
                     </div>
