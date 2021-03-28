@@ -17,6 +17,16 @@ const MainDonation = (props: any) => {
     const baseUrl: any = process.env.baseUrl;
 
     function handleClick() {
+        import("react-facebook-pixel")
+            .then((x) => x.default)
+            .then((ReactPixel) => {
+                ReactPixel.init('809047500028527');
+                ReactPixel.fbq('track', 'AddToCart', {
+                    program_name: props?.data?.name || '-',
+                    value: donateAmount,
+                    currency: 'Rp'
+                });
+            });
         donationService.setPayload(donateAmount, isInfaq);
         props.onDone ? props.onDone(donateAmount, isInfaq) : '';
     }

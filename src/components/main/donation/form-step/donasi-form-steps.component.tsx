@@ -100,6 +100,18 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
             isInfaq: props.isInfaq || false
         }
 
+        import("react-facebook-pixel")
+            .then((x) => x.default)
+            .then((ReactPixel) => {
+                ReactPixel.init('809047500028527');
+                ReactPixel.fbq('track', 'InitiateCheckout', {
+                    program_name: props?.data?.name || '-',
+                    content_ids: [payload.programId],
+                    value: payload.amount,
+                    currency: 'Rp'
+                });
+            });
+
         const obs = paymentMethod?.integratedPaymentMethod ? donationRestService.transactionMidtransSnap(payload, params) : donationRestService.transactionManual(payload, params)
         handleRequest({
             obs,

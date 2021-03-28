@@ -25,14 +25,31 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                 return throwError(err);
             })).subscribe((res) => { setData(res); setLoading(false); });
     }
+
+
     useEffect(() => {
         const newtransactionID: string = query ? query.id : null;
+
         setTransactionID(newtransactionID);
     }, [query]);
 
     useEffect(() => {
         transactionID && loadData();
-    }, [transactionID])
+    }, [transactionID]);
+
+    useEffect(() => {
+        data && import("react-facebook-pixel")
+            .then((x) => x.default)
+            .then((ReactPixel) => {
+                ReactPixel.init('809047500028527');
+                ReactPixel.fbq('track', 'Lead');
+                ReactPixel.fbq('track', 'Purchase', {
+                    program_name: data?.lines[0].itemName || '-',
+                    value: data?.amount,
+                    currency: 'Rp '
+                })
+            });
+    }, [data])
 
     return <MainComponent
         title="Detail Transaksi | Ruang Insan Berbagi"

@@ -121,7 +121,7 @@ const PaymentMethodStep = (props: {
     return (
         <>
             <NextSeo
-                title={step == 1 ? 'Isi Data Diri' : 'Pilih Metode Pembayaran'}
+                title={'Isi Data Diri > Pilih Metode Pembayaran'}
             />
             <div className="payment-method-donasi-form">
                 <div className="the-card mb-3 -v animate__animated animate__bounceIn" id="gggg-1">

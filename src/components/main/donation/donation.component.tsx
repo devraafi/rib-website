@@ -45,6 +45,17 @@ const DonationPage = (props: any) => {
     }
 
     useEffect(() => {
+        data && import("react-facebook-pixel")
+            .then((x) => x.default)
+            .then((ReactPixel) => {
+                ReactPixel.init('809047500028527');
+                ReactPixel.fbq('track', 'ViewContent', {
+                    program_name: data?.name || '-',
+                })
+            });
+    }, [data])
+
+    useEffect(() => {
         localStorage && localStorage.setItem('lastTotalDonasi', total.toString());
         localStorage && localStorage.setItem('isInfaq', total.toString());
     }, [total, isInfaq]);
