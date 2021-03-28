@@ -89,7 +89,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                             {formatMoney(res?.uniqueCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
                         </div>
                         <div className="text-lg-right text-center align-self-center col-12 p-2">
-                            Mohon transfer tepat sampai {(res?.uniqueCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
+                           * Mohon transfer tepat sampai {(res?.uniqueCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                         <div className="value col-lg-auto align-self-center col-auto p-2 mr-2">
                             <img src="/images/icons/WarningCircle.svg" alt="" />
                         </div>
-                        <div className="col-auto align-self-center p-2">
+                        <div className="col align-self-center p-2">
                             Kirim Bukti Pembayaran via WhatsApp Ruang Insan Berbagi: <span className="v">+62 82126855400</span>
                         </div>
                     </div>
