@@ -14,6 +14,7 @@ const auth: AuthenticationService = new AuthenticationService;
 const transactionRest: TransactionRestService = new TransactionRestService(process.env.staging || '', auth.axiosInterceptors);
 const TransactionDetailComponent = (props: WithRouterProps) => {
     const query: any = props.router.query;
+    const { manual } = query;
     const [data, setData] = useState<ITransactionDetail>();
     const [transactionID, setTransactionID] = useState<string>();
     const [loading, setLoading] = useState<boolean>();
@@ -41,11 +42,11 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
         <Spin spinning={loading} indicator={<Loading />} >
             <div className="container transaction-detail-page my-5">
                 <div className="title-detail m-3 text-center text-lg-left ">Detail Transaksi</div>
-                <div className="row mb-3">
+                <div className="row mb-lg-3">
                     <div className="col-lg-8 col-12 align-self-start">
                         {
                             data && data.lines.map((line, i: number) => (
-                                <div className="card-transaction m-3">
+                                <div className="card-transaction m-lg-3 mb-2">
                                     <div className="d-flex flex-column w-100">
                                         <div className="field">
                                             <div className="label">{_.capitalize(line.itemType) || 'Transaksi'}</div>
@@ -69,15 +70,15 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                         }
                     </div>
                     <div className="col-lg-4 col-12 align-self-start">
-                        <div className="card-transaction m-3 w-100">
+                        <div className="card-transaction m-lg-3 mb-2 w-100">
                             <div className="d-flex flex-column w-100">
                                 <div className="field">
                                     <div className="label">Metode Pembayaran</div>
                                     <div className="value">{data?.paymentName || ''}</div>
                                 </div>
                                 <div className="field">
-                                    <div className="label">Nomor virtual account</div>
-                                    <div className="value">{data?.vaNumber || '-'}</div>
+                                    <div className="label">{manual ? 'Nomor Rekening' : 'Nomor virtual account'}</div>
+                                    <div className="value">{data?.accountNumber || '-'}</div>
                                 </div>
                                 <div className="field">
                                     <div className="label">Jumlah</div>
@@ -89,7 +90,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="m-3 w-100">
+                        <div className="m-lg-3 mb-2 w-100">
                             <button className="btn btn-dh-primary btn-block" onClick={() => loadData()}>Cek Status Pembayaran</button>
                         </div>
                     </div>

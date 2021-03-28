@@ -142,7 +142,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                             </Link>
                         </div>
                         <div className="col-lg-6 p-2">
-                            <Link href={`/detail-transaksi?id=${res?._id}`}>
+                            <Link href={`/detail-transaksi?id=${res?._id}&manual=true`}>
                                 <button className="btn btn-dh-edit o btn-block">Cek Status Pembayaran</button>
                             </Link>
                         </div>
