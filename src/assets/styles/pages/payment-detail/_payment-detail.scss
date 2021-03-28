@@ -1,23 +1,32 @@
 #donation-payment-detail {
+    font-size: 15px;
+    @media (min-width: 992px) {
+        max-width: 50vw;
+    }
     .copy {
         cursor: pointer;
     }
     .title {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 20px;
+    }
+    .subtitle {
+        font-weight: normal;
+        color: #8896a2;
+        font-size: 14px;
     }
 
     .field {
-        font-weight: 500;
-        font-size: 14px;
+        font-weight: normal;
+        font-size: 11px;
         line-height: 120%;
         color: #8896a2;
         font-family: "FiraSans";
     }
 
     .value {
-        font-weight: 500;
-        font-size: 18px;
+        font-weight: bold;
+        font-size: 13px;
         color: #31383f;
     }
 
@@ -25,7 +34,7 @@
         background: #ffffff;
         border-radius: 24px 24px 0px 0px;
         @media (min-width: 992px) {
-            padding: 30px 60px 40px;
+            padding: 30px 50px 30px;
         }
         padding: 20px;
         .counter {
@@ -39,14 +48,26 @@
             .value {
                 color: #a54d12;
                 font-weight: 600;
-                font-size: 18px;
+                font-size: 13px;
                 align-self: center;
             }
         }
     }
     .card-section-2 {
         background: #ffffff;
-        border-radius: 0px 0px 24px 24px;
+        // border-radius: 0px 0px 24px 24px;
+        .child-card {
+            padding: 15px 20px;
+            background: #f6f8f9;
+            font-size: 11px;
+            color: #62717d;
+            border-radius: 10px;
+            .value {
+                font-weight: bold;
+                font-size: 11px;
+                color: #62717d;
+            }
+        }
         @media (min-width: 992px) {
             padding: 30px 60px 40px;
         }
@@ -57,7 +78,7 @@
         .value {
             &.total {
                 color: #12bfff;
-                font-size: 20px;
+                font-size: 15px;
             }
         }
     }

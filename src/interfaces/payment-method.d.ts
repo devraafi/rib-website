@@ -8,4 +8,5 @@ export interface IPaymentMethod {
     code: string;
     integratedPaymentMethod: boolean;
     accountNumber?: string;
+    accountName?: string;
 }

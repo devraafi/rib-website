@@ -221,15 +221,38 @@ const PaymentMethodStep = (props: {
                         Pilih metode pembayaran
                     </div>
                 </div>
-                <div className="d-flex flex-column w-100">
+                <div className="d-flex flex-column w-100 mb-2">
                     <div className="row">
                         <div className="col-12 sub-header py-2">
-                            E-Wallet
+                            Virtual Account (Verifikasi Otomatis)
                         </div>
                         {
                             (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                 return (
-                                    l.integratedPaymentMethod && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                    l.type == 'virtual_account' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                        <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
+                                            <img style={{
+                                                maxWidth: '80%'
+                                            }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                        </div>
+                                    </div>
+                                )
+                            }) :
+                                <div className="col-12 p-3 text-center">
+                                    Maaf, belum ada pilihan metode pembayaran
+                                </div>
+                        }
+                    </div>
+                </div>
+                <div className="d-flex flex-column w-100 mb-2">
+                    <div className="row">
+                        <div className="col-12 sub-header py-2">
+                            e-Wallet
+                        </div>
+                        {
+                            (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                return (
+                                    l.type == 'ewallet' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                         <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                             <img style={{
                                                 maxWidth: '80%'
@@ -247,16 +270,16 @@ const PaymentMethodStep = (props: {
                 <div className="d-flex flex-column w-100">
                     <div className="row">
                         <div className="col-12 sub-header py-2">
-                            Manual
+                            Transfer bank (Verifikasi Manual)
                         </div>
                         {
                             (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                 return (
-                                    !l.integratedPaymentMethod && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
+                                    l.type == 'manual' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                         <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                             <img style={{
                                                 maxWidth: '80%'
-                                            }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                            }} src={`/images/logos/payment/manual/${l.code}.svg`} />
                                         </div>
                                     </div>
                                 )

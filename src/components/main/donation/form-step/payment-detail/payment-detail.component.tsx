@@ -7,7 +7,7 @@ import moment from "moment";
 import { message, Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { CommonServices } from "services/common/common.service";
-
+import { formatMoney } from 'accounting-js';
 const { getPaymentImageSrc } = new CommonServices;
 export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
     const { res } = props;
@@ -35,9 +35,12 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
     return (
         <Spin spinning={!res} indicator={<Loading />}>
             <div className="container py-3" id="donation-payment-detail">
-                <div className="text-center py-2 title">
+                <div className="subtitle text-center py-2">
                     Instruksi pembayaran
-            </div>
+                </div>
+                <div className="text-center title mb-3">
+                    Transfer bank - Manual Transfer
+                </div>
                 <div className="card-section-1 mb-2">
                     {/* <div className="row w-100 justify-content-between m-auto">
                         <div className="col-lg-auto col-12 p-2 field align-self-center">
@@ -58,38 +61,78 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                         </div>
                     </div>
                 </div>
-                <div className="card-section-2">
+                <div className="card-section-2 mb-2">
                     <div className="p-2">
-                        Pembayaran
-                    </div>
-                    <div className="row w-100 justify-content-between m-auto mb-2">
-                        <div className="field align-self-center col-lg-auto col-12 p-2">
-                            Nomor Rekening
-                        </div>
-                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2">
-                            {res?.paymentMethod?.accountNumber || '-'} <span className="copy" onClick={() => copy(res?.paymentMethod?.accountNumber || '')}>
-                                <img src="/images/icons/copy.svg" alt="" />
-                            </span>
-                        </div>
+                        CARA PEMBAYARAN
                     </div>
                     <div className="row w-100 justify-content-between m-auto mb-2">
                         <div className="field align-self-center col-lg-auto col-12 p-2">
                             Total Pembayaran
                         </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2 total">
-                            Rp{res?.total || 0} <span className="copy" onClick={() => copy((res?.total).toString() || '')}>
+                            {formatMoney(res?.total || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })} <span className="copy" onClick={() => copy((res?.total).toString() || '')}>
                                 <img src="/images/icons/copy.svg" alt="" />
                             </span>
                         </div>
                     </div>
-                    <div className="row w-100 justify-content-between m-auto mb-2">
-                        <div className="field align-self-center col-lg-auto col-12 p-2">
-                            {res?.paymentMethod?.name}
+                    <div className="row w-100 m-auto mb-2 child-card">
+                        <div className="align-self-center col-lg-6 col-12 p-2">
+                            Jumlah Donasi
                         </div>
-                        <div className="value col-lg-auto text-center text-lg-right col-12 p-2">
+                        <div className="value text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
+                            {formatMoney(res?.amount || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
+                        </div>
+                        <div className="align-self-center col-lg-6 col-12 p-2">
+                            Kode Unik
+                        </div>
+                        <div className="value text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
+                            {formatMoney(res?.uniqCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
+                        </div>
+                        <div className="align-self-center col-lg-6 col-12 p-2">
+
+                        </div>
+                        <div className="text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
+                            *{(res?.uniqCode || 0).toString().length} angka terakhir didonasikan
+                        </div>
+                    </div>
+                </div>
+                <div className="card-section-2 mb-2">
+                    <div className="row w-100 justify-content-between m-auto mb-2">
+                        <div className="field align-self-center col-lg-6 col-12 p-2">
+                            Pembayaran dilakukan ke rekening:
+                        </div>
+                        <div className="field col-lg-auto text-lg-right col-12 p-2">
+                            <div className="d-flex">
+                                <span>
+                                    Atas Nama
+                            </span>
+                                <span className="value ml-2">
+                                    {res?.paymentMethod?.accountName}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row w-100 justify-content-between m-auto mb-2">
+                        <div className="value align-self-center col-lg-auto text-center text-lg-right col-12 p-2">
                             <img style={{
-                                maxWidth: '80%'
-                            }} src={`/images/logos/payment/${getPaymentImageSrc(res?.paymentMethod?.code)}.svg`} />
+                                maxWidth: '100px'
+                            }} src={`/images/logos/payment/manual/${res?.paymentMethod?.code}.svg`} />
+                        </div>
+                        <div className="value align-self-center col-lg-auto text-left text-lg-right col-6 p-2">
+                            {res?.paymentMethod?.accountNumber}
+                        </div>
+                        <div className="value align-self-center col-lg-auto text-right col-6 p-2">
+                            <span className="copy" onClick={() => copy(res?.paymentMethod?.accountNumber || '')}>
+                                <img src="/images/icons/copy.svg" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                    <div className="row w-100 m-auto mb-2 child-card">
+                        <div className="value col-lg-auto align-self-center col-auto p-2 mr-2">
+                            <img src="/images/icons/WarningCircle.svg" alt="" />
+                        </div>
+                        <div className="col-lg-auto align-self-center col-auto p-2">
+                            Bukti pembayaran akan kirimkan via Whatsapp
                         </div>
                     </div>
                     <div className="row w-100 justify-content-between m-auto mb-2 py-3">

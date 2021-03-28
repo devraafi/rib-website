@@ -19,6 +19,8 @@ export interface IPaymentDetail {
     appSource: string;
     createdAt: string;
     updatedAt: string;
+    amount: number;
+    uniqCode: number;
     __v: string;
     paymentMethod: IPaymentMethod
 }
