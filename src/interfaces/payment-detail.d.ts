@@ -20,7 +20,7 @@ export interface IPaymentDetail {
     createdAt: string;
     updatedAt: string;
     amount: number;
-    uniqCode: number;
+    uniqueCode: number;
     __v: string;
     paymentMethod: IPaymentMethod
 }
