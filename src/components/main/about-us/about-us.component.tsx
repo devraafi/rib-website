@@ -37,7 +37,7 @@ const AboutUsComponent = () => {
     }
     return (
         <MainComponent
-            title="About Us Ruang Insan Berbagi"
+            title="Tentang Kami | Ruang Insan Berbagi"
             description="Ruang Insan Berbagi"
             pageId="about-page-dh"
         >

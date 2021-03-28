@@ -113,7 +113,7 @@ export const ProfileComponent = () => {
     }, [])
 
     return <MainComponent
-        title="Profile"
+        title="Profile | Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="profile-page-dh"
     >
@@ -122,12 +122,15 @@ export const ProfileComponent = () => {
                 <div className="profile-wrapper">
                     {
                         !isUpdate &&
-                        <div className="profile-info d-flex justify-content-around">
-                            <div className="d-flex">
-                                <div className="img-profile mr-4 align-self-center">
+                        <div className="profile-info d-flex justify-content-around flex-lg-row flex-column">
+                            <div className="d-flex flex-column flex-lg-row flex-wrap text-center mb-2 mb-lg-0">
+                                <div className="img-profile mr-lg-4 m-auto align-self-center">
                                     <img src="/images/icons/people.svg" alt="" />
                                 </div>
-                                <div className="name mr-4 pr-4 border-right align-self-center">
+                                <div className="d-none d-lg-block name mr-lg-4 pr-lg-4 m-auto border-right align-self-center">
+                                    {formValue?.fullName}
+                                </div>
+                                <div className="d-lg-none d-block name mr-lg-4 pr-lg-4 m-auto  align-self-center">
                                     {formValue?.fullName}
                                 </div>
                                 <div className="info align-self-center">
@@ -207,7 +210,7 @@ export const ProfileComponent = () => {
                                 <div className="transaction-info">
                                     {
                                         profileTransaction ? <>
-                                            <div className="total-donasi">
+                                            <div className="total-donasi flex-wrap">
                                                 <p>Total Donasi</p>
                                                 <div className="d-flex my-2">
                                                     <div className="rp mr-2">Rp </div>

@@ -51,7 +51,7 @@ export const HomePage = () => {
     }, [query]);
 
     return <MainComponent
-        title="Home Ruang Insan Berbagi"
+        title="Beranda | Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="home-page-dh"
     >

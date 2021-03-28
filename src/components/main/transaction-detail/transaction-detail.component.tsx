@@ -34,7 +34,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
     }, [transactionID])
 
     return <MainComponent
-        title="Detail Transaksi"
+        title="Detail Transaksi | Ruang Insan Berbagi"
         description="Detail Transaksi Ruang Insan Berbagi"
         pageId="transaction-detail-page-dh"
     >

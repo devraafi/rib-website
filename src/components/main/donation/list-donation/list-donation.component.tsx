@@ -80,7 +80,7 @@ const DonationList = () => {
         loadDonation()
     }, []);
     return <MainComponent
-        title="Donasi List Ruang Insan Berbagi"
+        title="Donasi | List Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
         pageId="donasi-page-dh"
     >

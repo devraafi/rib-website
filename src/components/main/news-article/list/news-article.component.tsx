@@ -56,7 +56,7 @@ export const NewsArticleListComponent = () => {
 
     return (
         <MainComponent
-            title="Berita & Artikel"
+            title="Berita & Artikel | Ruang Insan Berbagi"
             description="Ruang Insan Berbagi"
             pageId="news-article-page-dh"
         >
