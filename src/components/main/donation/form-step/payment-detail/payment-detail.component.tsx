@@ -132,7 +132,7 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                             <img src="/images/icons/WarningCircle.svg" alt="" />
                         </div>
                         <div className="col-lg-auto align-self-center col-auto p-2">
-                            Bukti pembayaran akan kirimkan via Whatsapp
+                            Kirim Bukti Pembayaran via WhatsApp Ruang Insan Berbagi: <span className="v">+62 82126855400</span>
                         </div>
                     </div>
                     <div className="row w-100 justify-content-between m-auto mb-2 py-3">
