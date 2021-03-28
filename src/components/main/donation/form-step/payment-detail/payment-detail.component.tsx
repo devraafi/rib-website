@@ -86,10 +86,10 @@ export const DonasiPaymentDetail = (props: { res: IPaymentDetail }) => {
                             Kode Unik
                         </div>
                         <div className="value text-lg-right text-center align-self-center col-lg-6 col-12 p-2">
-                            {formatMoney(res?.uniqCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
+                            {formatMoney(res?.uniqueCode || 0, { symbol: "Rp ", precision: 0, thousand: ".", decimal: "," })}
                         </div>
                         <div className="text-lg-right text-center align-self-center col-12 p-2">
-                            Mohon transfer tepat sampai {(res?.uniqCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
+                            Mohon transfer tepat sampai {(res?.uniqueCode || 0).toString().length} angka terakhir agar donasi dapat diverifikasi
                         </div>
                     </div>
                 </div>
