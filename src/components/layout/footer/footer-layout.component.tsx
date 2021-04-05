@@ -33,8 +33,7 @@ export default class FooterComponent extends React.Component {
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia yang senang untuk berbagi. 
-                                        Hadirnya kami memberikan harapan agar kepercayaan masyarakat dapat bertahan untuk terus berbuat baik dan mampu memberikan pengaruh positif kebaikan sosial bagi yang lainnya.
+                                    Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia dengan pengelolaan dana sosial secara Amanah, Tepat Sasaran dan Profesional. Implementasi program donasi di rangkum dalam 4 Rumpun Program Insani yaitu Insan Sehat (Kesehatan), Insan Mandiri (Perbaikan Ekonomi), Insan Peduli Lingkungan, Insan Cerdas (Pendidikan).
                                     </div>
                                     <div className="col-12 col-md py-2">
                                         <div className="dh-footer-title">Hubungi Kami</div>
