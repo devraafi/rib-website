@@ -44,6 +44,23 @@ const DonationPage = (props: any) => {
         })
     }
 
+    function scroll(to?: boolean) {
+        const windTop = window.pageYOffset;
+        const mainTop: any = document.getElementById('col-donation')?.offsetTop;
+        if (to) {
+            window.scrollTo(0, (mainTop - 100));
+        }
+        if (windTop >= (mainTop - 420)) {
+            document.getElementById('fixed-donation')?.classList.remove('animate__fadeInUp');
+            document.getElementById('fixed-donation')?.classList.add('animate__fadeOutDown');
+            // document.getElementById('fixed-donation')?.classList.add('d-none');
+        } else {
+            document.getElementById('fixed-donation')?.classList.remove('d-none');
+            document.getElementById('fixed-donation')?.classList.remove('animate__fadeOutDown');
+            document.getElementById('fixed-donation')?.classList.add('animate__fadeInUp');
+        }
+    }
+
     useEffect(() => {
         data && import("react-facebook-pixel")
             .then((x) => x.default)
@@ -68,6 +85,10 @@ const DonationPage = (props: any) => {
         }
     }, [router]);
 
+    useEffect(() => {
+        window.onscroll = function () { scroll() };
+    });
+
     return (
         <MainComponent
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
@@ -88,13 +109,16 @@ const DonationPage = (props: any) => {
                                     {data && <BannerDonationSection data={data} />}
                                     {data && <ContentDonationSection data={data} />}
                                 </div>
-                                <div className="col-lg-5 py-3 py-lg-0 position-relative">
+                                <div className="col-lg-5 py-3 py-lg-0 position-relative" id="col-donation">
                                     {
                                         data &&
                                         <MainDonation isInfaq={pathname === '/infak' ? true : false} data={data} onDone={(total: number, isInfaq: boolean) => onDonate(total, isInfaq)} />
                                     }
                                 </div>
                             </div>
+                        </div>
+                        <div id="fixed-donation" className="fixed-bottom d-lg-none doation-fixed-section animate__animated " onClick={() => scroll(true)}>
+                            PRAKASH WOYO
                         </div>
                     </div>
                     :

@@ -18,6 +18,21 @@
             object-fit: cover;
         }
     }
+    .doation-fixed-section {
+        cursor: pointer;
+        padding: 10px 20px;
+        color: #ffffff;
+        // border-radius: 10px;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0px 4px 8px rgba(90, 122, 163, 0.1);
+        // width: 80vw;
+        // bottom: 20px;
+        font-size: 13px;
+        background: #00AEEF;
+        font-weight: bold;
+        text-align: center;
+        margin: auto;
+    }
     .content {
         position: relative;
         top: calc(0px - 350px);

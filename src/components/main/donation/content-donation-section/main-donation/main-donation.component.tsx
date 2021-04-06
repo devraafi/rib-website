@@ -88,7 +88,7 @@ const MainDonation = (props: any) => {
     }, [data])
 
     return (
-        <div className="main-donation m-auto p-3" id="main-donation">
+        <div className="main-donation m-auto p-3" id="main-donation form-donation">
             <div className="title-support px-2 py-1">
                 {
                     isInfaq ? 'Percayakan infak mu dengan Ruang Insan Berbagi' : 'Dukung Program Ini'
