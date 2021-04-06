@@ -21,7 +21,7 @@ const donationRestService: DonationRestServices = new DonationRestServices(proce
 const { handleRequest } = new RequestService;
 const { isEmail } = new CommonServices;
 
-const DonasiFormStep = (props: { step: number, total?: number, id?: any, referer?: any, data?: any, isInfaq?: boolean }) => {
+const DonasiFormStep = (props: { step: number, total?: number, id?: any, referrer?: any, data?: any, isInfaq?: boolean }) => {
     const [step, onStepChange] = useState(1);
     const [spin, setSpin] = useState(false);
     const [res, setRes] = useState<any>();
@@ -92,7 +92,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referer
         setSpin(true);
         const payload = {
             programId: props.id,
-            referer: props.referer,
+            referrer: props.referrer,
             amount: props.total || 0,
             customerInfo: customerInfo,
             paymentMethodId: paymentMethod && paymentMethod._id
