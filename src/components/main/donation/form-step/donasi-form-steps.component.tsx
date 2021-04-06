@@ -108,7 +108,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, data?: 
                     program_name: props?.data?.name || '-',
                     content_ids: [payload.programId],
                     value: payload.amount,
-                    currency: 'Rp'
+                    currency: 'IDR'
                 });
             });
 
