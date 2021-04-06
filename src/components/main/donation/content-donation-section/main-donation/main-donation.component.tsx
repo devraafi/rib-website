@@ -83,7 +83,7 @@ const MainDonation = (props: any) => {
     });
 
     useEffect(() => {
-        const pkg: boolean = data.donationAmountOption && data.donationAmountOption.length;
+        const pkg: boolean = data.donationAmountOption && (data.donationAmountOption.length > 0);
         setIsPackage(pkg)
     }, [data])
 
