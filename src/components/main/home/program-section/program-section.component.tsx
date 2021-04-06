@@ -77,7 +77,7 @@ const ProgramSection = (props: {
                                 skeleton == list._id ?
                                     <Skeleton.Input active className="w-100 card-program h-100" /> :
                                     <div className="card-program animate__animated animate__bounceIn">
-                                        <Link href={`/donasi/detail?title=${list.name}&id=${list._id}`}>
+                                        <Link href={`/donasi/detail?title=${list.route}&id=${list._id}`}>
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
                                                     {
