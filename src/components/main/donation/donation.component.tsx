@@ -118,7 +118,7 @@ const DonationPage = (props: any) => {
                             </div>
                         </div>
                         <div id="fixed-donation" className="fixed-bottom d-lg-none doation-fixed-section animate__animated " onClick={() => scroll(true)}>
-                            PRAKASH WOYO
+                            DONASI
                         </div>
                     </div>
                     :
