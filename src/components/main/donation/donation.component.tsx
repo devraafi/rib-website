@@ -122,7 +122,7 @@ const DonationPage = (props: any) => {
                         </div>
                     </div>
                     :
-                    <DonasiFormStep step={step} data={data} total={total} isInfaq={pathname === '/infak' ? true : false} id={query.id || data._id} />
+                    <DonasiFormStep step={step} data={data} total={total} isInfaq={pathname === '/infak' ? true : false} id={query.id || data._id} referrer={query.referrer || null} />
                 }
             </Spin>
 

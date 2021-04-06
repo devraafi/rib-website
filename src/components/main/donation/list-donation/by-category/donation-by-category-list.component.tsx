@@ -80,7 +80,7 @@ const DonationListByCategory = () => {
                             {
                                 (res.programs.length > 0) && res.programs.map((list: any, i: number) => (
                                     <div className="col-lg-3 col-sm-6 col-12 col-md-4 py-2" key={i}>
-                                        <Link href={`/donasi/detail?title=${list.name}&id=${list._id}`}>
+                                        <Link href={`/donasi/detail?title=${list.route}&id=${list._id}`}>
                                             <div className="card-program animate__animated animate__bounceIn">
                                                 <div className="d-flex flex-column">
                                                     <div className="program-image">

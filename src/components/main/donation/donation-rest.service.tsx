@@ -14,6 +14,7 @@ export class DonationRestServices {
 
     transactionMidtransSnap(payload: {
         programId: string,
+        referrer: string,
         amount: number,
         customerInfo: {
             fullName: string,
@@ -28,6 +29,7 @@ export class DonationRestServices {
 
     transactionManual(payload: {
         programId: string,
+        referrer: string,
         amount: number,
         customerInfo: {
             fullName: string,
