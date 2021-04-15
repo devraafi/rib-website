@@ -32,7 +32,7 @@ export default function MyApp({ Component, pageProps }: any) {
 
     function GoogleAnalytics(pageProps: any) {
         React.useEffect(() => {
-            ReactGA.initialize('G-854H4S29QL');
+            ReactGA.initialize('UA-854H4S29QL-2');
 
             ReactGA.pageview(window.location.pathname + window.location.search);
             ReactGA.pageview(pageProps.page);
