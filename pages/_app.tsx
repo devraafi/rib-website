@@ -1,10 +1,12 @@
-import React from 'react';
 import '@Styles/main.scss';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Router } from 'next/router';
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import React from 'react';
+import ReactGA from 'react-ga';
+import TagManager from 'react-gtm-module';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 export default function MyApp({ Component, pageProps }: any) {
     // if (typeof window === 'undefined' || typeof document === 'undefined') {
@@ -28,9 +30,40 @@ export default function MyApp({ Component, pageProps }: any) {
         return null;
     }
 
+    function GoogleAnalytics() {
+        React.useEffect(() => {
+            ReactGA.initialize('G-854H4S29QL');
+        })
+
+        return null;
+    }
+
+    function GApageView(page: any) {   
+        React.useEffect(() => {
+            ReactGA.pageview(page);   
+        })
+
+        return null;
+    }
+
+    function GogleTagManager() {   
+        React.useEffect(() => {
+            const tagManagerArgs = {
+                gtmId: 'G-854H4S29QL'
+            }
+            
+            TagManager.initialize(tagManagerArgs)  
+        })
+
+        return null;
+    }
+
     return (
         <>
             <FacebookPixel />
+            <GoogleAnalytics />
+            <GApageView/>
+            <GogleTagManager/>
             <Component {...pageProps} />
         </>
     )
