@@ -38,9 +38,10 @@ export default function MyApp({ Component, pageProps }: any) {
         return null;
     }
 
-    function GApageView(page: any) {   
+    function GApageView(pageProps: any) {   
         React.useEffect(() => {
-            ReactGA.pageview(page);   
+            ReactGA.pageview(window.location.pathname + window.location.search);
+            ReactGA.pageview(pageProps.page);   
         })
 
         return null;
@@ -62,7 +63,7 @@ export default function MyApp({ Component, pageProps }: any) {
         <>
             <FacebookPixel />
             <GoogleAnalytics />
-            <GApageView/>
+            <GApageView page={pageProps} />
             <GogleTagManager/>
             <Component {...pageProps} />
         </>
