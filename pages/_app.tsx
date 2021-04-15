@@ -1,10 +1,9 @@
 import '@Styles/main.scss';
+import GA4React from 'ga-4-react';
 import { Router } from 'next/router';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import React from 'react';
-import ReactGA from 'react-ga';
-import TagManager from 'react-gtm-module';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
@@ -30,24 +29,16 @@ export default function MyApp({ Component, pageProps }: any) {
         return null;
     }
 
-    function GoogleAnalytics(pageProps: any) {
+    function GoogleAnalytics() {
         React.useEffect(() => {
-            ReactGA.initialize('UA-854H4S29QL-2');
+            const ga4react = new GA4React('G-GV0PS3F6QD');
+            ga4react.initialize().then((ga4) => {
+            ga4.pageview('path')
+            ga4.gtag('event', 'pageview', 'path')
+            },(err) => {
+            console.error(err)
+            })
 
-            ReactGA.pageview(window.location.pathname + window.location.search);
-            ReactGA.pageview(pageProps.page);
-        })
-
-        return null;
-    }
-
-    function GogleTagManager() {   
-        React.useEffect(() => {
-            const tagManagerArgs = {
-                gtmId: 'G-854H4S29QL'
-            }
-            
-            TagManager.initialize(tagManagerArgs)  
         })
 
         return null;
@@ -56,8 +47,7 @@ export default function MyApp({ Component, pageProps }: any) {
     return (
         <>
             <FacebookPixel />
-            <GoogleAnalytics page={pageProps} />
-            <GogleTagManager/>
+            <GoogleAnalytics />
             <Component {...pageProps} />
         </>
     )
