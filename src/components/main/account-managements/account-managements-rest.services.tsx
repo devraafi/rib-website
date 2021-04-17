@@ -26,7 +26,7 @@ export class AccountMangeRestServices {
         password: string,
     }) {
         const client = {
-            client_id: 'lazis-dh',
+            client_id: 'website-lazis-dh',
             client_secret: 'L4Z1SDH',
             grant_type: 'password'
         }
@@ -36,7 +36,7 @@ export class AccountMangeRestServices {
 
     refreshToken(refresh_token: string) {
         const payload = {
-            client_id: 'lazis-dh',
+            client_id: 'website-lazis-dh',
             client_secret: 'L4Z1SDH',
             grant_type: 'refresh_token',
             refresh_token: refresh_token
