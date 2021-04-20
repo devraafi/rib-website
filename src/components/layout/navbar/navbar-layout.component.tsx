@@ -1,6 +1,8 @@
 import React, { HtmlHTMLAttributes, RefObject } from 'react';
 import dataMenu from 'files/menus.json';
 import Link from 'next/link';
+import { Popover } from 'antd';
+import { NotificationsComponent } from '../../main/notifications/notifications.component';
 export default class NavbarComponent extends React.Component<any, any> {
     navbarRef: any;
     dhvRef: any;
@@ -165,17 +167,26 @@ export default class NavbarComponent extends React.Component<any, any> {
                                 }} className="z-index-yow form-inline my-2 my-lg-0 px-4 d-flex justify-content-end">
                                     {
                                         (typeof window !== 'undefined' && (this.getItem() && this.getItem().user)) ?
-                                            <div className="dropdown">
-                                                <a className="sign-up dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>
-                                                <div className="dropdown-menu" aria-labelledby="UserDropdown">
-                                                    <Link href="/profile">
-                                                        <a className="dropdown-item bg-white">Profile</a>
-                                                    </Link>
-                                                    <Link href="/login">
-                                                        <a className="dropdown-item bg-white">Logout</a>
-                                                    </Link>
+                                            <>
+                                                <div className="dropdown">
+                                                    <a className="sign-up dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.getItem().user.fullName} <img src="/images/icons/people.svg" className="mx-1 img-fluid" alt="" /> </a>
+                                                    <div className="dropdown-menu" aria-labelledby="UserDropdown">
+                                                        <Link href="/profile">
+                                                            <a className="dropdown-item bg-white">Profile</a>
+                                                        </Link>
+                                                        <Link href="/login">
+                                                            <a className="dropdown-item bg-white">Logout</a>
+                                                        </Link>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div className="notif">
+                                                    <Popover overlayClassName="notif-popover" className="notif-popover" placement="bottom" content={<NotificationsComponent />} trigger={['hover', 'click']}>
+                                                        <a className="">
+                                                            <img src="/images/icons/bell.svg" alt="" srcSet="" />
+                                                        </a>
+                                                    </Popover>
+                                                </div>
+                                            </>
                                             :
                                             < Link href="/login">
                                                 <a className="sign-up">MASUK <img src="/images/icons/people.svg" className="ml-1 img-fluid" alt="" /> </a>

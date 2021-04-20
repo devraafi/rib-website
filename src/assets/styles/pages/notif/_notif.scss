@@ -1,0 +1,53 @@
+#notif-wrapper {
+    @media (min-width: 992px) {
+        width: 25vw;
+        height: 45vh;
+    }
+    width: 80vw;
+    height: 80vh;
+    overflow: auto;
+    .notif-list {
+        border-bottom: 0.5px solid #DBE0E3;
+        .img-type {
+            max-height: 20px;
+        }
+        .type {
+            font-family: "FiraSans" !important;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 170%;
+            color: #bdbdbd;
+        }
+        .title {
+            font-family: "Poppins" !important;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 170%;
+            color: #31383f;
+        }
+        .msg {
+            font-family: "FiraSans" !important;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 170%;
+            /* or 24px */
+
+            /* Neutral/8 */
+
+            color: #31383f;
+        }
+    }
+}
+
+.ant-popover {
+    &.notif-popover {
+        .ant-popover-inner {
+            border-radius: 10px;
+        }
+    }
+}
+
+
