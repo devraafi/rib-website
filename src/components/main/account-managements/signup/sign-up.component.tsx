@@ -55,7 +55,7 @@ const SignUpComponent = (props: {
                     <div className="row">
                         <div className="col-12 p-2">
                             <Form.Item
-                                name="fullName"
+                                name="name"
                                 className="m-0"
                                 rules={
                                     [{
