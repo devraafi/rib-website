@@ -44,4 +44,12 @@ export class AccountMangeRestServices {
         }
         return this.request.post<IUserInfo>(`/oauth2/connect/token`, payload);
     }
+
+    verifyEmail(payload: { email: string }) {
+        return this.request.post('user/verify-email', payload);
+    }
+
+    resetPassword(payload: { password: string; id: string }) {
+        return this.request.put(`user/reset-password/${payload.id}`, payload);
+    }
 }

@@ -12,7 +12,11 @@
                     min-height: 520px;
                 }
                 &.forgot-password {
-                    min-height: 415px;
+                    min-height: 360px;
+                    background-size: contain !important;
+                } 
+                &.reset-password {
+                    min-height: 400px;
                     background-size: contain !important;
                 }
                 min-height: 630px;

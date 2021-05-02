@@ -10,6 +10,7 @@ import SignUpComponent from './signup/sign-up.component';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { RequestService } from 'services/request.services';
 import ForgotPasswordComponent from './forgot-password/forgot-password.component';
+import ResetPasswordComponent from './reset-password/reset-password.component';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices(process.env.staging || '');
 const auth: AuthenticationService = new AuthenticationService();
 const { handleRequest } = new RequestService;
@@ -51,6 +52,33 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
         })
     };
 
+    function onVerifyEmail(val: any) {
+        SetLoading(true);
+        const obs = accountManageRestService.verifyEmail(val);
+        handleRequest({
+            obs,
+            successMessage: 'Silahkan cek email anda',
+            onError: () => SetLoading(false),
+            onTap: (res) => {
+                SetLoading(false);
+            }
+        })
+    };
+    
+    function onResetPassword(val: any) {
+        SetLoading(true);
+        const obs = accountManageRestService.resetPassword(val);
+        handleRequest({
+            obs,
+            successMessage: 'Reset password berhasil. Silahkan login',
+            onError: () => SetLoading(false),
+            onTap: (res) => {
+                SetLoading(false);
+                router.push('/login');
+            }
+        })
+    };
+
     function viewPage() {
         switch (props.page) {
             case 'login':
@@ -58,7 +86,9 @@ const AccontManagementsComponent = (props: AccountManagementProps) => {
             case 'signup':
                 return <SignUpComponent onSignUp={onSignUp} />;
             case 'forgot-password':
-                return <ForgotPasswordComponent />;
+                return <ForgotPasswordComponent onVerifyEmail={onVerifyEmail} />;
+            case 'reset-password':
+                return <ResetPasswordComponent onResetPassword={onResetPassword} />;
             default:
                 return <LoginComponent onLogin={onLogin} />;
         }

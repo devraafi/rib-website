@@ -6,12 +6,16 @@ import { AccountMangeRestServices } from '../account-managements-rest.services';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 const accountManageRestService: AccountMangeRestServices = new AccountMangeRestServices(process.env.staging || '');
-const ForgotPasswordComponent = () => {
+const ForgotPasswordComponent = (
+    props: {
+        onVerifyEmail: (val: any) => void;
+    }
+) => {
     const router = useRouter();
     const { query } = router;
 
     function onFinish(val: any) {
-
+        props.onVerifyEmail(val)
     }
     return <div id="forgot-page-dh">
         <NextSeo
@@ -24,7 +28,6 @@ const ForgotPasswordComponent = () => {
                 <div className="form-section mt-4">
                     <Form
                         initialValues={{
-                            remember: false,
                             email: null
                         }}
                         onFinish={onFinish}
@@ -32,12 +35,19 @@ const ForgotPasswordComponent = () => {
                         <div className="row">
                             <div className="col-12 my-2">
                                 <Form.Item
-                                    name="username"
+                                    name="email"
                                     className="m-0"
                                     rules={
-                                        [{
-                                            required: true, message: 'Harap isi email!'
-                                        }]
+                                        [
+                                            {
+                                                required: true,
+                                                message: 'Harap isi email!',
+                                            },
+                                            {
+                                                type: 'email',
+                                                message: 'Email tidak valid'
+                                            }
+                                        ]
                                     }
                                 >
                                     <Input
@@ -50,8 +60,13 @@ const ForgotPasswordComponent = () => {
                                 </Form.Item>
                             </div>
                             <div className="col-12 my-2">
-                                <Button htmlType="submit" className="btn btn-dh-primary btn-block">
-                                    Reset Password
+                                <Link href="/login">
+                                    <Button htmlType="submit" className="btn btn-dh-basic mr-2">
+                                        Batal
+                                </Button>
+                                </Link>
+                                <Button htmlType="submit" className="btn btn-dh-primary">
+                                    Kirim Link
                                 </Button>
                             </div>
                         </div>
