@@ -24,7 +24,8 @@ const ForgotPasswordComponent = (
         <div className="forgor-wrapper forgot-wrapper">
             <div className="forgot-section mt-4 text-center">
                 <div className="title">Lupa kata sandi Anda?</div>
-                <p className="text">Jangan khawatir! cukup isi email Anda dan kami akan mengirimkan tautan untuk mereset kata sandi Anda</p>
+                <p className="text">
+                    Link reset password akan dikirimkan melalui e-mail. Masukkan alamat e-mail yang Anda gunakan untuk login ke Ruang Insan Berbagi, selanjutnya silakan untuk merubah password akun Anda</p>
                 <div className="form-section mt-4">
                     <Form
                         initialValues={{

@@ -2,9 +2,11 @@ import { Spin } from "antd";
 import _ from "lodash";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { AuthenticationService } from "../../../services/auth/aut.service";
 import { RequestService } from "../../../services/request.services";
 import { NotificationsRestService } from "./notifications-rest.service";
-const notifRest = new NotificationsRestService();
+const auth: AuthenticationService = new AuthenticationService;
+const notifRest = new NotificationsRestService(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService();
 export function NotificationsComponent() {
     const [loading, setLoading] = useState(false);
