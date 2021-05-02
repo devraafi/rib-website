@@ -9,13 +9,13 @@ let userInfo: IUserInfo;
 const local: any = (typeof window !== 'undefined') ? localStorage : null;
 export class AuthenticationService {
     constructor() {
-        const currentUser = local ? local.getItem('userInfo') : {};
+        const currentUser = local ? local.getItem('userInfo') : '';
 
         // checking if user manually insert the localstorage
         
         let theUser;
         try {
-            theUser = JSON.parse(JSON.stringify(currentUser));
+            theUser = JSON.parse(currentUser);
         } catch (e) {
             console.log(e);
         }
