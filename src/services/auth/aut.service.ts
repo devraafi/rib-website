@@ -12,6 +12,7 @@ export class AuthenticationService {
         const currentUser = local ? local.getItem('userInfo') : {};
 
         // checking if user manually insert the localstorage
+        
         let theUser;
         try {
             theUser = JSON.parse(JSON.stringify(currentUser));
