@@ -14,7 +14,7 @@ export class AuthenticationService {
         // checking if user manually insert the localstorage
         let theUser;
         try {
-            theUser = JSON.parse(currentUser);
+            theUser = JSON.parse(JSON.stringify(currentUser));
         } catch (e) {
             console.log(e);
         }
