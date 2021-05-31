@@ -28,7 +28,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
 
 
     useEffect(() => {
-        const newtransactionID: string = query ? query.id : null;
+        const newtransactionID: string = query ? (query.merchantOrderId || query.id) : null;
 
         setTransactionID(newtransactionID);
     }, [query]);
