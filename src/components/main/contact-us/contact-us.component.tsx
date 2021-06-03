@@ -18,7 +18,7 @@ const ContactUs = () => {
             const text = `Nama: ${form.name} \r\nEmail: ${form.email} \r\n${form.notes}`;
 
             window.open(
-                `https://api.whatsapp.com/send?phone=+6282126855400&text=${encodeURIComponent(text)}`,
+                `https://api.whatsapp.com/send?phone=+6281218547953&text=${encodeURIComponent(text)}`,
                 '_blank'
             )
 

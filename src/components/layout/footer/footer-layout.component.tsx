@@ -53,7 +53,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/call.svg" alt="" />
                                                         <span className="ml-3">
-                                                            +62 82126855400
+                                                            +62 81218547953
                                                         </span>
                                                     </a>
                                                 </Link>

@@ -27,7 +27,7 @@ const AboutUsComponent = () => {
             const text = `Nama: ${form.name} \r\nEmail: ${form.email} \r\n${form.notes}`;
 
             window.open(
-                `https://api.whatsapp.com/send?phone=+6282126855400&text=${encodeURIComponent(text)}`,
+                `https://api.whatsapp.com/send?phone=+6281218547953&text=${encodeURIComponent(text)}`,
                 '_blank'
             )
 
@@ -238,7 +238,7 @@ const AboutUsComponent = () => {
 
                                     <div className="field">
                                         <div className="sub-title">WhatsApp</div>
-                                        <div className="sub">+62 82126855400</div>
+                                        <div className="sub">+62 81218547953</div>
                                     </div>
 
                                     <div className="field">
