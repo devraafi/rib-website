@@ -23,7 +23,7 @@ export const FundaraisingSection = (props: { data: any }) => {
             {
                 data && data.map((list: any, i: number) => {
                     return (
-                        <Link href={`/donasi/detail?title=${list.route}&id=${list._id}`}>
+                        <Link href={`/donasi/detail?title=${list.route}&id=${list._id}`} key={i}>
                             <div className="col-12 p-0" key={i}>
                                 <div className="wrapper-img-fundaraising">
                                     {

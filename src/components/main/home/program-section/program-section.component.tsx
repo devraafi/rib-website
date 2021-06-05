@@ -19,7 +19,7 @@ const ProgramSection = (props: {
     data: any
 }) => {
     const loading = [1, 2, 3];
-    const [list, setResponse] = useState<any>(null);
+    const [response, setResponse] = useState<any>(null);
     const [skeleton, setSkeleton] = useState('');
 
     function getItem() {
@@ -41,7 +41,7 @@ const ProgramSection = (props: {
                 onError: () => setSkeleton(''),
                 onDone: (res) => {
                     setSkeleton('');
-                    let data = [...list];
+                    let data = [...response];
                     data[i].bookmarked = res;
                     setResponse(data)
                 }
@@ -57,7 +57,7 @@ const ProgramSection = (props: {
     }
     useEffect(() => {
         if (props.data) {
-            setResponse(props.data)
+            setResponse([...props.data])
         }
     }, [props.data])
     return <div className="container program-section py-5">
@@ -69,41 +69,41 @@ const ProgramSection = (props: {
         </div>
         <div className="row justify-content-center">
             {
-                (list && list) ? list.map((list: any, i: number) => {
+                (response && (response.length > 0)) ? response.map((li: any, i: number) => {
                     return (
 
                         <div className="col-lg-4 col-12 px-3 py-3" key={i}>
                             {
-                                skeleton == list._id ?
+                                skeleton == li._id ?
                                     <Skeleton.Input active className="w-100 card-program h-100" /> :
                                     <div className="card-program animate__animated animate__bounceIn">
-                                        <Link href={`/donasi/detail?title=${list.route}&id=${list._id}`}>
+                                        <Link href={`/donasi/detail?title=${li.route}&id=${li._id}`}>
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
                                                     {
-                                                        list.fileUrl && (list.fileUrl !== '-') ?
-                                                            <img src={list.fileUrl || ''} alt="" className='lazyload blur-up lazyloaded imooge' />
+                                                        li.fileUrl && (li.fileUrl !== '-') ?
+                                                            <img src={li.fileUrl || ''} alt="" className='lazyload blur-up lazyloaded imooge' />
                                                             : <div className="imooge"></div>
                                                     }
                                                 </div>
                                                 <div className="program-info p-3">
                                                     <div className="title px-2">
-                                                        {list.name || 'Program'}
+                                                        {li.name || 'Program'}
                                                     </div>
 
                                                     <div className="profile-info py-3 px-2">
                                                         <div className="d-flex flex-row justify-content-between">
                                                             {/* <div className="d-flex flex-row">
                                                         <div className="profile-img">
-                                                            <img src={list.userInfo ? list.userInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
+                                                            <img src={li.userInfo ? li.userInfo.imageUrl : '/images/user/placeholder.svg'} alt="" className="lazyload blur-up lazyloaded" />
                                                         </div>
                                                         <div className="ml-3 profile-name">
-                                                            {list.userInfo ? list.userInfo.name : 'Anonim'}
+                                                            {li.userInfo ? li.userInfo.name : 'Anonim'}
                                                         </div>
                                                     </div> */}
                                                             <div className="is-certified">
                                                                 {
-                                                                    list.isCertified && (
+                                                                    li.isCertified && (
                                                                         <img src="/images/program/is-cert.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                                                     )
                                                                 }
@@ -113,11 +113,11 @@ const ProgramSection = (props: {
 
                                                     <div className="target-info p-2">
                                                         <div className="py-2">
-                                                            <Slider disabled className="slider-program-dh" value={list.collectedAmount} max={list.targetAmount} />
+                                                            <Slider disabled className="slider-program-dh" value={li.collectedAmount} max={li.targetAmount} />
                                                         </div>
                                                         <div className="d-flex flex-row justify-content-between py-2">
-                                                            <div className="amount">{'Rp ' + (list.collectedAmount || 0).toLocaleString()}</div>
-                                                            <div className="target-amount">{`Target Rp ${(list.targetAmount || 0).toLocaleString()}`}</div>
+                                                            <div className="amount">{'Rp ' + (li.collectedAmount || 0).toLocaleString()}</div>
+                                                            <div className="target-amount">{`Target Rp ${(li.targetAmount || 0).toLocaleString()}`}</div>
                                                         </div>
                                                     </div>
 
@@ -128,7 +128,7 @@ const ProgramSection = (props: {
                                                                     <img src="/images/icons/peoples.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="donatur-amount px-2">
-                                                                    {list.donorAmount || 0}
+                                                                    {li.donorAmount || 0}
                                                                 </div>
                                                                 <div className="donasi">
                                                                     Donasi
@@ -139,7 +139,7 @@ const ProgramSection = (props: {
                                                                     <img src="/images/icons/cart.svg" alt="" className="lazyload blur-up lazyloaded" />
                                                                 </div>
                                                                 <div className="days-amount px-2">
-                                                                    {list.remainingDays || 0}
+                                                                    {li.remainingDays || 0}
                                                                 </div>
                                                                 <div className="days">
                                                                     Hari
@@ -150,8 +150,8 @@ const ProgramSection = (props: {
                                                 </div>
                                             </div>
                                         </Link>
-                                        <div className="love" onClick={() => onBookMark(list._id, i)}>
-                                            <img src={`/images/icons/${list.bookmarked ? 'love-fill.svg' : 'love.svg'}`} className="img-fluid" alt="" srcSet="" />
+                                        <div className="love" onClick={() => onBookMark(li._id, i)}>
+                                            <img src={`/images/icons/${li.bookmarked ? 'love-fill.svg' : 'love.svg'}`} className="img-fluid" alt="" srcSet="" />
                                         </div>
                                     </div>
                             }
