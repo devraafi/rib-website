@@ -55,11 +55,11 @@ export function PaymentDetailManualComponent(props: { res: any }) {
                     </div>
                 </div>
                 <div className="card-section-2 mb-2">
-                    <div className="p-2 field t">
+                    <div className="p-2  t">
                         CARA PEMBAYARAN
                         </div>
                     <div className="row w-100 justify-content-between m-auto mb-2">
-                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                        <div className=" align-self-center col-lg-auto col-12 p-2">
                             Total Pembayaran
                         </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2 total">

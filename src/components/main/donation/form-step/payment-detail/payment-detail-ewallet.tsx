@@ -8,11 +8,13 @@ import { RequestService } from '../../../../../services/request.services';
 import { DonationRestServices } from '../../donation-rest.service';
 import { Spin } from 'antd';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 export function PaymentDetailEwalletComponent(props: { res: any }) {
     const { res } = props;
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const DynamicComponent = dynamic(() => import('./payment-intructions/ewallet').then((mod: any) => mod[res?.code]))
     function copy(text: string) {
         navigator && navigator.clipboard.writeText(text);
         message.success('Copied')
@@ -28,6 +30,7 @@ export function PaymentDetailEwalletComponent(props: { res: any }) {
             },
             onError: () => {
                 setLoading(false);
+                router.push(`/detail-transaksi?id=${res?.lines[0].transactionId}`);
             }
         })
     }
@@ -44,11 +47,11 @@ export function PaymentDetailEwalletComponent(props: { res: any }) {
                     <div className="p-2 text-center">
                         <strong>Harap membuka aplikasi OVO untuk melanjutkan pembayaran dengan klik tombol bayar dibawah</strong>
                     </div>
-                    <div className="p-2 field t">
+                    <div className="p-2">
                         Detail pembayaran
                     </div>
                     <div className="row w-100 justify-content-between m-auto mb-2">
-                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                        <div className=" align-self-center col-lg-auto col-12 p-2">
                             Total Pembayaran
                         </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2 total">
@@ -56,7 +59,7 @@ export function PaymentDetailEwalletComponent(props: { res: any }) {
                         </div>
                     </div>
                     <div className="row w-100 justify-content-between m-auto mb-2">
-                        <div className="field align-self-center col-lg-auto col-12 p-2">
+                        <div className=" align-self-center col-lg-auto col-12 p-2">
                             E-wallet
                         </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2">
@@ -76,6 +79,17 @@ export function PaymentDetailEwalletComponent(props: { res: any }) {
                                 <button className="btn btn-dh-edit o btn-block" onClick={onPay}>Bayar</button>
                             </Spin>
                         </div>
+                    </div>
+                </div>
+                <div className="card-section-3">
+                    <div className="p-2 firasans">
+                        <h5 className='firasans'>
+                            Instruksi pembayaran E-Wallet {res?.paymentName}
+                        </h5>
+                        {
+                            <DynamicComponent />
+
+                        }
                     </div>
                 </div>
             </div>

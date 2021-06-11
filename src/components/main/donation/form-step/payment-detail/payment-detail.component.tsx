@@ -1,17 +1,13 @@
 import _ from "lodash";
-import Link from "next/link"
 import React, { useEffect } from "react"
-import payment_step from './payment-data.json';
-import { IPaymentDetail } from "interfaces/payment-detail";
-import moment from "moment";
-import { message, Spin } from "antd";
+import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { CommonServices } from "services/common/common.service";
-import { formatMoney } from 'accounting';
 import { NextSeo } from "next-seo";
 import { PaymentDetailManualComponent } from "./payment-detail-manual";
 import { PaymentDetailVAComponent } from "./payment-detail-va";
 import { PaymentDetailEwalletComponent } from "./payment-detail-ewallet";
+import { PaymentDetailRetailComponent } from "./payment-detail-retail";
 const { getPaymentImageSrc } = new CommonServices;
 export const DonasiPaymentDetail = (props: { res: any }) => {
     const { res } = props;
@@ -29,7 +25,7 @@ export const DonasiPaymentDetail = (props: { res: any }) => {
                     res?.type === 'manual' ?
                         <PaymentDetailManualComponent res={res} />
                         : res?.type === 'va' ?
-                            <PaymentDetailVAComponent res={res} /> : res?.type === 'ewallet' ? <PaymentDetailEwalletComponent res={res} /> : ''
+                            <PaymentDetailVAComponent res={res} /> : res?.type === 'ewallet' ? <PaymentDetailEwalletComponent res={res} /> : res?.type === 'other' ? <PaymentDetailRetailComponent res={res} /> : ''
                 }
             </Spin>
         </>

@@ -1,4 +1,7 @@
 #donation-payment-detail {
+    .firasans {
+        font-family: "FiraSans" !important;
+    }
     font-size: 15px;
     @media (min-width: 992px) {
         max-width: 50vw;
@@ -22,7 +25,7 @@
         line-height: 120%;
         color: #8896a2;
         // font-family: "FiraSans" !important;
-        &.t{
+        &.t {
             font-size: 12px;
         }
     }
@@ -87,5 +90,13 @@
                 font-size: 15px;
             }
         }
+    }
+    .card-section-3 {
+        background: #ffffff;
+        border-radius: 0px 0px 24px 24px;
+        @media (min-width: 992px) {
+            padding: 30px 50px 30px;
+        }
+        padding: 20px;
     }
 }

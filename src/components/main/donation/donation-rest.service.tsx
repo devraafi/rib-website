@@ -77,4 +77,8 @@ export class DonationRestServices {
         return this.request.get(`program-category`);
     }
 
+    void(id: string) {
+        return this.request.delete(`transaction/${id}/void`);
+    }
+
 }
