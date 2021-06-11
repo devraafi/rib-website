@@ -238,7 +238,7 @@ const PaymentMethodStep = (props: {
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                                 <img style={{
                                                     maxWidth: '80%'
-                                                }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                                }} src={`/images/logos/payment-method/${l.code}.svg`} />
                                             </div>
                                         </div>
                                     )
@@ -261,7 +261,7 @@ const PaymentMethodStep = (props: {
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                                 <img style={{
                                                     maxWidth: '80%'
-                                                }} src={`/images/logos/payment/${getPaymentImageSrc(l.code)}.svg`} />
+                                                }} src={`/images/logos/payment-method/${l.code}.svg`} />
                                             </div>
                                         </div>
                                     )
@@ -284,7 +284,7 @@ const PaymentMethodStep = (props: {
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
                                                 <img style={{
                                                     maxWidth: '80%'
-                                                }} src={`/images/logos/payment/manual/${l.code}.svg`} />
+                                                }} src={`/images/logos/payment-method/${l.code}.svg`} />
                                             </div>
                                         </div>
                                     )

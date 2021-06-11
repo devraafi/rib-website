@@ -3,6 +3,8 @@ import MainComponent from '@Components/layout/main/main-layout.component';
 import { Spin, Steps } from 'antd';
 import Link from 'antd/lib/typography/Link';
 import { IPaymentMethod } from 'interfaces/payment-method';
+import { get } from 'lodash';
+import { useRouter } from 'next/router';
 import { Step } from 'rc-steps';
 import React, { useEffect, useState } from 'react';
 import { throwError } from 'rxjs';
@@ -10,6 +12,7 @@ import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { CommonServices } from 'services/common/common.service';
 import { RequestService } from 'services/request.services';
+import { TransactionRestService } from '../../transaction-detail/transaction-rest.service';
 import { DonationRestServices } from '../donation-rest.service';
 import { DonationService } from '../donation.services';
 import { DonasiPaymentDetail } from './payment-detail/payment-detail.component';
@@ -35,7 +38,8 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
         showAsAnonymous: false
     });
     const baseUrl: any = process.env.baseUrl;
-
+    const router = useRouter();
+    const { query } = router;
     const StepNav = () => (
         <div id="navbar-dh" className="d-none d-md-flex">
             <nav className="navbar navbar-expand-lg container-fluid container-lg navbar-light">
@@ -119,6 +123,13 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
             onError: () => setSpin(false),
             onDone: ((res: any) => {
                 setSpin(false);
+                // if (res.isCoreApi) {
+                router.push({
+                    pathname: router.pathname,
+                    query: { ...router.query, transactionId: res._id },
+                });
+                return;
+                // }
                 if (paymentMethod?.integratedPaymentMethod) {
                     document.location.href = res.redirect_url;
                 } else {
@@ -128,6 +139,18 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
             })
         })
     };
+
+    function loadTransactionId() {
+        setSpin(true);
+        handleRequest({
+            obs: new TransactionRestService().loadData(get(router.query, 'transactionId') as any),
+            onError: () => setSpin(false),
+            onDone: (res) => {
+                setSpin(false);
+                setRes(res);
+            }
+        })
+    }
 
     function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
         let url;
@@ -150,7 +173,14 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
 
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
-    });
+    }, []);
+
+    useEffect(() => {
+        if (query && query.transactionId) {
+            loadTransactionId();
+            onStepChange(4);
+        }
+    }, [query]);
 
     return (
         <MainComponent

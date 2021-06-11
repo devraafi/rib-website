@@ -21,7 +21,10 @@
         font-size: 11px;
         line-height: 120%;
         color: #8896a2;
-        font-family: "FiraSans";
+        // font-family: "FiraSans" !important;
+        &.t{
+            font-size: 12px;
+        }
     }
 
     .value {

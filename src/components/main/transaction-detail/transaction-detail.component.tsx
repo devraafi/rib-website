@@ -94,8 +94,8 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                     <div className="value">{data?.paymentName || ''}</div>
                                 </div>
                                 <div className="field">
-                                    <div className="label">{manual ? 'Nomor Rekening' : 'Nomor virtual account'}</div>
-                                    <div className="value">{data?.accountNumber || '-'}</div>
+                                    <div className="label">{manual && !data?.vaNumber ? 'Nomor Rekening' : 'Nomor virtual account'}</div>
+                                    <div className="value">{data?.accountNumber || data?.vaNumber || '-'}</div>
                                 </div>
                                 <div className="field">
                                     <div className="label">Jumlah</div>

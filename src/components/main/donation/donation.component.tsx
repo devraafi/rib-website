@@ -78,6 +78,9 @@ const DonationPage = (props: any) => {
     }, [total, isInfaq]);
 
     useEffect(() => {
+        if (query && query.transactionId) {
+            setStep(1);
+        }
         if (pathname === '/infak') {
             loadData(donationRestService.loadInfaq());
         } else {

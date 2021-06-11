@@ -27,6 +27,10 @@ export class DonationRestServices {
         return this.request.post(`transaction/create/program/midtrans-snap`, payload, { params });
     }
 
+    transactionOvo(id: string) {
+        return this.request.post(`transaction/${id}/ovo`);
+    }
+
     transactionManual(payload: {
         programId: string,
         referrer: string,
