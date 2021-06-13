@@ -123,13 +123,13 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
             onError: () => setSpin(false),
             onDone: ((res: any) => {
                 setSpin(false);
-                // if (res.isCoreApi) {
-                router.push({
-                    pathname: router.pathname,
-                    query: { ...router.query, transactionId: res._id },
-                });
-                return;
-                // }
+                if (res.isCoreApi) {
+                    router.push({
+                        pathname: router.pathname,
+                        query: { ...router.query, transactionId: res._id },
+                    });
+                    return;
+                }
                 if (paymentMethod?.integratedPaymentMethod) {
                     document.location.href = res.redirect_url;
                 } else {

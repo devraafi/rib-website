@@ -4,6 +4,7 @@ import { Input, Skeleton, Spin } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Slider } from 'primereact/slider';
 import React, { useEffect, useState } from 'react';
 import { AuthenticationService } from 'services/auth/aut.service';
@@ -34,6 +35,7 @@ export const ProfileComponent = () => {
         joinDate: '',
         phoneNumberConfirmed: false
     });
+    const router = useRouter();
 
     function getItem() {
         const local = localStorage;
@@ -106,6 +108,10 @@ export const ProfileComponent = () => {
                 setisUpdate(!isUpdate);
             }
         })
+    }
+
+    function redirectToDetailTransaction(transactionId: string) {
+        router.push(`/detail-transaksi?id=${transactionId}`);
     }
 
     useEffect(() => {
@@ -225,6 +231,7 @@ export const ProfileComponent = () => {
                                                         <tr>
                                                             <th>No</th>
                                                             <th>Program</th>
+                                                            <th>Status</th>
                                                             <th>Tanggal</th>
                                                             <th>Jumlah</th>
                                                         </tr>
@@ -232,9 +239,10 @@ export const ProfileComponent = () => {
                                                     <tbody>
                                                         {
                                                             profileTransaction?.items && profileTransaction.items.map((item, i) => (
-                                                                <tr>
+                                                                <tr onClick={() => redirectToDetailTransaction(item.transactionId)}>
                                                                     <td>{i + 1}</td>
                                                                     <td>{item.name}</td>
+                                                                    <td>{item.status}</td>
                                                                     <td>{item.transactionDate && moment(item.transactionDate).format('DD MMM YYYY')}</td>
                                                                     <td>Rp {item.amount && (item.amount).toLocaleString()}</td>
                                                                 </tr>
