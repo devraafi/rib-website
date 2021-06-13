@@ -53,10 +53,10 @@ export function PaymentDetailVAComponent(props: { res: any }) {
             <div className="container py-3" id="donation-payment-detail">
                 <div className="subtitle text-center py-2">
                     Instruksi pembayaran
-                    </div>
+                </div>
                 <div className="text-center title mb-3">
                     Transfer bank - Virtual Account
-                    </div>
+                </div>
                 <div className="card-section-1 mb-2">
                     {
                         countDownValue &&
@@ -77,7 +77,7 @@ export function PaymentDetailVAComponent(props: { res: any }) {
                             Batas akhir pembayaran
                         </div>
                         <div className="value col-lg-auto text-center text-lg-right col-12 p-2 align-self-center">
-                            {res?.expiredDate ? moment(res.expiredDate).format('dddd, DD MMMM YYYY  HH:mm') : '-'}
+                            {res?.expiredDate ? moment(res.expiredDate).add(-7, 'hours').format('dddd, DD MMMM YYYY  HH:mm') : '-'}
                         </div>
                     </div>
                 </div>
