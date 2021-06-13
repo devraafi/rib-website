@@ -41,7 +41,7 @@ export function PaymentDetailVAComponent(props: { res: any }) {
         const interval = 1000;
         setInterval(function () {
             duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
-            setCountDownValue(`${duration.hours()}:${duration.minutes()}:${duration.seconds()}`);
+            setCountDownValue(`${duration.minutes()}:${duration.seconds()}`);
         }, interval);
 
     }

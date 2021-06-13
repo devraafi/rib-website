@@ -8,7 +8,7 @@ export function PaymentDetailManualComponent(props: { res: any }) {
     const { res } = props;
     function transactionDates(date: any) {
         const newDate = moment(date);
-        const endDate = moment(date).add(1, 'day');
+        const endDate = moment(date);
         const diff = moment(endDate.diff(newDate));
 
         let countDown;
