@@ -23,7 +23,7 @@ const NewDonationList = () => {
     const [skeleton, setSkeleton] = useState('');
     const [loading, setLoading] = useState(false);
     const [params, setParams] = useState({
-        programCategoryId: '',
+        programCategoryId: null,
         keyword: '',
         take: 9,
         skip: 0,
@@ -116,7 +116,7 @@ const NewDonationList = () => {
         } else {
             setParams({
                 ...params,
-                programCategoryId: ''
+                programCategoryId: null
             })
         }
     }, [router]);
