@@ -123,15 +123,11 @@ const NewDonationList = () => {
     }, [router]);
 
     useEffect(() => {
-        if (!params.programCategoryId) {
-            loadCategory();
-        }
+        loadCategory();
         if (params && params.programCategoryId) {
             const category = _.find(categories, { '_id': params.programCategoryId });
-            console.log(category);
             setCategory(category);
         }
-        console.log(params.programCategoryId);
         loadDonation();
     }, [params, params.programCategoryId]);
 
