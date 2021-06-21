@@ -123,15 +123,17 @@ const NewDonationList = () => {
     }, [router]);
 
     useEffect(() => {
-        console.log(params.programCategoryId);
-        loadDonation();
         if (!params.programCategoryId) {
             loadCategory();
-        } else {
+        }
+        if (params && params.programCategoryId) {
             const category = _.find(categories, { '_id': params.programCategoryId });
+            console.log(category);
             setCategory(category);
         }
-    }, [params && params.programCategoryId]);
+        console.log(params.programCategoryId);
+        loadDonation();
+    }, [params, params.programCategoryId]);
 
     return <MainComponent
         title="Donasi | Ruang Insan Berbagi"
