@@ -88,7 +88,7 @@ const NewDonationList = () => {
 
     function loadDonation() {
         setLoading(true)
-        const obs = donationRestService.loadProgram(params);
+        const obs = donationRestService.loadProgram({ ...params, programCategoryId: query.category });
         handleRequest({
             obs,
             onDone: (res) => {
@@ -105,7 +105,7 @@ const NewDonationList = () => {
             onDone: (res) => {
                 if (res.data) {
                     setCategories(res.data)
-                    const category = _.find(res.data, { '_id': params.programCategoryId });
+                    const category = _.find(res.data, { '_id': query.category });
                     setCategory(category);
                 }
             }
@@ -126,12 +126,10 @@ const NewDonationList = () => {
                 programCategoryId: null
             })
         }
-    }, [router]);
-
-    useEffect(() => {
         loadCategory();
         loadDonation();
-    }, [params]);
+    }, [router, query]);
+
 
     return <MainComponent
         title="Donasi | Ruang Insan Berbagi"
