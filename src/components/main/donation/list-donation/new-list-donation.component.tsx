@@ -106,15 +106,6 @@ const NewDonationList = () => {
         });
     }
 
-    useEffect(() => {
-        loadDonation();
-        if (!params.programCategoryId) {
-            loadCategory();
-        } else {
-            const category = _.find(categories, { '_id': params.programCategoryId });
-            setCategory(category);
-        }
-    }, [params])
 
     useEffect(() => {
         if (query && query.category) {
@@ -128,7 +119,18 @@ const NewDonationList = () => {
                 programCategoryId: ''
             })
         }
-    }, [query]);
+    }, [router]);
+
+    useEffect(() => {
+        loadDonation();
+        if (!params.programCategoryId) {
+            loadCategory();
+        } else {
+            const category = _.find(categories, { '_id': params.programCategoryId });
+            setCategory(category);
+        }
+    }, [params]);
+
     return <MainComponent
         title="Donasi | Ruang Insan Berbagi"
         description="Ruang Insan Berbagi"
