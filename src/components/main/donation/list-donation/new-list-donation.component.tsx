@@ -152,7 +152,7 @@ const NewDonationList = () => {
                     </div>
                 </div>
                 {
-                    (params.programCategoryId && category) ?
+                    ((params && params.programCategoryId) && category) ?
                         <div className="new-title py-4">
                             Program {category?.name}
                         </div>
@@ -160,11 +160,11 @@ const NewDonationList = () => {
                         <>
                             <div className="new-title py-4">
                                 Hadirkan Cerita Kebaikan Setiap Hari, Wujud Nyata Berbagi untuk Ringankan Duka
-                        </div>
+                            </div>
                             <div className="container container-list px-0">
                                 <div className="py-2 new-subtitle mt-4 mb-1">
                                     Kategori Donasi
-                            </div>
+                                </div>
                                 <div className="row row-cols-5">
                                     {
                                         categories && categories?.map((ctg) => (
@@ -195,7 +195,7 @@ const NewDonationList = () => {
                         (params.programCategoryId && category) &&
                         <div className="py-2 new-subtitle">
                             Program Ruang Insan Berbagi
-                </div>
+                        </div>
                     }
                     <div className="list-wrapper">
                         <div className="row">
@@ -259,7 +259,7 @@ const NewDonationList = () => {
                                                                                 </div>
                                                                                 <div className="donasi">
                                                                                     Donasi
-                                                                        </div>
+                                                                                </div>
                                                                             </div>
                                                                             <div className="d-flex flex-row justify-content-arround">
                                                                                 <div className="cart">
@@ -270,7 +270,7 @@ const NewDonationList = () => {
                                                                                 </div>
                                                                                 <div className="days">
                                                                                     Hari
-                                                                        </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -287,7 +287,7 @@ const NewDonationList = () => {
                                         :
                                         <div className="p-3 text-center">
                                             Tidak Ada Data
-                                    </div>
+                                        </div>
                             }
                         </div>
                         {
