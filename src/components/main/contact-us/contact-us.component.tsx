@@ -78,7 +78,7 @@ const ContactUs = () => {
 
                         <div className="field">
                             <div className="sub-title">Alamat</div>
-                            <div className="sub">Jl. Karawitan No. 14A, Bandung</div>
+                            <div className="sub">Jl. Setia Graha II No.44, Margasari, Bandung</div>
                         </div>
 
                         <div className="field">

@@ -33,7 +33,7 @@ export default class FooterComponent extends React.Component {
                                         <img src="/images/logos/dh-logo-footer.svg" className="img-fluid lazyload blur-up lazyloaded" alt="" />
                                     </div>
                                     <div className="col-12 col-md dh-desc py-2">
-                                    Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia dengan pengelolaan dana sosial secara Amanah, Tepat Sasaran dan Profesional. Implementasi program donasi di rangkum dalam 4 Rumpun Program Insani yaitu Insan Sehat (Kesehatan), Insan Mandiri (Perbaikan Ekonomi), Insan Peduli Lingkungan, Insan Cerdas (Pendidikan).
+                                        Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia dengan pengelolaan dana sosial secara Amanah, Tepat Sasaran dan Profesional. Implementasi program donasi di rangkum dalam 4 Rumpun Program Insani yaitu Insan Sehat (Kesehatan), Insan Mandiri (Perbaikan Ekonomi), Insan Peduli Lingkungan, Insan Cerdas (Pendidikan).
                                     </div>
                                     <div className="col-12 col-md py-2">
                                         <div className="dh-footer-title">Hubungi Kami</div>
@@ -43,7 +43,7 @@ export default class FooterComponent extends React.Component {
                                                     <a className="dh-footer-item-link" href="#">
                                                         <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/location.svg" alt="" />
                                                         <span className="ml-3">
-                                                            Jl. Karawitan No. 14A, Bandung
+                                                            Jl. Setia Graha II No.44, Margasari, Bandung
                                                         </span>
                                                     </a>
                                                 </Link>
