@@ -1,6 +1,6 @@
 {
   "name": "ruang-insan-berbagi",
-  "version": "1.1.11",
+  "version": "1.1.111",
   "private": true,
   "scripts": {
     "dev": "next dev",
