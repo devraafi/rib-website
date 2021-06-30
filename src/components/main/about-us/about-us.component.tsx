@@ -233,7 +233,7 @@ const AboutUsComponent = () => {
 
                                     <div className="field">
                                         <div className="sub-title">Alamat</div>
-                                        <div className="sub">Jl. Setia Graha II No.44, Margasari, Bandung</div>
+                                        <div className="sub">Jl. Setia Graha II No.44, Margasari, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286, Indonesia</div>
                                     </div>
 
                                     <div className="field">
@@ -269,7 +269,7 @@ const AboutUsComponent = () => {
     
                             <div className="field">
                                 <div className="sub-title">Alamat</div>
-                                <div className="sub">Jl. Setia Graha II No.44, Margasari, Bandung</div>
+                                <div className="sub">Jl. Setia Graha II No.44, Margasari, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286, Indonesia</div>
                             </div>
     
                             <div className="field">

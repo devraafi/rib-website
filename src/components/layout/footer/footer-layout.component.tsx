@@ -18,10 +18,10 @@ export default class FooterComponent extends React.Component {
                             </div>
                             <div className="row justify-content-center py-2">
                                 <div className="col-auto text-center">
-                                    <img className="lazyload blur-up lazyloaded img-fluid lazyload blur-up lazyloaded" src="/images/footer/appstore.svg" alt="" />
+                                    <img className="lazyload blur-up lazyloaded img-fluid align-self-start lazyload blur-up lazyloaded" src="/images/footer/appstore.svg" alt="" />
                                 </div>
                                 <div className="col-auto text-center">
-                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/footer/playstore.svg" alt="" />
+                                    <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/footer/playstore.svg" alt="" />
                                 </div>
                             </div>
                             <div className="container py-5">
@@ -41,9 +41,9 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/location.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/location.svg" alt="" />
                                                         <span className="ml-3">
-                                                            Jl. Setia Graha II No.44, Margasari, Bandung
+                                                            Jl. Setia Graha II No.44, Margasari, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286, Indonesia
                                                         </span>
                                                     </a>
                                                 </Link>
@@ -51,7 +51,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/call.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/call.svg" alt="" />
                                                         <span className="ml-3">
                                                             +62 81218547953
                                                         </span>
@@ -61,7 +61,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/mail.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/mail.svg" alt="" />
                                                         <span className="ml-3">
                                                             info@ruanginsanberbagi.org
                                                         </span>
@@ -76,7 +76,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             BNI Syariah  <br />
                                                             <span className="ml-4 rek">
@@ -89,7 +89,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             Bank Muamalat  <br />
                                                             <span className="ml-4 rek">
@@ -102,7 +102,7 @@ export default class FooterComponent extends React.Component {
                                             <li className="my-2">
                                                 <Link href="/">
                                                     <a className="dh-footer-item-link" href="#">
-                                                        <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/right.svg" alt="" />
+                                                        <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/right.svg" alt="" />
                                                         <span className="ml-3">
                                                             Mandiri Syariah       <br />
                                                             <span className="ml-4 rek">
@@ -129,7 +129,7 @@ export default class FooterComponent extends React.Component {
                                         <ul className="list-unstyled">
                                             <li className="my-2">
                                                 <a className="dh-footer-item-link" href="https://www.facebook.com/Ruang-Insan-Berbagi-105321831513073/" target="_blank">
-                                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/fb.svg" alt="" />
+                                                    <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/fb.svg" alt="" />
                                                     <span className="ml-3">
                                                         Ruang Insan Berbagi
                                                     </span>
@@ -137,7 +137,7 @@ export default class FooterComponent extends React.Component {
                                             </li>
                                             <li className="my-2">
                                                 <a className="dh-footer-item-link" href="https://www.instagram.com/ruanginsanberbagi/" target="_blank">
-                                                    <img className="lazyload blur-up lazyloaded img-fluid" src="/images/icons/ig.svg" alt="" />
+                                                    <img className="lazyload blur-up lazyloaded img-fluid align-self-start" src="/images/icons/ig.svg" alt="" />
                                                     <span className="ml-3">
                                                         @ruanginsanberbagi
                                                     </span>
