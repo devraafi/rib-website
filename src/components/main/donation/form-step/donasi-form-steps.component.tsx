@@ -172,8 +172,9 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
     }
 
     useEffect(() => {
-        window.onscroll = function () { scrollFunction() };
-    }, []);
+        window.addEventListener('scroll', scrollFunction);
+        return () => window.removeEventListener('scroll', scrollFunction);
+    });
 
     useEffect(() => {
         if (query && query.transactionId) {
@@ -205,7 +206,7 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
                                             <div className="donasi-form flyover my-2 animate__animated animate__bounceIn" id='donasi-form-main'>
                                                 <div className="header pb-3 pt-1 text-center">
                                                     Ringkasan Donasi
-                                            </div>
+                                                </div>
                                                 <div className="title py-1">
                                                     {props.data ? props.data.name : 'Program'}
                                                 </div>

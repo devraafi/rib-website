@@ -45,11 +45,11 @@ const DonorListComponent = (props: WithRouterProps) => {
             (list && list.length) ? list.map((data, i: number) => {
                 return (
                     <div className="list justify-content-between">
-                        <div className="d-flex flex-row">
-                            <div className="profile-img align-self-center mr-2">
+                        <div className="row">
+                            <div className="profile-img align-self-center mr-2 col-auto">
                                 <img src={'/images/icons/profile.svg'} alt="" />
                             </div>
-                            <div className="d-flex flex-column align-self-center">
+                            <div className="d-flex flex-column align-self-center col">
                                 <div className="user-name">
                                     {(!data.showAsAnonymous && data.donorName) ? data.donorName : 'Anonim'}
                                 </div>
