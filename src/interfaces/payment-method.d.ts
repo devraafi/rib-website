@@ -9,4 +9,5 @@ export interface IPaymentMethod {
     integratedPaymentMethod: boolean;
     accountNumber?: string;
     accountName?: string;
+    disabledAt?: string;
 }
