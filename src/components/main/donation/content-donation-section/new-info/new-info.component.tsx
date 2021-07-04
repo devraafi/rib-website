@@ -34,7 +34,6 @@ const NewInfoDonation = (props: { id: string }) => {
     };
 
     useEffect(() => {
-        console.log(props);
 
         (props.id) && loadNews(props.id);
     }, [props])

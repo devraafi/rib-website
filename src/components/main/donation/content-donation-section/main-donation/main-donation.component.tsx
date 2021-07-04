@@ -6,7 +6,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import { DonationService } from '../../donation.services';
 import { Stepper } from '@Components/basics/stepper/stepper.component';
 
-const priceList = [10000, 20000, 50000, 100000, 200000, 500000];
+const priceList = [20000, 50000, 100000, 150000, 200000, 500000];
 const donationService: DonationService = new DonationService;
 const MainDonation = (props: any) => {
     const { data, isInfaq } = props;
@@ -34,21 +34,19 @@ const MainDonation = (props: any) => {
     const scrollFunction = () => {
         const windTop = window.pageYOffset;
         const footerTop: any = document.getElementById('footer-dh')?.offsetTop;
-        const mainFormHeight: any = document.getElementById('main-donation')?.offsetHeight;
+        const mainFormHeight: any = document.getElementById('main-donation form-donation')?.offsetHeight;
 
         if ((windTop + mainFormHeight + 200) > footerTop) {
-            document.getElementById('main-donation')?.classList.remove('syur')
-            document.getElementById('main-donation')?.classList.add('solute')
-            console.log('1-solute');
-
+            document.getElementById('main-donation form-donation')?.classList.remove('syur')
+            document.getElementById('main-donation form-donation')?.classList.add('solute')
+            
         } else {
-            document.getElementById('main-donation')?.classList.add('syur');
-            document.getElementById('main-donation')?.classList.remove('solute');
+            document.getElementById('main-donation form-donation')?.classList.add('syur');
+            document.getElementById('main-donation form-donation')?.classList.remove('solute');
             if (window.pageYOffset > 70) {
-
-                document.getElementById('main-donation')?.classList.add('nice');
+                document.getElementById('main-donation form-donation')?.classList.add('nice');
             } else {
-                document.getElementById('main-donation')?.classList.remove('nice');
+                document.getElementById('main-donation form-donation')?.classList.remove('nice');
             }
         }
     }
@@ -71,7 +69,7 @@ const MainDonation = (props: any) => {
                 url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?title=" + data.route + "&id=" + data._id;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?title=" + data.route  + "&id=" + data._id + "&quote=" + templateTitle;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?title=" + data.route + "&id=" + data._id + "&quote=" + templateTitle;
                 break;
         }
 
@@ -79,7 +77,8 @@ const MainDonation = (props: any) => {
     }
 
     useEffect(() => {
-        window.onscroll = function () { scrollFunction() };
+        window.addEventListener('scroll', scrollFunction);
+        return () => window.removeEventListener('scroll', scrollFunction);
     });
 
     useEffect(() => {
@@ -193,7 +192,7 @@ const MainDonation = (props: any) => {
                                     </div>
                                     <div className="days">
                                         Hari
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -17,7 +17,6 @@ export class AuthenticationService {
         try {
             theUser = JSON.parse(currentUser);
         } catch (e) {
-            console.log(e);
         }
 
         if (theUser && _.has(theUser, 'accessToken')) {
@@ -40,7 +39,6 @@ export class AuthenticationService {
         if (interceptRequest) {
             axios.interceptors.request.use(request => {
                 if (userInfo) {
-                    console.log(userInfo);
                     
                     request.headers.common['Authorization'] = `Bearer ${userInfo.accessToken}`;
                 }
@@ -60,7 +58,6 @@ export class AuthenticationService {
                     response.config.headers &&
                     response.config.headers['Authorization']
                 ) {
-                    console.log('login boi');
 
                     return this.refreshToken().pipe(
                         switchMap(function (res) {
@@ -84,7 +81,6 @@ export class AuthenticationService {
     login(payload: { username: string, password: string }) {
         return tokenRestServices.login(payload).pipe(
             tap((loginData) => {
-                console.log(loginData);
                 userInfo = loginData as any;
                 local && local.setItem('userInfo', JSON.stringify(loginData));
             })

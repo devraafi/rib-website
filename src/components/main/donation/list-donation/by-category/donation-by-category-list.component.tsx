@@ -24,7 +24,6 @@ const DonationListByCategory = () => {
             catchError(err => {
                 return throwError(err);
             })).subscribe((res: any) => {
-                console.log(res);
                 setResponse(res)
             })
     }, []);
@@ -67,7 +66,6 @@ const DonationListByCategory = () => {
                 </div>
                 <div className="list-wrapper">
                     {response ? response.map((res: any) => {
-                        console.log(res);
                         return <div className="row">
                             <div className="col-12 py-3">
                                 <div className="d-flex flex-row justify-content-between">

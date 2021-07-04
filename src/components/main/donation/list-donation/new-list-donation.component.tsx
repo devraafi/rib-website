@@ -115,7 +115,6 @@ const NewDonationList = () => {
 
     useEffect(() => {
         if (query && query.category) {
-            console.log(query);
             setParams({
                 ...params,
                 programCategoryId: query.category

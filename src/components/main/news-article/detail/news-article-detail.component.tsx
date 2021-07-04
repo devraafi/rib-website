@@ -15,7 +15,6 @@ const { handleRequest } = new RequestService;
 
 export const NewsArticleDetailComponent = () => {
     const router = useRouter();
-    console.log(router);
     const { query }: any = router;
     const [news, setNews] = useState<INews>();
     const [hostname, setHostName] = useState<string>('');
@@ -85,7 +84,6 @@ export const NewsArticleDetailComponent = () => {
 
     useEffect(() => {
         if ((typeof window !== 'undefined') && window.location.href) {
-            console.log(window.location);
             setHostName(window.location.href)
         }
     })

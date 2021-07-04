@@ -55,7 +55,7 @@ const DonationPage = (props: any) => {
             document.getElementById('fixed-donation')?.classList.add('animate__fadeOutDown');
             // document.getElementById('fixed-donation')?.classList.add('d-none');
         } else {
-            document.getElementById('fixed-donation')?.classList.remove('d-none');
+            // document.getElementById('fixed-donation')?.classList.remove('d-none');
             document.getElementById('fixed-donation')?.classList.remove('animate__fadeOutDown');
             document.getElementById('fixed-donation')?.classList.add('animate__fadeInUp');
         }
@@ -89,7 +89,9 @@ const DonationPage = (props: any) => {
     }, [router]);
 
     useEffect(() => {
-        window.onscroll = function () { scroll() };
+        window.onscroll = () => {
+            scroll()
+        }
     });
 
     return (
