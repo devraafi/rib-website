@@ -8,7 +8,6 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 const getPaymentStep = (id: string) => {
     const stepData = payment_step;
     const paymentStep: any = _.find(_.get(stepData, 'data'), ['id', id]);
-    console.log(paymentStep);
     return paymentStep.steps;
 }
 

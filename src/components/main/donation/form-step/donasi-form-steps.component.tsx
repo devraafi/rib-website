@@ -74,7 +74,6 @@ const DonasiFormStep = (props: { step: number, total?: number, id?: any, referre
         if ((windTop + mainFormHeight + 200) > footerTop) {
             document.getElementById('donasi-form-main')?.classList.remove('syur')
             document.getElementById('donasi-form-main')?.classList.add('solute')
-            console.log('1-solute');
 
         } else {
             document.getElementById('donasi-form-main')?.classList.add('syur');

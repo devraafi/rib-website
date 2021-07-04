@@ -39,12 +39,10 @@ const MainDonation = (props: any) => {
         if ((windTop + mainFormHeight + 200) > footerTop) {
             document.getElementById('main-donation form-donation')?.classList.remove('syur')
             document.getElementById('main-donation form-donation')?.classList.add('solute')
-            console.log('1-solute');
             
         } else {
             document.getElementById('main-donation form-donation')?.classList.add('syur');
             document.getElementById('main-donation form-donation')?.classList.remove('solute');
-            console.log('bro');
             if (window.pageYOffset > 70) {
                 document.getElementById('main-donation form-donation')?.classList.add('nice');
             } else {

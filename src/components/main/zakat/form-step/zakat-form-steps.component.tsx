@@ -59,7 +59,6 @@ const ZakatFormSteps = () => {
                 totalWealthAmount += values[key].totalDebit;
                 totalDebtAmount += values[key].totalCredit;
                 const zakat = normalizeZakat(values[key]);
-                console.log(zakat);
                 setZakats({ ...zakats, [key]: zakat })
             }
         }
@@ -108,7 +107,6 @@ const ZakatFormSteps = () => {
                     amount: 0
                 };
 
-                console.log(key);
                 item.isCredit = key.includes('CREDIT');
                 item.zakatItemName = key.includes('CREDIT') ? key.replace('CREDIT', '') : key.replace('DEBIT', '');
                 item.amount = values.values[key];
