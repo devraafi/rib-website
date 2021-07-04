@@ -1,5 +1,5 @@
 import { IPaymentMethod } from "interfaces/payment-method";
-import _, { tap } from "lodash";
+import _, { filter, tap } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { InputSwitch } from "primereact/inputswitch";
@@ -99,7 +99,12 @@ const PaymentMethodStep = (props: {
         paymentRest.loadPayment().pipe(
             catchError((err) => throwError(err))
         )
-            .subscribe((response: any) => setListPaymentMethods(response.data));
+            .subscribe((response: any) => {
+                const data = filter(response.data, function (o) {
+                    return o?.disabledAt !== 'WEB';
+                });
+                setListPaymentMethods(data);
+            });
     }, []);
 
     useEffect(() => {
@@ -128,19 +133,19 @@ const PaymentMethodStep = (props: {
                     <div className="personal-data text-center py-3 px-2 w-100">
                         <div className="header">
                             Isi data diri
-                    </div>
+                        </div>
                         <div className="description">
                             {
                                 !_.get(getItem(), 'user') &&
                                 <span className="mr-1">
                                     <a className="mr-1" onClick={() => setmodalLogin(true)}>
                                         Masuk
-                                </a>
-                             atau
-                        </span>
+                                    </a>
+                                    atau
+                                </span>
                             }
-                        Lengkapi data di bawah ini
-                    </div>
+                            Lengkapi data di bawah ini
+                        </div>
                         <div className="d-flex flex-column py-3">
                             <div className="form-group">
                                 <input
@@ -192,7 +197,7 @@ const PaymentMethodStep = (props: {
                     <div className="message-doa text-left py-3 px-2 w-100">
                         <div className="header">
                             Pesan dan Doa
-                    </div>
+                        </div>
                         <div className="description text-left">
                         </div>
                         <div className="row">
@@ -213,7 +218,7 @@ const PaymentMethodStep = (props: {
                                 validForm()
                             }} type="submit">
                             Selanjutnya
-                    <span className="ml-2">
+                            <span className="ml-2">
                                 <img src="/images/icons/down.svg" alt="" />
                             </span>
                         </button>
@@ -224,13 +229,13 @@ const PaymentMethodStep = (props: {
                     <div className="text-left px-2">
                         <div className="header">
                             Pilih metode pembayaran
-                    </div>
+                        </div>
                     </div>
                     <div className="d-flex flex-column w-100 mb-2">
                         <div className="row">
                             <div className="col-12 sub-header py-2">
                                 Virtual Account (Verifikasi Otomatis)
-                        </div>
+                            </div>
                             {
                                 (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
@@ -245,7 +250,7 @@ const PaymentMethodStep = (props: {
                                 }) :
                                     <div className="col-12 p-3 text-center">
                                         Maaf, belum ada pilihan metode pembayaran
-                                </div>
+                                    </div>
                             }
                         </div>
                     </div>
@@ -253,7 +258,7 @@ const PaymentMethodStep = (props: {
                         <div className="row">
                             <div className="col-12 sub-header py-2">
                                 e-Wallet
-                        </div>
+                            </div>
                             {
                                 (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
@@ -268,7 +273,7 @@ const PaymentMethodStep = (props: {
                                 }) :
                                     <div className="col-12 p-3 text-center">
                                         Maaf, belum ada pilihan metode pembayaran
-                                </div>
+                                    </div>
                             }
                         </div>
                     </div>
@@ -276,7 +281,7 @@ const PaymentMethodStep = (props: {
                         <div className="row">
                             <div className="col-12 sub-header py-2">
                                 Transfer bank (Verifikasi Manual)
-                        </div>
+                            </div>
                             {
                                 (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
@@ -291,7 +296,7 @@ const PaymentMethodStep = (props: {
                                 }) :
                                     <div className="col-12 p-3 text-center">
                                         Maaf, belum ada pilihan metode pembayaran
-                                </div>
+                                    </div>
                             }
                         </div>
                     </div>
@@ -299,7 +304,7 @@ const PaymentMethodStep = (props: {
                         <div className="row">
                             <div className="col-12 sub-header py-2">
                                 Lainnya
-                        </div>
+                            </div>
                             {
                                 (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
@@ -314,14 +319,14 @@ const PaymentMethodStep = (props: {
                                 }) :
                                     <div className="col-12 p-3 text-center">
                                         Maaf, belum ada pilihan metode pembayaran
-                                </div>
+                                    </div>
                             }
                         </div>
                     </div>
                     <div className="the-card-footer border-0">
                         <button disabled={!paymentMethod || !customerInfo.email || !customerInfo.fullName || !isEmail(customerInfo.email)} className="btn btn-dh-secondary rounded btn-block" onClick={() => props.done ? props.done() : ''}>
                             Lanjut ke pembayaran
-                    </button>
+                        </button>
                     </div>
                 </div>
                 <Modal
