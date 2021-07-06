@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import _ from 'lodash';
+import _, { replace } from 'lodash';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { InputNumber } from 'primereact/inputnumber';
@@ -39,7 +39,7 @@ const MainDonation = (props: any) => {
         if ((windTop + mainFormHeight + 200) > footerTop) {
             document.getElementById('main-donation form-donation')?.classList.remove('syur')
             document.getElementById('main-donation form-donation')?.classList.add('solute')
-            
+
         } else {
             document.getElementById('main-donation form-donation')?.classList.add('syur');
             document.getElementById('main-donation form-donation')?.classList.remove('solute');
@@ -59,17 +59,18 @@ const MainDonation = (props: any) => {
 
     function shareCampaign(data: any, target: 'facebook' | 'twitter' | 'whatsapp') {
         let url;
-        const templateTitle = `Sahabat+Insan+Berbagi%2C+yuk bantu ${data.name} %0D%0A%23RuangInsanBerbagi%0D%0A`;
+        const name = replace(data.name, '#', '%23');
+        const templateTitle = `Sahabat+Insan+Berbagi%2C+yuk bantu ${name} %0D%0A%23RuangInsanBerbagi%0D%0A`;
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?title=" + data.route + "&id=" + data._id;
+                url = "https://wa.me/?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route;
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?title=" + data.route + "&id=" + data._id;
+                url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?title=" + data.route + "&id=" + data._id + "&quote=" + templateTitle;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route + "&quote=" + templateTitle;
                 break;
         }
 
