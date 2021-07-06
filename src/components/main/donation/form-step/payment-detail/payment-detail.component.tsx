@@ -22,7 +22,7 @@ export const DonasiPaymentDetail = (props: { res: any }) => {
             />
             <Spin spinning={!res} indicator={<Loading />}>
                 {
-                    res?.type === 'manual' ?
+                    ((res?.type === 'manual') || res?.isManual) ?
                         <PaymentDetailManualComponent res={res} />
                         : res?.type === 'va' ?
                             <PaymentDetailVAComponent res={res} /> : res?.type === 'ewallet' ? <PaymentDetailEwalletComponent res={res} /> : res?.type === 'other' ? <PaymentDetailRetailComponent res={res} /> : ''
