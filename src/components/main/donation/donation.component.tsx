@@ -84,7 +84,9 @@ const DonationPage = (props: any) => {
         if (pathname === '/infak') {
             loadData(donationRestService.loadInfaq());
         } else {
-            query.id && loadData(donationRestService.loadProgramById(query.id));
+            if (query.id) {
+                loadData(donationRestService.loadProgramById(query.id));
+            }
         }
     }, [router]);
 
@@ -92,7 +94,7 @@ const DonationPage = (props: any) => {
         window.onscroll = () => {
             scroll()
         }
-    });
+    }, );
 
     return (
         <MainComponent

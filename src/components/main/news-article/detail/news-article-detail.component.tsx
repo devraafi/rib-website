@@ -159,7 +159,7 @@ export const NewsArticleDetailComponent = () => {
                                     others && others.map((other, i: number) => {
                                         const newsDate = other.createdAt ? moment(convertUtctoLocalTimezone(new Date(other.createdAt as any))) : moment(new Date);
                                         return (i <= 2) ? <div className="col-lg-4 p-2" key={other._id}>
-                                            <Link href={`/news-article/detail?route=${other.route}&title=${other.title}`}>
+                                            <Link href={`/news-article/detail?route=${other.route}%26title=${other.title}`}>
                                                 <div className="news-wrapper h-100 pointer">
                                                     <div className="news-img sm">
                                                         {
