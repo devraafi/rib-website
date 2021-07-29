@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import _ from 'lodash';
 import data from './file.json'
 import { NewsArticleRestService } from '@Components/main/news-article/news-article-rest.service';
 import { AuthenticationService } from 'services/auth/aut.service';

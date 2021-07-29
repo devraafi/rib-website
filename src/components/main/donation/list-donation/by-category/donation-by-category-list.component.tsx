@@ -1,7 +1,6 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
 import React, { Component, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import _ from 'lodash';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { catchError } from 'rxjs/operators';

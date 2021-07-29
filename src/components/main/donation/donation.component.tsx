@@ -99,9 +99,10 @@ const DonationPage = (props: any) => {
     return (
         <MainComponent
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
-            description="Ruang Insan Berbagi"
+            description={data?.name || 'Ruang Insan Berbagi'}
             pageId="donasi-page-dh"
             hideNav={step > 0}
+            imgUrl={data?.fileUrl}
         >
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?

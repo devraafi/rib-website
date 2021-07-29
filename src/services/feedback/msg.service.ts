@@ -1,14 +1,15 @@
-import _ from 'lodash';
+import { forEach, get, has, identity, isArray, isObject, isString, set } from "lodash";
+
 export class MessageParserService {
 
     parse(messages: any) {
         let parsedMessages: any = [];
 
-        if (_.isArray(messages)) {
+        if (isArray(messages)) {
             messages.forEach(messageSet => this.parseMessageObject(messageSet, parsedMessages));
-        } else if (_.isObject(messages)) {
+        } else if (isObject(messages)) {
             this.parseMessageObject(messages, parsedMessages);
-        } else if (_.isString(messages)) {
+        } else if (isString(messages)) {
             parsedMessages.push(messages);
         }
 
@@ -16,12 +17,12 @@ export class MessageParserService {
             parsedMessages = parsedMessages.concat(this.populateDefaultMessages(messages));
         }
 
-        return parsedMessages.filter(_.identity);
+        return parsedMessages.filter(identity);
     }
 
     parseSpesific(response: any) {
-        if (_.has(response, 'data.errors') && _.has(response, 'data.data')) {
-            _.set(response.data, 'summary', {});
+        if (has(response, 'data.errors') && has(response, 'data.data')) {
+            set(response.data, 'summary', {});
 
             return this.handleErrors(response);
         }
@@ -30,8 +31,8 @@ export class MessageParserService {
     private handleErrors(response: any) {
         const errorMessages: any = [];
 
-        _.forEach(response.data.errors, error => {
-            const errorMessage = _.get(error, 'error_message');
+        forEach(response.data.errors, error => {
+            const errorMessage = get(error, 'error_message');
             const errorCode = error.error_code;
             if (errorMessage || errorCode) {
                 if (errorMessage && errorCode) {
@@ -43,7 +44,7 @@ export class MessageParserService {
                 }
 
                 if (errorCode) {
-                    _.set(response.data, `summary.${error.error_code}`, true);
+                    set(response.data, `summary.${error.error_code}`, true);
                 }
             }
         });
@@ -58,7 +59,7 @@ export class MessageParserService {
             interpolation: any;
         }[] = [];
 
-        _.forEach(validationFails, validationFail => {
+        forEach(validationFails, validationFail => {
             const message: string[] = [];
             message.push(prefix);
             message.push(prefixer);
@@ -77,26 +78,26 @@ export class MessageParserService {
 
     private parseMessageObject(messageSet: any, parsedMessages: (string | string)[]) {
 
-        if (_.has(messageSet, 'response.data[0]') && _.isArray(_.get(messageSet, 'response.data'))) {
-            _.forEach(messageSet.response.data, message => this.parseMessageObject(message, parsedMessages));
-        } else if (_.isString(messageSet) && messageSet) {
+        if (has(messageSet, 'response.data[0]') && isArray(get(messageSet, 'response.data'))) {
+            forEach(messageSet.response.data, message => this.parseMessageObject(message, parsedMessages));
+        } else if (isString(messageSet) && messageSet) {
             parsedMessages.push(messageSet);
-        } else if (_.has(messageSet, 'errorMessage') && messageSet.errorMessage) {
+        } else if (has(messageSet, 'errorMessage') && messageSet.errorMessage) {
             parsedMessages.push(messageSet.errorMessage);
-        } else if (_.has(messageSet, 'response.data[0]') && _.isArray(_.get(messageSet, 'response.data[0]'))) {
-            _.forEach(messageSet.response.data, message => this.parseMessageObject(message, parsedMessages));
-        } else if (_.has(messageSet, 'errors')) {
-            _.forEach(messageSet.errors, errorMessage => {
+        } else if (has(messageSet, 'response.data[0]') && isArray(get(messageSet, 'response.data[0]'))) {
+            forEach(messageSet.response.data, message => this.parseMessageObject(message, parsedMessages));
+        } else if (has(messageSet, 'errors')) {
+            forEach(messageSet.errors, errorMessage => {
                 parsedMessages.push(errorMessage);
             });
-        } else if (_.has(messageSet, 'data[0]') && _.isArray(_.get(messageSet, 'data[0]'))) {
-            _.forEach(messageSet.data, message => this.parseMessageObject(message, parsedMessages));
-        } else if (_.has(messageSet, 'data[0]')) {
-            _.forEach(messageSet.data, message => this.parseMessageObject(message, parsedMessages));
+        } else if (has(messageSet, 'data[0]') && isArray(get(messageSet, 'data[0]'))) {
+            forEach(messageSet.data, message => this.parseMessageObject(message, parsedMessages));
+        } else if (has(messageSet, 'data[0]')) {
+            forEach(messageSet.data, message => this.parseMessageObject(message, parsedMessages));
         }
-        else if (_.has(messageSet, 'data') && messageSet.data) {
+        else if (has(messageSet, 'data') && messageSet.data) {
             parsedMessages.push(messageSet.data);
-        } else if (_.has(messageSet, 'response.data') && messageSet.response.data) {
+        } else if (has(messageSet, 'response.data') && messageSet.response.data) {
             parsedMessages.push(messageSet.response.data);
         }
     }
@@ -104,9 +105,9 @@ export class MessageParserService {
     private populateDefaultMessages(messages: any): (any | string[]) {
         let url: string | any;
         let statusCode: number | any;
-        if (_.has(messages, 'request') && _.has(messages, 'response')) {
-            url = _.get(messages, 'config.url');
-            statusCode = _.get(messages, 'response.status');
+        if (has(messages, 'request') && has(messages, 'response')) {
+            url = get(messages, 'config.url');
+            statusCode = get(messages, 'response.status');
             if (!statusCode) {
                 return ['error.http.noInternetConnection'];
                 // return this._translateService.instant('error.http.noInternetConnection');
@@ -114,11 +115,11 @@ export class MessageParserService {
 
             return this.setPopulateDefaultMessages(statusCode, url);
         }
-        if (_.isArray(messages)) {
+        if (isArray(messages)) {
 
-            _.forEach(messages, function (message) {
-                url = _.get(message, 'config.url');
-                statusCode = _.get(message, 'status') || _.get(message, 'response.status');
+            forEach(messages, function (message) {
+                url = get(message, 'config.url');
+                statusCode = get(message, 'status') || get(message, 'response.status');
             });
             if (!statusCode) {
                 return ['error.http.noInternetConnection'];

@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosStatic } from 'axios';
-import _ from 'lodash';
+import { get, has } from 'lodash';
 import { throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 import { TokenRestServices } from 'services/rest/token-rest.service';
@@ -19,7 +19,7 @@ export class AuthenticationService {
         } catch (e) {
         }
 
-        if (theUser && _.has(theUser, 'accessToken')) {
+        if (theUser && has(theUser, 'accessToken')) {
             userInfo = theUser;
         } else {
             userInfo = null as any;
@@ -28,7 +28,7 @@ export class AuthenticationService {
 
     axiosInterceptors(axios: AxiosInstance | AxiosStatic, interceptRequest: boolean = true, interceptResponse: boolean = true) {
         axios.interceptors.request.use(request => {
-            request.headers.common['Timezone-Offset'] = _.get(userInfo, 'timezone_offset') || (new Date).getTimezoneOffset();
+            request.headers.common['Timezone-Offset'] = get(userInfo, 'timezone_offset') || (new Date).getTimezoneOffset();
             request.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
             request.headers.common['Accept'] = 'application/json, text/plain, */*';
             request.headers.common['Accept-Language'] = 'id-ID';

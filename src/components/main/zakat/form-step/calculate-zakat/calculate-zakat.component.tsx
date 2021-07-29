@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import _, { values } from "lodash";
 import { Checkbox, Form, Input, InputNumber } from "antd";
+import { camelCase, filter, isNumber } from "lodash";
 
 const CalculateZakat = (props: {
     step: number,
@@ -37,7 +37,7 @@ const CalculateZakat = (props: {
         }
 
         let newZakatList = [...zakatList]
-        const theKey = _.camelCase(newZakatList[i].name);
+        const theKey = camelCase(newZakatList[i].name);
         const newForm = { ...forms };
 
         newZakatList[i].checked = val;
@@ -63,7 +63,7 @@ const CalculateZakat = (props: {
     }
 
     function onSubmitStep(key: string, form: any, isLast: boolean, i: number) {
-        setForms({ ...forms, [_.camelCase(key)]: form });
+        setForms({ ...forms, [camelCase(key)]: form });
         !isLast ? scrollTo(i, 'next') : scrollTo(0, 'skip');
     }
 
@@ -91,7 +91,7 @@ const CalculateZakat = (props: {
     }, [step]);
 
     useEffect(() => {
-        setChecklist(_.filter(zakatList, function (list) { return list.checked; }));
+        setChecklist(filter(zakatList, function (list) { return list.checked; }));
     }, [zakatList])
 
     useEffect(() => {
@@ -169,12 +169,12 @@ const CalculateZakat = (props: {
                                         const notKey = ['id', 'rate'];
                                         if (!notKey.includes(key)) {
                                             if (key.includes('CREDIT')) {
-                                                if (_.isNumber(values[key])) {
+                                                if (isNumber(values[key])) {
                                                     form.totalCredit += values[key];
                                                 }
                                             }
                                             if (key.includes('DEBIT')) {
-                                                if (_.isNumber(values[key])) {
+                                                if (isNumber(values[key])) {
                                                     form.totalDebit += values[key];
                                                 }
                                             }
@@ -255,7 +255,7 @@ const FormSection = (props: PropsFormSection) => {
                 lines.map((line: any, i: number) => {
                     return <React.Fragment key={i}>
                         <div key={i} className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3 ' : 'col-lg-6 ')}>
-                            <label className={"input-label w-100 " + (line.isRequired ? 'field-required' : ' ')} htmlFor={`${_.camelCase(line.itemName)}${i}`}>{line.itemName}</label>
+                            <label className={"input-label w-100 " + (line.isRequired ? 'field-required' : ' ')} htmlFor={`${camelCase(line.itemName)}${i}`}>{line.itemName}</label>
                         </div>
                         <div className={"px-2 py-2 align-self-center " + (props.customForm ? 'col-lg-3' : 'col-lg-6')}>
                             <Form.Item
@@ -270,7 +270,7 @@ const FormSection = (props: PropsFormSection) => {
                                     className="w-100 input-number-dh"
                                     formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                                     parser={value => value ? value.replace(/\$\s?|(\.*)/g, '') : ''}
-                                    id={_.camelCase(line.itemName)}
+                                    id={camelCase(line.itemName)}
                                     placeholder="Rp 0"
                                     size="large"
                                 />

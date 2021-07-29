@@ -1,13 +1,13 @@
-import _ from "lodash";
 import Link from "next/link"
 import React, { useEffect } from "react"
 import payment_step from './payment-data.json';
 import { Accordion, AccordionTab } from 'primereact/accordion';
+import { find, get } from "lodash";
 
 
 const getPaymentStep = (id: string) => {
     const stepData = payment_step;
-    const paymentStep: any = _.find(_.get(stepData, 'data'), ['id', id]);
+    const paymentStep: any = find(get(stepData, 'data'), ['id', id]);
     return paymentStep.steps;
 }
 

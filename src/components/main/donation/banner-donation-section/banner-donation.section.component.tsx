@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import _ from 'lodash';
 
 const BannerDonationSection = (props: any) => {
     const { data } = props;

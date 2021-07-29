@@ -1,7 +1,7 @@
 import { Loading } from '@Components/basics/loading/loading.component';
 import MainComponent from '@Components/layout/main/main-layout.component';
 import { Input, Skeleton, Spin } from 'antd';
-import _ from 'lodash';
+import { remove } from 'lodash';
 import moment from 'moment';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -57,7 +57,7 @@ export const ProfileComponent = () => {
                 onDone: (res) => {
                     setSkeleton('');
                     let data = [...list];
-                    _.remove(data, function (dt) { return dt._id == id })
+                    remove(data, function (dt) { return dt._id == id })
                     setList(data)
                 }
             })
@@ -66,7 +66,7 @@ export const ProfileComponent = () => {
                 type: 'error',
                 title: 'Error',
                 description: 'Harap Login terlebih dahulu',
-                // useService: !_.isUndefined(params.useService) ? params.useService : true
+                // useService: !isUndefined(params.useService) ? params.useService : true
             });
         }
     }

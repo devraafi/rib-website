@@ -1,7 +1,7 @@
 import AccontManagementsComponent from "@Components/main/account-managements/account-managements.component";
 import { Modal } from "antd";
 import { IPaymentMethod } from "interfaces/payment-method";
-import _ from "lodash";
+import { get, isLength } from "lodash";
 import { InputSwitch } from "primereact/inputswitch";
 import { InputTextarea } from "primereact/inputtextarea";
 import React, { useEffect, useState } from "react";
@@ -103,7 +103,7 @@ const ZakatPaymetMethod = (props: {
                     </div>
                     <div className="description">
                         {
-                            !_.get(getItem(), 'user') &&
+                            !get(getItem(), 'user') &&
                             <span className="mr-1">
                                 <a className="mr-1" onClick={() => setmodalLogin(true)}>
                                     Masuk
@@ -198,7 +198,7 @@ const ZakatPaymetMethod = (props: {
                                         {pm.type}
                                     </div> */}
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         <div key={i} className="col-lg-4 col-6 p-2" onClick={() => selectPayment(l)}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>

@@ -1,7 +1,6 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
 import React, { Component, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
-import _ from 'lodash';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
@@ -60,7 +59,7 @@ const DonationList = () => {
                 type: 'error',
                 title: 'Error',
                 description: 'Harap Login terlebih dahulu',
-                // useService: !_.isUndefined(params.useService) ? params.useService : true
+                // useService: !isUndefined(params.useService) ? params.useService : true
             });
         }
     }

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { from as observableFrom, Observable, throwError } from 'rxjs';
 import Axios, { AxiosInstance, AxiosRequestConfig, AxiosStatic, CancelTokenStatic } from 'axios';
 
@@ -6,6 +5,7 @@ import { HttpExtsrvService } from './http-extsrv.service';
 import { catchError, tap } from 'rxjs/operators';
 import { IHandleRequest } from './service';
 import { NotifService } from './feedback/notif.service';
+import { isBoolean } from 'lodash';
 const notif: NotifService = new NotifService;
 export class RequestService {
     axios!: AxiosInstance;
@@ -20,7 +20,7 @@ export class RequestService {
         const axios: AxiosInstance = Axios.create({ baseURL });
         // (<any>axiosRetry)(axios, { retries: 3 });
 
-        if (_.isBoolean(useInterceptor)) {
+        if (isBoolean(useInterceptor)) {
             // this._auth.axiosInterceptors(axios);
         } else if (useInterceptor) {
             useInterceptor(axios);

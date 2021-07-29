@@ -1,6 +1,5 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
-import React, { Component, useEffect, useState } from 'react';
-import _ from 'lodash';
+import React, { useEffect, useState } from 'react';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
@@ -10,6 +9,7 @@ import { RequestService } from 'services/request.services';
 import { NotifService } from 'services/feedback/notif.service';
 import { useRouter } from 'next/router';
 import { Pagination } from 'antd';
+import { find } from 'lodash';
 
 const notif: NotifService = new NotifService;
 const auth: AuthenticationService = new AuthenticationService;
@@ -25,6 +25,8 @@ const NewDonationList = () => {
     const [params, setParams] = useState({
         programCategoryId: null,
         keyword: '',
+    });
+    const [pagination, setPagination] = useState({
         take: 9,
         skip: 0,
         current: 1
@@ -33,10 +35,10 @@ const NewDonationList = () => {
     const { query }: any = router;
 
     function onPageChange(page: number, pageSize: number | undefined) {
-        setParams({
-            ...params,
+        setPagination({
+            ...pagination,
             current: page,
-            skip: (page - 1) * (params.take)
+            skip: (page - 1) * (pagination.take)
         })
     }
 
@@ -88,7 +90,7 @@ const NewDonationList = () => {
 
     function loadDonation() {
         setLoading(true)
-        const obs = donationRestService.loadProgram({ ...params, programCategoryId: query.category });
+        const obs = donationRestService.loadProgram({ ...params, ...pagination, programCategoryId: query.category });
         handleRequest({
             obs,
             onDone: (res) => {
@@ -105,7 +107,7 @@ const NewDonationList = () => {
             onDone: (res) => {
                 if (res.data) {
                     setCategories(res.data)
-                    const category = _.find(res.data, { '_id': query.category });
+                    const category = find(res.data, { '_id': query.category });
                     setCategory(category);
                 }
             }
@@ -127,7 +129,7 @@ const NewDonationList = () => {
         }
         loadCategory();
         loadDonation();
-    }, [router, query]);
+    }, [router, query, pagination]);
 
 
     return <MainComponent
@@ -293,7 +295,7 @@ const NewDonationList = () => {
                             // response &&
                             <div className="row mt-3">
                                 <div className="col-lg-6">
-                                    <Pagination itemRender={itemRender} className="pagination-rib" defaultCurrent={1} current={params.current} total={response ? response.total : 0} pageSize={params.take} onChange={onPageChange} />
+                                    <Pagination itemRender={itemRender} className="pagination-rib" defaultCurrent={1} current={pagination.current} total={response ? response.total : 0} pageSize={pagination.take} onChange={onPageChange} />
                                 </div>
                             </div>
                         }

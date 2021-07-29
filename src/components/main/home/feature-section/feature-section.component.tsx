@@ -1,7 +1,7 @@
 import React from 'react';
 import AOS from 'aos';
-import _ from 'lodash';
 import Link from 'next/link';
+import { isNil } from 'lodash';
 
 const features = [
     {
@@ -142,13 +142,13 @@ class FeatureSection extends React.Component<any, any> {
     }
 
     addClass(el: any, className: any) {
-        if (!_.isNil(el)) {
+        if (!isNil(el)) {
             el.classList.add(className);
         }
     }
 
     removeClass(el: any, className: any) {
-        if (!_.isNil(el)) {
+        if (!isNil(el)) {
             el.classList.remove(className);
         }
     }

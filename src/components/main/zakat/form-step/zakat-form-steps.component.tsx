@@ -13,8 +13,8 @@ import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
 import { IPaymentMethod } from "interfaces/payment-method";
 import { IItem, IZakat, IZakatPayload } from "../zakat";
-import _ from "lodash";
 import { AuthenticationService } from "services/auth/aut.service";
+import { values } from "lodash";
 const auth: AuthenticationService = new AuthenticationService;
 const zakatRestService: ZakatRestServices = new ZakatRestServices(process.env.staging || '', auth.axiosInterceptors);
 const ZakatFormSteps = () => {
@@ -122,7 +122,7 @@ const ZakatFormSteps = () => {
 
         const payload: IZakatPayload = {
             paymentMethodId: paymentMethod ? paymentMethod?._id : '',
-            zakats: isManual ? (zakatManuals || []) : _.values(zakats),
+            zakats: isManual ? (zakatManuals || []) : values(zakats),
             customerInfo: customerInfo,
             amount: isManual ? subtotalManualAmount : subtotalAmount,
             shadaqahAmount: shodaqohAmount || 0,
