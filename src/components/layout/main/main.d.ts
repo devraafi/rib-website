@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export interface MainProps {
     title?: string;
+    shortTitle?: string;
     description?: string;
     canonical?: string;
     children: ReactNode;
@@ -9,4 +10,5 @@ export interface MainProps {
     customNav?: ReactNode;
     hideNav?: boolean;
     hideFooter?: boolean;
+    imgUrl?: string;
 }

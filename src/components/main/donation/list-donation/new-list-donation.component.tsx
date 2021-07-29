@@ -25,6 +25,8 @@ const NewDonationList = () => {
     const [params, setParams] = useState({
         programCategoryId: null,
         keyword: '',
+    });
+    const [pagination, setPagination] = useState({
         take: 9,
         skip: 0,
         current: 1
@@ -33,10 +35,10 @@ const NewDonationList = () => {
     const { query }: any = router;
 
     function onPageChange(page: number, pageSize: number | undefined) {
-        setParams({
-            ...params,
+        setPagination({
+            ...pagination,
             current: page,
-            skip: (page - 1) * (params.take)
+            skip: (page - 1) * (pagination.take)
         })
     }
 
@@ -88,7 +90,7 @@ const NewDonationList = () => {
 
     function loadDonation() {
         setLoading(true)
-        const obs = donationRestService.loadProgram({ ...params, programCategoryId: query.category });
+        const obs = donationRestService.loadProgram({ ...params, ...pagination, programCategoryId: query.category });
         handleRequest({
             obs,
             onDone: (res) => {
@@ -127,7 +129,7 @@ const NewDonationList = () => {
         }
         loadCategory();
         loadDonation();
-    }, [router, query]);
+    }, [router, query, pagination]);
 
 
     return <MainComponent
@@ -293,7 +295,7 @@ const NewDonationList = () => {
                             // response &&
                             <div className="row mt-3">
                                 <div className="col-lg-6">
-                                    <Pagination itemRender={itemRender} className="pagination-rib" defaultCurrent={1} current={params.current} total={response ? response.total : 0} pageSize={params.take} onChange={onPageChange} />
+                                    <Pagination itemRender={itemRender} className="pagination-rib" defaultCurrent={1} current={pagination.current} total={response ? response.total : 0} pageSize={pagination.take} onChange={onPageChange} />
                                 </div>
                             </div>
                         }
