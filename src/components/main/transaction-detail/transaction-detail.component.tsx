@@ -1,7 +1,7 @@
 import { Loading } from "@Components/basics/loading/loading.component";
 import MainComponent from "@Components/layout/main/main-layout.component";
 import { Spin } from "antd";
-import _ from "lodash";
+import { capitalize } from "lodash";
 import moment from "moment";
 import { WithRouterProps } from "next/dist/client/with-router";
 import { withRouter } from "next/router"
@@ -66,7 +66,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 <div className="card-transaction m-lg-3 mb-2">
                                     <div className="d-flex flex-column w-100">
                                         <div className="field">
-                                            <div className="label">{_.capitalize(line.itemType) || 'Transaksi'}</div>
+                                            <div className="label">{capitalize(line.itemType) || 'Transaksi'}</div>
                                             <div className="value">{line.itemName || '-'}</div>
                                         </div>
                                         <div className="field">
@@ -103,7 +103,7 @@ const TransactionDetailComponent = (props: WithRouterProps) => {
                                 </div>
                                 <div className="field">
                                     <div className="label">Status</div>
-                                    <div className={"value " + (data?.status === 'PENDING' ? 'pending' : 'status')}>{_.capitalize(data?.status) || '-'}</div>
+                                    <div className={"value " + (data?.status === 'PENDING' ? 'pending' : 'status')}>{capitalize(data?.status) || '-'}</div>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import _ from "lodash";
+import { startCase, toLower } from "lodash";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { AuthenticationService } from "../../../services/auth/aut.service";
@@ -35,7 +35,7 @@ export function NotificationsComponent() {
                     <div className="notif-list p-2" key={i}>
                         <div className="d-flex w-100 mx-auto mb-2">
                             <img src={`/images/icons/${notif?.type}.svg`} alt="" srcSet="" className='mr-3 align-self-center' />
-                            <span className="type align-self-center">{_.startCase(_.toLower(notif?.type))}</span>
+                            <span className="type align-self-center">{startCase(toLower(notif?.type))}</span>
                             <div className="text-right type align-self-center w-100">
                                 {moment(notif?.createdAt).fromNow()}
                             </div>

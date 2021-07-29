@@ -1,5 +1,5 @@
 import { InputNumber } from 'antd';
-import _ from 'lodash';
+import { isUndefined } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { StepperProps } from './stepper';
 
@@ -10,14 +10,14 @@ const Stepper = (props: StepperProps) => {
     const numb = +val;
     switch (type) {
       case 'plus':
-        if (!_.isUndefined(props.max)) {
+        if (!isUndefined(props.max)) {
           value = props.max > numb ? 1 : 0;
         } else {
           value = 1;
         }
         break;
       case 'minus':
-        if (!_.isUndefined(props.min)) {
+        if (!isUndefined(props.min)) {
           value = props.min < numb ? -1 : 0;
         } else {
           value = -1;

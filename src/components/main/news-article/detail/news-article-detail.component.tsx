@@ -3,7 +3,7 @@ import { NewsArticleRestService } from "../news-article-rest.service";
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { RequestService } from "services/request.services";
-import _ from "lodash";
+import _, { get, remove } from "lodash";
 import MainComponent from "@Components/layout/main/main-layout.component";
 import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
@@ -31,7 +31,7 @@ export const NewsArticleDetailComponent = () => {
             obs,
             onDone: (res) => {
                 const data: INews[] = res.data;
-                _.remove(data, function (n) {
+                remove(data, function (n) {
                     return n.route == query.route
                 });
                 setothers(data);
@@ -40,7 +40,7 @@ export const NewsArticleDetailComponent = () => {
     };
 
     function loadNewsByRoute() {
-        const obs = newsRestService.loadNewsByRoute(_.get(query, 'route'));
+        const obs = newsRestService.loadNewsByRoute(get(query, 'route'));
         handleRequest({
             obs,
             onTap: loadNews,

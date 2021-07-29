@@ -1,6 +1,5 @@
 import MainComponent from '@Components/layout/main/main-layout.component';
-import React, { Component, useEffect, useState } from 'react';
-import _ from 'lodash';
+import React, { useEffect, useState } from 'react';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { DonationRestServices } from '../donation-rest.service';
@@ -10,6 +9,7 @@ import { RequestService } from 'services/request.services';
 import { NotifService } from 'services/feedback/notif.service';
 import { useRouter } from 'next/router';
 import { Pagination } from 'antd';
+import { find } from 'lodash';
 
 const notif: NotifService = new NotifService;
 const auth: AuthenticationService = new AuthenticationService;
@@ -107,7 +107,7 @@ const NewDonationList = () => {
             onDone: (res) => {
                 if (res.data) {
                     setCategories(res.data)
-                    const category = _.find(res.data, { '_id': query.category });
+                    const category = find(res.data, { '_id': query.category });
                     setCategory(category);
                 }
             }

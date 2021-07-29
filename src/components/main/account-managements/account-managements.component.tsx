@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import _ from 'lodash';
 import { AccountManagementProps } from './accont-management';
 import LoginComponent from './login/login.component';
 import { AccountMangeRestServices } from './account-managements-rest.services';

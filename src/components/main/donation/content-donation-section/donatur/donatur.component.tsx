@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import _ from 'lodash';
 import data from './file.json'
 import moment from 'moment';
 import { DonationRestServices } from '../../donation-rest.service';

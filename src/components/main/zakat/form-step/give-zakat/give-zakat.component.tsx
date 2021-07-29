@@ -2,10 +2,10 @@
 import { InputText } from 'primereact/inputtext';
 import React, { useEffect, useState } from 'react';
 import { InputTextarea } from 'primereact/inputtextarea';
-import _ from 'lodash';
 import { isFormat } from './math.service';
 import { Checkbox, Form, InputNumber } from 'antd';
 import { IZakat } from '../../zakat';
+import { camelCase, ceil, floor, isLength, isNumber, round } from 'lodash';
 
 const GiveZakat = (props: {
     step: number;
@@ -67,9 +67,9 @@ const GiveZakat = (props: {
     useEffect(() => {
         const newVal: any = [];
         setRoundVal(subtotalAmount);
-        const log = _.round(isFormat(subtotalAmount));
-        newVal.push(_.ceil(subtotalAmount, -(log - 2)));
-        newVal.push(_.floor(subtotalAmount, -(log - 2)));
+        const log = round(isFormat(subtotalAmount));
+        newVal.push(ceil(subtotalAmount, -(log - 2)));
+        newVal.push(floor(subtotalAmount, -(log - 2)));
         setValuesRoundUp(newVal);
     }, [subtotalAmount]);
 
@@ -77,14 +77,14 @@ const GiveZakat = (props: {
         const zakatManuals: IZakat[] = [];
         let total = 0;
         fields.forEach(field => {
-            if (_.isNumber(field.value)) {
+            if (isNumber(field.value)) {
                 total = total + field.value;
             } else {
                 total = 0;
             }
             let zakatManual: IZakat = {
                 zakatId: field.name[0],
-                amount: _.isNumber(field.value) ? field.value : 0,
+                amount: isNumber(field.value) ? field.value : 0,
                 items: []
             }
             zakatManuals.push(zakatManual);
@@ -188,7 +188,7 @@ const GiveZakat = (props: {
                 <div className="row w-100 py-3">
 
                     {
-                        (checkList && _.isLength(checkList.length)) && checkList.map((list: any, i: number) => {
+                        (checkList && isLength(checkList.length)) && checkList.map((list: any, i: number) => {
 
                             return <React.Fragment key={i}>
                                 <div className={"px-2 py-2 align-self-center col-lg-6"}>
@@ -199,7 +199,7 @@ const GiveZakat = (props: {
                                 <div className={"px-2 py-2 align-self-center col-lg-6"}>
                                     <Form.Item
                                         className="m-0"
-                                        name={_.camelCase(list._id)}
+                                        name={camelCase(list._id)}
                                         rules={[{
                                             required: true,
                                             message: 'Kolom ini wajib diisi!'
@@ -209,7 +209,7 @@ const GiveZakat = (props: {
                                             className="w-100 input-number-dh"
                                             formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                                             parser={value => value ? value.replace(/\$\s?|(\.*)/g, '') : ''}
-                                            id={_.camelCase(list._id)}
+                                            id={camelCase(list._id)}
                                             placeholder="Rp 0"
                                             size="large"
                                         />

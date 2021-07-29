@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from './fake-data.json';
 import { Slider } from 'primereact/slider';
 import Link from 'next/link';
 import { DonationRestServices } from '@Components/main/donation/donation-rest.service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { Skeleton, Spin } from 'antd';
+import { Skeleton } from 'antd';
 import { RequestService } from 'services/request.services';
 import { AuthenticationService } from 'services/auth/aut.service';
 import { NotifService } from 'services/feedback/notif.service';
@@ -51,7 +48,7 @@ const ProgramSection = (props: {
                 type: 'error',
                 title: 'Error',
                 description: 'Harap Login terlebih dahulu',
-                // useService: !_.isUndefined(params.useService) ? params.useService : true
+                // useService: !isUndefined(params.useService) ? params.useService : true
             });
         }
     }

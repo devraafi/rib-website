@@ -1,4 +1,3 @@
-import _ from 'lodash';
 export class CommonServices {
 
     getPaymentImageSrc(val: string): string {

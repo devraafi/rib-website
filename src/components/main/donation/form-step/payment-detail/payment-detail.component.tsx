@@ -1,4 +1,3 @@
-import _ from "lodash";
 import React, { useEffect } from "react"
 import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";

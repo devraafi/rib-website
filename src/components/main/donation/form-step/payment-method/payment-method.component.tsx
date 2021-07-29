@@ -1,5 +1,4 @@
 import { IPaymentMethod } from "interfaces/payment-method";
-import _, { filter, tap } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { InputSwitch } from "primereact/inputswitch";
@@ -14,6 +13,7 @@ import { AuthenticationService } from "services/auth/aut.service";
 import { CommonServices } from "services/common/common.service";
 import { NotifService } from "services/feedback/notif.service";
 import { NextSeo } from "next-seo";
+import { filter, get, isLength } from "lodash";
 
 const auth: AuthenticationService = new AuthenticationService;
 const paymentRest: PaymentMethodRest = new PaymentMethodRest(process.env.staging || '', auth.axiosInterceptors);
@@ -136,7 +136,7 @@ const PaymentMethodStep = (props: {
                         </div>
                         <div className="description">
                             {
-                                !_.get(getItem(), 'user') &&
+                                !get(getItem(), 'user') &&
                                 <span className="mr-1">
                                     <a className="mr-1" onClick={() => setmodalLogin(true)}>
                                         Masuk
@@ -237,7 +237,7 @@ const PaymentMethodStep = (props: {
                                 Virtual Account (Verifikasi Otomatis)
                             </div>
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         l.type == 'virtual_account' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
@@ -260,7 +260,7 @@ const PaymentMethodStep = (props: {
                                 e-Wallet
                             </div>
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         l.type == 'ewallet' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
@@ -283,7 +283,7 @@ const PaymentMethodStep = (props: {
                                 Transfer bank (Verifikasi Manual)
                             </div>
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         l.type == 'manual' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>
@@ -306,7 +306,7 @@ const PaymentMethodStep = (props: {
                                 Lainnya
                             </div>
                             {
-                                (paymentMethodList && _.isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
+                                (paymentMethodList && isLength(paymentMethodList.length)) ? paymentMethodList.map((l, i) => {
                                     return (
                                         l.type == 'other' && <div key={i} className="col-lg-4 col-6 p-2" onClick={() => { selectPayment(l); onStepChange(3) }}>
                                             <div className={'payment-box ' + (paymentMethod == l ? 'active' : '')}>

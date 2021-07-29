@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import NewInfoDonation from './new-info/new-info.component';
 import { stat } from 'fs/promises';
 import DonaturListDonation from './donatur/donatur.component';

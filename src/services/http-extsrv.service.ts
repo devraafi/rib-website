@@ -1,6 +1,6 @@
 import { Notifications } from '@Components/basics/notifications/notifications.component';
 import { AxiosInstance, AxiosResponse, AxiosStatic } from 'axios';
-import * as _ from 'lodash';
+import { has, set } from 'lodash';
 
 
 export class HttpExtsrvService {
@@ -20,8 +20,8 @@ export class HttpExtsrvService {
     }
 
     private handleResponse(response: AxiosResponse) {
-        if (_.has(response, 'data.errors') && _.has(response, 'data.data')) {
-            _.set(response.data, 'summary', {});
+        if (has(response, 'data.errors') && has(response, 'data.data')) {
+            set(response.data, 'summary', {});
 
             this.handleErrors(response);
         }

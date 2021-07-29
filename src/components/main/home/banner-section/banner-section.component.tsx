@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import data from './fake-data.json';
 import moment from 'moment';
-import _ from 'lodash';
 import Slider from 'react-slick';
 import Link from 'next/link';
+import { reverse } from 'lodash';
 
 export const BannerSection = (props: {
     data: any
@@ -74,7 +73,7 @@ export const BannerSection = (props: {
                 <div className={'banner-list two'}>
                     <Slider infinite={true} key={'wou-1'} {...settings} autoplaySpeed={3100} className="slide-index">
                         {
-                            list && _.reverse(list).map((li: any, i: number) => {
+                            list && reverse(list).map((li: any, i: number) => {
                                 return <div className="col-auto px-1 m-ato" key={i}>
                                     <div className="banner-item animate__animated animate__bounceIn">
                                         {li.fileUrl && (list.fileUrl !== '-') ?
