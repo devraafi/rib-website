@@ -11,4 +11,5 @@ export interface MainProps {
     hideNav?: boolean;
     hideFooter?: boolean;
     imgUrl?: string;
+    url?: string;
 }

@@ -94,7 +94,7 @@ const DonationPage = (props: any) => {
         window.onscroll = () => {
             scroll()
         }
-    }, );
+    });
 
     return (
         <MainComponent
@@ -103,6 +103,7 @@ const DonationPage = (props: any) => {
             pageId="donasi-page-dh"
             hideNav={step > 0}
             imgUrl={data?.fileUrl}
+            url={`https/ruanginsanberbagi.org/donasi/detail?id=${data._id}&title=${data.name}`}
         >
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?
