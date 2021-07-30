@@ -99,6 +99,7 @@ const DonationPage = (props: any) => {
     return (
         <MainComponent
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
+            shortTitle={'Klik untuk donasi' + data.name}
             description={data?.name || 'Ruang Insan Berbagi'}
             pageId="donasi-page-dh"
             hideNav={step > 0}
