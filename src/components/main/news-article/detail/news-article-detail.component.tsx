@@ -65,13 +65,13 @@ export const NewsArticleDetailComponent = () => {
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text=" + data.title + '%0a%0a' + baseUrl + "news-article/detail?route=" + data.route;
+                url = "https://wa.me/?text=" + data.title + '%0a%0a' + baseUrl + "news-article/" + data.route;
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + data.title + '%0a%0a' + baseUrl + "news-article/detail?route=" + data.route;
+                url = "https://twitter.com/intent/tweet?text=" + data.title + '%0a%0a' + baseUrl + "news-article/" + data.route;
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "news-article/detail?route=" + data.route + "&quote=" + data.title;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "news-article/" + data.route + "&quote=" + data.title;
                 break;
         }
 
@@ -90,8 +90,11 @@ export const NewsArticleDetailComponent = () => {
     return (
         <MainComponent
             title={`Berita & Artikel | ${news?.title || '-'}`}
-            description={`${news?.title || 'Berita & Artikel'}`}
             pageId="news-article-page-dh"
+            shortTitle={'Klik untuk baca - ' + news?.title}
+            description={news?.title || 'Ruang Insan Berbagi'}
+            imgUrl={news?.fileUrl}
+            url={`https/ruanginsanberbagi.org/${news?.route}`}
         >
             <Spin spinning={!news} indicator={<Loading />}>
                 <div className="container-fluid p-0 news-page">

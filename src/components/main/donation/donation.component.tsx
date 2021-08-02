@@ -13,6 +13,8 @@ import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { AuthenticationService } from "services/auth/aut.service";
 import { RequestService } from "services/request.services";
+import $ from 'jquery';
+
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
@@ -40,6 +42,7 @@ const DonationPage = (props: any) => {
             onDone: (res) => {
                 setData(res);
                 setLoading(false);
+                $('meta[property=og\\:image]').attr('content', `${res.fileUrl}`);
             }
         })
     }
@@ -84,8 +87,8 @@ const DonationPage = (props: any) => {
         if (pathname === '/infak') {
             loadData(donationRestService.loadInfaq());
         } else {
-            if (query.id) {
-                loadData(donationRestService.loadProgramById(query.id));
+            if (query?.programRoute) {
+                loadData(donationRestService.loadProgramById(query.programRoute));
             }
         }
     }, [router]);
@@ -99,12 +102,12 @@ const DonationPage = (props: any) => {
     return (
         <MainComponent
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
-            shortTitle={'Klik untuk donasi' + data.name}
-            description={data?.name || 'Ruang Insan Berbagi'}
             pageId="donasi-page-dh"
             hideNav={step > 0}
+            shortTitle={'Klik untuk donasi - ' + data?.name}
+            description={data?.name || 'Ruang Insan Berbagi'}
             imgUrl={data?.fileUrl}
-            url={`https/ruanginsanberbagi.org/donasi/detail?id=${data._id}&title=${data.name}`}
+            url={`https/ruanginsanberbagi.org/${data?.route}`}
         >
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?

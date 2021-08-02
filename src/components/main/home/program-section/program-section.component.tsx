@@ -60,7 +60,7 @@ const ProgramSection = (props: {
     return <div className="container program-section py-5">
         <div className="col-lg-6 m-auto header">
             Pilihan Program Kebaikan untuk Kamu, Siap Berbagi Hari ini
-    </div>
+        </div>
         <div className="col-lg-6 m-auto desc py-3">
             Temukan dan bantu mereka yang sedang berjuang bertahan hidup untuk makan, mendapatkan perawatan kesehatan/pengobatan dan mendapatkan pendidikan.
         </div>
@@ -74,7 +74,7 @@ const ProgramSection = (props: {
                                 skeleton == li._id ?
                                     <Skeleton.Input active className="w-100 card-program h-100" /> :
                                     <div className="card-program animate__animated animate__bounceIn">
-                                        <Link href={`/donasi/detail?title=${li.route}&id=${li._id}`}>
+                                        <Link href={`/${li.route}`} passHref>
                                             <div className="d-flex flex-column">
                                                 <div className="program-image">
                                                     {
@@ -140,7 +140,7 @@ const ProgramSection = (props: {
                                                                 </div>
                                                                 <div className="days">
                                                                     Hari
-                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
