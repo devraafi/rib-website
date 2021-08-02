@@ -64,13 +64,13 @@ const MainDonation = (props: any) => {
 
         switch (target) {
             case 'whatsapp':
-                url = "https://wa.me/?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route;
+                url = "https://wa.me/?text=" + templateTitle + '%0a%0a' + baseUrl + (data.route || 'infak');
                 break;
             case 'twitter':
-                url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route;
+                url = "https://twitter.com/intent/tweet?text=" + templateTitle + '%0a%0a' + baseUrl + (data.route || 'infak');
                 break;
             case 'facebook':
-                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/donasi/detail?id=" + data._id + "%26title=" + data.route + "&quote=" + templateTitle;
+                url = "https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + (data.route || 'infak') + "&quote=" + templateTitle;
                 break;
         }
 

@@ -23,7 +23,7 @@ export const NewsSectionComponent = (props: INewsArticleProps) => {
                         props.data && props.data.map((list, i: number) => {
                             return (
                                 <div className="col-lg-4 col-12 py-3 px-3" key={i}>
-                                    <Link href={`/news-article/detail?route=${list.route}&title=${list.title}`}>
+                                    <Link href={`/news-article/${list.route}`}>
                                         <div className="card-news">
                                             <div className="d-flex flex-column">
                                                 <div className="news-image">

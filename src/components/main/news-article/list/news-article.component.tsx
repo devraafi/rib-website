@@ -66,7 +66,7 @@ export const NewsArticleListComponent = () => {
                         news ? <>
                             <div className="row">
                                 <div className="col-lg-12 p-2">
-                                    <Link href={`/news-article/detail/?route=${mainNews?.route}&title=${mainNews?.title}`}>
+                                    <Link href={`/news-article/${mainNews?.route}`}>
                                         <div className="the-new pointer">
                                             <div className="news-wrapper">
                                                 <div className="row">

@@ -27,6 +27,7 @@
     "formik": "^2.2.6",
     "ga-4-react": "^0.1.281",
     "google-map-react": "^2.1.9",
+    "jquery": "^3.6.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "next": "^10.0.1",
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "@types/accounting": "^0.4.1",
+    "@types/jquery": "^3.5.6",
     "@types/node": "^14.14.6",
     "@types/qrcode.react": "^1.0.1",
     "@types/react": "^16.9.56",

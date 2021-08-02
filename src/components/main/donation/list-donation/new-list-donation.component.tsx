@@ -213,7 +213,7 @@ const NewDonationList = () => {
                                                 skeleton == list._id ?
                                                     <Skeleton.Input active className="w-100 card-program h-100" /> :
                                                     <div className="card-program animate__animated animate__bounceIn">
-                                                        <Link href={`/donasi/detail?id=${list._id}&title=${list.route}`}>
+                                                        <Link href={`/${list.route}`}>
                                                             <div className="d-flex flex-column">
                                                                 <div className="program-image">
                                                                     {
