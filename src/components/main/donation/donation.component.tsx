@@ -14,6 +14,7 @@ import { Loading } from "@Components/basics/loading/loading.component";
 import { AuthenticationService } from "services/auth/aut.service";
 import { RequestService } from "services/request.services";
 import $ from 'jquery';
+import { Helmet } from 'react-helmet';
 
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
@@ -30,6 +31,16 @@ const DonationPage = (props: any) => {
         setTotal(total);
         setIsInfaq(isInfaq);
         setStep(1);
+    }
+
+    function load() {
+        if (pathname === '/infak') {
+            return loadData(donationRestService.loadInfaq());
+        } else {
+            if (query?.programRoute) {
+                return loadData(donationRestService.loadProgramById(query.programRoute));
+            }
+        }
     }
 
     function loadData(obs: Observable<any>) {
@@ -86,13 +97,7 @@ const DonationPage = (props: any) => {
         if (query && query.transactionId) {
             setStep(1);
         }
-        if (pathname === '/infak') {
-            loadData(donationRestService.loadInfaq());
-        } else {
-            if (query?.programRoute) {
-                loadData(donationRestService.loadProgramById(query.programRoute));
-            }
-        }
+        load();
     }, [router]);
 
     useEffect(() => {
@@ -107,6 +112,17 @@ const DonationPage = (props: any) => {
             pageId="donasi-page-dh"
             hideNav={step > 0}
         >
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}</title>
+                <meta name='description' content={data?.name} />
+                <meta property='og:locale' content='en_US' />
+                <meta property='og:type' content='website' />
+                <meta property='og:title' content={'Klik untuk donasi - ' + data?.name} />
+                <meta property='og:description' content={data?.name} />
+                <meta property='og:image' content={data?.url} />
+                <meta property='og:url' content='https://ruanginsanberbagi.org/' />
+            </Helmet>
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?
 
