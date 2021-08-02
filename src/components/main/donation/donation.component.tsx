@@ -1,6 +1,6 @@
 import MainComponent from "@Components/layout/main/main-layout.component";
 import { set } from "lodash";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import BannerDonationSection from "./banner-donation-section/banner-donation.section.component";
 import ContentDonationSection from "./content-donation-section/content-donation-section.component";
 import MainDonation from "./content-donation-section/main-donation/main-donation.component";
@@ -52,10 +52,7 @@ const DonationPage = (props: any) => {
             onError: () => setLoading(false),
             onDone: (res) => {
                 setData(res);
-                setLoading(false);
-                $('meta[property=og\\:image]').attr('content', `${res.fileUrl}`);
-                $('meta[property=og\\:title]').attr('content', `'Klik untuk donasi - ${res?.name}`);
-                $('meta[property=og\\:description]').attr('content', `${res.name}`);
+                setLoading(false)
             }
         })
     }
@@ -93,7 +90,7 @@ const DonationPage = (props: any) => {
         localStorage && localStorage.setItem('isInfaq', total.toString());
     }, [total, isInfaq]);
 
-    useEffect(() => {
+    useMemo(() => {
         if (query && query.transactionId) {
             setStep(1);
         }
