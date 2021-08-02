@@ -34,7 +34,7 @@ const DonorListComponent = (props: WithRouterProps) => {
         if (pathname === '/infak') {
             loadData(donationRestService.loadInfaqDetail());
         } else {
-            query.id && loadData(donationRestService.loadProgramDetail(query.id));
+            query?.programRoute && loadData(donationRestService.loadProgramDetail(query?.programRoute));
         }
 
     }, [])
