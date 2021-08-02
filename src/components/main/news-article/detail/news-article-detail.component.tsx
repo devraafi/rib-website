@@ -91,10 +91,10 @@ export const NewsArticleDetailComponent = () => {
         <MainComponent
             title={`Berita & Artikel | ${news?.title || '-'}`}
             pageId="news-article-page-dh"
-            shortTitle={'Klik untuk baca - ' + news?.title}
+            shortTitle={news?.title ? 'Klik untuk baca - ' + news?.title : ''}
             description={news?.title || 'Ruang Insan Berbagi'}
             imgUrl={news?.fileUrl}
-            url={`https/ruanginsanberbagi.org/${news?.route}`}
+            url={news?.route ? `https/ruanginsanberbagi.org/${news?.route}` : ''}
         >
             <Spin spinning={!news} indicator={<Loading />}>
                 <div className="container-fluid p-0 news-page">
