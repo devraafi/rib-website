@@ -43,6 +43,8 @@ const DonationPage = (props: any) => {
                 setData(res);
                 setLoading(false);
                 $('meta[property=og\\:image]').attr('content', `${res.fileUrl}`);
+                $('meta[property=og\\:title]').attr('content', `'Klik untuk donasi - ${res?.name}`);
+                $('meta[property=og\\:description]').attr('content', `${res.name}`);
             }
         })
     }
@@ -104,10 +106,6 @@ const DonationPage = (props: any) => {
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
             pageId="donasi-page-dh"
             hideNav={step > 0}
-            shortTitle={data?.name ? 'Klik untuk donasi - ' + data?.name : ''}
-            description={data?.name || 'Ruang Insan Berbagi'}
-            imgUrl={data?.fileUrl ? data?.fileUrl : ''}
-            url={data?.route ? `https/ruanginsanberbagi.org/${data?.route}` : ''}
         >
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?
