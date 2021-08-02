@@ -104,10 +104,10 @@ const DonationPage = (props: any) => {
             title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
             pageId="donasi-page-dh"
             hideNav={step > 0}
-            shortTitle={'Klik untuk donasi - ' + data?.name}
+            shortTitle={data?.name ? 'Klik untuk donasi - ' + data?.name : ''}
             description={data?.name || 'Ruang Insan Berbagi'}
-            imgUrl={data?.fileUrl}
-            url={`https/ruanginsanberbagi.org/${data?.route}`}
+            imgUrl={data?.fileUrl ? data?.fileUrl : ''}
+            url={data?.route ? `https/ruanginsanberbagi.org/${data?.route}` : ''}
         >
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?
