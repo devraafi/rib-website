@@ -15,21 +15,24 @@ function Index(props: any) {
 export async function getServerSideProps(ctx: any) {
     let url = `https://rib-production.ruanginsanberbagi.org/public/program/${ctx.query.programRoute}`;
     let meta = null;
+    let data = null;
     if (ctx.query.programRoute === 'infak') {
         url = `https://rib-production.ruanginsanberbagi.org/public/infaq`;
     }
     await axios.get(url).then((res: any) => {
-        const data = res.data;
+        data = res.data;
         meta = {
             url: `https://ruanginsanberbagi.org${ctx.resolvedUrl}`,
-            title: data.name,
+            ogTitle: ctx.query.programRoute === 'infak' ? 'Klik untuk Infak' : `Klik untuk donasi - ${data.name}`,
+            title: `${data.name} | Ruang Insan Berbagi`,
+            ogDesc: data.name,
             name: ctx.query.programRoute === 'infak' ? 'Klik untuk Infak' : `Klik untuk donasi - ${data.name}`,
             img: data.fileUrl,
         }
     }).catch(err => {
         console.error(err);
     });
-    return { props: { meta } };
+    return { props: { meta, data } };
 
 }
 

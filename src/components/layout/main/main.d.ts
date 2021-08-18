@@ -12,4 +12,5 @@ export interface MainProps {
     hideFooter?: boolean;
     imgUrl?: string;
     url?: string;
+    meta?: any
 }

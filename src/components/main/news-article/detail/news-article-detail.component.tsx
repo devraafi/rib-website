@@ -13,10 +13,9 @@ const auth: AuthenticationService = new AuthenticationService;
 const newsRestService: NewsArticleRestService = new NewsArticleRestService(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
 
-export const NewsArticleDetailComponent = () => {
+export const NewsArticleDetailComponent = ({ meta, news }: any) => {
     const router = useRouter();
     const { query }: any = router;
-    const [news, setNews] = useState<INews>();
     const [hostname, setHostName] = useState<string>('');
     const [others, setothers] = useState<INews[]>();
     const [params, setParams] = useState({
@@ -38,15 +37,6 @@ export const NewsArticleDetailComponent = () => {
             }
         })
     };
-
-    function loadNewsByRoute() {
-        const obs = newsRestService.loadNewsByRoute(get(query, 'route'));
-        handleRequest({
-            obs,
-            onTap: loadNews,
-            onDone: setNews
-        })
-    }
 
     function convertUtctoLocalTimezone(dateUtc: any) {
         const offset = (new Date().getTimezoneOffset() * -1);
@@ -79,8 +69,10 @@ export const NewsArticleDetailComponent = () => {
     }
 
     useEffect(() => {
-        (query && query.route) && loadNewsByRoute()
-    }, [query]);
+        if (news) {
+            loadNews()
+        }
+    }, [news]);
 
     useEffect(() => {
         if ((typeof window !== 'undefined') && window.location.href) {
@@ -89,12 +81,9 @@ export const NewsArticleDetailComponent = () => {
     })
     return (
         <MainComponent
-            title={`Berita & Artikel | ${news?.title || '-'}`}
+            title={meta?.title}
             pageId="news-article-page-dh"
-            shortTitle={news?.title ? 'Klik untuk baca - ' + news?.title : ''}
-            description={news?.title || 'Ruang Insan Berbagi'}
-            imgUrl={news?.fileUrl}
-            url={news?.route ? `https/ruanginsanberbagi.org/${news?.route}` : ''}
+            meta={meta}
         >
             <Spin spinning={!news} indicator={<Loading />}>
                 <div className="container-fluid p-0 news-page">
@@ -162,7 +151,7 @@ export const NewsArticleDetailComponent = () => {
                                     others && others.map((other, i: number) => {
                                         const newsDate = other.createdAt ? moment(convertUtctoLocalTimezone(new Date(other.createdAt as any))) : moment(new Date);
                                         return (i <= 2) ? <div className="col-lg-4 p-2" key={other._id}>
-                                            <Link href={`/news-article/detail?route=${other.route}&title=${other.title}`}>
+                                            <Link href={`/news-article/${other.route}?title=${other.title}`}>
                                                 <div className="news-wrapper h-100 pointer">
                                                     <div className="news-img sm">
                                                         {

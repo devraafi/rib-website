@@ -16,42 +16,16 @@ import { Helmet } from 'react-helmet';
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
-function DonationPage({ meta }: any) {
+function DonationPage({ meta, data }: any) {
     const router = useRouter();
     const { query, pathname } = router;
     const [step, setStep] = useState(0);
     const [total, setTotal] = useState(0);
     const [isInfaq, setIsInfaq] = useState(false);
-    const [data, setData] = useState<any>(null);
-    const [loading, setLoading] = useState(false);
     function onDonate(total: number, isInfaq: boolean) {
         setTotal(total);
         setIsInfaq(isInfaq);
         setStep(1);
-    }
-
-    function load() {
-        if (query?.programRoute === 'infak') {
-            return loadData(donationRestService.loadInfaq());
-        } else {
-            if (query?.programRoute) {
-                return loadData(donationRestService.loadProgramById(query.programRoute));
-            }
-        }
-    }
-
-    function loadData(obs: Observable<any>) {
-        setLoading(true);
-        handleRequest({
-            obs,
-            useService: false,
-            errorMessage: 'Kesalahan tidak terduga',
-            onError: () => setLoading(false),
-            onDone: (res) => {
-                setData(res);
-                setLoading(false);
-            }
-        });
     }
 
     function scroll(to?: boolean) {
@@ -91,7 +65,6 @@ function DonationPage({ meta }: any) {
         if (query && query.transactionId) {
             setStep(1);
         }
-        load();
     }, [router]);
 
     useEffect(() => {
@@ -105,22 +78,9 @@ function DonationPage({ meta }: any) {
             title={meta?.title}
             pageId="donasi-page-dh"
             hideNav={step > 0}
+            meta={meta}
         >
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{meta?.title}</title>
-                <meta name='description' content={meta?.name} />
-                <meta property='og:locale' content='en_US' />
-                <meta property='og:type' content='website' />
-                <meta property='og:title' content={meta?.name} />
-                <meta property='og:description' content={meta?.title} />
-                <meta property='og:image' content={meta?.img} />
-                <meta property='og:url' content={meta?.url} />
-                <meta property="og:image:type" content="image/png" />
-                <meta property="og:image:width" content="400" />
-                <meta property="og:image:height" content="400" />
-            </Helmet>
-            <Spin spinning={loading} indicator={<Loading />}>
+            <Spin spinning={!data} indicator={<Loading />}>
                 {step === 0 ?
 
                     <div className="container-fluid p-0">

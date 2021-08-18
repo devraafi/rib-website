@@ -66,7 +66,7 @@ export const NewsArticleListComponent = () => {
                         news ? <>
                             <div className="row">
                                 <div className="col-lg-12 p-2">
-                                    <Link href={`/news-article/${mainNews?.route}`}>
+                                    <Link href={`/news-article/${mainNews?.route}?title=${mainNews?.title}`}>
                                         <div className="the-new pointer">
                                             <div className="news-wrapper">
                                                 <div className="row">
@@ -110,7 +110,7 @@ export const NewsArticleListComponent = () => {
                                         const newsDate = nw.createdAt ? moment(convertUtctoLocalTimezone(new Date(nw.createdAt as any))) : moment(new Date);
                                         return (
                                             <div className="col-lg-4 p-2">
-                                                <Link href={`/news-article/detail?route=${nw.route}&title=${nw.title}`}>
+                                                <Link href={`/news-article/${nw.route}?title=${nw.title}`}>
                                                     <div className="news-wrapper h-100 pointer">
                                                         <div className="news-img sm">
                                                             {
