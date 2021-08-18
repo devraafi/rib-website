@@ -15,6 +15,8 @@ function HeaderComponent({ meta }: any) {
                 <meta property='og:image' content={meta?.img || '/images/logos/dh-logo-footer.svg'} />
                 <meta property='og:url' content={meta?.url || 'https://ruanginsanberbagi.org/'} />
                 <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:width" content="400" />
+                <meta property="og:image:height" content="400" />
                 <script type="text/javascript"
                     src="https://app.sandbox.midtrans.com/snap/snap.js"
                     data-client-key="Mid-client-BHJdJcj_-5xRENuz"></script>
