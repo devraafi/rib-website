@@ -17,7 +17,7 @@ export const DonasiPaymentDetail = (props: { res: any }) => {
     return (
         <>
             <NextSeo
-                title={'Intruksi Pembayaran'}
+                title={'Instruksi Pembayaran'}
             />
             <Spin spinning={!res} indicator={<Loading />}>
                 {

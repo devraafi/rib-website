@@ -10,16 +10,6 @@ const MainComponent = (props: MainProps) => (
     <>
         <Head>
             <React.Fragment>
-                <title>{props.title || 'Ruang Insan Berbagi'}</title>
-                <meta property="og:description" content={props.description || 'Ruang Insan Berbagi sebagai wadah kebaikan bagi masyarakat Indonesia dengan pengelolaan dana sosial secara Amanah, Tepat Sasaran dan Profesional. Implementasi program donasi di rangkum dalam 4 Rumpun Program Insani yaitu Insan Sehat (Kesehatan), Insan Mandiri (Perbaikan Ekonomi), Insan Peduli Lingkungan, Insan Cerdas (Pendidikan).'} />
-                <meta property="og:image:type" content="image/png" />
-                <meta property="og:image:width" content="400" />
-                <meta property="og:image:height" content="400" />
-                <meta property="og:title" content={props?.shortTitle || 'Ruang Insan Berbagi'} />
-                <meta property="og:url" content={props.url || 'https://www.ruanginsanberbagi.org/'} />
-                <meta property="og:updated_time" content="1440432930" />
-                <meta name="description" content={props.description || 'Ruang Insan Berbagi'} />
-                <meta name="next-head-count" content="10" />
                 <script type="text/javascript"
                     src="https://app.sandbox.midtrans.com/snap/snap.js"
                     data-client-key="Mid-client-BHJdJcj_-5xRENuz"></script>

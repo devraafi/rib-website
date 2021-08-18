@@ -1,26 +1,23 @@
 import MainComponent from "@Components/layout/main/main-layout.component";
-import { set } from "lodash";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BannerDonationSection from "./banner-donation-section/banner-donation.section.component";
 import ContentDonationSection from "./content-donation-section/content-donation-section.component";
 import MainDonation from "./content-donation-section/main-donation/main-donation.component";
 import DonasiFormStep from "./form-step/donasi-form-steps.component";
-import { useRouter, withRouter } from 'next/router';
-import { catchError } from "rxjs/operators";
-import { Observable, throwError } from "rxjs";
+import { useRouter } from 'next/router';
+import { Observable } from "rxjs";
 import { DonationRestServices } from "./donation-rest.service";
 import { Spin } from "antd";
 import { Loading } from "@Components/basics/loading/loading.component";
 import { AuthenticationService } from "services/auth/aut.service";
 import { RequestService } from "services/request.services";
-import $ from 'jquery';
 import { Helmet } from 'react-helmet';
 
 const auth: AuthenticationService = new AuthenticationService;
 const donationRestService: DonationRestServices = new DonationRestServices(process.env.staging || '', auth.axiosInterceptors);
 const { handleRequest } = new RequestService;
-const DonationPage = (props: any) => {
-    const { router } = props;
+function DonationPage({ meta }: any) {
+    const router = useRouter();
     const { query, pathname } = router;
     const [step, setStep] = useState(0);
     const [total, setTotal] = useState(0);
@@ -34,7 +31,7 @@ const DonationPage = (props: any) => {
     }
 
     function load() {
-        if (pathname === '/infak') {
+        if (query?.programRoute === 'infak') {
             return loadData(donationRestService.loadInfaq());
         } else {
             if (query?.programRoute) {
@@ -52,9 +49,9 @@ const DonationPage = (props: any) => {
             onError: () => setLoading(false),
             onDone: (res) => {
                 setData(res);
-                setLoading(false)
+                setLoading(false);
             }
-        })
+        });
     }
 
     function scroll(to?: boolean) {
@@ -81,16 +78,16 @@ const DonationPage = (props: any) => {
                 ReactPixel.init('809047500028527');
                 ReactPixel.fbq('track', 'ViewContent', {
                     program_name: data?.name || '-',
-                })
+                });
             });
-    }, [data])
+    }, [data]);
 
     useEffect(() => {
         localStorage && localStorage.setItem('lastTotalDonasi', total.toString());
         localStorage && localStorage.setItem('isInfaq', total.toString());
     }, [total, isInfaq]);
 
-    useMemo(() => {
+    useEffect(() => {
         if (query && query.transactionId) {
             setStep(1);
         }
@@ -99,33 +96,35 @@ const DonationPage = (props: any) => {
 
     useEffect(() => {
         window.onscroll = () => {
-            scroll()
-        }
+            scroll();
+        };
     });
 
     return (
         <MainComponent
-            title={pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}
+            title={meta?.title}
             pageId="donasi-page-dh"
             hideNav={step > 0}
         >
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{pathname === '/infak' ? "Infak Ruang Insan Berbagi" : "Donasi Ruang Insan Berbagi"}</title>
-                <meta name='description' content={data?.name} />
+                <title>{meta?.title}</title>
+                <meta name='description' content={meta?.name} />
                 <meta property='og:locale' content='en_US' />
                 <meta property='og:type' content='website' />
-                <meta property='og:title' content={'Klik untuk donasi - ' + data?.name} />
-                <meta property='og:description' content={data?.name} />
-                <meta property='og:image' content={data?.url} />
-                <meta property='og:url' content='https://ruanginsanberbagi.org/' />
+                <meta property='og:title' content={meta?.name} />
+                <meta property='og:description' content={meta?.title} />
+                <meta property='og:image' content={meta?.img} />
+                <meta property='og:url' content={meta?.url} />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:width" content="400" />
+                <meta property="og:image:height" content="400" />
             </Helmet>
             <Spin spinning={loading} indicator={<Loading />}>
                 {step === 0 ?
 
                     <div className="container-fluid p-0">
                         <div className="donation-section">
-                            {/* <img src="/images/backgrounds/islamic.svg" className="islamic-bg" alt="" /> */}
                         </div>
                         <div className="container-lg content">
                             <div className="row">
@@ -134,10 +133,8 @@ const DonationPage = (props: any) => {
                                     {data && <ContentDonationSection data={data} />}
                                 </div>
                                 <div className="col-lg-5 py-3 py-lg-0 position-relative" id="col-donation">
-                                    {
-                                        data &&
-                                        <MainDonation isInfaq={pathname === '/infak' ? true : false} data={data} onDone={(total: number, isInfaq: boolean) => onDonate(total, isInfaq)} />
-                                    }
+                                    {data &&
+                                        <MainDonation isInfaq={query?.programRoute === 'infak' ? true : false} data={data} onDone={(total: number, isInfaq: boolean) => onDonate(total, isInfaq)} />}
                                 </div>
                             </div>
                         </div>
@@ -146,12 +143,11 @@ const DonationPage = (props: any) => {
                         </div>
                     </div>
                     :
-                    <DonasiFormStep step={step} data={data} total={total} isInfaq={pathname === '/infak' ? true : false} id={query.id || data._id} referrer={query.referrer || null} />
-                }
+                    <DonasiFormStep step={step} data={data} total={total} isInfaq={query?.programRoute === 'infak' ? true : false} id={query.id || data._id} referrer={query.referrer || null} />}
             </Spin>
 
         </MainComponent>
-    )
+    );
 }
 
-export default withRouter(DonationPage);
+export default DonationPage;
