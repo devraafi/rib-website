@@ -14,7 +14,7 @@ const MainDonation = (props: any) => {
     const [activePkg, setActivePkg] = useState(0);
     const [qty, setQty] = useState(1);
     const [isPackage, setIsPackage] = useState(false);
-    const baseUrl: any = 'https://warm-ape-53.loca.lt/' || process.env.baseUrl;
+    const baseUrl: any = process.env.baseUrl;
 
     function handleClick() {
         import("react-facebook-pixel")
